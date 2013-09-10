@@ -271,7 +271,7 @@ div.viewcode-block:target {
  /* grey highlighting of 'parameter' and 'returns' field */
 table.field-list {
     border-collapse: separate;
-    border-spacing: 5px;
+    border-spacing: 10px;
     margin-left: 1px;
     /* border-left: 5px solid rgb(238, 238, 238) !important; */
 }
