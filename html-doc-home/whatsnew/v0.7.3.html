@@ -1,0 +1,379 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>v.0.7.3 (April 12, 2012) &#8212; pandas 1.0.0rc0+111.ge72cd7c52 documentation</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link rel="stylesheet" href="../_static/sphinx-bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/pandas.css" />
+    <link href="../_static/css/custom.css" rel="stylesheet">
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="v.0.7.2 (March 16, 2012)" href="v0.7.2.html" />
+    <link rel="prev" title="v0.8.0 (June 29, 2012)" href="v0.8.0.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main">
+
+<a class="navbar-brand" href="../index.html">
+  <img src="../_static/pandas.svg" class="logo" alt="logo">
+</a>
+
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+</button>
+
+<div id="navbar-menu" class="collapse navbar-collapse">
+  <ul id="navbar-main-elements" class="navbar-nav mr-auto">
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        1.0.0
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown" id="version-menu"></div>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="../index.html">Home</a>
+    </li>
+    
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="v1.1.0.html">What's New in 1.1.0</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../getting_started/index.html">Getting started</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../user_guide/index.html">User Guide</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../reference/index.html">API reference</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../development/index.html">Development</a>
+    </li>
+    
+    <li class="nav-item active">
+        <a class="nav-link" href="index.html">Release Notes</a>
+    </li>
+    
+    
+  </ul>
+  <ul class="navbar-nav ml-auto">
+    
+      <li class="nav-item">
+        <a class="nav-link" href="https://github.com/pandas-dev/pandas" target="_blank" rel="noopener">
+          <span><i class="fab fa-github-square"></i></span>
+        </a>
+      </li>
+    
+    
+      <li class="nav-item">
+        <a class="nav-link" href="https://twitter.com/pandas_dev" target="_blank" rel="noopener">
+          <span><i class="fab fa-twitter-square"></i></span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row flex-xl-nowrap">
+          <div class="col-12 col-md-3 col-xl-2 bd-sidebar">
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+
+  <div class="bd-toc-item active">
+  
+
+  <ul class="nav bd-sidenav">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+        
+      
+      
+    </ul>
+
+</nav>
+          </div>
+
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+              
+<div class="tocsection onthispage"><i class="fas fa-list"></i> On this page</div>
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#new-features" class="nav-link">New features</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#na-boolean-comparison-api-change" class="nav-link">NA Boolean comparison API change</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#other-api-changes" class="nav-link">Other API changes</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#contributors" class="nav-link">Contributors</a>
+        </li>
+    
+    </ul>
+</nav>
+              
+            </div>
+
+          <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
+              <div>
+                
+  <div class="section" id="v-0-7-3-april-12-2012">
+<span id="whatsnew-0703"></span><h1>v.0.7.3 (April 12, 2012)<a class="headerlink" href="#v-0-7-3-april-12-2012" title="Permalink to this headline">¶</a></h1>
+<p>This is a minor release from 0.7.2 and fixes many minor bugs and adds a number
+of nice new features. There are also a couple of API changes to note; these
+should not affect very many users, and we are inclined to call them “bug fixes”
+even though they do constitute a change in behavior. See the <a class="reference internal" href="index.html#release"><span class="std std-ref">full release
+notes</span></a> or issue
+tracker on GitHub for a complete list.</p>
+<div class="section" id="new-features">
+<h2>New features<a class="headerlink" href="#new-features" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>New <a class="reference internal" href="../user_guide/io.html#io-fwf"><span class="std std-ref">fixed width file reader</span></a>, <code class="docutils literal notranslate"><span class="pre">read_fwf</span></code></p></li>
+<li><p>New <a class="reference internal" href="../user_guide/visualization.html#visualization-scatter-matrix"><span class="std std-ref">scatter_matrix</span></a> function for making
+a scatter plot matrix</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pandas.tools.plotting</span> <span class="kn">import</span> <span class="n">scatter_matrix</span>
+<span class="n">scatter_matrix</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>        <span class="c1"># noqa F821</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">stacked</span></code> argument to Series and DataFrame’s <code class="docutils literal notranslate"><span class="pre">plot</span></code> method for
+<a class="reference internal" href="../user_guide/visualization.html#visualization-barplot"><span class="std std-ref">stacked bar plots</span></a>.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">stacked</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>    <span class="c1"># noqa F821</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;barh&#39;</span><span class="p">,</span> <span class="n">stacked</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>   <span class="c1"># noqa F821</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Add log x and y <a class="reference internal" href="../user_guide/visualization.html#visualization-basic"><span class="std std-ref">scaling options</span></a> to
+<code class="docutils literal notranslate"><span class="pre">DataFrame.plot</span></code> and <code class="docutils literal notranslate"><span class="pre">Series.plot</span></code></p></li>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">kurt</span></code> methods to Series and DataFrame for computing kurtosis</p></li>
+</ul>
+</div>
+<div class="section" id="na-boolean-comparison-api-change">
+<h2>NA Boolean comparison API change<a class="headerlink" href="#na-boolean-comparison-api-change" title="Permalink to this headline">¶</a></h2>
+<p>Reverted some changes to how NA values (represented typically as <code class="docutils literal notranslate"><span class="pre">NaN</span></code> or
+<code class="docutils literal notranslate"><span class="pre">None</span></code>) are handled in non-numeric Series:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="n">series</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s1">&#39;Steve&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="s1">&#39;Joe&#39;</span><span class="p">])</span>
+
+<span class="gp">In [2]: </span><span class="n">series</span> <span class="o">==</span> <span class="s1">&#39;Steve&#39;</span>
+<span class="gh">Out[2]: </span><span class="go"></span>
+<span class="go">0     True</span>
+<span class="go">1    False</span>
+<span class="go">2    False</span>
+<span class="go">Length: 3, dtype: bool</span>
+
+<span class="gp">In [3]: </span><span class="n">series</span> <span class="o">!=</span> <span class="s1">&#39;Steve&#39;</span>
+<span class="gh">Out[3]: </span><span class="go"></span>
+<span class="go">0    False</span>
+<span class="go">1     True</span>
+<span class="go">2     True</span>
+<span class="go">Length: 3, dtype: bool</span>
+</pre></div>
+</div>
+<p>In comparisons, NA / NaN will always come through as <code class="docutils literal notranslate"><span class="pre">False</span></code> except with
+<code class="docutils literal notranslate"><span class="pre">!=</span></code> which is <code class="docutils literal notranslate"><span class="pre">True</span></code>. <em>Be very careful</em> with boolean arithmetic, especially
+negation, in the presence of NA data. You may wish to add an explicit NA
+filter into boolean array operations if you are worried about this:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [4]: </span><span class="n">mask</span> <span class="o">=</span> <span class="n">series</span> <span class="o">==</span> <span class="s1">&#39;Steve&#39;</span>
+
+<span class="gp">In [5]: </span><span class="n">series</span><span class="p">[</span><span class="n">mask</span> <span class="o">&amp;</span> <span class="n">series</span><span class="o">.</span><span class="n">notnull</span><span class="p">()]</span>
+<span class="gh">Out[5]: </span><span class="go"></span>
+<span class="go">0    Steve</span>
+<span class="go">Length: 1, dtype: object</span>
+</pre></div>
+</div>
+<p>While propagating NA in comparisons may seem like the right behavior to some
+users (and you could argue on purely technical grounds that this is the right
+thing to do), the evaluation was made that propagating NA everywhere, including
+in numerical arrays, would cause a large amount of problems for users. Thus, a
+“practicality beats purity” approach was taken. This issue may be revisited at
+some point in the future.</p>
+</div>
+<div class="section" id="other-api-changes">
+<h2>Other API changes<a class="headerlink" href="#other-api-changes" title="Permalink to this headline">¶</a></h2>
+<p>When calling <code class="docutils literal notranslate"><span class="pre">apply</span></code> on a grouped Series, the return value will also be a
+Series, to be more consistent with the <code class="docutils literal notranslate"><span class="pre">groupby</span></code> behavior with DataFrame:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [6]: </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="s1">&#39;bar&#39;</span><span class="p">,</span>
+<span class="gp">   ...: </span>                         <span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="s1">&#39;foo&#39;</span><span class="p">],</span>
+<span class="gp">   ...: </span>                   <span class="s1">&#39;B&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;one&#39;</span><span class="p">,</span> <span class="s1">&#39;one&#39;</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">,</span> <span class="s1">&#39;three&#39;</span><span class="p">,</span>
+<span class="gp">   ...: </span>                         <span class="s1">&#39;two&#39;</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">,</span> <span class="s1">&#39;one&#39;</span><span class="p">,</span> <span class="s1">&#39;three&#39;</span><span class="p">],</span>
+<span class="gp">   ...: </span>                   <span class="s1">&#39;C&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span> <span class="s1">&#39;D&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">8</span><span class="p">)})</span>
+<span class="gp">   ...: </span>
+
+<span class="gp">In [7]: </span><span class="n">df</span>
+<span class="gh">Out[7]: </span><span class="go"></span>
+<span class="go">     A      B         C         D</span>
+<span class="go">0  foo    one  0.469112 -0.861849</span>
+<span class="go">1  bar    one -0.282863 -2.104569</span>
+<span class="go">2  foo    two -1.509059 -0.494929</span>
+<span class="go">3  bar  three -1.135632  1.071804</span>
+<span class="go">4  foo    two  1.212112  0.721555</span>
+<span class="go">5  bar    two -0.173215 -0.706771</span>
+<span class="go">6  foo    one  0.119209 -1.039575</span>
+<span class="go">7  foo  three -1.044236  0.271860</span>
+
+<span class="go">[8 rows x 4 columns]</span>
+
+<span class="gp">In [8]: </span><span class="n">grouped</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">)[</span><span class="s1">&#39;C&#39;</span><span class="p">]</span>
+
+<span class="gp">In [9]: </span><span class="n">grouped</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+<span class="gh">Out[9]: </span><span class="go"></span>
+<span class="go">     count      mean       std       min       25%       50%       75%       max</span>
+<span class="go">A                                                                               </span>
+<span class="go">bar    3.0 -0.530570  0.526860 -1.135632 -0.709248 -0.282863 -0.228039 -0.173215</span>
+<span class="go">foo    5.0 -0.150572  1.113308 -1.509059 -1.044236  0.119209  0.469112  1.212112</span>
+
+<span class="go">[2 rows x 8 columns]</span>
+
+<span class="gp">In [10]: </span><span class="n">grouped</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">sort_values</span><span class="p">()[</span><span class="o">-</span><span class="mi">2</span><span class="p">:])</span>    <span class="c1"># top 2 values</span>
+<span class="gh">Out[10]: </span><span class="go"></span>
+<span class="go">A     </span>
+<span class="go">bar  1   -0.282863</span>
+<span class="go">     5   -0.173215</span>
+<span class="go">foo  0    0.469112</span>
+<span class="go">     4    1.212112</span>
+<span class="go">Name: C, Length: 4, dtype: float64</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="contributors">
+<span id="whatsnew-0-7-3-contributors"></span><h2>Contributors<a class="headerlink" href="#contributors" title="Permalink to this headline">¶</a></h2>
+<p>A total of 15 people contributed patches to this release.  People with a
+“+” by their names contributed a patch for the first time.
+</p>
+<ul class="simple">
+<li><p>Abraham Flaxman +</p></li>
+<li><p>Adam Klein</p></li>
+<li><p>Andreas H. +</p></li>
+<li><p>Chang She</p></li>
+<li><p>Dieter Vandenbussche</p></li>
+<li><p>Jacques Kvam +</p></li>
+<li><p>K.-Michael Aye +</p></li>
+<li><p>Kamil Kisiel +</p></li>
+<li><p>Martin Blais +</p></li>
+<li><p>Skipper Seabold</p></li>
+<li><p>Thomas Kluyver</p></li>
+<li><p>Wes McKinney</p></li>
+<li><p>Wouter Overmeire</p></li>
+<li><p>Yaroslav Halchenko</p></li>
+<li><p>lgautier +</p></li>
+</ul>
+</div>
+</div>
+
+
+              </div>
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="v0.8.0.html" title="previous page">v0.8.0 (June 29, 2012)</a>
+    <a class='right-next' id="next-link" href="v0.7.2.html" title="next page">v.0.7.2 (March 16, 2012)</a>
+
+              </div>
+              
+          </main>
+
+      </div>
+    </div><script>
+    // TOC sidebar - add "active" class to parent list
+    //
+    // Bootstrap's scrollspy adds the active class to the <a> link,
+    // but for the automatic collapsing we need this on the parent list item.
+    //
+    // The event is triggered on "window" (and not the nav item as documented),
+    // see https://github.com/twbs/bootstrap/issues/20086
+    $(window).on("activate.bs.scrollspy", function(){
+    var navLinks = document.querySelectorAll('#bd-toc-nav a');
+    for (var i = 0; i < navLinks.length; i++) {
+        var navLink = navLinks[i];
+        navLink.parentElement.classList.remove('active');
+    }
+    var navLinks = document.querySelectorAll('#bd-toc-nav a.active');
+    for (var i = 0; i < navLinks.length; i++) {
+        var navLink = navLinks[i];
+        navLink.parentElement.classList.add('active');
+    }
+    });
+
+    /**
+     * Use left and right arrow keys to navigate forward and backwards.
+    */
+    const LEFT_ARROW_KEYCODE = 37
+    const RIGHT_ARROW_KEYCODE = 39
+
+    const getPrevUrl = () => document.getElementById('prev-link').href
+    const getNextUrl = () => document.getElementById('next-link').href
+    const initPageNav = (event) => {
+        const keycode = event.which
+
+        if (keycode === LEFT_ARROW_KEYCODE) {
+            window.location.href = getPrevUrl();
+        } else if (keycode === RIGHT_ARROW_KEYCODE) {
+            window.location.href = getNextUrl();
+        }
+    };
+
+    var keyboardListener = false;
+    $( document ).ready(() => {
+        if (keyboardListener === false) {
+            document.addEventListener('keydown', initPageNav)
+            keyboardListener = true;
+        }
+    });
+</script>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2008-2020, the pandas development team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.3.0.
+    </div>
+  </body>
+</html>

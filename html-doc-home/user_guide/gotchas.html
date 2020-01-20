@@ -1,0 +1,837 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Frequently Asked Questions (FAQ) &#8212; pandas 1.0.0rc0+111.ge72cd7c52 documentation</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link rel="stylesheet" href="../_static/sphinx-bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/pandas.css" />
+    <link href="../_static/css/custom.css" rel="stylesheet">
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Cookbook" href="cookbook.html" />
+    <link rel="prev" title="Sparse data structures" href="sparse.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main">
+
+<a class="navbar-brand" href="../index.html">
+  <img src="../_static/pandas.svg" class="logo" alt="logo">
+</a>
+
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+</button>
+
+<div id="navbar-menu" class="collapse navbar-collapse">
+  <ul id="navbar-main-elements" class="navbar-nav mr-auto">
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        1.0.0
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown" id="version-menu"></div>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="../index.html">Home</a>
+    </li>
+    
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../whatsnew/v1.1.0.html">What's New in 1.1.0</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../getting_started/index.html">Getting started</a>
+    </li>
+    
+    <li class="nav-item active">
+        <a class="nav-link" href="index.html">User Guide</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../reference/index.html">API reference</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../development/index.html">Development</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../whatsnew/index.html">Release Notes</a>
+    </li>
+    
+    
+  </ul>
+  <ul class="navbar-nav ml-auto">
+    
+      <li class="nav-item">
+        <a class="nav-link" href="https://github.com/pandas-dev/pandas" target="_blank" rel="noopener">
+          <span><i class="fab fa-github-square"></i></span>
+        </a>
+      </li>
+    
+    
+      <li class="nav-item">
+        <a class="nav-link" href="https://twitter.com/pandas_dev" target="_blank" rel="noopener">
+          <span><i class="fab fa-twitter-square"></i></span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row flex-xl-nowrap">
+          <div class="col-12 col-md-3 col-xl-2 bd-sidebar">
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+
+  <div class="bd-toc-item active">
+  
+
+  <ul class="nav bd-sidenav">
+      
+      
+      
+      
+      
+      
+        
+          
+              <li class="">
+                  <a href="io.html">IO tools (text, CSV, HDF5, …)</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="indexing.html">Indexing and selecting data</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="advanced.html">MultiIndex / advanced indexing</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="merging.html">Merge, join, and concatenate</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="reshaping.html">Reshaping and pivot tables</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="text.html">Working with text data</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="missing_data.html">Working with missing data</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="categorical.html">Categorical data</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="integer_na.html">Nullable integer data type</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="boolean.html">Nullable Boolean Data Type</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="visualization.html">Visualization</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="computation.html">Computational tools</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="groupby.html">Group By: split-apply-combine</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="timeseries.html">Time series / date functionality</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="timedeltas.html">Time deltas</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="style.html">Styling</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="options.html">Options and settings</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="enhancingperf.html">Enhancing performance</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="scale.html">Scaling to large datasets</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="sparse.html">Sparse data structures</a>
+              </li>
+          
+        
+          
+              <li class="active">
+                  <a href="">Frequently Asked Questions (FAQ)</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="cookbook.html">Cookbook</a>
+              </li>
+          
+        
+      
+      
+      
+      
+      
+      
+      
+      
+    </ul>
+
+</nav>
+          </div>
+
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+              
+<div class="tocsection onthispage"><i class="fas fa-list"></i> On this page</div>
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#dataframe-memory-usage" class="nav-link">DataFrame memory usage</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#using-if-truth-statements-with-pandas" class="nav-link">Using if/truth statements with pandas</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#bitwise-boolean" class="nav-link">Bitwise boolean</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#using-the-in-operator" class="nav-link">Using the in operator</a>
+        </li>
+    
+            </ul>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#nan-integer-na-values-and-na-type-promotions" class="nav-link">NaN, Integer NA values and NA type promotions</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#choice-of-na-representation" class="nav-link">Choice of NA representation</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#support-for-integer-na" class="nav-link">Support for integer NA</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#na-type-promotions" class="nav-link">NA type promotions</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#why-not-make-numpy-like-r" class="nav-link">Why not make NumPy like R?</a>
+        </li>
+    
+            </ul>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#differences-with-numpy" class="nav-link">Differences with NumPy</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#thread-safety" class="nav-link">Thread-safety</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#byte-ordering-issues" class="nav-link">Byte-Ordering issues</a>
+        </li>
+    
+    </ul>
+</nav>
+              
+            </div>
+
+          <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
+              <div>
+                
+  <div class="section" id="frequently-asked-questions-faq">
+<span id="gotchas"></span><h1>Frequently Asked Questions (FAQ)<a class="headerlink" href="#frequently-asked-questions-faq" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="dataframe-memory-usage">
+<span id="df-memory-usage"></span><h2>DataFrame memory usage<a class="headerlink" href="#dataframe-memory-usage" title="Permalink to this headline">¶</a></h2>
+<p>The memory usage of a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> (including the index) is shown when calling
+the <code class="xref py py-meth docutils literal notranslate"><span class="pre">info()</span></code>. A configuration option, <code class="docutils literal notranslate"><span class="pre">display.memory_usage</span></code>
+(see <a class="reference internal" href="options.html#options-available"><span class="std std-ref">the list of options</span></a>), specifies if the
+<code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>’s memory usage will be displayed when invoking the <code class="docutils literal notranslate"><span class="pre">df.info()</span></code>
+method.</p>
+<p>For example, the memory usage of the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> below is shown
+when calling <code class="xref py py-meth docutils literal notranslate"><span class="pre">info()</span></code>:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="n">dtypes</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;int64&#39;</span><span class="p">,</span> <span class="s1">&#39;float64&#39;</span><span class="p">,</span> <span class="s1">&#39;datetime64[ns]&#39;</span><span class="p">,</span> <span class="s1">&#39;timedelta64[ns]&#39;</span><span class="p">,</span>
+<span class="gp">   ...: </span>          <span class="s1">&#39;complex128&#39;</span><span class="p">,</span> <span class="s1">&#39;object&#39;</span><span class="p">,</span> <span class="s1">&#39;bool&#39;</span><span class="p">]</span>
+<span class="gp">   ...: </span>
+
+<span class="gp">In [2]: </span><span class="n">n</span> <span class="o">=</span> <span class="mi">5000</span>
+
+<span class="gp">In [3]: </span><span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="n">t</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">dtypes</span><span class="p">}</span>
+
+<span class="gp">In [4]: </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="gp">In [5]: </span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;categorical&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;object&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;category&#39;</span><span class="p">)</span>
+
+<span class="gp">In [6]: </span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+<span class="go">&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;</span>
+<span class="go">RangeIndex: 5000 entries, 0 to 4999</span>
+<span class="go">Data columns (total 8 columns):</span>
+<span class="go"> #   Column           Non-Null Count  Dtype          </span>
+<span class="go">---  ------           --------------  -----          </span>
+<span class="go"> 0   int64            5000 non-null   int64          </span>
+<span class="go"> 1   float64          5000 non-null   float64        </span>
+<span class="go"> 2   datetime64[ns]   5000 non-null   datetime64[ns] </span>
+<span class="go"> 3   timedelta64[ns]  5000 non-null   timedelta64[ns]</span>
+<span class="go"> 4   complex128       5000 non-null   complex128     </span>
+<span class="go"> 5   object           5000 non-null   object         </span>
+<span class="go"> 6   bool             5000 non-null   bool           </span>
+<span class="go"> 7   categorical      5000 non-null   category       </span>
+<span class="go">dtypes: bool(1), category(1), complex128(1), datetime64[ns](1), float64(1), int64(1), object(1), timedelta64[ns](1)</span>
+<span class="go">memory usage: 289.1+ KB</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">+</span></code> symbol indicates that the true memory usage could be higher, because
+pandas does not count the memory used by values in columns with
+<code class="docutils literal notranslate"><span class="pre">dtype=object</span></code>.</p>
+<p>Passing <code class="docutils literal notranslate"><span class="pre">memory_usage='deep'</span></code> will enable a more accurate memory usage report,
+accounting for the full usage of the contained objects. This is optional
+as it can be expensive to do this deeper introspection.</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [7]: </span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">memory_usage</span><span class="o">=</span><span class="s1">&#39;deep&#39;</span><span class="p">)</span>
+<span class="go">&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;</span>
+<span class="go">RangeIndex: 5000 entries, 0 to 4999</span>
+<span class="go">Data columns (total 8 columns):</span>
+<span class="go"> #   Column           Non-Null Count  Dtype          </span>
+<span class="go">---  ------           --------------  -----          </span>
+<span class="go"> 0   int64            5000 non-null   int64          </span>
+<span class="go"> 1   float64          5000 non-null   float64        </span>
+<span class="go"> 2   datetime64[ns]   5000 non-null   datetime64[ns] </span>
+<span class="go"> 3   timedelta64[ns]  5000 non-null   timedelta64[ns]</span>
+<span class="go"> 4   complex128       5000 non-null   complex128     </span>
+<span class="go"> 5   object           5000 non-null   object         </span>
+<span class="go"> 6   bool             5000 non-null   bool           </span>
+<span class="go"> 7   categorical      5000 non-null   category       </span>
+<span class="go">dtypes: bool(1), category(1), complex128(1), datetime64[ns](1), float64(1), int64(1), object(1), timedelta64[ns](1)</span>
+<span class="go">memory usage: 425.6 KB</span>
+</pre></div>
+</div>
+<p>By default the display option is set to <code class="docutils literal notranslate"><span class="pre">True</span></code> but can be explicitly
+overridden by passing the <code class="docutils literal notranslate"><span class="pre">memory_usage</span></code> argument when invoking <code class="docutils literal notranslate"><span class="pre">df.info()</span></code>.</p>
+<p>The memory usage of each column can be found by calling the
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">memory_usage()</span></code> method. This returns a <code class="docutils literal notranslate"><span class="pre">Series</span></code> with an index
+represented by column names and memory usage of each column shown in bytes. For
+the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> above, the memory usage of each column and the total memory
+usage can be found with the <code class="docutils literal notranslate"><span class="pre">memory_usage</span></code> method:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [8]: </span><span class="n">df</span><span class="o">.</span><span class="n">memory_usage</span><span class="p">()</span>
+<span class="gh">Out[8]: </span><span class="go"></span>
+<span class="go">Index                128</span>
+<span class="go">int64              40000</span>
+<span class="go">float64            40000</span>
+<span class="go">datetime64[ns]     40000</span>
+<span class="go">timedelta64[ns]    40000</span>
+<span class="go">complex128         80000</span>
+<span class="go">object             40000</span>
+<span class="go">bool                5000</span>
+<span class="go">categorical        10920</span>
+<span class="go">dtype: int64</span>
+
+<span class="go"># total memory usage of dataframe</span>
+<span class="gp">In [9]: </span><span class="n">df</span><span class="o">.</span><span class="n">memory_usage</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="gh">Out[9]: </span><span class="go">296048</span>
+</pre></div>
+</div>
+<p>By default the memory usage of the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>’s index is shown in the
+returned <code class="docutils literal notranslate"><span class="pre">Series</span></code>, the memory usage of the index can be suppressed by passing
+the <code class="docutils literal notranslate"><span class="pre">index=False</span></code> argument:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [10]: </span><span class="n">df</span><span class="o">.</span><span class="n">memory_usage</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="gh">Out[10]: </span><span class="go"></span>
+<span class="go">int64              40000</span>
+<span class="go">float64            40000</span>
+<span class="go">datetime64[ns]     40000</span>
+<span class="go">timedelta64[ns]    40000</span>
+<span class="go">complex128         80000</span>
+<span class="go">object             40000</span>
+<span class="go">bool                5000</span>
+<span class="go">categorical        10920</span>
+<span class="go">dtype: int64</span>
+</pre></div>
+</div>
+<p>The memory usage displayed by the <code class="xref py py-meth docutils literal notranslate"><span class="pre">info()</span></code> method utilizes the
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">memory_usage()</span></code> method to determine the memory usage of a
+<code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> while also formatting the output in human-readable units (base-2
+representation; i.e. 1KB = 1024 bytes).</p>
+<p>See also <a class="reference internal" href="categorical.html#categorical-memory"><span class="std std-ref">Categorical Memory Usage</span></a>.</p>
+</div>
+<div class="section" id="using-if-truth-statements-with-pandas">
+<span id="gotchas-truth"></span><h2>Using if/truth statements with pandas<a class="headerlink" href="#using-if-truth-statements-with-pandas" title="Permalink to this headline">¶</a></h2>
+<p>pandas follows the NumPy convention of raising an error when you try to convert
+something to a <code class="docutils literal notranslate"><span class="pre">bool</span></code>. This happens in an <code class="docutils literal notranslate"><span class="pre">if</span></code>-statement or when using the
+boolean operations: <code class="docutils literal notranslate"><span class="pre">and</span></code>, <code class="docutils literal notranslate"><span class="pre">or</span></code>, and <code class="docutils literal notranslate"><span class="pre">not</span></code>. It is not clear what the result
+of the following code should be:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="bp">False</span><span class="p">,</span> <span class="bp">True</span><span class="p">,</span> <span class="bp">False</span><span class="p">]):</span>
+<span class="gp">... </span>    <span class="k">pass</span>
+</pre></div>
+</div>
+<p>Should it be <code class="docutils literal notranslate"><span class="pre">True</span></code> because it’s not zero-length, or <code class="docutils literal notranslate"><span class="pre">False</span></code> because there
+are <code class="docutils literal notranslate"><span class="pre">False</span></code> values? It is unclear, so instead, pandas raises a <code class="docutils literal notranslate"><span class="pre">ValueError</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="bp">False</span><span class="p">,</span> <span class="bp">True</span><span class="p">,</span> <span class="bp">False</span><span class="p">]):</span>
+<span class="gp">... </span>    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;I was true&quot;</span><span class="p">)</span>
+<span class="go">Traceback</span>
+<span class="go">    ...</span>
+<span class="go">ValueError: The truth value of an array is ambiguous. Use a.empty, a.any() or a.all().</span>
+</pre></div>
+</div>
+<p>You need to explicitly choose what you want to do with the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>, e.g.
+use <code class="xref py py-meth docutils literal notranslate"><span class="pre">any()</span></code>, <code class="xref py py-meth docutils literal notranslate"><span class="pre">all()</span></code> or <code class="xref py py-meth docutils literal notranslate"><span class="pre">empty()</span></code>.
+Alternatively, you might want to compare if the pandas object is <code class="docutils literal notranslate"><span class="pre">None</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="bp">False</span><span class="p">,</span> <span class="bp">True</span><span class="p">,</span> <span class="bp">False</span><span class="p">])</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;I was not None&quot;</span><span class="p">)</span>
+<span class="go">I was not None</span>
+</pre></div>
+</div>
+<p>Below is how to check if any of the values are <code class="docutils literal notranslate"><span class="pre">True</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="bp">False</span><span class="p">,</span> <span class="bp">True</span><span class="p">,</span> <span class="bp">False</span><span class="p">])</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
+<span class="gp">... </span>    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;I am any&quot;</span><span class="p">)</span>
+<span class="go">I am any</span>
+</pre></div>
+</div>
+<p>To evaluate single-element pandas objects in a boolean context, use the method
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">bool()</span></code>:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [11]: </span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="bp">True</span><span class="p">])</span><span class="o">.</span><span class="n">bool</span><span class="p">()</span>
+<span class="gh">Out[11]: </span><span class="go">True</span>
+
+<span class="gp">In [12]: </span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="bp">False</span><span class="p">])</span><span class="o">.</span><span class="n">bool</span><span class="p">()</span>
+<span class="gh">Out[12]: </span><span class="go">False</span>
+
+<span class="gp">In [13]: </span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([[</span><span class="bp">True</span><span class="p">]])</span><span class="o">.</span><span class="n">bool</span><span class="p">()</span>
+<span class="gh">Out[13]: </span><span class="go">True</span>
+
+<span class="gp">In [14]: </span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([[</span><span class="bp">False</span><span class="p">]])</span><span class="o">.</span><span class="n">bool</span><span class="p">()</span>
+<span class="gh">Out[14]: </span><span class="go">False</span>
+</pre></div>
+</div>
+<div class="section" id="bitwise-boolean">
+<h3>Bitwise boolean<a class="headerlink" href="#bitwise-boolean" title="Permalink to this headline">¶</a></h3>
+<p>Bitwise boolean operators like <code class="docutils literal notranslate"><span class="pre">==</span></code> and <code class="docutils literal notranslate"><span class="pre">!=</span></code> return a boolean <code class="docutils literal notranslate"><span class="pre">Series</span></code>,
+which is almost always what you want anyways.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">==</span> <span class="mi">4</span>
+<span class="go">0    False</span>
+<span class="go">1    False</span>
+<span class="go">2    False</span>
+<span class="go">3    False</span>
+<span class="go">4     True</span>
+<span class="go">dtype: bool</span>
+</pre></div>
+</div>
+<p>See <a class="reference internal" href="../getting_started/basics.html#basics-compare"><span class="std std-ref">boolean comparisons</span></a> for more examples.</p>
+</div>
+<div class="section" id="using-the-in-operator">
+<h3>Using the <code class="docutils literal notranslate"><span class="pre">in</span></code> operator<a class="headerlink" href="#using-the-in-operator" title="Permalink to this headline">¶</a></h3>
+<p>Using the Python <code class="docutils literal notranslate"><span class="pre">in</span></code> operator on a <code class="docutils literal notranslate"><span class="pre">Series</span></code> tests for membership in the
+index, not membership among the values.</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [15]: </span><span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="s1">&#39;abcde&#39;</span><span class="p">))</span>
+
+<span class="gp">In [16]: </span><span class="mi">2</span> <span class="ow">in</span> <span class="n">s</span>
+<span class="gh">Out[16]: </span><span class="go">False</span>
+
+<span class="gp">In [17]: </span><span class="s1">&#39;b&#39;</span> <span class="ow">in</span> <span class="n">s</span>
+<span class="gh">Out[17]: </span><span class="go">True</span>
+</pre></div>
+</div>
+<p>If this behavior is surprising, keep in mind that using <code class="docutils literal notranslate"><span class="pre">in</span></code> on a Python
+dictionary tests keys, not values, and <code class="docutils literal notranslate"><span class="pre">Series</span></code> are dict-like.
+To test for membership in the values, use the method <code class="xref py py-meth docutils literal notranslate"><span class="pre">isin()</span></code>:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [18]: </span><span class="n">s</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="mi">2</span><span class="p">])</span>
+<span class="gh">Out[18]: </span><span class="go"></span>
+<span class="go">a    False</span>
+<span class="go">b    False</span>
+<span class="go">c     True</span>
+<span class="go">d    False</span>
+<span class="go">e    False</span>
+<span class="go">dtype: bool</span>
+
+<span class="gp">In [19]: </span><span class="n">s</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="mi">2</span><span class="p">])</span><span class="o">.</span><span class="n">any</span><span class="p">()</span>
+<span class="gh">Out[19]: </span><span class="go">True</span>
+</pre></div>
+</div>
+<p>For <code class="docutils literal notranslate"><span class="pre">DataFrames</span></code>, likewise, <code class="docutils literal notranslate"><span class="pre">in</span></code> applies to the column axis,
+testing for membership in the list of column names.</p>
+</div>
+</div>
+<div class="section" id="nan-integer-na-values-and-na-type-promotions">
+<h2><code class="docutils literal notranslate"><span class="pre">NaN</span></code>, Integer <code class="docutils literal notranslate"><span class="pre">NA</span></code> values and <code class="docutils literal notranslate"><span class="pre">NA</span></code> type promotions<a class="headerlink" href="#nan-integer-na-values-and-na-type-promotions" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="choice-of-na-representation">
+<h3>Choice of <code class="docutils literal notranslate"><span class="pre">NA</span></code> representation<a class="headerlink" href="#choice-of-na-representation" title="Permalink to this headline">¶</a></h3>
+<p>For lack of <code class="docutils literal notranslate"><span class="pre">NA</span></code> (missing) support from the ground up in NumPy and Python in
+general, we were given the difficult choice between either:</p>
+<ul class="simple">
+<li><p>A <em>masked array</em> solution: an array of data and an array of boolean values
+indicating whether a value is there or is missing.</p></li>
+<li><p>Using a special sentinel value, bit pattern, or set of sentinel values to
+denote <code class="docutils literal notranslate"><span class="pre">NA</span></code> across the dtypes.</p></li>
+</ul>
+<p>For many reasons we chose the latter. After years of production use it has
+proven, at least in my opinion, to be the best decision given the state of
+affairs in NumPy and Python in general. The special value <code class="docutils literal notranslate"><span class="pre">NaN</span></code>
+(Not-A-Number) is used everywhere as the <code class="docutils literal notranslate"><span class="pre">NA</span></code> value, and there are API
+functions <code class="docutils literal notranslate"><span class="pre">isna</span></code> and <code class="docutils literal notranslate"><span class="pre">notna</span></code> which can be used across the dtypes to
+detect NA values.</p>
+<p>However, it comes with it a couple of trade-offs which I most certainly have
+not ignored.</p>
+</div>
+<div class="section" id="support-for-integer-na">
+<span id="gotchas-intna"></span><h3>Support for integer <code class="docutils literal notranslate"><span class="pre">NA</span></code><a class="headerlink" href="#support-for-integer-na" title="Permalink to this headline">¶</a></h3>
+<p>In the absence of high performance <code class="docutils literal notranslate"><span class="pre">NA</span></code> support being built into NumPy from
+the ground up, the primary casualty is the ability to represent NAs in integer
+arrays. For example:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [20]: </span><span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="s1">&#39;abcde&#39;</span><span class="p">))</span>
+
+<span class="gp">In [21]: </span><span class="n">s</span>
+<span class="gh">Out[21]: </span><span class="go"></span>
+<span class="go">a    1</span>
+<span class="go">b    2</span>
+<span class="go">c    3</span>
+<span class="go">d    4</span>
+<span class="go">e    5</span>
+<span class="go">dtype: int64</span>
+
+<span class="gp">In [22]: </span><span class="n">s</span><span class="o">.</span><span class="n">dtype</span>
+<span class="gh">Out[22]: </span><span class="go">dtype(&#39;int64&#39;)</span>
+
+<span class="gp">In [23]: </span><span class="n">s2</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">reindex</span><span class="p">([</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;f&#39;</span><span class="p">,</span> <span class="s1">&#39;u&#39;</span><span class="p">])</span>
+
+<span class="gp">In [24]: </span><span class="n">s2</span>
+<span class="gh">Out[24]: </span><span class="go"></span>
+<span class="go">a    1.0</span>
+<span class="go">b    2.0</span>
+<span class="go">c    3.0</span>
+<span class="go">f    NaN</span>
+<span class="go">u    NaN</span>
+<span class="go">dtype: float64</span>
+
+<span class="gp">In [25]: </span><span class="n">s2</span><span class="o">.</span><span class="n">dtype</span>
+<span class="gh">Out[25]: </span><span class="go">dtype(&#39;float64&#39;)</span>
+</pre></div>
+</div>
+<p>This trade-off is made largely for memory and performance reasons, and also so
+that the resulting <code class="docutils literal notranslate"><span class="pre">Series</span></code> continues to be “numeric”.</p>
+<p>If you need to represent integers with possibly missing values, use one of
+the nullable-integer extension dtypes provided by pandas</p>
+<ul class="simple">
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Int8Dtype</span></code></p></li>
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Int16Dtype</span></code></p></li>
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Int32Dtype</span></code></p></li>
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Int64Dtype</span></code></p></li>
+</ul>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [26]: </span><span class="n">s_int</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="s1">&#39;abcde&#39;</span><span class="p">),</span>
+<span class="gp">   ....: </span>                  <span class="n">dtype</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">Int64Dtype</span><span class="p">())</span>
+<span class="gp">   ....: </span>
+
+<span class="gp">In [27]: </span><span class="n">s_int</span>
+<span class="gh">Out[27]: </span><span class="go"></span>
+<span class="go">a    1</span>
+<span class="go">b    2</span>
+<span class="go">c    3</span>
+<span class="go">d    4</span>
+<span class="go">e    5</span>
+<span class="go">dtype: Int64</span>
+
+<span class="gp">In [28]: </span><span class="n">s_int</span><span class="o">.</span><span class="n">dtype</span>
+<span class="gh">Out[28]: </span><span class="go">Int64Dtype()</span>
+
+<span class="gp">In [29]: </span><span class="n">s2_int</span> <span class="o">=</span> <span class="n">s_int</span><span class="o">.</span><span class="n">reindex</span><span class="p">([</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;f&#39;</span><span class="p">,</span> <span class="s1">&#39;u&#39;</span><span class="p">])</span>
+
+<span class="gp">In [30]: </span><span class="n">s2_int</span>
+<span class="gh">Out[30]: </span><span class="go"></span>
+<span class="go">a       1</span>
+<span class="go">b       2</span>
+<span class="go">c       3</span>
+<span class="go">f    &lt;NA&gt;</span>
+<span class="go">u    &lt;NA&gt;</span>
+<span class="go">dtype: Int64</span>
+
+<span class="gp">In [31]: </span><span class="n">s2_int</span><span class="o">.</span><span class="n">dtype</span>
+<span class="gh">Out[31]: </span><span class="go">Int64Dtype()</span>
+</pre></div>
+</div>
+<p>See <a class="reference internal" href="integer_na.html#integer-na"><span class="std std-ref">Nullable integer data type</span></a> for more.</p>
+</div>
+<div class="section" id="na-type-promotions">
+<h3><code class="docutils literal notranslate"><span class="pre">NA</span></code> type promotions<a class="headerlink" href="#na-type-promotions" title="Permalink to this headline">¶</a></h3>
+<p>When introducing NAs into an existing <code class="docutils literal notranslate"><span class="pre">Series</span></code> or <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> via
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">reindex()</span></code> or some other means, boolean and integer types will be
+promoted to a different dtype in order to store the NAs. The promotions are
+summarized in this table:</p>
+<table class="colwidths-given table">
+<colgroup>
+<col style="width: 40%" />
+<col style="width: 60%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Typeclass</p></th>
+<th class="head"><p>Promotion dtype for storing NAs</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">floating</span></code></p></td>
+<td><p>no change</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">object</span></code></p></td>
+<td><p>no change</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">integer</span></code></p></td>
+<td><p>cast to <code class="docutils literal notranslate"><span class="pre">float64</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">boolean</span></code></p></td>
+<td><p>cast to <code class="docutils literal notranslate"><span class="pre">object</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<p>While this may seem like a heavy trade-off, I have found very few cases where
+this is an issue in practice i.e. storing values greater than 2**53. Some
+explanation for the motivation is in the next section.</p>
+</div>
+<div class="section" id="why-not-make-numpy-like-r">
+<h3>Why not make NumPy like R?<a class="headerlink" href="#why-not-make-numpy-like-r" title="Permalink to this headline">¶</a></h3>
+<p>Many people have suggested that NumPy should simply emulate the <code class="docutils literal notranslate"><span class="pre">NA</span></code> support
+present in the more domain-specific statistical programming language <a class="reference external" href="https://r-project.org">R</a>. Part of the reason is the NumPy type hierarchy:</p>
+<table class="colwidths-given table">
+<colgroup>
+<col style="width: 30%" />
+<col style="width: 70%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Typeclass</p></th>
+<th class="head"><p>Dtypes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">numpy.floating</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float16,</span> <span class="pre">float32,</span> <span class="pre">float64,</span> <span class="pre">float128</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">numpy.integer</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int8,</span> <span class="pre">int16,</span> <span class="pre">int32,</span> <span class="pre">int64</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">numpy.unsignedinteger</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">uint8,</span> <span class="pre">uint16,</span> <span class="pre">uint32,</span> <span class="pre">uint64</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">numpy.object_</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">object_</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">numpy.bool_</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">bool_</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">numpy.character</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">string_,</span> <span class="pre">unicode_</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<p>The R language, by contrast, only has a handful of built-in data types:
+<code class="docutils literal notranslate"><span class="pre">integer</span></code>, <code class="docutils literal notranslate"><span class="pre">numeric</span></code> (floating-point), <code class="docutils literal notranslate"><span class="pre">character</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">boolean</span></code>. <code class="docutils literal notranslate"><span class="pre">NA</span></code> types are implemented by reserving special bit patterns for
+each type to be used as the missing value. While doing this with the full NumPy
+type hierarchy would be possible, it would be a more substantial trade-off
+(especially for the 8- and 16-bit data types) and implementation undertaking.</p>
+<p>An alternate approach is that of using masked arrays. A masked array is an
+array of data with an associated boolean <em>mask</em> denoting whether each value
+should be considered <code class="docutils literal notranslate"><span class="pre">NA</span></code> or not. I am personally not in love with this
+approach as I feel that overall it places a fairly heavy burden on the user and
+the library implementer. Additionally, it exacts a fairly high performance cost
+when working with numerical data compared with the simple approach of using
+<code class="docutils literal notranslate"><span class="pre">NaN</span></code>. Thus, I have chosen the Pythonic “practicality beats purity” approach
+and traded integer <code class="docutils literal notranslate"><span class="pre">NA</span></code> capability for a much simpler approach of using a
+special value in float and object arrays to denote <code class="docutils literal notranslate"><span class="pre">NA</span></code>, and promoting
+integer arrays to floating when NAs must be introduced.</p>
+</div>
+</div>
+<div class="section" id="differences-with-numpy">
+<h2>Differences with NumPy<a class="headerlink" href="#differences-with-numpy" title="Permalink to this headline">¶</a></h2>
+<p>For <code class="docutils literal notranslate"><span class="pre">Series</span></code> and <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> objects, <code class="xref py py-meth docutils literal notranslate"><span class="pre">var()</span></code> normalizes by
+<code class="docutils literal notranslate"><span class="pre">N-1</span></code> to produce unbiased estimates of the sample variance, while NumPy’s
+<code class="docutils literal notranslate"><span class="pre">var</span></code> normalizes by N, which measures the variance of the sample. Note that
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">cov()</span></code> normalizes by <code class="docutils literal notranslate"><span class="pre">N-1</span></code> in both pandas and NumPy.</p>
+</div>
+<div class="section" id="thread-safety">
+<h2>Thread-safety<a class="headerlink" href="#thread-safety" title="Permalink to this headline">¶</a></h2>
+<p>As of pandas 0.11, pandas is not 100% thread safe. The known issues relate to
+the <code class="xref py py-meth docutils literal notranslate"><span class="pre">copy()</span></code> method. If you are doing a lot of copying of
+<code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> objects shared among threads, we recommend holding locks inside
+the threads where the data copying occurs.</p>
+<p>See <a class="reference external" href="https://stackoverflow.com/questions/13592618/python-pandas-dataframe-thread-safe">this link</a>
+for more information.</p>
+</div>
+<div class="section" id="byte-ordering-issues">
+<h2>Byte-Ordering issues<a class="headerlink" href="#byte-ordering-issues" title="Permalink to this headline">¶</a></h2>
+<p>Occasionally you may have to deal with data that were created on a machine with
+a different byte order than the one on which you are running Python. A common
+symptom of this issue is an error like::</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Traceback</span>
+    <span class="o">...</span>
+<span class="ne">ValueError</span><span class="p">:</span> <span class="n">Big</span><span class="o">-</span><span class="n">endian</span> <span class="n">buffer</span> <span class="ow">not</span> <span class="n">supported</span> <span class="n">on</span> <span class="n">little</span><span class="o">-</span><span class="n">endian</span> <span class="n">compiler</span>
+</pre></div>
+</div>
+<p>To deal
+with this issue you should convert the underlying NumPy array to the native
+system byte order <em>before</em> passing it to <code class="docutils literal notranslate"><span class="pre">Series</span></code> or <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>
+constructors using something similar to the following:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [32]: </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)),</span> <span class="s1">&#39;&gt;i4&#39;</span><span class="p">)</span>  <span class="c1"># big endian</span>
+
+<span class="gp">In [33]: </span><span class="n">newx</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">byteswap</span><span class="p">()</span><span class="o">.</span><span class="n">newbyteorder</span><span class="p">()</span>  <span class="c1"># force native byteorder</span>
+
+<span class="gp">In [34]: </span><span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">newx</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>See <a class="reference external" href="https://docs.scipy.org/doc/numpy/user/basics.byteswapping.html">the NumPy documentation on byte order</a> for more
+details.</p>
+</div>
+</div>
+
+
+              </div>
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="sparse.html" title="previous page">Sparse data structures</a>
+    <a class='right-next' id="next-link" href="cookbook.html" title="next page">Cookbook</a>
+
+              </div>
+              
+          </main>
+
+      </div>
+    </div><script>
+    // TOC sidebar - add "active" class to parent list
+    //
+    // Bootstrap's scrollspy adds the active class to the <a> link,
+    // but for the automatic collapsing we need this on the parent list item.
+    //
+    // The event is triggered on "window" (and not the nav item as documented),
+    // see https://github.com/twbs/bootstrap/issues/20086
+    $(window).on("activate.bs.scrollspy", function(){
+    var navLinks = document.querySelectorAll('#bd-toc-nav a');
+    for (var i = 0; i < navLinks.length; i++) {
+        var navLink = navLinks[i];
+        navLink.parentElement.classList.remove('active');
+    }
+    var navLinks = document.querySelectorAll('#bd-toc-nav a.active');
+    for (var i = 0; i < navLinks.length; i++) {
+        var navLink = navLinks[i];
+        navLink.parentElement.classList.add('active');
+    }
+    });
+
+    /**
+     * Use left and right arrow keys to navigate forward and backwards.
+    */
+    const LEFT_ARROW_KEYCODE = 37
+    const RIGHT_ARROW_KEYCODE = 39
+
+    const getPrevUrl = () => document.getElementById('prev-link').href
+    const getNextUrl = () => document.getElementById('next-link').href
+    const initPageNav = (event) => {
+        const keycode = event.which
+
+        if (keycode === LEFT_ARROW_KEYCODE) {
+            window.location.href = getPrevUrl();
+        } else if (keycode === RIGHT_ARROW_KEYCODE) {
+            window.location.href = getNextUrl();
+        }
+    };
+
+    var keyboardListener = false;
+    $( document ).ready(() => {
+        if (keyboardListener === false) {
+            document.addEventListener('keydown', initPageNav)
+            keyboardListener = true;
+        }
+    });
+</script>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2008-2020, the pandas development team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.3.0.
+    </div>
+  </body>
+</html>

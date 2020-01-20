@@ -1,0 +1,332 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Getting started &#8212; pandas 1.0.0rc0+111.ge72cd7c52 documentation</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link rel="stylesheet" href="../_static/sphinx-bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/pandas.css" />
+    <link href="../_static/css/custom.css" rel="stylesheet">
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Installation" href="install.html" />
+    <link rel="prev" title="What’s new in 1.1.0 (??)" href="../whatsnew/v1.1.0.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main">
+
+<a class="navbar-brand" href="../index.html">
+  <img src="../_static/pandas.svg" class="logo" alt="logo">
+</a>
+
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+</button>
+
+<div id="navbar-menu" class="collapse navbar-collapse">
+  <ul id="navbar-main-elements" class="navbar-nav mr-auto">
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        1.0.0
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown" id="version-menu"></div>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="../index.html">Home</a>
+    </li>
+    
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../whatsnew/v1.1.0.html">What's New in 1.1.0</a>
+    </li>
+    
+    <li class="nav-item active">
+        <a class="nav-link" href="">Getting started</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../user_guide/index.html">User Guide</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../reference/index.html">API reference</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../development/index.html">Development</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../whatsnew/index.html">Release Notes</a>
+    </li>
+    
+    
+  </ul>
+  <ul class="navbar-nav ml-auto">
+    
+      <li class="nav-item">
+        <a class="nav-link" href="https://github.com/pandas-dev/pandas" target="_blank" rel="noopener">
+          <span><i class="fab fa-github-square"></i></span>
+        </a>
+      </li>
+    
+    
+      <li class="nav-item">
+        <a class="nav-link" href="https://twitter.com/pandas_dev" target="_blank" rel="noopener">
+          <span><i class="fab fa-twitter-square"></i></span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row flex-xl-nowrap">
+          <div class="col-12 col-md-3 col-xl-2 bd-sidebar">
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+
+  <div class="bd-toc-item active">
+  
+
+  <ul class="nav bd-sidenav">
+      
+      
+      
+      
+        
+          
+              <li class="">
+                  <a href="install.html">Installation</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="overview.html">Package overview</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="10min.html">10 minutes to pandas</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="basics.html">Essential basic functionality</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="dsintro.html">Intro to data structures</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="comparison/index.html">Comparison with other tools</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="tutorials.html">Tutorials</a>
+              </li>
+          
+        
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    </ul>
+
+</nav>
+          </div>
+
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+              <nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+    </ul>
+</nav>
+              
+            </div>
+
+          <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
+              <div>
+                
+  <div class="section" id="getting-started">
+<span id="id1"></span><h1>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="install.html#python-version-support">Python version support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#installing-pandas">Installing pandas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#running-the-test-suite">Running the test suite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#dependencies">Dependencies</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Package overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#data-structures">Data structures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#mutability-and-copying-of-data">Mutability and copying of data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#getting-support">Getting support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#community">Community</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#project-governance">Project governance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#development-team">Development team</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#institutional-partners">Institutional partners</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#license">License</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="10min.html">10 minutes to pandas</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="10min.html#object-creation">Object creation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="10min.html#viewing-data">Viewing data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="10min.html#selection">Selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="10min.html#missing-data">Missing data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="10min.html#operations">Operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="10min.html#merge">Merge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="10min.html#grouping">Grouping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="10min.html#reshaping">Reshaping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="10min.html#time-series">Time series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="10min.html#categoricals">Categoricals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="10min.html#plotting">Plotting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="10min.html#getting-data-in-out">Getting data in/out</a></li>
+<li class="toctree-l2"><a class="reference internal" href="10min.html#gotchas">Gotchas</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="basics.html">Essential basic functionality</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="basics.html#head-and-tail">Head and tail</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basics.html#attributes-and-underlying-data">Attributes and underlying data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basics.html#accelerated-operations">Accelerated operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basics.html#flexible-binary-operations">Flexible binary operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basics.html#descriptive-statistics">Descriptive statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basics.html#function-application">Function application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basics.html#reindexing-and-altering-labels">Reindexing and altering labels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basics.html#iteration">Iteration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basics.html#dt-accessor">.dt accessor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basics.html#vectorized-string-methods">Vectorized string methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basics.html#sorting">Sorting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basics.html#copying">Copying</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basics.html#dtypes">dtypes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basics.html#selecting-columns-based-on-dtype">Selecting columns based on <code class="docutils literal notranslate"><span class="pre">dtype</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="dsintro.html">Intro to data structures</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dsintro.html#series">Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dsintro.html#dataframe">DataFrame</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="comparison/index.html">Comparison with other tools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="comparison/comparison_with_r.html">Comparison with R / R libraries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="comparison/comparison_with_sql.html">Comparison with SQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="comparison/comparison_with_sas.html">Comparison with SAS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="comparison/comparison_with_stata.html">Comparison with Stata</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tutorials.html#internal-guides">Internal guides</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials.html#community-guides">Community guides</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+              </div>
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="../whatsnew/v1.1.0.html" title="previous page">What’s new in 1.1.0 (??)</a>
+    <a class='right-next' id="next-link" href="install.html" title="next page">Installation</a>
+
+              </div>
+              
+          </main>
+
+      </div>
+    </div><script>
+    // TOC sidebar - add "active" class to parent list
+    //
+    // Bootstrap's scrollspy adds the active class to the <a> link,
+    // but for the automatic collapsing we need this on the parent list item.
+    //
+    // The event is triggered on "window" (and not the nav item as documented),
+    // see https://github.com/twbs/bootstrap/issues/20086
+    $(window).on("activate.bs.scrollspy", function(){
+    var navLinks = document.querySelectorAll('#bd-toc-nav a');
+    for (var i = 0; i < navLinks.length; i++) {
+        var navLink = navLinks[i];
+        navLink.parentElement.classList.remove('active');
+    }
+    var navLinks = document.querySelectorAll('#bd-toc-nav a.active');
+    for (var i = 0; i < navLinks.length; i++) {
+        var navLink = navLinks[i];
+        navLink.parentElement.classList.add('active');
+    }
+    });
+
+    /**
+     * Use left and right arrow keys to navigate forward and backwards.
+    */
+    const LEFT_ARROW_KEYCODE = 37
+    const RIGHT_ARROW_KEYCODE = 39
+
+    const getPrevUrl = () => document.getElementById('prev-link').href
+    const getNextUrl = () => document.getElementById('next-link').href
+    const initPageNav = (event) => {
+        const keycode = event.which
+
+        if (keycode === LEFT_ARROW_KEYCODE) {
+            window.location.href = getPrevUrl();
+        } else if (keycode === RIGHT_ARROW_KEYCODE) {
+            window.location.href = getNextUrl();
+        }
+    };
+
+    var keyboardListener = false;
+    $( document ).ready(() => {
+        if (keyboardListener === false) {
+            document.addEventListener('keydown', initPageNav)
+            keyboardListener = true;
+        }
+    });
+</script>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2008-2020, the pandas development team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.3.0.
+    </div>
+  </body>
+</html>

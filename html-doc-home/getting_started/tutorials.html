@@ -1,0 +1,396 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Tutorials &#8212; pandas 1.0.0rc0+111.ge72cd7c52 documentation</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link rel="stylesheet" href="../_static/sphinx-bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/pandas.css" />
+    <link href="../_static/css/custom.css" rel="stylesheet">
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="User Guide" href="../user_guide/index.html" />
+    <link rel="prev" title="Comparison with Stata" href="comparison/comparison_with_stata.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main">
+
+<a class="navbar-brand" href="../index.html">
+  <img src="../_static/pandas.svg" class="logo" alt="logo">
+</a>
+
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+</button>
+
+<div id="navbar-menu" class="collapse navbar-collapse">
+  <ul id="navbar-main-elements" class="navbar-nav mr-auto">
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        1.0.0
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown" id="version-menu"></div>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="../index.html">Home</a>
+    </li>
+    
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../whatsnew/v1.1.0.html">What's New in 1.1.0</a>
+    </li>
+    
+    <li class="nav-item active">
+        <a class="nav-link" href="index.html">Getting started</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../user_guide/index.html">User Guide</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../reference/index.html">API reference</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../development/index.html">Development</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../whatsnew/index.html">Release Notes</a>
+    </li>
+    
+    
+  </ul>
+  <ul class="navbar-nav ml-auto">
+    
+      <li class="nav-item">
+        <a class="nav-link" href="https://github.com/pandas-dev/pandas" target="_blank" rel="noopener">
+          <span><i class="fab fa-github-square"></i></span>
+        </a>
+      </li>
+    
+    
+      <li class="nav-item">
+        <a class="nav-link" href="https://twitter.com/pandas_dev" target="_blank" rel="noopener">
+          <span><i class="fab fa-twitter-square"></i></span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row flex-xl-nowrap">
+          <div class="col-12 col-md-3 col-xl-2 bd-sidebar">
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+
+  <div class="bd-toc-item active">
+  
+
+  <ul class="nav bd-sidenav">
+      
+      
+      
+      
+        
+          
+              <li class="">
+                  <a href="install.html">Installation</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="overview.html">Package overview</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="10min.html">10 minutes to pandas</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="basics.html">Essential basic functionality</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="dsintro.html">Intro to data structures</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="comparison/index.html">Comparison with other tools</a>
+              </li>
+          
+        
+          
+              <li class="active">
+                  <a href="">Tutorials</a>
+              </li>
+          
+        
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    </ul>
+
+</nav>
+          </div>
+
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+              
+<div class="tocsection onthispage"><i class="fas fa-list"></i> On this page</div>
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#internal-guides" class="nav-link">Internal guides</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#community-guides" class="nav-link">Community guides</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#pandas-cookbook-by-julia-evans" class="nav-link">pandas Cookbook by Julia Evans</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#learn-pandas-by-hernan-rojas" class="nav-link">Learn Pandas by Hernan Rojas</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#practical-data-analysis-with-python" class="nav-link">Practical data analysis with Python</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#exercises-for-new-users" class="nav-link">Exercises for new users</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#modern-pandas" class="nav-link">Modern pandas</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#excel-charts-with-pandas-vincent-and-xlsxwriter" class="nav-link">Excel charts with pandas, vincent and xlsxwriter</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#video-tutorials" class="nav-link">Video tutorials</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#various-tutorials" class="nav-link">Various tutorials</a>
+        </li>
+    
+            </ul>
+        </li>
+    
+    </ul>
+</nav>
+              
+            </div>
+
+          <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
+              <div>
+                
+  <div class="section" id="tutorials">
+<span id="id1"></span><h1>Tutorials<a class="headerlink" href="#tutorials" title="Permalink to this headline">¶</a></h1>
+<p>This is a guide to many pandas tutorials, geared mainly for new users.</p>
+<div class="section" id="internal-guides">
+<h2>Internal guides<a class="headerlink" href="#internal-guides" title="Permalink to this headline">¶</a></h2>
+<p>pandas’ own <a class="reference internal" href="10min.html#min"><span class="std std-ref">10 Minutes to pandas</span></a>.</p>
+<p>More complex recipes are in the <a class="reference internal" href="../user_guide/cookbook.html#cookbook"><span class="std std-ref">Cookbook</span></a>.</p>
+<p>A handy pandas <a class="reference external" href="https://pandas.pydata.org/Pandas_Cheat_Sheet.pdf">cheat sheet</a>.</p>
+</div>
+<div class="section" id="community-guides">
+<h2>Community guides<a class="headerlink" href="#community-guides" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="pandas-cookbook-by-julia-evans">
+<h3>pandas Cookbook by Julia Evans<a class="headerlink" href="#pandas-cookbook-by-julia-evans" title="Permalink to this headline">¶</a></h3>
+<p>The goal of this 2015 cookbook (by <a class="reference external" href="http://jvns.ca">Julia Evans</a>) is to
+give you some concrete examples for getting started with pandas. These
+are examples with real-world data, and all the bugs and weirdness that
+entails.
+For the table of contents, see the <a class="reference external" href="http://github.com/jvns/pandas-cookbook">pandas-cookbook GitHub
+repository</a>.</p>
+</div>
+<div class="section" id="learn-pandas-by-hernan-rojas">
+<h3>Learn Pandas by Hernan Rojas<a class="headerlink" href="#learn-pandas-by-hernan-rojas" title="Permalink to this headline">¶</a></h3>
+<p>A set of lesson for new pandas users: <a class="reference external" href="https://bitbucket.org/hrojas/learn-pandas">https://bitbucket.org/hrojas/learn-pandas</a></p>
+</div>
+<div class="section" id="practical-data-analysis-with-python">
+<h3>Practical data analysis with Python<a class="headerlink" href="#practical-data-analysis-with-python" title="Permalink to this headline">¶</a></h3>
+<p>This <a class="reference external" href="http://wavedatalab.github.io/datawithpython">guide</a> is an introduction to the data analysis process using the Python data ecosystem and an interesting open dataset.
+There are four sections covering selected topics as <a class="reference external" href="http://wavedatalab.github.io/datawithpython/munge.html">munging data</a>,
+<a class="reference external" href="http://wavedatalab.github.io/datawithpython/aggregate.html">aggregating data</a>, <a class="reference external" href="http://wavedatalab.github.io/datawithpython/visualize.html">visualizing data</a>
+and <a class="reference external" href="http://wavedatalab.github.io/datawithpython/timeseries.html">time series</a>.</p>
+</div>
+<div class="section" id="exercises-for-new-users">
+<span id="tutorial-exercises-new-users"></span><h3>Exercises for new users<a class="headerlink" href="#exercises-for-new-users" title="Permalink to this headline">¶</a></h3>
+<p>Practice your skills with real data sets and exercises.
+For more resources, please visit the main <a class="reference external" href="https://github.com/guipsamora/pandas_exercises">repository</a>.</p>
+</div>
+<div class="section" id="modern-pandas">
+<span id="tutorial-modern"></span><h3>Modern pandas<a class="headerlink" href="#modern-pandas" title="Permalink to this headline">¶</a></h3>
+<p>Tutorial series written in 2016 by
+<a class="reference external" href="https://github.com/TomAugspurger">Tom Augspurger</a>.
+The source may be found in the GitHub repository
+<a class="reference external" href="https://github.com/TomAugspurger/effective-pandas">TomAugspurger/effective-pandas</a>.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="http://tomaugspurger.github.io/modern-1-intro.html">Modern Pandas</a></p></li>
+<li><p><a class="reference external" href="http://tomaugspurger.github.io/method-chaining.html">Method Chaining</a></p></li>
+<li><p><a class="reference external" href="http://tomaugspurger.github.io/modern-3-indexes.html">Indexes</a></p></li>
+<li><p><a class="reference external" href="http://tomaugspurger.github.io/modern-4-performance.html">Performance</a></p></li>
+<li><p><a class="reference external" href="http://tomaugspurger.github.io/modern-5-tidy.html">Tidy Data</a></p></li>
+<li><p><a class="reference external" href="http://tomaugspurger.github.io/modern-6-visualization.html">Visualization</a></p></li>
+<li><p><a class="reference external" href="http://tomaugspurger.github.io/modern-7-timeseries.html">Timeseries</a></p></li>
+</ul>
+</div>
+<div class="section" id="excel-charts-with-pandas-vincent-and-xlsxwriter">
+<h3>Excel charts with pandas, vincent and xlsxwriter<a class="headerlink" href="#excel-charts-with-pandas-vincent-and-xlsxwriter" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://pandas-xlsxwriter-charts.readthedocs.io/">Using Pandas and XlsxWriter to create Excel charts</a></p></li>
+</ul>
+</div>
+<div class="section" id="video-tutorials">
+<h3>Video tutorials<a class="headerlink" href="#video-tutorials" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=5JnMutdy6Fw">Pandas From The Ground Up</a>
+(2015) (2:24)
+<a class="reference external" href="https://github.com/brandon-rhodes/pycon-pandas-tutorial">GitHub repo</a></p></li>
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=-NR-ynQg0YM">Introduction Into Pandas</a>
+(2016) (1:28)
+<a class="reference external" href="https://github.com/chendaniely/2016-pydata-carolinas-pandas">GitHub repo</a></p></li>
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=7vuO9QXDN50">Pandas: .head() to .tail()</a>
+(2016) (1:26)
+<a class="reference external" href="https://github.com/TomAugspurger/pydata-chi-h2t">GitHub repo</a></p></li>
+<li><p><a class="reference external" href="https://www.youtube.com/playlist?list=PL5-da3qGB5ICCsgW1MxlZ0Hq8LL5U3u9y">Data analysis in Python with pandas</a>
+(2016-2018)
+<a class="reference external" href="https://github.com/justmarkham/pandas-videos">GitHub repo</a> and
+<a class="reference external" href="http://nbviewer.jupyter.org/github/justmarkham/pandas-videos/blob/master/pandas.ipynb">Jupyter Notebook</a></p></li>
+<li><p><a class="reference external" href="https://www.youtube.com/playlist?list=PL5-da3qGB5IBITZj_dYSFqnd_15JgqwA6">Best practices with pandas</a>
+(2018)
+<a class="reference external" href="https://github.com/justmarkham/pycon-2018-tutorial">GitHub repo</a> and
+<a class="reference external" href="http://nbviewer.jupyter.org/github/justmarkham/pycon-2018-tutorial/blob/master/tutorial.ipynb">Jupyter Notebook</a></p></li>
+</ul>
+</div>
+<div class="section" id="various-tutorials">
+<h3>Various tutorials<a class="headerlink" href="#various-tutorials" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="http://blog.wesmckinney.com/">Wes McKinney’s (pandas BDFL) blog</a></p></li>
+<li><p><a class="reference external" href="http://www.randalolson.com/2012/08/06/statistical-analysis-made-easy-in-python/">Statistical analysis made easy in Python with SciPy and pandas DataFrames, by Randal Olson</a></p></li>
+<li><p><a class="reference external" href="http://conference.scipy.org/scipy2013/tutorial_detail.php?id=109">Statistical Data Analysis in Python, tutorial videos, by Christopher Fonnesbeck from SciPy 2013</a></p></li>
+<li><p><a class="reference external" href="http://nbviewer.ipython.org/github/twiecki/financial-analysis-python-tutorial/blob/master/1.%20Pandas%20Basics.ipynb">Financial analysis in Python, by Thomas Wiecki</a></p></li>
+<li><p><a class="reference external" href="http://www.gregreda.com/2013/10/26/intro-to-pandas-data-structures/">Intro to pandas data structures, by Greg Reda</a></p></li>
+<li><p><a class="reference external" href="http://manishamde.github.io/blog/2013/03/07/pandas-and-python-top-10/">Pandas and Python: Top 10, by Manish Amde</a></p></li>
+<li><p><a class="reference external" href="http://www.datacamp.com/community/tutorials/pandas-tutorial-dataframe-python">Pandas DataFrames Tutorial, by Karlijn Willems</a></p></li>
+<li><p><a class="reference external" href="https://tutswiki.com/pandas-cookbook/chapter1">A concise tutorial with real life examples</a></p></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+              </div>
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="comparison/comparison_with_stata.html" title="previous page">Comparison with Stata</a>
+    <a class='right-next' id="next-link" href="../user_guide/index.html" title="next page">User Guide</a>
+
+              </div>
+              
+          </main>
+
+      </div>
+    </div><script>
+    // TOC sidebar - add "active" class to parent list
+    //
+    // Bootstrap's scrollspy adds the active class to the <a> link,
+    // but for the automatic collapsing we need this on the parent list item.
+    //
+    // The event is triggered on "window" (and not the nav item as documented),
+    // see https://github.com/twbs/bootstrap/issues/20086
+    $(window).on("activate.bs.scrollspy", function(){
+    var navLinks = document.querySelectorAll('#bd-toc-nav a');
+    for (var i = 0; i < navLinks.length; i++) {
+        var navLink = navLinks[i];
+        navLink.parentElement.classList.remove('active');
+    }
+    var navLinks = document.querySelectorAll('#bd-toc-nav a.active');
+    for (var i = 0; i < navLinks.length; i++) {
+        var navLink = navLinks[i];
+        navLink.parentElement.classList.add('active');
+    }
+    });
+
+    /**
+     * Use left and right arrow keys to navigate forward and backwards.
+    */
+    const LEFT_ARROW_KEYCODE = 37
+    const RIGHT_ARROW_KEYCODE = 39
+
+    const getPrevUrl = () => document.getElementById('prev-link').href
+    const getNextUrl = () => document.getElementById('next-link').href
+    const initPageNav = (event) => {
+        const keycode = event.which
+
+        if (keycode === LEFT_ARROW_KEYCODE) {
+            window.location.href = getPrevUrl();
+        } else if (keycode === RIGHT_ARROW_KEYCODE) {
+            window.location.href = getNextUrl();
+        }
+    };
+
+    var keyboardListener = false;
+    $( document ).ready(() => {
+        if (keyboardListener === false) {
+            document.addEventListener('keydown', initPageNav)
+            keyboardListener = true;
+        }
+    });
+</script>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2008-2020, the pandas development team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.3.0.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,456 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Pandas Maintenance &#8212; pandas 1.0.0rc0+111.ge72cd7c52 documentation</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link rel="stylesheet" href="../_static/sphinx-bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/pandas.css" />
+    <link href="../_static/css/custom.css" rel="stylesheet">
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Internals" href="internals.html" />
+    <link rel="prev" title="pandas code style guide" href="code_style.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main">
+
+<a class="navbar-brand" href="../index.html">
+  <img src="../_static/pandas.svg" class="logo" alt="logo">
+</a>
+
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+</button>
+
+<div id="navbar-menu" class="collapse navbar-collapse">
+  <ul id="navbar-main-elements" class="navbar-nav mr-auto">
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        1.0.0
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown" id="version-menu"></div>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="../index.html">Home</a>
+    </li>
+    
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../whatsnew/v1.1.0.html">What's New in 1.1.0</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../getting_started/index.html">Getting started</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../user_guide/index.html">User Guide</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../reference/index.html">API reference</a>
+    </li>
+    
+    <li class="nav-item active">
+        <a class="nav-link" href="index.html">Development</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../whatsnew/index.html">Release Notes</a>
+    </li>
+    
+    
+  </ul>
+  <ul class="navbar-nav ml-auto">
+    
+      <li class="nav-item">
+        <a class="nav-link" href="https://github.com/pandas-dev/pandas" target="_blank" rel="noopener">
+          <span><i class="fab fa-github-square"></i></span>
+        </a>
+      </li>
+    
+    
+      <li class="nav-item">
+        <a class="nav-link" href="https://twitter.com/pandas_dev" target="_blank" rel="noopener">
+          <span><i class="fab fa-twitter-square"></i></span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row flex-xl-nowrap">
+          <div class="col-12 col-md-3 col-xl-2 bd-sidebar">
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+
+  <div class="bd-toc-item active">
+  
+
+  <ul class="nav bd-sidenav">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+        
+          
+              <li class="">
+                  <a href="contributing.html">Contributing to pandas</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="code_style.html">pandas code style guide</a>
+              </li>
+          
+        
+          
+              <li class="active">
+                  <a href="">Pandas Maintenance</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="internals.html">Internals</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="extending.html">Extending pandas</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="developer.html">Developer</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="policies.html">Policies</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="roadmap.html">Roadmap</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="meeting.html">Developer Meetings</a>
+              </li>
+          
+        
+      
+      
+      
+      
+    </ul>
+
+</nav>
+          </div>
+
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+              
+<div class="tocsection onthispage"><i class="fas fa-list"></i> On this page</div>
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#roles" class="nav-link">Roles</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#tasks" class="nav-link">Tasks</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#issue-triage" class="nav-link">Issue Triage</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#closing-issues" class="nav-link">Closing Issues</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#reviewing-pull-requests" class="nav-link">Reviewing Pull Requests</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#cleaning-up-old-issues" class="nav-link">Cleaning up old Issues</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#cleaning-up-old-pull-requests" class="nav-link">Cleaning up old Pull Requests</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#becoming-a-pandas-maintainer" class="nav-link">Becoming a pandas maintainer</a>
+        </li>
+    
+    </ul>
+</nav>
+              
+            </div>
+
+          <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
+              <div>
+                
+  <div class="section" id="pandas-maintenance">
+<span id="maintaining"></span><h1>Pandas Maintenance<a class="headerlink" href="#pandas-maintenance" title="Permalink to this headline">¶</a></h1>
+<p>This guide is for pandas’ maintainers. It may also be interesting to contributors
+looking to understand the pandas development process and what steps are necessary
+to become a maintainer.</p>
+<p>The main contributing guide is available at <a class="reference internal" href="contributing.html#contributing"><span class="std std-ref">Contributing to pandas</span></a>.</p>
+<div class="section" id="roles">
+<h2>Roles<a class="headerlink" href="#roles" title="Permalink to this headline">¶</a></h2>
+<p>Pandas uses two levels of permissions: <strong>triage</strong> and <strong>core</strong> team members.</p>
+<p>Triage members can label and close issues and pull requests.</p>
+<p>Core team members can label and close issues and pull request, and can merge
+pull requests.</p>
+<p>GitHub publishes the full <a class="reference external" href="https://help.github.com/en/github/setting-up-and-managing-organizations-and-teams/repository-permission-levels-for-an-organization">list of permissions</a>.</p>
+</div>
+<div class="section" id="tasks">
+<h2>Tasks<a class="headerlink" href="#tasks" title="Permalink to this headline">¶</a></h2>
+<p>Pandas is largely a volunteer project, so these tasks shouldn’t be read as
+“expectations” of triage and maintainers. Rather, they’re general descriptions
+of what it means to be a maintainer.</p>
+<ul class="simple">
+<li><p>Triage newly filed issues (see <a class="reference internal" href="#maintaining-triage"><span class="std std-ref">Issue Triage</span></a>)</p></li>
+<li><p>Review newly opened pull requests</p></li>
+<li><p>Respond to updates on existing issues and pull requests</p></li>
+<li><p>Drive discussion and decisions on stalled issues and pull requests</p></li>
+<li><p>Provide experience / wisdom on API design questions to ensure consistency and maintainability</p></li>
+<li><p>Project organization (run / attend developer meetings, represent pandas)</p></li>
+</ul>
+<p><a class="reference external" href="http://matthewrocklin.com/blog/2019/05/18/maintainer">http://matthewrocklin.com/blog/2019/05/18/maintainer</a> may be interesting background
+reading.</p>
+</div>
+<div class="section" id="issue-triage">
+<span id="maintaining-triage"></span><h2>Issue Triage<a class="headerlink" href="#issue-triage" title="Permalink to this headline">¶</a></h2>
+<p>Here’s a typical workflow for triaging a newly opened issue.</p>
+<ol class="arabic">
+<li><p><strong>Thank the reporter for opening an issue</strong></p>
+<p>The issue tracker is many people’s first interaction with the pandas project itself,
+beyond just using the library. As such, we want it to be a welcoming, pleasant
+experience.</p>
+</li>
+<li><p><strong>Is the necessary information provided?</strong></p>
+<p>Ideally reporters would fill out the issue template, but many don’t.
+If crucial information (like the version of pandas they used), is missing
+feel free to ask for that and label the issue with “Needs info”. The
+report should follow the guidelines in <a class="reference internal" href="contributing.html#contributing-bug-reports"><span class="std std-ref">Bug reports and enhancement requests</span></a>.
+You may want to link to that if they didn’t follow the template.</p>
+<p>Make sure that the title accurately reflects the issue. Edit it yourself
+if it’s not clear.</p>
+</li>
+<li><p><strong>Is this a duplicate issue?</strong></p>
+<p>We have many open issues. If a new issue is clearly a duplicate, label the
+new issue as “Duplicate” assign the milestone “No Action”, and close the issue
+with a link to the original issue. Make sure to still thank the reporter, and
+encourage them to chime in on the original issue, and perhaps try to fix it.</p>
+<p>If the new issue provides relevant information, such as a better or slightly
+different example, add it to the original issue as a comment or an edit to
+the original post.</p>
+</li>
+<li><p><strong>Is the issue minimal and reproducible</strong>?</p>
+<p>For bug reports, we ask that the reporter provide a minimal reproducible
+example. See <a class="reference external" href="http://matthewrocklin.com/blog/work/2018/02/28/minimal-bug-reports">http://matthewrocklin.com/blog/work/2018/02/28/minimal-bug-reports</a>
+for a good explanation. If the example is not reproducible, or if it’s
+<em>clearly</em> not minimal, feel free to ask the reporter if they can provide
+and example or simplify the provided one. Do acknowledge that writing
+minimal reproducible examples is hard work. If the reporter is struggling,
+you can try to write one yourself and we’ll edit the original post to include it.</p>
+<p>If a reproducible example can’t be provided, add the “Needs info” label.</p>
+<p>If a reproducible example is provided, but you see a simplification,
+edit the original post with your simpler reproducible example.</p>
+</li>
+<li><p><strong>Is this a clearly defined feature request?</strong></p>
+<p>Generally, pandas prefers to discuss and design new features in issues, before
+a pull request is made. Encourage the submitter to include a proposed API
+for the new feature. Having them write a full docstring is a good way to
+pin down specifics.</p>
+<p>We’ll need a discussion from several pandas maintainers before deciding whether
+the proposal is in scope for pandas.</p>
+</li>
+<li><p><strong>Is this a usage question?</strong></p>
+<p>We prefer that usage questions are asked on StackOverflow with the pandas
+tag. <a class="reference external" href="https://stackoverflow.com/questions/tagged/pandas">https://stackoverflow.com/questions/tagged/pandas</a></p>
+<p>If it’s easy to answer, feel free to link to the relevant documentation section,
+let them know that in the future this kind of question should be on
+StackOverflow, and close the issue.</p>
+</li>
+<li><p><strong>What labels and milestones should I add?</strong></p>
+<p>Apply the relevant labels. This is a bit of an art, and comes with experience.
+Look at similar issues to get a feel for how things are labeled.</p>
+<p>If the issue is clearly defined and the fix seems relatively straightforward,
+label the issue as “Good first issue”.</p>
+<p>Typically, new issues will be assigned the “Contributions welcome” milestone,
+unless it’s know that this issue should be addressed in a specific release (say
+because it’s a large regression).</p>
+</li>
+</ol>
+</div>
+<div class="section" id="closing-issues">
+<span id="maintaining-closing"></span><h2>Closing Issues<a class="headerlink" href="#closing-issues" title="Permalink to this headline">¶</a></h2>
+<p>Be delicate here: many people interpret closing an issue as us saying that the
+conversation is over. It’s typically best to give the reporter some time to
+respond or self-close their issue if it’s determined that the behavior is not a bug,
+or the feature is out of scope. Sometimes reporters just go away though, and
+we’ll close the issue after the conversation has died.</p>
+</div>
+<div class="section" id="reviewing-pull-requests">
+<h2>Reviewing Pull Requests<a class="headerlink" href="#reviewing-pull-requests" title="Permalink to this headline">¶</a></h2>
+<p>Anybody can review a pull request: regular contributors, triagers, or core-team
+members. Here are some guidelines to check.</p>
+<ul class="simple">
+<li><p>Tests should be in a sensible location.</p></li>
+<li><p>New public APIs should be included somewhere in <code class="docutils literal notranslate"><span class="pre">doc/source/reference/</span></code>.</p></li>
+<li><p>New / changed API should use the <code class="docutils literal notranslate"><span class="pre">versionadded</span></code> or <code class="docutils literal notranslate"><span class="pre">versionchanged</span></code> directives in the docstring.</p></li>
+<li><p>User-facing changes should have a whatsnew in the appropriate file.</p></li>
+<li><p>Regression tests should reference the original GitHub issue number like <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">GH-1234</span></code>.</p></li>
+</ul>
+</div>
+<div class="section" id="cleaning-up-old-issues">
+<h2>Cleaning up old Issues<a class="headerlink" href="#cleaning-up-old-issues" title="Permalink to this headline">¶</a></h2>
+<p>Every open issue in pandas has a cost. Open issues make finding duplicates harder,
+and can make it harder to know what needs to be done in pandas. That said, closing
+issues isn’t a goal on its own. Our goal is to make pandas the best it can be,
+and that’s best done by ensuring that the quality of our open issues is high.</p>
+<p>Occasionally, bugs are fixed but the issue isn’t linked to in the Pull Request.
+In these cases, comment that “This has been fixed, but could use a test.” and
+label the issue as “Good First Issue” and “Needs Test”.</p>
+<p>If an older issue doesn’t follow our issue template, edit the original post to
+include a minimal example, the actual output, and the expected output. Uniformity
+in issue reports is valuable.</p>
+<p>If an older issue lacks a reproducible example, label it as “Needs Info” and
+ask them to provide one (or write one yourself if possible). If one isn’t
+provide reasonably soon, close it according to the policies in <a class="reference internal" href="#maintaining-closing"><span class="std std-ref">Closing Issues</span></a>.</p>
+</div>
+<div class="section" id="cleaning-up-old-pull-requests">
+<h2>Cleaning up old Pull Requests<a class="headerlink" href="#cleaning-up-old-pull-requests" title="Permalink to this headline">¶</a></h2>
+<p>Occasionally, contributors are unable to finish off a pull request.
+If some time has passed (two weeks, say) since the last review requesting changes,
+gently ask if they’re still interested in working on this. If another two weeks or
+so passes with no response, thank them for their work and close the pull request.
+Comment on the original issue that “There’s a stalled PR at #1234 that may be
+helpful.”, and perhaps label the issue as “Good first issue” if the PR was relatively
+close to being accepted.</p>
+<p>Additionally, core-team members can push to contributors branches. This can be
+helpful for pushing an important PR across the line, or for fixing a small
+merge conflict.</p>
+</div>
+<div class="section" id="becoming-a-pandas-maintainer">
+<h2>Becoming a pandas maintainer<a class="headerlink" href="#becoming-a-pandas-maintainer" title="Permalink to this headline">¶</a></h2>
+<p>The full process is outlined in our <a class="reference external" href="https://github.com/pandas-dev/pandas-governance">governance documents</a>. In summary,
+we’re happy to give triage permissions to anyone who shows interest by
+being helpful on the issue tracker.</p>
+<p>The current list of core-team members is at
+<a class="reference external" href="https://github.com/pandas-dev/pandas-governance/blob/master/people.md">https://github.com/pandas-dev/pandas-governance/blob/master/people.md</a></p>
+</div>
+</div>
+
+
+              </div>
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="code_style.html" title="previous page">pandas code style guide</a>
+    <a class='right-next' id="next-link" href="internals.html" title="next page">Internals</a>
+
+              </div>
+              
+          </main>
+
+      </div>
+    </div><script>
+    // TOC sidebar - add "active" class to parent list
+    //
+    // Bootstrap's scrollspy adds the active class to the <a> link,
+    // but for the automatic collapsing we need this on the parent list item.
+    //
+    // The event is triggered on "window" (and not the nav item as documented),
+    // see https://github.com/twbs/bootstrap/issues/20086
+    $(window).on("activate.bs.scrollspy", function(){
+    var navLinks = document.querySelectorAll('#bd-toc-nav a');
+    for (var i = 0; i < navLinks.length; i++) {
+        var navLink = navLinks[i];
+        navLink.parentElement.classList.remove('active');
+    }
+    var navLinks = document.querySelectorAll('#bd-toc-nav a.active');
+    for (var i = 0; i < navLinks.length; i++) {
+        var navLink = navLinks[i];
+        navLink.parentElement.classList.add('active');
+    }
+    });
+
+    /**
+     * Use left and right arrow keys to navigate forward and backwards.
+    */
+    const LEFT_ARROW_KEYCODE = 37
+    const RIGHT_ARROW_KEYCODE = 39
+
+    const getPrevUrl = () => document.getElementById('prev-link').href
+    const getNextUrl = () => document.getElementById('next-link').href
+    const initPageNav = (event) => {
+        const keycode = event.which
+
+        if (keycode === LEFT_ARROW_KEYCODE) {
+            window.location.href = getPrevUrl();
+        } else if (keycode === RIGHT_ARROW_KEYCODE) {
+            window.location.href = getNextUrl();
+        }
+    };
+
+    var keyboardListener = false;
+    $( document ).ready(() => {
+        if (keyboardListener === false) {
+            document.addEventListener('keydown', initPageNav)
+            keyboardListener = true;
+        }
+    });
+</script>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2008-2020, the pandas development team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.3.0.
+    </div>
+  </body>
+</html>

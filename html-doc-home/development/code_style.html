@@ -1,0 +1,447 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>pandas code style guide &#8212; pandas 1.0.0rc0+111.ge72cd7c52 documentation</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link rel="stylesheet" href="../_static/sphinx-bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/pandas.css" />
+    <link href="../_static/css/custom.css" rel="stylesheet">
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Pandas Maintenance" href="maintaining.html" />
+    <link rel="prev" title="pandas docstring guide" href="contributing_docstring.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main">
+
+<a class="navbar-brand" href="../index.html">
+  <img src="../_static/pandas.svg" class="logo" alt="logo">
+</a>
+
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+</button>
+
+<div id="navbar-menu" class="collapse navbar-collapse">
+  <ul id="navbar-main-elements" class="navbar-nav mr-auto">
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        1.0.0
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown" id="version-menu"></div>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="../index.html">Home</a>
+    </li>
+    
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../whatsnew/v1.1.0.html">What's New in 1.1.0</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../getting_started/index.html">Getting started</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../user_guide/index.html">User Guide</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../reference/index.html">API reference</a>
+    </li>
+    
+    <li class="nav-item active">
+        <a class="nav-link" href="index.html">Development</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../whatsnew/index.html">Release Notes</a>
+    </li>
+    
+    
+  </ul>
+  <ul class="navbar-nav ml-auto">
+    
+      <li class="nav-item">
+        <a class="nav-link" href="https://github.com/pandas-dev/pandas" target="_blank" rel="noopener">
+          <span><i class="fab fa-github-square"></i></span>
+        </a>
+      </li>
+    
+    
+      <li class="nav-item">
+        <a class="nav-link" href="https://twitter.com/pandas_dev" target="_blank" rel="noopener">
+          <span><i class="fab fa-twitter-square"></i></span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row flex-xl-nowrap">
+          <div class="col-12 col-md-3 col-xl-2 bd-sidebar">
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+
+  <div class="bd-toc-item active">
+  
+
+  <ul class="nav bd-sidenav">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+        
+          
+              <li class="">
+                  <a href="contributing.html">Contributing to pandas</a>
+              </li>
+          
+        
+          
+              <li class="active">
+                  <a href="">pandas code style guide</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="maintaining.html">Pandas Maintenance</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="internals.html">Internals</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="extending.html">Extending pandas</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="developer.html">Developer</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="policies.html">Policies</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="roadmap.html">Roadmap</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="meeting.html">Developer Meetings</a>
+              </li>
+          
+        
+      
+      
+      
+      
+    </ul>
+
+</nav>
+          </div>
+
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+              
+<div class="tocsection onthispage"><i class="fas fa-list"></i> On this page</div>
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#patterns" class="nav-link">Patterns</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#foo-class" class="nav-link">foo.__class__</a>
+        </li>
+    
+            </ul>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#string-formatting" class="nav-link">String formatting</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#concatenated-strings" class="nav-link">Concatenated strings</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h4">
+            <a href="#f-strings" class="nav-link">f-strings</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h4">
+            <a href="#white-spaces" class="nav-link">White spaces</a>
+        </li>
+    
+            </ul>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#representation-function-aka-repr" class="nav-link">Representation function (aka ‘repr()’)</a>
+        </li>
+    
+            </ul>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#imports-aim-for-absolute" class="nav-link">Imports (aim for absolute)</a>
+        </li>
+    
+    </ul>
+</nav>
+              
+            </div>
+
+          <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
+              <div>
+                
+  <div class="section" id="pandas-code-style-guide">
+<span id="code-style"></span><h1>pandas code style guide<a class="headerlink" href="#pandas-code-style-guide" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="table-of-contents">
+<p class="topic-title first">Table of contents:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#patterns" id="id1">Patterns</a></p>
+<ul>
+<li><p><a class="reference internal" href="#foo-class" id="id2">foo.__class__</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#string-formatting" id="id3">String formatting</a></p>
+<ul>
+<li><p><a class="reference internal" href="#concatenated-strings" id="id4">Concatenated strings</a></p>
+<ul>
+<li><p><a class="reference internal" href="#f-strings" id="id5">f-strings</a></p></li>
+<li><p><a class="reference internal" href="#white-spaces" id="id6">White spaces</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#representation-function-aka-repr" id="id7">Representation function (aka ‘repr()’)</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#imports-aim-for-absolute" id="id8">Imports (aim for absolute)</a></p></li>
+</ul>
+</div>
+<div class="section" id="patterns">
+<h2><a class="toc-backref" href="#id1">Patterns</a><a class="headerlink" href="#patterns" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="foo-class">
+<h3><a class="toc-backref" href="#id2">foo.__class__</a><a class="headerlink" href="#foo-class" title="Permalink to this headline">¶</a></h3>
+<p><em>pandas</em> uses ‘type(foo)’ instead ‘foo.__class__’ as it is making the code more
+readable.</p>
+<p>For example:</p>
+<p><strong>Good:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">foo</span> <span class="o">=</span> <span class="s2">&quot;bar&quot;</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">foo</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Bad:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">foo</span> <span class="o">=</span> <span class="s2">&quot;bar&quot;</span>
+<span class="n">foo</span><span class="o">.</span><span class="vm">__class__</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="string-formatting">
+<h2><a class="toc-backref" href="#id3">String formatting</a><a class="headerlink" href="#string-formatting" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="concatenated-strings">
+<h3><a class="toc-backref" href="#id4">Concatenated strings</a><a class="headerlink" href="#concatenated-strings" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="f-strings">
+<h4><a class="toc-backref" href="#id5">f-strings</a><a class="headerlink" href="#f-strings" title="Permalink to this headline">¶</a></h4>
+<p><em>pandas</em> uses f-strings formatting instead of ‘%’ and ‘.format()’ string formatters.</p>
+<p>The convention of using f-strings on a string that is concatenated over serveral lines,
+is to prefix only the lines containing the value needs to be interpeted.</p>
+<p>For example:</p>
+<p><strong>Good:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">foo</span> <span class="o">=</span> <span class="s2">&quot;old_function&quot;</span>
+<span class="n">bar</span> <span class="o">=</span> <span class="s2">&quot;new_function&quot;</span>
+
+<span class="n">my_warning_message</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">f</span><span class="s2">&quot;Warning, {foo} is deprecated, &quot;</span>
+    <span class="s2">&quot;please use the new and way better &quot;</span>
+    <span class="n">f</span><span class="s2">&quot;{bar}&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Bad:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">foo</span> <span class="o">=</span> <span class="s2">&quot;old_function&quot;</span>
+<span class="n">bar</span> <span class="o">=</span> <span class="s2">&quot;new_function&quot;</span>
+
+<span class="n">my_warning_message</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">f</span><span class="s2">&quot;Warning, {foo} is deprecated, &quot;</span>
+    <span class="n">f</span><span class="s2">&quot;please use the new and way better &quot;</span>
+    <span class="n">f</span><span class="s2">&quot;{bar}&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="white-spaces">
+<h4><a class="toc-backref" href="#id6">White spaces</a><a class="headerlink" href="#white-spaces" title="Permalink to this headline">¶</a></h4>
+<p>Putting the white space only at the end of the previous line, so
+there is no whitespace at the beggining of the concatenated string.</p>
+<p>For example:</p>
+<p><strong>Good:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">example_string</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="s2">&quot;Some long concatenated string, &quot;</span>
+    <span class="s2">&quot;with good placement of the &quot;</span>
+    <span class="s2">&quot;whitespaces&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Bad:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">example_string</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="s2">&quot;Some long concatenated string,&quot;</span>
+    <span class="s2">&quot; with bad placement of the&quot;</span>
+    <span class="s2">&quot; whitespaces&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="representation-function-aka-repr">
+<h3><a class="toc-backref" href="#id7">Representation function (aka ‘repr()’)</a><a class="headerlink" href="#representation-function-aka-repr" title="Permalink to this headline">¶</a></h3>
+<p><em>pandas</em> uses ‘repr()’ instead of ‘%r’ and ‘!r’.</p>
+<p>The use of ‘repr()’ will only happend when the value is not an obvious string.</p>
+<p>For example:</p>
+<p><strong>Good:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">value</span> <span class="o">=</span> <span class="nb">str</span>
+<span class="n">f</span><span class="s2">&quot;Unknown recived value, got: {repr(value)}&quot;</span>
+</pre></div>
+</div>
+<p><strong>Good:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">value</span> <span class="o">=</span> <span class="nb">str</span>
+<span class="n">f</span><span class="s2">&quot;Unknown recived type, got: &#39;{type(value).__name__}&#39;&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="imports-aim-for-absolute">
+<h2><a class="toc-backref" href="#id8">Imports (aim for absolute)</a><a class="headerlink" href="#imports-aim-for-absolute" title="Permalink to this headline">¶</a></h2>
+<p>In Python 3, absolute imports are recommended. In absolute import doing something
+like <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">string</span></code> will import the string module rather than <code class="docutils literal notranslate"><span class="pre">string.py</span></code>
+in the same directory. As much as possible, you should try to write out
+absolute imports that show the whole import chain from toplevel pandas.</p>
+<p>Explicit relative imports are also supported in Python 3. But it is not
+recommended to use it. Implicit relative imports should never be used
+and is removed in Python 3.</p>
+<p>For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># preferred</span>
+<span class="kn">import</span> <span class="nn">pandas.core.common</span> <span class="k">as</span> <span class="nn">com</span>
+
+<span class="c1"># not preferred</span>
+<span class="kn">from</span> <span class="nn">.common</span> <span class="k">import</span> <span class="n">test_base</span>
+
+<span class="c1"># wrong</span>
+<span class="kn">from</span> <span class="nn">common</span> <span class="k">import</span> <span class="n">test_base</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+              </div>
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="contributing_docstring.html" title="previous page">pandas docstring guide</a>
+    <a class='right-next' id="next-link" href="maintaining.html" title="next page">Pandas Maintenance</a>
+
+              </div>
+              
+          </main>
+
+      </div>
+    </div><script>
+    // TOC sidebar - add "active" class to parent list
+    //
+    // Bootstrap's scrollspy adds the active class to the <a> link,
+    // but for the automatic collapsing we need this on the parent list item.
+    //
+    // The event is triggered on "window" (and not the nav item as documented),
+    // see https://github.com/twbs/bootstrap/issues/20086
+    $(window).on("activate.bs.scrollspy", function(){
+    var navLinks = document.querySelectorAll('#bd-toc-nav a');
+    for (var i = 0; i < navLinks.length; i++) {
+        var navLink = navLinks[i];
+        navLink.parentElement.classList.remove('active');
+    }
+    var navLinks = document.querySelectorAll('#bd-toc-nav a.active');
+    for (var i = 0; i < navLinks.length; i++) {
+        var navLink = navLinks[i];
+        navLink.parentElement.classList.add('active');
+    }
+    });
+
+    /**
+     * Use left and right arrow keys to navigate forward and backwards.
+    */
+    const LEFT_ARROW_KEYCODE = 37
+    const RIGHT_ARROW_KEYCODE = 39
+
+    const getPrevUrl = () => document.getElementById('prev-link').href
+    const getNextUrl = () => document.getElementById('next-link').href
+    const initPageNav = (event) => {
+        const keycode = event.which
+
+        if (keycode === LEFT_ARROW_KEYCODE) {
+            window.location.href = getPrevUrl();
+        } else if (keycode === RIGHT_ARROW_KEYCODE) {
+            window.location.href = getNextUrl();
+        }
+    };
+
+    var keyboardListener = false;
+    $( document ).ready(() => {
+        if (keyboardListener === false) {
+            document.addEventListener('keydown', initPageNav)
+            keyboardListener = true;
+        }
+    });
+</script>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2008-2020, the pandas development team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.3.0.
+    </div>
+  </body>
+</html>

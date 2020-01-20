@@ -1,0 +1,291 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>v.0.6.1 (December 13, 2011) &#8212; pandas 1.0.0rc0+111.ge72cd7c52 documentation</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link rel="stylesheet" href="../_static/sphinx-bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/pandas.css" />
+    <link href="../_static/css/custom.css" rel="stylesheet">
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="v.0.6.0 (November 25, 2011)" href="v0.6.0.html" />
+    <link rel="prev" title="v.0.7.0 (February 9, 2012)" href="v0.7.0.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main">
+
+<a class="navbar-brand" href="../index.html">
+  <img src="../_static/pandas.svg" class="logo" alt="logo">
+</a>
+
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+</button>
+
+<div id="navbar-menu" class="collapse navbar-collapse">
+  <ul id="navbar-main-elements" class="navbar-nav mr-auto">
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        1.0.0
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown" id="version-menu"></div>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="../index.html">Home</a>
+    </li>
+    
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="v1.1.0.html">What's New in 1.1.0</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../getting_started/index.html">Getting started</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../user_guide/index.html">User Guide</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../reference/index.html">API reference</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../development/index.html">Development</a>
+    </li>
+    
+    <li class="nav-item active">
+        <a class="nav-link" href="index.html">Release Notes</a>
+    </li>
+    
+    
+  </ul>
+  <ul class="navbar-nav ml-auto">
+    
+      <li class="nav-item">
+        <a class="nav-link" href="https://github.com/pandas-dev/pandas" target="_blank" rel="noopener">
+          <span><i class="fab fa-github-square"></i></span>
+        </a>
+      </li>
+    
+    
+      <li class="nav-item">
+        <a class="nav-link" href="https://twitter.com/pandas_dev" target="_blank" rel="noopener">
+          <span><i class="fab fa-twitter-square"></i></span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row flex-xl-nowrap">
+          <div class="col-12 col-md-3 col-xl-2 bd-sidebar">
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+
+  <div class="bd-toc-item active">
+  
+
+  <ul class="nav bd-sidenav">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+        
+      
+      
+    </ul>
+
+</nav>
+          </div>
+
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+              
+<div class="tocsection onthispage"><i class="fas fa-list"></i> On this page</div>
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#new-features" class="nav-link">New features</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#performance-improvements" class="nav-link">Performance improvements</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#contributors" class="nav-link">Contributors</a>
+        </li>
+    
+    </ul>
+</nav>
+              
+            </div>
+
+          <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
+              <div>
+                
+  <div class="section" id="v-0-6-1-december-13-2011">
+<span id="whatsnew-061"></span><h1>v.0.6.1 (December 13, 2011)<a class="headerlink" href="#v-0-6-1-december-13-2011" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="new-features">
+<h2>New features<a class="headerlink" href="#new-features" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Can <a class="reference internal" href="../user_guide/merging.html#merging-append-row"><span class="std std-ref">append single rows</span></a> (as Series) to a DataFrame</p></li>
+<li><p>Add Spearman and Kendall rank <a class="reference internal" href="../user_guide/computation.html#computation-correlation"><span class="std std-ref">correlation</span></a>
+options to Series.corr and DataFrame.corr (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/428">GH428</a>)</p></li>
+<li><p><a class="reference internal" href="../user_guide/indexing.html#indexing-basics-get-value"><span class="std std-ref">Added</span></a> <code class="docutils literal notranslate"><span class="pre">get_value</span></code> and <code class="docutils literal notranslate"><span class="pre">set_value</span></code> methods to
+Series, DataFrame, and Panel for very low-overhead access (&gt;2x faster in many
+cases) to scalar elements (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/437">GH437</a>, <a class="reference external" href="https://github.com/pandas-dev/pandas/issues/438">GH438</a>). <code class="docutils literal notranslate"><span class="pre">set_value</span></code> is capable of
+producing an enlarged object.</p></li>
+<li><p>Add PyQt table widget to sandbox (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/435">GH435</a>)</p></li>
+<li><p>DataFrame.align can <a class="reference internal" href="../getting_started/basics.html#basics-align-frame-series"><span class="std std-ref">accept Series arguments</span></a>
+and an <a class="reference internal" href="../getting_started/basics.html#basics-df-join"><span class="std std-ref">axis option</span></a> (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/461">GH461</a>)</p></li>
+<li><p>Implement new <a class="reference internal" href="../user_guide/sparse.html#sparse-array"><span class="std std-ref">SparseArray</span></a> and <cite>SparseList</cite>
+data structures. SparseSeries now derives from SparseArray (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/463">GH463</a>)</p></li>
+<li><p><a class="reference internal" href="../user_guide/options.html#basics-console-output"><span class="std std-ref">Better console printing options</span></a> (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/453">GH453</a>)</p></li>
+<li><p>Implement fast <a class="reference internal" href="../user_guide/computation.html#computation-ranking"><span class="std std-ref">data ranking</span></a> for Series and
+DataFrame, fast versions of scipy.stats.rankdata (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/428">GH428</a>)</p></li>
+<li><p>Implement <cite>DataFrame.from_items</cite> alternate
+constructor (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/444">GH444</a>)</p></li>
+<li><p>DataFrame.convert_objects method for <a class="reference internal" href="../getting_started/basics.html#basics-cast"><span class="std std-ref">inferring better dtypes</span></a>
+for object columns (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/302">GH302</a>)</p></li>
+<li><p>Add <a class="reference internal" href="../user_guide/computation.html#stats-moments-corr-pairwise"><span class="std std-ref">rolling_corr_pairwise</span></a> function for
+computing Panel of correlation matrices (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/189">GH189</a>)</p></li>
+<li><p>Add <a class="reference internal" href="../user_guide/reshaping.html#reshaping-pivot-margins"><span class="std std-ref">margins</span></a> option to <a class="reference internal" href="../user_guide/reshaping.html#reshaping-pivot"><span class="std std-ref">pivot_table</span></a> for computing subgroup aggregates (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/114">GH114</a>)</p></li>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">Series.from_csv</span></code> function (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/482">GH482</a>)</p></li>
+<li><p><a class="reference internal" href="../user_guide/computation.html#stats-moments-binary"><span class="std std-ref">Can pass</span></a> DataFrame/DataFrame and
+DataFrame/Series to rolling_corr/rolling_cov (GH #462)</p></li>
+<li><p>MultiIndex.get_level_values can <a class="reference internal" href="../user_guide/advanced.html#advanced-get-level-values"><span class="std std-ref">accept the level name</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="performance-improvements">
+<h2>Performance improvements<a class="headerlink" href="#performance-improvements" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Improve memory usage of <cite>DataFrame.describe</cite> (do not copy data
+unnecessarily) (PR #425)</p></li>
+<li><p>Optimize scalar value lookups in the general case by 25% or more in Series
+and DataFrame</p></li>
+<li><p>Fix performance regression in cross-sectional count in DataFrame, affecting
+DataFrame.dropna speed</p></li>
+<li><p>Column deletion in DataFrame copies no data (computes views on blocks) (GH
+#158)</p></li>
+</ul>
+</div>
+<div class="section" id="contributors">
+<span id="whatsnew-0-6-1-contributors"></span><h2>Contributors<a class="headerlink" href="#contributors" title="Permalink to this headline">¶</a></h2>
+<p>A total of 7 people contributed patches to this release.  People with a
+“+” by their names contributed a patch for the first time.
+</p>
+<ul class="simple">
+<li><p>Dieter Vandenbussche</p></li>
+<li><p>Fernando Perez +</p></li>
+<li><p>Jev Kuznetsov +</p></li>
+<li><p>Joon Ro</p></li>
+<li><p>Ralph Bean +</p></li>
+<li><p>Wes McKinney</p></li>
+<li><p>Wouter Overmeire</p></li>
+</ul>
+</div>
+</div>
+
+
+              </div>
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="v0.7.0.html" title="previous page">v.0.7.0 (February 9, 2012)</a>
+    <a class='right-next' id="next-link" href="v0.6.0.html" title="next page">v.0.6.0 (November 25, 2011)</a>
+
+              </div>
+              
+          </main>
+
+      </div>
+    </div><script>
+    // TOC sidebar - add "active" class to parent list
+    //
+    // Bootstrap's scrollspy adds the active class to the <a> link,
+    // but for the automatic collapsing we need this on the parent list item.
+    //
+    // The event is triggered on "window" (and not the nav item as documented),
+    // see https://github.com/twbs/bootstrap/issues/20086
+    $(window).on("activate.bs.scrollspy", function(){
+    var navLinks = document.querySelectorAll('#bd-toc-nav a');
+    for (var i = 0; i < navLinks.length; i++) {
+        var navLink = navLinks[i];
+        navLink.parentElement.classList.remove('active');
+    }
+    var navLinks = document.querySelectorAll('#bd-toc-nav a.active');
+    for (var i = 0; i < navLinks.length; i++) {
+        var navLink = navLinks[i];
+        navLink.parentElement.classList.add('active');
+    }
+    });
+
+    /**
+     * Use left and right arrow keys to navigate forward and backwards.
+    */
+    const LEFT_ARROW_KEYCODE = 37
+    const RIGHT_ARROW_KEYCODE = 39
+
+    const getPrevUrl = () => document.getElementById('prev-link').href
+    const getNextUrl = () => document.getElementById('next-link').href
+    const initPageNav = (event) => {
+        const keycode = event.which
+
+        if (keycode === LEFT_ARROW_KEYCODE) {
+            window.location.href = getPrevUrl();
+        } else if (keycode === RIGHT_ARROW_KEYCODE) {
+            window.location.href = getNextUrl();
+        }
+    };
+
+    var keyboardListener = false;
+    $( document ).ready(() => {
+        if (keyboardListener === false) {
+            document.addEventListener('keydown', initPageNav)
+            keyboardListener = true;
+        }
+    });
+</script>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2008-2020, the pandas development team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.3.0.
+    </div>
+  </body>
+</html>

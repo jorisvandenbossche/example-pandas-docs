@@ -1,0 +1,529 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>v0.21.1 (December 12, 2017) &#8212; pandas 1.0.0rc0+111.ge72cd7c52 documentation</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link rel="stylesheet" href="../_static/sphinx-bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/pandas.css" />
+    <link href="../_static/css/custom.css" rel="stylesheet">
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="v0.21.0 (October 27, 2017)" href="v0.21.0.html" />
+    <link rel="prev" title="v0.22.0 (December 29, 2017)" href="v0.22.0.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main">
+
+<a class="navbar-brand" href="../index.html">
+  <img src="../_static/pandas.svg" class="logo" alt="logo">
+</a>
+
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+</button>
+
+<div id="navbar-menu" class="collapse navbar-collapse">
+  <ul id="navbar-main-elements" class="navbar-nav mr-auto">
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        1.0.0
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown" id="version-menu"></div>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="../index.html">Home</a>
+    </li>
+    
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="v1.1.0.html">What's New in 1.1.0</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../getting_started/index.html">Getting started</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../user_guide/index.html">User Guide</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../reference/index.html">API reference</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../development/index.html">Development</a>
+    </li>
+    
+    <li class="nav-item active">
+        <a class="nav-link" href="index.html">Release Notes</a>
+    </li>
+    
+    
+  </ul>
+  <ul class="navbar-nav ml-auto">
+    
+      <li class="nav-item">
+        <a class="nav-link" href="https://github.com/pandas-dev/pandas" target="_blank" rel="noopener">
+          <span><i class="fab fa-github-square"></i></span>
+        </a>
+      </li>
+    
+    
+      <li class="nav-item">
+        <a class="nav-link" href="https://twitter.com/pandas_dev" target="_blank" rel="noopener">
+          <span><i class="fab fa-twitter-square"></i></span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row flex-xl-nowrap">
+          <div class="col-12 col-md-3 col-xl-2 bd-sidebar">
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+
+  <div class="bd-toc-item active">
+  
+
+  <ul class="nav bd-sidenav">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+        
+      
+      
+    </ul>
+
+</nav>
+          </div>
+
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+              
+<div class="tocsection onthispage"><i class="fas fa-list"></i> On this page</div>
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#restore-matplotlib-datetime-converter-registration" class="nav-link">Restore Matplotlib datetime converter registration</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#new-features" class="nav-link">New features</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#improvements-to-the-parquet-io-functionality" class="nav-link">Improvements to the Parquet IO functionality</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#other-enhancements" class="nav-link">Other enhancements</a>
+        </li>
+    
+            </ul>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#deprecations" class="nav-link">Deprecations</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#performance-improvements" class="nav-link">Performance improvements</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#bug-fixes" class="nav-link">Bug fixes</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#conversion" class="nav-link">Conversion</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#indexing" class="nav-link">Indexing</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#i-o" class="nav-link">I/O</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#plotting" class="nav-link">Plotting</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#groupby-resample-rolling" class="nav-link">Groupby/resample/rolling</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#reshaping" class="nav-link">Reshaping</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#numeric" class="nav-link">Numeric</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#categorical" class="nav-link">Categorical</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#string" class="nav-link">String</a>
+        </li>
+    
+            </ul>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#contributors" class="nav-link">Contributors</a>
+        </li>
+    
+    </ul>
+</nav>
+              
+            </div>
+
+          <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
+              <div>
+                
+  <div class="section" id="v0-21-1-december-12-2017">
+<span id="whatsnew-0211"></span><h1>v0.21.1 (December 12, 2017)<a class="headerlink" href="#v0-21-1-december-12-2017" title="Permalink to this headline">¶</a></h1>
+<p>This is a minor bug-fix release in the 0.21.x series and includes some small regression fixes,
+bug fixes and performance improvements.
+We recommend that all users upgrade to this version.</p>
+<p>Highlights include:</p>
+<ul class="simple">
+<li><p>Temporarily restore matplotlib datetime plotting functionality. This should
+resolve issues for users who implicitly relied on pandas to plot datetimes
+with matplotlib. See <a class="reference internal" href="#whatsnew-0211-converters"><span class="std std-ref">here</span></a>.</p></li>
+<li><p>Improvements to the Parquet IO functions introduced in 0.21.0. See
+<a class="reference internal" href="#whatsnew-0211-enhancements-parquet"><span class="std std-ref">here</span></a>.</p></li>
+</ul>
+<div class="contents local topic" id="what-s-new-in-v0-21-1">
+<p class="topic-title first">What’s new in v0.21.1</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#restore-matplotlib-datetime-converter-registration" id="id1">Restore Matplotlib datetime converter registration</a></p></li>
+<li><p><a class="reference internal" href="#new-features" id="id2">New features</a></p>
+<ul>
+<li><p><a class="reference internal" href="#improvements-to-the-parquet-io-functionality" id="id3">Improvements to the Parquet IO functionality</a></p></li>
+<li><p><a class="reference internal" href="#other-enhancements" id="id4">Other enhancements</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#deprecations" id="id5">Deprecations</a></p></li>
+<li><p><a class="reference internal" href="#performance-improvements" id="id6">Performance improvements</a></p></li>
+<li><p><a class="reference internal" href="#bug-fixes" id="id7">Bug fixes</a></p>
+<ul>
+<li><p><a class="reference internal" href="#conversion" id="id8">Conversion</a></p></li>
+<li><p><a class="reference internal" href="#indexing" id="id9">Indexing</a></p></li>
+<li><p><a class="reference internal" href="#i-o" id="id10">I/O</a></p></li>
+<li><p><a class="reference internal" href="#plotting" id="id11">Plotting</a></p></li>
+<li><p><a class="reference internal" href="#groupby-resample-rolling" id="id12">Groupby/resample/rolling</a></p></li>
+<li><p><a class="reference internal" href="#reshaping" id="id13">Reshaping</a></p></li>
+<li><p><a class="reference internal" href="#numeric" id="id14">Numeric</a></p></li>
+<li><p><a class="reference internal" href="#categorical" id="id15">Categorical</a></p></li>
+<li><p><a class="reference internal" href="#string" id="id16">String</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#contributors" id="id17">Contributors</a></p></li>
+</ul>
+</div>
+<div class="section" id="restore-matplotlib-datetime-converter-registration">
+<span id="whatsnew-0211-converters"></span><h2>Restore Matplotlib datetime converter registration<a class="headerlink" href="#restore-matplotlib-datetime-converter-registration" title="Permalink to this headline">¶</a></h2>
+<p>Pandas implements some matplotlib converters for nicely formatting the axis
+labels on plots with <code class="docutils literal notranslate"><span class="pre">datetime</span></code> or <code class="docutils literal notranslate"><span class="pre">Period</span></code> values. Prior to pandas 0.21.0,
+these were implicitly registered with matplotlib, as a side effect of <code class="docutils literal notranslate"><span class="pre">import</span>
+<span class="pre">pandas</span></code>.</p>
+<p>In pandas 0.21.0, we required users to explicitly register the
+converter. This caused problems for some users who relied on those converters
+being present for regular <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot</span></code> plotting methods, so we’re
+temporarily reverting that change; pandas 0.21.1 again registers the converters on
+import, just like before 0.21.0.</p>
+<p>We’ve added a new option to control the converters:
+<code class="docutils literal notranslate"><span class="pre">pd.options.plotting.matplotlib.register_converters</span></code>. By default, they are
+registered. Toggling this to <code class="docutils literal notranslate"><span class="pre">False</span></code> removes pandas’ formatters and restore
+any converters we overwrote when registering them (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/18301">GH18301</a>).</p>
+<p>We’re working with the matplotlib developers to make this easier. We’re trying
+to balance user convenience (automatically registering the converters) with
+import performance and best practices (importing pandas shouldn’t have the side
+effect of overwriting any custom converters you’ve already set). In the future
+we hope to have most of the datetime formatting functionality in matplotlib,
+with just the pandas-specific converters in pandas. We’ll then gracefully
+deprecate the automatic registration of converters in favor of users explicitly
+registering them when they want them.</p>
+</div>
+<div class="section" id="new-features">
+<span id="whatsnew-0211-enhancements"></span><h2>New features<a class="headerlink" href="#new-features" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="improvements-to-the-parquet-io-functionality">
+<span id="whatsnew-0211-enhancements-parquet"></span><h3>Improvements to the Parquet IO functionality<a class="headerlink" href="#improvements-to-the-parquet-io-functionality" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><code class="xref py py-func docutils literal notranslate"><span class="pre">DataFrame.to_parquet()</span></code> will now write non-default indexes when the
+underlying engine supports it. The indexes will be preserved when reading
+back in with <code class="xref py py-func docutils literal notranslate"><span class="pre">read_parquet()</span></code> (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/18581">GH18581</a>).</p></li>
+<li><p><code class="xref py py-func docutils literal notranslate"><span class="pre">read_parquet()</span></code> now allows to specify the columns to read from a parquet file (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/18154">GH18154</a>)</p></li>
+<li><p><code class="xref py py-func docutils literal notranslate"><span class="pre">read_parquet()</span></code> now allows to specify kwargs which are passed to the respective engine (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/18216">GH18216</a>)</p></li>
+</ul>
+</div>
+<div class="section" id="other-enhancements">
+<span id="whatsnew-0211-enhancements-other"></span><h3>Other enhancements<a class="headerlink" href="#other-enhancements" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">Timestamp.timestamp()</span></code> is now available in Python 2.7. (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/17329">GH17329</a>)</p></li>
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Grouper</span></code> and <code class="xref py py-class docutils literal notranslate"><span class="pre">TimeGrouper</span></code> now have a friendly repr output (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/18203">GH18203</a>).</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="deprecations">
+<span id="whatsnew-0211-deprecations"></span><h2>Deprecations<a class="headerlink" href="#deprecations" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pandas.tseries.register</span></code> has been renamed to
+<code class="xref py py-func docutils literal notranslate"><span class="pre">pandas.plotting.register_matplotlib_converters()</span></code> (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/18301">GH18301</a>)</p></li>
+</ul>
+</div>
+<div class="section" id="performance-improvements">
+<span id="whatsnew-0211-performance"></span><h2>Performance improvements<a class="headerlink" href="#performance-improvements" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Improved performance of plotting large series/dataframes (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/18236">GH18236</a>).</p></li>
+</ul>
+</div>
+<div class="section" id="bug-fixes">
+<span id="whatsnew-0211-bug-fixes"></span><h2>Bug fixes<a class="headerlink" href="#bug-fixes" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="conversion">
+<h3>Conversion<a class="headerlink" href="#conversion" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Bug in <code class="xref py py-class docutils literal notranslate"><span class="pre">TimedeltaIndex</span></code> subtraction could incorrectly overflow when <code class="docutils literal notranslate"><span class="pre">NaT</span></code> is present (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/17791">GH17791</a>)</p></li>
+<li><p>Bug in <code class="xref py py-class docutils literal notranslate"><span class="pre">DatetimeIndex</span></code> subtracting datetimelike from DatetimeIndex could fail to overflow (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/18020">GH18020</a>)</p></li>
+<li><p>Bug in <code class="xref py py-meth docutils literal notranslate"><span class="pre">IntervalIndex.copy()</span></code> when copying and <code class="docutils literal notranslate"><span class="pre">IntervalIndex</span></code> with non-default <code class="docutils literal notranslate"><span class="pre">closed</span></code> (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/18339">GH18339</a>)</p></li>
+<li><p>Bug in <code class="xref py py-func docutils literal notranslate"><span class="pre">DataFrame.to_dict()</span></code> where columns of datetime that are tz-aware were not converted to required arrays when used with <code class="docutils literal notranslate"><span class="pre">orient='records'</span></code>, raising <code class="docutils literal notranslate"><span class="pre">TypeError</span></code> (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/18372">GH18372</a>)</p></li>
+<li><p>Bug in <code class="xref py py-class docutils literal notranslate"><span class="pre">DateTimeIndex</span></code> and <code class="xref py py-meth docutils literal notranslate"><span class="pre">date_range()</span></code> where mismatching tz-aware <code class="docutils literal notranslate"><span class="pre">start</span></code> and <code class="docutils literal notranslate"><span class="pre">end</span></code> timezones would not raise an err if <code class="docutils literal notranslate"><span class="pre">end.tzinfo</span></code> is None (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/18431">GH18431</a>)</p></li>
+<li><p>Bug in <code class="xref py py-meth docutils literal notranslate"><span class="pre">Series.fillna()</span></code> which raised when passed a long integer on Python 2 (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/18159">GH18159</a>).</p></li>
+</ul>
+</div>
+<div class="section" id="indexing">
+<h3>Indexing<a class="headerlink" href="#indexing" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Bug in a boolean comparison of a <code class="docutils literal notranslate"><span class="pre">datetime.datetime</span></code> and a <code class="docutils literal notranslate"><span class="pre">datetime64[ns]</span></code> dtype Series (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/17965">GH17965</a>)</p></li>
+<li><p>Bug where a <code class="docutils literal notranslate"><span class="pre">MultiIndex</span></code> with more than a million records was not raising <code class="docutils literal notranslate"><span class="pre">AttributeError</span></code> when trying to access a missing attribute (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/18165">GH18165</a>)</p></li>
+<li><p>Bug in <code class="xref py py-class docutils literal notranslate"><span class="pre">IntervalIndex</span></code> constructor when a list of intervals is passed with non-default <code class="docutils literal notranslate"><span class="pre">closed</span></code> (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/18334">GH18334</a>)</p></li>
+<li><p>Bug in <code class="docutils literal notranslate"><span class="pre">Index.putmask</span></code> when an invalid mask passed (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/18368">GH18368</a>)</p></li>
+<li><p>Bug in masked assignment of a <code class="docutils literal notranslate"><span class="pre">timedelta64[ns]</span></code> dtype <code class="docutils literal notranslate"><span class="pre">Series</span></code>, incorrectly coerced to float (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/18493">GH18493</a>)</p></li>
+</ul>
+</div>
+<div class="section" id="i-o">
+<h3>I/O<a class="headerlink" href="#i-o" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Bug in class:<cite>~pandas.io.stata.StataReader</cite> not converting date/time columns with display formatting addressed (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/17990">GH17990</a>). Previously columns with display formatting were normally left as ordinal numbers and not converted to datetime objects.</p></li>
+<li><p>Bug in <code class="xref py py-func docutils literal notranslate"><span class="pre">read_csv()</span></code> when reading a compressed UTF-16 encoded file (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/18071">GH18071</a>)</p></li>
+<li><p>Bug in <code class="xref py py-func docutils literal notranslate"><span class="pre">read_csv()</span></code> for handling null values in index columns when specifying <code class="docutils literal notranslate"><span class="pre">na_filter=False</span></code> (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/5239">GH5239</a>)</p></li>
+<li><p>Bug in <code class="xref py py-func docutils literal notranslate"><span class="pre">read_csv()</span></code> when reading numeric category fields with high cardinality (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/18186">GH18186</a>)</p></li>
+<li><p>Bug in <code class="xref py py-meth docutils literal notranslate"><span class="pre">DataFrame.to_csv()</span></code> when the table had <code class="docutils literal notranslate"><span class="pre">MultiIndex</span></code> columns, and a list of strings was passed in for <code class="docutils literal notranslate"><span class="pre">header</span></code> (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/5539">GH5539</a>)</p></li>
+<li><p>Bug in parsing integer datetime-like columns with specified format in <code class="docutils literal notranslate"><span class="pre">read_sql</span></code> (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/17855">GH17855</a>).</p></li>
+<li><p>Bug in <code class="xref py py-meth docutils literal notranslate"><span class="pre">DataFrame.to_msgpack()</span></code> when serializing data of the <code class="docutils literal notranslate"><span class="pre">numpy.bool_</span></code> datatype (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/18390">GH18390</a>)</p></li>
+<li><p>Bug in <code class="xref py py-func docutils literal notranslate"><span class="pre">read_json()</span></code> not decoding when reading line delimited JSON from S3 (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/17200">GH17200</a>)</p></li>
+<li><p>Bug in <code class="xref py py-func docutils literal notranslate"><span class="pre">pandas.io.json.json_normalize()</span></code> to avoid modification of <code class="docutils literal notranslate"><span class="pre">meta</span></code> (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/18610">GH18610</a>)</p></li>
+<li><p>Bug in <code class="xref py py-func docutils literal notranslate"><span class="pre">to_latex()</span></code> where repeated MultiIndex values were not printed even though a higher level index differed from the previous row (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/14484">GH14484</a>)</p></li>
+<li><p>Bug when reading NaN-only categorical columns in <code class="xref py py-class docutils literal notranslate"><span class="pre">HDFStore</span></code> (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/18413">GH18413</a>)</p></li>
+<li><p>Bug in <code class="xref py py-meth docutils literal notranslate"><span class="pre">DataFrame.to_latex()</span></code> with <code class="docutils literal notranslate"><span class="pre">longtable=True</span></code> where a latex multicolumn always spanned over three columns (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/17959">GH17959</a>)</p></li>
+</ul>
+</div>
+<div class="section" id="plotting">
+<h3>Plotting<a class="headerlink" href="#plotting" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Bug in <code class="docutils literal notranslate"><span class="pre">DataFrame.plot()</span></code> and <code class="docutils literal notranslate"><span class="pre">Series.plot()</span></code> with <code class="xref py py-class docutils literal notranslate"><span class="pre">DatetimeIndex</span></code> where a figure generated by them is not pickleable in Python 3 (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/18439">GH18439</a>)</p></li>
+</ul>
+</div>
+<div class="section" id="groupby-resample-rolling">
+<h3>Groupby/resample/rolling<a class="headerlink" href="#groupby-resample-rolling" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Bug in <code class="docutils literal notranslate"><span class="pre">DataFrame.resample(...).apply(...)</span></code> when there is a callable that returns different columns (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/15169">GH15169</a>)</p></li>
+<li><p>Bug in <code class="docutils literal notranslate"><span class="pre">DataFrame.resample(...)</span></code> when there is a time change (DST) and resampling frequency is 12h or higher (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/15549">GH15549</a>)</p></li>
+<li><p>Bug in <code class="docutils literal notranslate"><span class="pre">pd.DataFrameGroupBy.count()</span></code> when counting over a datetimelike column (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/13393">GH13393</a>)</p></li>
+<li><p>Bug in <code class="docutils literal notranslate"><span class="pre">rolling.var</span></code> where calculation is inaccurate with a zero-valued array (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/18430">GH18430</a>)</p></li>
+</ul>
+</div>
+<div class="section" id="reshaping">
+<h3>Reshaping<a class="headerlink" href="#reshaping" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Error message in <code class="docutils literal notranslate"><span class="pre">pd.merge_asof()</span></code> for key datatype mismatch now includes datatype of left and right key (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/18068">GH18068</a>)</p></li>
+<li><p>Bug in <code class="docutils literal notranslate"><span class="pre">pd.concat</span></code> when empty and non-empty DataFrames or Series are concatenated (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/18178">GH18178</a> <a class="reference external" href="https://github.com/pandas-dev/pandas/issues/18187">GH18187</a>)</p></li>
+<li><p>Bug in <code class="docutils literal notranslate"><span class="pre">DataFrame.filter(...)</span></code> when <code class="xref py py-class docutils literal notranslate"><span class="pre">unicode</span></code> is passed as a condition in Python 2 (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/13101">GH13101</a>)</p></li>
+<li><p>Bug when merging empty DataFrames when <code class="docutils literal notranslate"><span class="pre">np.seterr(divide='raise')</span></code> is set (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/17776">GH17776</a>)</p></li>
+</ul>
+</div>
+<div class="section" id="numeric">
+<h3>Numeric<a class="headerlink" href="#numeric" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Bug in <code class="docutils literal notranslate"><span class="pre">pd.Series.rolling.skew()</span></code> and <code class="docutils literal notranslate"><span class="pre">rolling.kurt()</span></code> with all equal values has floating issue (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/18044">GH18044</a>)</p></li>
+</ul>
+</div>
+<div class="section" id="categorical">
+<h3>Categorical<a class="headerlink" href="#categorical" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Bug in <code class="xref py py-meth docutils literal notranslate"><span class="pre">DataFrame.astype()</span></code> where casting to ‘category’ on an empty <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> causes a segmentation fault (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/18004">GH18004</a>)</p></li>
+<li><p>Error messages in the testing module have been improved when items have different <code class="docutils literal notranslate"><span class="pre">CategoricalDtype</span></code> (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/18069">GH18069</a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CategoricalIndex</span></code> can now correctly take a <code class="docutils literal notranslate"><span class="pre">pd.api.types.CategoricalDtype</span></code> as its dtype (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/18116">GH18116</a>)</p></li>
+<li><p>Bug in <code class="docutils literal notranslate"><span class="pre">Categorical.unique()</span></code> returning read-only <code class="docutils literal notranslate"><span class="pre">codes</span></code>  array when all categories were <code class="docutils literal notranslate"><span class="pre">NaN</span></code> (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/18051">GH18051</a>)</p></li>
+<li><p>Bug in <code class="docutils literal notranslate"><span class="pre">DataFrame.groupby(axis=1)</span></code> with a <code class="docutils literal notranslate"><span class="pre">CategoricalIndex</span></code> (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/18432">GH18432</a>)</p></li>
+</ul>
+</div>
+<div class="section" id="string">
+<h3>String<a class="headerlink" href="#string" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">Series.str.split()</span></code> will now propagate <code class="docutils literal notranslate"><span class="pre">NaN</span></code> values across all expanded columns instead of <code class="docutils literal notranslate"><span class="pre">None</span></code> (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/18450">GH18450</a>)</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="contributors">
+<span id="whatsnew-0-21-1-contributors"></span><h2>Contributors<a class="headerlink" href="#contributors" title="Permalink to this headline">¶</a></h2>
+<p>A total of 46 people contributed patches to this release.  People with a
+“+” by their names contributed a patch for the first time.
+</p>
+<ul class="simple">
+<li><p>Aaron Critchley +</p></li>
+<li><p>Alex Rychyk</p></li>
+<li><p>Alexander Buchkovsky +</p></li>
+<li><p>Alexander Michael Schade +</p></li>
+<li><p>Chris Mazzullo</p></li>
+<li><p>Cornelius Riemenschneider +</p></li>
+<li><p>Dave Hirschfeld +</p></li>
+<li><p>David Fischer +</p></li>
+<li><p>David Stansby +</p></li>
+<li><p>Dror Atariah +</p></li>
+<li><p>Eric Kisslinger +</p></li>
+<li><p>Hans +</p></li>
+<li><p>Ingolf Becker +</p></li>
+<li><p>Jan Werkmann +</p></li>
+<li><p>Jeff Reback</p></li>
+<li><p>Joris Van den Bossche</p></li>
+<li><p>Jörg Döpfert +</p></li>
+<li><p>Kevin Kuhl +</p></li>
+<li><p>Krzysztof Chomski +</p></li>
+<li><p>Leif Walsh</p></li>
+<li><p>Licht Takeuchi</p></li>
+<li><p>Manraj Singh +</p></li>
+<li><p>Matt Braymer-Hayes +</p></li>
+<li><p>Michael Waskom +</p></li>
+<li><p>Mie~~~ +</p></li>
+<li><p>Peter Hoffmann +</p></li>
+<li><p>Robert Meyer +</p></li>
+<li><p>Sam Cohan +</p></li>
+<li><p>Sietse Brouwer +</p></li>
+<li><p>Sven +</p></li>
+<li><p>Tim Swast</p></li>
+<li><p>Tom Augspurger</p></li>
+<li><p>Wes Turner</p></li>
+<li><p>William Ayd +</p></li>
+<li><p>Yee Mey +</p></li>
+<li><p>bolkedebruin +</p></li>
+<li><p>cgohlke</p></li>
+<li><p>derestle-htwg +</p></li>
+<li><p>fjdiod +</p></li>
+<li><p>gabrielclow +</p></li>
+<li><p>gfyoung</p></li>
+<li><p>ghasemnaddaf +</p></li>
+<li><p>jbrockmendel</p></li>
+<li><p>jschendel</p></li>
+<li><p>miker985 +</p></li>
+<li><p>topper-123</p></li>
+</ul>
+</div>
+</div>
+
+
+              </div>
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="v0.22.0.html" title="previous page">v0.22.0 (December 29, 2017)</a>
+    <a class='right-next' id="next-link" href="v0.21.0.html" title="next page">v0.21.0 (October 27, 2017)</a>
+
+              </div>
+              
+          </main>
+
+      </div>
+    </div><script>
+    // TOC sidebar - add "active" class to parent list
+    //
+    // Bootstrap's scrollspy adds the active class to the <a> link,
+    // but for the automatic collapsing we need this on the parent list item.
+    //
+    // The event is triggered on "window" (and not the nav item as documented),
+    // see https://github.com/twbs/bootstrap/issues/20086
+    $(window).on("activate.bs.scrollspy", function(){
+    var navLinks = document.querySelectorAll('#bd-toc-nav a');
+    for (var i = 0; i < navLinks.length; i++) {
+        var navLink = navLinks[i];
+        navLink.parentElement.classList.remove('active');
+    }
+    var navLinks = document.querySelectorAll('#bd-toc-nav a.active');
+    for (var i = 0; i < navLinks.length; i++) {
+        var navLink = navLinks[i];
+        navLink.parentElement.classList.add('active');
+    }
+    });
+
+    /**
+     * Use left and right arrow keys to navigate forward and backwards.
+    */
+    const LEFT_ARROW_KEYCODE = 37
+    const RIGHT_ARROW_KEYCODE = 39
+
+    const getPrevUrl = () => document.getElementById('prev-link').href
+    const getNextUrl = () => document.getElementById('next-link').href
+    const initPageNav = (event) => {
+        const keycode = event.which
+
+        if (keycode === LEFT_ARROW_KEYCODE) {
+            window.location.href = getPrevUrl();
+        } else if (keycode === RIGHT_ARROW_KEYCODE) {
+            window.location.href = getNextUrl();
+        }
+    };
+
+    var keyboardListener = false;
+    $( document ).ready(() => {
+        if (keyboardListener === false) {
+            document.addEventListener('keydown', initPageNav)
+            keyboardListener = true;
+        }
+    });
+</script>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2008-2020, the pandas development team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.3.0.
+    </div>
+  </body>
+</html>

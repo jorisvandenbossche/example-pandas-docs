@@ -1,0 +1,1579 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Index objects &#8212; pandas 1.0.0rc0+111.ge72cd7c52 documentation</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link rel="stylesheet" href="../_static/sphinx-bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/pandas.css" />
+    <link href="../_static/css/custom.css" rel="stylesheet">
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Date offsets" href="offset_frequency.html" />
+    <link rel="prev" title="Panel" href="panel.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main">
+
+<a class="navbar-brand" href="../index.html">
+  <img src="../_static/pandas.svg" class="logo" alt="logo">
+</a>
+
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+</button>
+
+<div id="navbar-menu" class="collapse navbar-collapse">
+  <ul id="navbar-main-elements" class="navbar-nav mr-auto">
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        1.0.0
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown" id="version-menu"></div>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="../index.html">Home</a>
+    </li>
+    
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../whatsnew/v1.1.0.html">What's New in 1.1.0</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../getting_started/index.html">Getting started</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../user_guide/index.html">User Guide</a>
+    </li>
+    
+    <li class="nav-item active">
+        <a class="nav-link" href="index.html">API reference</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../development/index.html">Development</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../whatsnew/index.html">Release Notes</a>
+    </li>
+    
+    
+  </ul>
+  <ul class="navbar-nav ml-auto">
+    
+      <li class="nav-item">
+        <a class="nav-link" href="https://github.com/pandas-dev/pandas" target="_blank" rel="noopener">
+          <span><i class="fab fa-github-square"></i></span>
+        </a>
+      </li>
+    
+    
+      <li class="nav-item">
+        <a class="nav-link" href="https://twitter.com/pandas_dev" target="_blank" rel="noopener">
+          <span><i class="fab fa-twitter-square"></i></span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row flex-xl-nowrap">
+          <div class="col-12 col-md-3 col-xl-2 bd-sidebar">
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+
+  <div class="bd-toc-item active">
+  
+
+  <ul class="nav bd-sidenav">
+      
+      
+      
+      
+      
+      
+      
+      
+        
+          
+              <li class="">
+                  <a href="io.html">Input/output</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="general_functions.html">General functions</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="series.html">Series</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="frame.html">DataFrame</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="arrays.html">Pandas arrays</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="panel.html">Panel</a>
+              </li>
+          
+        
+          
+              <li class="active">
+                  <a href="">Index objects</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="offset_frequency.html">Date offsets</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="window.html">Window</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="groupby.html">GroupBy</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="resampling.html">Resampling</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="style.html">Style</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="plotting.html">Plotting</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="general_utility_functions.html">General utility functions</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="extensions.html">Extensions</a>
+              </li>
+          
+        
+      
+      
+      
+      
+      
+      
+    </ul>
+
+</nav>
+          </div>
+
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+              
+<div class="tocsection onthispage"><i class="fas fa-list"></i> On this page</div>
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#index" class="nav-link">Index</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#properties" class="nav-link">Properties</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#modifying-and-computations" class="nav-link">Modifying and computations</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#compatibility-with-multiindex" class="nav-link">Compatibility with MultiIndex</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#missing-values" class="nav-link">Missing values</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#conversion" class="nav-link">Conversion</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#sorting" class="nav-link">Sorting</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#time-specific-operations" class="nav-link">Time-specific operations</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#combining-joining-set-operations" class="nav-link">Combining / joining / set operations</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#selecting" class="nav-link">Selecting</a>
+        </li>
+    
+            </ul>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#numeric-index" class="nav-link">Numeric Index</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#categoricalindex" class="nav-link">CategoricalIndex</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#categorical-components" class="nav-link">Categorical components</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#id1" class="nav-link">Modifying and computations</a>
+        </li>
+    
+            </ul>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#intervalindex" class="nav-link">IntervalIndex</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#intervalindex-components" class="nav-link">IntervalIndex components</a>
+        </li>
+    
+            </ul>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#multiindex" class="nav-link">MultiIndex</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#multiindex-constructors" class="nav-link">MultiIndex constructors</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#multiindex-properties" class="nav-link">MultiIndex properties</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#multiindex-components" class="nav-link">MultiIndex components</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#multiindex-selecting" class="nav-link">MultiIndex selecting</a>
+        </li>
+    
+            </ul>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#datetimeindex" class="nav-link">DatetimeIndex</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#time-date-components" class="nav-link">Time/Date components</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#id2" class="nav-link">Selecting</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#id3" class="nav-link">Time-specific operations</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#id4" class="nav-link">Conversion</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#methods" class="nav-link">Methods</a>
+        </li>
+    
+            </ul>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#timedeltaindex" class="nav-link">TimedeltaIndex</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#components" class="nav-link">Components</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#id5" class="nav-link">Conversion</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#id6" class="nav-link">Methods</a>
+        </li>
+    
+            </ul>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#periodindex" class="nav-link">PeriodIndex</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#id7" class="nav-link">Properties</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#id8" class="nav-link">Methods</a>
+        </li>
+    
+            </ul>
+        </li>
+    
+    </ul>
+</nav>
+              
+            </div>
+
+          <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
+              <div>
+                
+  <div class="section" id="index-objects">
+<span id="api-indexing"></span><h1>Index objects<a class="headerlink" href="#index-objects" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="index">
+<h2>Index<a class="headerlink" href="#index" title="Permalink to this headline">¶</a></h2>
+<p><strong>Many of these methods or variants thereof are available on the objects
+that contain an index (Series/DataFrame) and those should most likely be
+used before calling these methods directly.</strong></p>
+<table class="longtable table">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index</span></code></p></td>
+<td><p>Immutable ndarray implementing an ordered, sliceable set.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="properties">
+<h3>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h3>
+<table class="longtable table">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.values</span></code></p></td>
+<td><p>Return an array representing the data in the Index.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.is_monotonic</span></code></p></td>
+<td><p>Alias for is_monotonic_increasing.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.is_monotonic_increasing</span></code></p></td>
+<td><p>Return if the index is monotonic increasing (only equal or increasing) values.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.is_monotonic_decreasing</span></code></p></td>
+<td><p>Return if the index is monotonic decreasing (only equal or decreasing) values.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.is_unique</span></code></p></td>
+<td><p>Return if the index has unique values.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.has_duplicates</span></code></p></td>
+<td><p>Check if the Index has duplicate values.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.hasnans</span></code></p></td>
+<td><p>Return if I have any nans; enables various perf speedups.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.dtype</span></code></p></td>
+<td><p>Return the dtype object of the underlying data.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.inferred_type</span></code></p></td>
+<td><p>Return a string of the type inferred from the values.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.is_all_dates</span></code></p></td>
+<td><p>Whether or not the index values only consist of dates.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.shape</span></code></p></td>
+<td><p>Return a tuple of the shape of the underlying data.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.name</span></code></p></td>
+<td><p>Return Index or MultiIndex name.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.names</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.nbytes</span></code></p></td>
+<td><p>Return the number of bytes in the underlying data.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.ndim</span></code></p></td>
+<td><p>Number of dimensions of the underlying data, by definition 1.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.size</span></code></p></td>
+<td><p>Return the number of elements in the underlying data.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.empty</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.T</span></code></p></td>
+<td><p>Return the transpose, which is by definition self.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.memory_usage</span></code>(self[, deep])</p></td>
+<td><p>Memory usage of the values.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="modifying-and-computations">
+<h3>Modifying and computations<a class="headerlink" href="#modifying-and-computations" title="Permalink to this headline">¶</a></h3>
+<table class="longtable table">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.all</span></code>(self, \*args, \*\*kwargs)</p></td>
+<td><p>Return whether all elements are True.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.any</span></code>(self, \*args, \*\*kwargs)</p></td>
+<td><p>Return whether any element is True.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.argmin</span></code>(self[, axis, skipna])</p></td>
+<td><p>Return a ndarray of the minimum argument indexer.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.argmax</span></code>(self[, axis, skipna])</p></td>
+<td><p>Return an ndarray of the maximum argument indexer.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.copy</span></code>(self[, name, deep, dtype])</p></td>
+<td><p>Make a copy of this object.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.delete</span></code>(self, loc)</p></td>
+<td><p>Make new Index with passed location(-s) deleted.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.drop</span></code>(self, labels[, errors])</p></td>
+<td><p>Make new Index with passed list of labels deleted.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.drop_duplicates</span></code>(self[, keep])</p></td>
+<td><p>Return Index with duplicate values removed.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.duplicated</span></code>(self[, keep])</p></td>
+<td><p>Indicate duplicate index values.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.equals</span></code>(self, other)</p></td>
+<td><p>Determine if two Index objects contain the same elements.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.factorize</span></code>(self[, sort, na_sentinel])</p></td>
+<td><p>Encode the object as an enumerated type or categorical variable.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.identical</span></code>(self, other)</p></td>
+<td><p>Similar to equals, but check that other comparable attributes are also equal.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.insert</span></code>(self, loc, item)</p></td>
+<td><p>Make new Index inserting new item at location.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.is_</span></code>(self, other)</p></td>
+<td><p>More flexible, faster check like <code class="docutils literal notranslate"><span class="pre">is</span></code> but that works through views.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.is_boolean</span></code>(self)</p></td>
+<td><p>Check if the Index only consists of booleans.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.is_categorical</span></code>(self)</p></td>
+<td><p>Check if the Index holds categorical data.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.is_floating</span></code>(self)</p></td>
+<td><p>Check if the Index is a floating type.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.is_integer</span></code>(self)</p></td>
+<td><p>Check if the Index only consists of integers.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.is_interval</span></code>(self)</p></td>
+<td><p>Check if the Index holds Interval objects.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.is_mixed</span></code>(self)</p></td>
+<td><p>Check if the Index holds data with mixed data types.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.is_numeric</span></code>(self)</p></td>
+<td><p>Check if the Index only consists of numeric data.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.is_object</span></code>(self)</p></td>
+<td><p>Check if the Index is of the object dtype.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.min</span></code>(self[, axis, skipna])</p></td>
+<td><p>Return the minimum value of the Index.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.max</span></code>(self[, axis, skipna])</p></td>
+<td><p>Return the maximum value of the Index.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.reindex</span></code>(self, target[, method, level, …])</p></td>
+<td><p>Create index with target’s values (move/add/delete values as necessary).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.rename</span></code>(self, name[, inplace])</p></td>
+<td><p>Alter Index or MultiIndex name.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.repeat</span></code>(self, repeats[, axis])</p></td>
+<td><p>Repeat elements of a Index.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.where</span></code>(self, cond[, other])</p></td>
+<td><p>Return an Index of same shape as self and whose corresponding entries are from self where cond is True and otherwise are from other.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.take</span></code>(self, indices[, axis, …])</p></td>
+<td><p>Return a new Index of the values selected by the indices.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.putmask</span></code>(self, mask, value)</p></td>
+<td><p>Return a new Index of the values set with the mask.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.unique</span></code>(self[, level])</p></td>
+<td><p>Return unique values in the index.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.nunique</span></code>(self[, dropna])</p></td>
+<td><p>Return number of unique elements in the object.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.value_counts</span></code>(self[, normalize, sort, …])</p></td>
+<td><p>Return a Series containing counts of unique values.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="compatibility-with-multiindex">
+<h3>Compatibility with MultiIndex<a class="headerlink" href="#compatibility-with-multiindex" title="Permalink to this headline">¶</a></h3>
+<table class="longtable table">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.set_names</span></code>(self, names[, level, inplace])</p></td>
+<td><p>Set Index or MultiIndex name.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.droplevel</span></code>(self[, level])</p></td>
+<td><p>Return index with requested level(s) removed.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="missing-values">
+<h3>Missing values<a class="headerlink" href="#missing-values" title="Permalink to this headline">¶</a></h3>
+<table class="longtable table">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.fillna</span></code>(self[, value, downcast])</p></td>
+<td><p>Fill NA/NaN values with the specified value.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.dropna</span></code>(self[, how])</p></td>
+<td><p>Return Index without NA/NaN values.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.isna</span></code>(self)</p></td>
+<td><p>Detect missing values.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.notna</span></code>(self)</p></td>
+<td><p>Detect existing (non-missing) values.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="conversion">
+<h3>Conversion<a class="headerlink" href="#conversion" title="Permalink to this headline">¶</a></h3>
+<table class="longtable table">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.astype</span></code>(self, dtype[, copy])</p></td>
+<td><p>Create an Index with values cast to dtypes.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.item</span></code>(self)</p></td>
+<td><p>Return the first element of the underlying data as a python scalar.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.map</span></code>(self, mapper[, na_action])</p></td>
+<td><p>Map values using input correspondence (a dict, Series, or function).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.ravel</span></code>(self[, order])</p></td>
+<td><p>Return an ndarray of the flattened values of the underlying data.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.to_list</span></code>(self)</p></td>
+<td><p>Return a list of the values.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.to_native_types</span></code>(self[, slicer])</p></td>
+<td><p>Format specified values of <cite>self</cite> and return them.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.to_series</span></code>(self[, index, name])</p></td>
+<td><p>Create a Series with both index and values equal to the index keys.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.to_frame</span></code>(self[, index, name])</p></td>
+<td><p>Create a DataFrame with a column containing the Index.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.view</span></code>(self[, cls])</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="sorting">
+<h3>Sorting<a class="headerlink" href="#sorting" title="Permalink to this headline">¶</a></h3>
+<table class="longtable table">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.argsort</span></code>(self, \*args, \*\*kwargs)</p></td>
+<td><p>Return the integer indices that would sort the index.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.searchsorted</span></code>(self, value[, side, sorter])</p></td>
+<td><p>Find indices where elements should be inserted to maintain order.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.sort_values</span></code>(self[, return_indexer, …])</p></td>
+<td><p>Return a sorted copy of the index.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="time-specific-operations">
+<h3>Time-specific operations<a class="headerlink" href="#time-specific-operations" title="Permalink to this headline">¶</a></h3>
+<table class="longtable table">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.shift</span></code>(self[, periods, freq])</p></td>
+<td><p>Shift index by desired number of time frequency increments.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="combining-joining-set-operations">
+<h3>Combining / joining / set operations<a class="headerlink" href="#combining-joining-set-operations" title="Permalink to this headline">¶</a></h3>
+<table class="longtable table">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.append</span></code>(self, other)</p></td>
+<td><p>Append a collection of Index options together.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.join</span></code>(self, other[, how, level, …])</p></td>
+<td><p>Compute join_index and indexers to conform data structures to the new index.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.intersection</span></code>(self, other[, sort])</p></td>
+<td><p>Form the intersection of two Index objects.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.union</span></code>(self, other[, sort])</p></td>
+<td><p>Form the union of two Index objects.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.difference</span></code>(self, other[, sort])</p></td>
+<td><p>Return a new Index with elements from the index that are not in <cite>other</cite>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.symmetric_difference</span></code>(self, other[, …])</p></td>
+<td><p>Compute the symmetric difference of two Index objects.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="selecting">
+<h3>Selecting<a class="headerlink" href="#selecting" title="Permalink to this headline">¶</a></h3>
+<table class="longtable table">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.asof</span></code>(self, label)</p></td>
+<td><p>Return the label from the index, or, if not present, the previous one.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.asof_locs</span></code>(self, where, mask)</p></td>
+<td><p>Find the locations (indices) of the labels from the index for every entry in the <cite>where</cite> argument.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.get_indexer</span></code>(self, target[, method, …])</p></td>
+<td><p>Compute indexer and mask for new index given the current index.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.get_indexer_for</span></code>(self, target, \*\*kwargs)</p></td>
+<td><p>Guaranteed return of an indexer even when non-unique.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.get_indexer_non_unique</span></code>(self, target)</p></td>
+<td><p>Compute indexer and mask for new index given the current index.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.get_level_values</span></code>(self, level)</p></td>
+<td><p>Return an Index of values for requested level.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.get_loc</span></code>(self, key[, method, tolerance])</p></td>
+<td><p>Get integer location, slice or boolean mask for requested label.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.get_slice_bound</span></code>(self, label, side, kind)</p></td>
+<td><p>Calculate slice bound that corresponds to given label.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.get_value</span></code>(self, series, key)</p></td>
+<td><p>Fast lookup of value from 1-dimensional ndarray.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.isin</span></code>(self, values[, level])</p></td>
+<td><p>Return a boolean array where the index values are in <cite>values</cite>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.slice_indexer</span></code>(self[, start, end, …])</p></td>
+<td><p>For an ordered or unique index, compute the slice indexer for input labels and step.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index.slice_locs</span></code>(self[, start, end, step, kind])</p></td>
+<td><p>Compute slice locations for input labels.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="numeric-index">
+<span id="api-numericindex"></span><h2>Numeric Index<a class="headerlink" href="#numeric-index" title="Permalink to this headline">¶</a></h2>
+<table class="longtable table">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">RangeIndex</span></code></p></td>
+<td><p>Immutable Index implementing a monotonic integer range.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Int64Index</span></code></p></td>
+<td><p>Immutable ndarray implementing an ordered, sliceable set.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">UInt64Index</span></code></p></td>
+<td><p>Immutable ndarray implementing an ordered, sliceable set.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Float64Index</span></code></p></td>
+<td><p>Immutable ndarray implementing an ordered, sliceable set.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="longtable table">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">RangeIndex.start</span></code></p></td>
+<td><p>The value of the <cite>start</cite> parameter (<code class="docutils literal notranslate"><span class="pre">0</span></code> if this was not supplied).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">RangeIndex.stop</span></code></p></td>
+<td><p>The value of the <cite>stop</cite> parameter.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">RangeIndex.step</span></code></p></td>
+<td><p>The value of the <cite>step</cite> parameter (<code class="docutils literal notranslate"><span class="pre">1</span></code> if this was not supplied).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">RangeIndex.from_range</span></code>(data[, name, dtype])</p></td>
+<td><p>Create RangeIndex from a range object.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="categoricalindex">
+<span id="api-categoricalindex"></span><h2>CategoricalIndex<a class="headerlink" href="#categoricalindex" title="Permalink to this headline">¶</a></h2>
+<table class="longtable table">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">CategoricalIndex</span></code></p></td>
+<td><p>Index based on an underlying <code class="xref py py-class docutils literal notranslate"><span class="pre">Categorical</span></code>.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="categorical-components">
+<h3>Categorical components<a class="headerlink" href="#categorical-components" title="Permalink to this headline">¶</a></h3>
+<table class="longtable table">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">CategoricalIndex.codes</span></code></p></td>
+<td><p>The category codes of this categorical.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">CategoricalIndex.categories</span></code></p></td>
+<td><p>The categories of this categorical.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">CategoricalIndex.ordered</span></code></p></td>
+<td><p>Whether the categories have an ordered relationship.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">CategoricalIndex.rename_categories</span></code>(self, …)</p></td>
+<td><p>Rename categories.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">CategoricalIndex.reorder_categories</span></code>(self, …)</p></td>
+<td><p>Reorder categories as specified in new_categories.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">CategoricalIndex.add_categories</span></code>(self, …)</p></td>
+<td><p>Add new categories.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">CategoricalIndex.remove_categories</span></code>(self, …)</p></td>
+<td><p>Remove the specified categories.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">CategoricalIndex.remove_unused_categories</span></code>(…)</p></td>
+<td><p>Remove categories which are not used.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">CategoricalIndex.set_categories</span></code>(self, …)</p></td>
+<td><p>Set the categories to the specified new_categories.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">CategoricalIndex.as_ordered</span></code>(self, \*args, …)</p></td>
+<td><p>Set the Categorical to be ordered.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">CategoricalIndex.as_unordered</span></code>(self, \*args, …)</p></td>
+<td><p>Set the Categorical to be unordered.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id1">
+<h3>Modifying and computations<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<table class="longtable table">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">CategoricalIndex.map</span></code>(self, mapper)</p></td>
+<td><p>Map values using input correspondence (a dict, Series, or function).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">CategoricalIndex.equals</span></code>(self, other)</p></td>
+<td><p>Determine if two CategoricalIndex objects contain the same elements.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="intervalindex">
+<span id="api-intervalindex"></span><h2>IntervalIndex<a class="headerlink" href="#intervalindex" title="Permalink to this headline">¶</a></h2>
+<table class="longtable table">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">IntervalIndex</span></code></p></td>
+<td><p>Immutable index of intervals that are closed on the same side.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="intervalindex-components">
+<h3>IntervalIndex components<a class="headerlink" href="#intervalindex-components" title="Permalink to this headline">¶</a></h3>
+<table class="longtable table">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">IntervalIndex.from_arrays</span></code>(left, right, closed)</p></td>
+<td><p>Construct from two arrays defining the left and right bounds.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">IntervalIndex.from_tuples</span></code>(data, closed[, …])</p></td>
+<td><p>Construct an IntervalIndex from an array-like of tuples.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">IntervalIndex.from_breaks</span></code>(breaks, closed[, …])</p></td>
+<td><p>Construct an IntervalIndex from an array of splits.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">IntervalIndex.left</span></code></p></td>
+<td><p>Return the left endpoints of each Interval in the IntervalArray as an Index.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">IntervalIndex.right</span></code></p></td>
+<td><p>Return the right endpoints of each Interval in the IntervalArray as an Index.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">IntervalIndex.mid</span></code></p></td>
+<td><p>Return the midpoint of each Interval in the IntervalArray as an Index.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">IntervalIndex.closed</span></code></p></td>
+<td><p>Whether the intervals are closed on the left-side, right-side, both or neither.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">IntervalIndex.length</span></code></p></td>
+<td><p>Return an Index with entries denoting the length of each Interval in the IntervalArray.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">IntervalIndex.values</span></code></p></td>
+<td><p>Return the IntervalIndex’s data as an IntervalArray.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">IntervalIndex.is_empty</span></code></p></td>
+<td><p>Indicates if an interval is empty, meaning it contains no points.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">IntervalIndex.is_non_overlapping_monotonic</span></code></p></td>
+<td><p>Return True if the IntervalArray is non-overlapping (no Intervals share points) and is either monotonic increasing or monotonic decreasing, else False.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">IntervalIndex.is_overlapping</span></code></p></td>
+<td><p>Return True if the IntervalIndex has overlapping intervals, else False.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">IntervalIndex.get_loc</span></code>(self, key, method, …)</p></td>
+<td><p>Get integer location, slice or boolean mask for requested label.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">IntervalIndex.get_indexer</span></code>(self, target, …)</p></td>
+<td><p>Compute indexer and mask for new index given the current index.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">IntervalIndex.set_closed</span></code>(self, \*args, …)</p></td>
+<td><p>Return an IntervalArray identical to the current one, but closed on the specified side.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">IntervalIndex.contains</span></code>(self, \*args, \*\*kwargs)</p></td>
+<td><p>Check elementwise if the Intervals contain the value.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">IntervalIndex.overlaps</span></code>(self, \*args, \*\*kwargs)</p></td>
+<td><p>Check elementwise if an Interval overlaps the values in the IntervalArray.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">IntervalIndex.to_tuples</span></code>(self, \*args, \*\*kwargs)</p></td>
+<td><p>Return an ndarray of tuples of the form (left, right).</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="multiindex">
+<span id="api-multiindex"></span><h2>MultiIndex<a class="headerlink" href="#multiindex" title="Permalink to this headline">¶</a></h2>
+<table class="longtable table">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiIndex</span></code></p></td>
+<td><p>A multi-level, or hierarchical, index object for pandas objects.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="longtable table">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">IndexSlice</span></code></p></td>
+<td><p>Create an object to more easily perform multi-index slicing.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="multiindex-constructors">
+<h3>MultiIndex constructors<a class="headerlink" href="#multiindex-constructors" title="Permalink to this headline">¶</a></h3>
+<table class="longtable table">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiIndex.from_arrays</span></code>(arrays[, sortorder, …])</p></td>
+<td><p>Convert arrays to MultiIndex.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiIndex.from_tuples</span></code>(tuples[, sortorder, …])</p></td>
+<td><p>Convert list of tuples to MultiIndex.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiIndex.from_product</span></code>(iterables[, …])</p></td>
+<td><p>Make a MultiIndex from the cartesian product of multiple iterables.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiIndex.from_frame</span></code>(df[, sortorder, names])</p></td>
+<td><p>Make a MultiIndex from a DataFrame.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="multiindex-properties">
+<h3>MultiIndex properties<a class="headerlink" href="#multiindex-properties" title="Permalink to this headline">¶</a></h3>
+<table class="longtable table">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiIndex.names</span></code></p></td>
+<td><p>Names of levels in MultiIndex.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiIndex.levels</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiIndex.codes</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiIndex.nlevels</span></code></p></td>
+<td><p>Integer number of levels in this MultiIndex.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiIndex.levshape</span></code></p></td>
+<td><p>A tuple with the length of each level.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="multiindex-components">
+<h3>MultiIndex components<a class="headerlink" href="#multiindex-components" title="Permalink to this headline">¶</a></h3>
+<table class="longtable table">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiIndex.set_levels</span></code>(self, levels[, level, …])</p></td>
+<td><p>Set new levels on MultiIndex.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiIndex.set_codes</span></code>(self, codes[, level, …])</p></td>
+<td><p>Set new codes on MultiIndex.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiIndex.to_flat_index</span></code>(self)</p></td>
+<td><p>Convert a MultiIndex to an Index of Tuples containing the level values.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiIndex.to_frame</span></code>(self[, index, name])</p></td>
+<td><p>Create a DataFrame with the levels of the MultiIndex as columns.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiIndex.is_lexsorted</span></code>(self)</p></td>
+<td><p>Return True if the codes are lexicographically sorted.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiIndex.sortlevel</span></code>(self[, level, …])</p></td>
+<td><p>Sort MultiIndex at the requested level.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiIndex.droplevel</span></code>(self[, level])</p></td>
+<td><p>Return index with requested level(s) removed.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiIndex.swaplevel</span></code>(self[, i, j])</p></td>
+<td><p>Swap level i with level j.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiIndex.reorder_levels</span></code>(self, order)</p></td>
+<td><p>Rearrange levels using input order.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiIndex.remove_unused_levels</span></code>(self)</p></td>
+<td><p>Create a new MultiIndex from the current that removes unused levels, meaning that they are not expressed in the labels.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="multiindex-selecting">
+<h3>MultiIndex selecting<a class="headerlink" href="#multiindex-selecting" title="Permalink to this headline">¶</a></h3>
+<table class="longtable table">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiIndex.get_loc</span></code>(self, key[, method])</p></td>
+<td><p>Get location for a label or a tuple of labels as an integer, slice or boolean mask.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiIndex.get_locs</span></code>(self, seq)</p></td>
+<td><p>Get location for a sequence of labels.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiIndex.get_loc_level</span></code>(self, key[, level])</p></td>
+<td><p>Get both the location for the requested label(s) and the resulting sliced index.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiIndex.get_indexer</span></code>(self, target[, …])</p></td>
+<td><p>Compute indexer and mask for new index given the current index.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiIndex.get_level_values</span></code>(self, level)</p></td>
+<td><p>Return vector of label values for requested level, equal to the length of the index.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="datetimeindex">
+<span id="api-datetimeindex"></span><h2>DatetimeIndex<a class="headerlink" href="#datetimeindex" title="Permalink to this headline">¶</a></h2>
+<table class="longtable table">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">DatetimeIndex</span></code></p></td>
+<td><p>Immutable ndarray of datetime64 data, represented internally as int64, and which can be boxed to Timestamp objects that are subclasses of datetime and carry metadata such as frequency information.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="time-date-components">
+<h3>Time/Date components<a class="headerlink" href="#time-date-components" title="Permalink to this headline">¶</a></h3>
+<table class="longtable table">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">DatetimeIndex.year</span></code></p></td>
+<td><p>The year of the datetime.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">DatetimeIndex.month</span></code></p></td>
+<td><p>The month as January=1, December=12.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">DatetimeIndex.day</span></code></p></td>
+<td><p>The month as January=1, December=12.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">DatetimeIndex.hour</span></code></p></td>
+<td><p>The hours of the datetime.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">DatetimeIndex.minute</span></code></p></td>
+<td><p>The minutes of the datetime.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">DatetimeIndex.second</span></code></p></td>
+<td><p>The seconds of the datetime.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">DatetimeIndex.microsecond</span></code></p></td>
+<td><p>The microseconds of the datetime.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">DatetimeIndex.nanosecond</span></code></p></td>
+<td><p>The nanoseconds of the datetime.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">DatetimeIndex.date</span></code></p></td>
+<td><p>Returns numpy array of python datetime.date objects (namely, the date part of Timestamps without timezone information).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">DatetimeIndex.time</span></code></p></td>
+<td><p>Returns numpy array of datetime.time.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">DatetimeIndex.timetz</span></code></p></td>
+<td><p>Returns numpy array of datetime.time also containing timezone information.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">DatetimeIndex.dayofyear</span></code></p></td>
+<td><p>The ordinal day of the year.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">DatetimeIndex.weekofyear</span></code></p></td>
+<td><p>The week ordinal of the year.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">DatetimeIndex.week</span></code></p></td>
+<td><p>The week ordinal of the year.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">DatetimeIndex.dayofweek</span></code></p></td>
+<td><p>The day of the week with Monday=0, Sunday=6.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">DatetimeIndex.weekday</span></code></p></td>
+<td><p>The day of the week with Monday=0, Sunday=6.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">DatetimeIndex.quarter</span></code></p></td>
+<td><p>The quarter of the date.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">DatetimeIndex.tz</span></code></p></td>
+<td><p>Return timezone, if any.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">DatetimeIndex.freq</span></code></p></td>
+<td><p>Return the frequency object if it is set, otherwise None.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">DatetimeIndex.freqstr</span></code></p></td>
+<td><p>Return the frequency object as a string if its set, otherwise None.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">DatetimeIndex.is_month_start</span></code></p></td>
+<td><p>Indicates whether the date is the first day of the month.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">DatetimeIndex.is_month_end</span></code></p></td>
+<td><p>Indicates whether the date is the last day of the month.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">DatetimeIndex.is_quarter_start</span></code></p></td>
+<td><p>Indicator for whether the date is the first day of a quarter.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">DatetimeIndex.is_quarter_end</span></code></p></td>
+<td><p>Indicator for whether the date is the last day of a quarter.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">DatetimeIndex.is_year_start</span></code></p></td>
+<td><p>Indicate whether the date is the first day of a year.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">DatetimeIndex.is_year_end</span></code></p></td>
+<td><p>Indicate whether the date is the last day of the year.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">DatetimeIndex.is_leap_year</span></code></p></td>
+<td><p>Boolean indicator if the date belongs to a leap year.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">DatetimeIndex.inferred_freq</span></code></p></td>
+<td><p>Tryies to return a string representing a frequency guess, generated by infer_freq.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id2">
+<h3>Selecting<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<table class="longtable table">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">DatetimeIndex.indexer_at_time</span></code>(self, time[, asof])</p></td>
+<td><p>Return index locations of index values at particular time of day (e.g.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">DatetimeIndex.indexer_between_time</span></code>(self, …)</p></td>
+<td><p>Return index locations of values between particular times of day (e.g., 9:00-9:30AM).</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id3">
+<h3>Time-specific operations<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<table class="longtable table">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">DatetimeIndex.normalize</span></code>(self, \*args, \*\*kwargs)</p></td>
+<td><p>Convert times to midnight.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">DatetimeIndex.strftime</span></code>(self, \*args, \*\*kwargs)</p></td>
+<td><p>Convert to Index using specified date_format.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">DatetimeIndex.snap</span></code>(self[, freq])</p></td>
+<td><p>Snap time stamps to nearest occurring frequency.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">DatetimeIndex.tz_convert</span></code>(self, \*args, …)</p></td>
+<td><p>Convert tz-aware Datetime Array/Index from one time zone to another.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">DatetimeIndex.tz_localize</span></code>(self, \*args, …)</p></td>
+<td><p>Localize tz-naive Datetime Array/Index to tz-aware Datetime Array/Index.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">DatetimeIndex.round</span></code>(self, \*args, \*\*kwargs)</p></td>
+<td><p>Perform round operation on the data to the specified <cite>freq</cite>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">DatetimeIndex.floor</span></code>(self, \*args, \*\*kwargs)</p></td>
+<td><p>Perform floor operation on the data to the specified <cite>freq</cite>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">DatetimeIndex.ceil</span></code>(self, \*args, \*\*kwargs)</p></td>
+<td><p>Perform ceil operation on the data to the specified <cite>freq</cite>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">DatetimeIndex.month_name</span></code>(self, \*args, …)</p></td>
+<td><p>Return the month names of the DateTimeIndex with specified locale.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">DatetimeIndex.day_name</span></code>(self, \*args, \*\*kwargs)</p></td>
+<td><p>Return the day names of the DateTimeIndex with specified locale.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id4">
+<h3>Conversion<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<table class="longtable table">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">DatetimeIndex.to_period</span></code>(self, \*args, \*\*kwargs)</p></td>
+<td><p>Cast to PeriodArray/Index at a particular frequency.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">DatetimeIndex.to_perioddelta</span></code>(self, \*args, …)</p></td>
+<td><p>Calculate TimedeltaArray of difference between index values and index converted to PeriodArray at specified freq.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">DatetimeIndex.to_pydatetime</span></code>(self, \*args, …)</p></td>
+<td><p>Return Datetime Array/Index as object ndarray of datetime.datetime objects.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">DatetimeIndex.to_series</span></code>(self[, keep_tz, …])</p></td>
+<td><p>Create a Series with both index and values equal to the index keys useful with map for returning an indexer based on an index.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">DatetimeIndex.to_frame</span></code>(self[, index, name])</p></td>
+<td><p>Create a DataFrame with a column containing the Index.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="methods">
+<h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<table class="longtable table">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">DatetimeIndex.mean</span></code>(self, \*args, \*\*kwargs)</p></td>
+<td><p>Return the mean value of the Array.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="timedeltaindex">
+<h2>TimedeltaIndex<a class="headerlink" href="#timedeltaindex" title="Permalink to this headline">¶</a></h2>
+<table class="longtable table">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimedeltaIndex</span></code></p></td>
+<td><p>Immutable ndarray of timedelta64 data, represented internally as int64, and which can be boxed to timedelta objects.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="components">
+<h3>Components<a class="headerlink" href="#components" title="Permalink to this headline">¶</a></h3>
+<table class="longtable table">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimedeltaIndex.days</span></code></p></td>
+<td><p>Number of days for each element.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimedeltaIndex.seconds</span></code></p></td>
+<td><p>Number of seconds (&gt;= 0 and less than 1 day) for each element.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimedeltaIndex.microseconds</span></code></p></td>
+<td><p>Number of microseconds (&gt;= 0 and less than 1 second) for each element.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimedeltaIndex.nanoseconds</span></code></p></td>
+<td><p>Number of nanoseconds (&gt;= 0 and less than 1 microsecond) for each element.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimedeltaIndex.components</span></code></p></td>
+<td><p>Return a dataframe of the components (days, hours, minutes, seconds, milliseconds, microseconds, nanoseconds) of the Timedeltas.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimedeltaIndex.inferred_freq</span></code></p></td>
+<td><p>Tryies to return a string representing a frequency guess, generated by infer_freq.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id5">
+<h3>Conversion<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<table class="longtable table">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimedeltaIndex.to_pytimedelta</span></code>(self, \*args, …)</p></td>
+<td><p>Return Timedelta Array/Index as object ndarray of datetime.timedelta objects.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimedeltaIndex.to_series</span></code>(self[, index, name])</p></td>
+<td><p>Create a Series with both index and values equal to the index keys.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimedeltaIndex.round</span></code>(self, \*args, \*\*kwargs)</p></td>
+<td><p>Perform round operation on the data to the specified <cite>freq</cite>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimedeltaIndex.floor</span></code>(self, \*args, \*\*kwargs)</p></td>
+<td><p>Perform floor operation on the data to the specified <cite>freq</cite>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimedeltaIndex.ceil</span></code>(self, \*args, \*\*kwargs)</p></td>
+<td><p>Perform ceil operation on the data to the specified <cite>freq</cite>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimedeltaIndex.to_frame</span></code>(self[, index, name])</p></td>
+<td><p>Create a DataFrame with a column containing the Index.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id6">
+<h3>Methods<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<table class="longtable table">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimedeltaIndex.mean</span></code>(self, \*args, \*\*kwargs)</p></td>
+<td><p>Return the mean value of the Array.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="periodindex">
+<h2>PeriodIndex<a class="headerlink" href="#periodindex" title="Permalink to this headline">¶</a></h2>
+<table class="longtable table">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">PeriodIndex</span></code></p></td>
+<td><p>Immutable ndarray holding ordinal values indicating regular periods in time.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="id7">
+<h3>Properties<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<table class="longtable table">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">PeriodIndex.day</span></code></p></td>
+<td><p>The days of the period.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">PeriodIndex.dayofweek</span></code></p></td>
+<td><p>The day of the week with Monday=0, Sunday=6.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">PeriodIndex.dayofyear</span></code></p></td>
+<td><p>The ordinal day of the year.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">PeriodIndex.days_in_month</span></code></p></td>
+<td><p>The number of days in the month.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">PeriodIndex.daysinmonth</span></code></p></td>
+<td><p>The number of days in the month.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">PeriodIndex.end_time</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">PeriodIndex.freq</span></code></p></td>
+<td><p>Return the frequency object if it is set, otherwise None.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">PeriodIndex.freqstr</span></code></p></td>
+<td><p>Return the frequency object as a string if its set, otherwise None.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">PeriodIndex.hour</span></code></p></td>
+<td><p>The hour of the period.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">PeriodIndex.is_leap_year</span></code></p></td>
+<td><p>Logical indicating if the date belongs to a leap year.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">PeriodIndex.minute</span></code></p></td>
+<td><p>The minute of the period.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">PeriodIndex.month</span></code></p></td>
+<td><p>The month as January=1, December=12.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">PeriodIndex.quarter</span></code></p></td>
+<td><p>The quarter of the date.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">PeriodIndex.qyear</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">PeriodIndex.second</span></code></p></td>
+<td><p>The second of the period.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">PeriodIndex.start_time</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">PeriodIndex.week</span></code></p></td>
+<td><p>The week ordinal of the year.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">PeriodIndex.weekday</span></code></p></td>
+<td><p>The day of the week with Monday=0, Sunday=6.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">PeriodIndex.weekofyear</span></code></p></td>
+<td><p>The week ordinal of the year.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">PeriodIndex.year</span></code></p></td>
+<td><p>The year of the period.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id8">
+<h3>Methods<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<table class="longtable table">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">PeriodIndex.asfreq</span></code>(self, \*args, \*\*kwargs)</p></td>
+<td><p>Convert the Period Array/Index to the specified frequency <cite>freq</cite>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">PeriodIndex.strftime</span></code>(self, \*args, \*\*kwargs)</p></td>
+<td><p>Convert to Index using specified date_format.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">PeriodIndex.to_timestamp</span></code>(self, \*args, …)</p></td>
+<td><p>Cast to DatetimeArray/Index.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+              </div>
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="panel.html" title="previous page">Panel</a>
+    <a class='right-next' id="next-link" href="offset_frequency.html" title="next page">Date offsets</a>
+
+              </div>
+              
+          </main>
+
+      </div>
+    </div><script>
+    // TOC sidebar - add "active" class to parent list
+    //
+    // Bootstrap's scrollspy adds the active class to the <a> link,
+    // but for the automatic collapsing we need this on the parent list item.
+    //
+    // The event is triggered on "window" (and not the nav item as documented),
+    // see https://github.com/twbs/bootstrap/issues/20086
+    $(window).on("activate.bs.scrollspy", function(){
+    var navLinks = document.querySelectorAll('#bd-toc-nav a');
+    for (var i = 0; i < navLinks.length; i++) {
+        var navLink = navLinks[i];
+        navLink.parentElement.classList.remove('active');
+    }
+    var navLinks = document.querySelectorAll('#bd-toc-nav a.active');
+    for (var i = 0; i < navLinks.length; i++) {
+        var navLink = navLinks[i];
+        navLink.parentElement.classList.add('active');
+    }
+    });
+
+    /**
+     * Use left and right arrow keys to navigate forward and backwards.
+    */
+    const LEFT_ARROW_KEYCODE = 37
+    const RIGHT_ARROW_KEYCODE = 39
+
+    const getPrevUrl = () => document.getElementById('prev-link').href
+    const getNextUrl = () => document.getElementById('next-link').href
+    const initPageNav = (event) => {
+        const keycode = event.which
+
+        if (keycode === LEFT_ARROW_KEYCODE) {
+            window.location.href = getPrevUrl();
+        } else if (keycode === RIGHT_ARROW_KEYCODE) {
+            window.location.href = getNextUrl();
+        }
+    };
+
+    var keyboardListener = false;
+    $( document ).ready(() => {
+        if (keyboardListener === false) {
+            document.addEventListener('keydown', initPageNav)
+            keyboardListener = true;
+        }
+    });
+</script>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2008-2020, the pandas development team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.3.0.
+    </div>
+  </body>
+</html>

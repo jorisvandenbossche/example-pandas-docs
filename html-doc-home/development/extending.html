@@ -1,0 +1,768 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Extending pandas &#8212; pandas 1.0.0rc0+111.ge72cd7c52 documentation</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link rel="stylesheet" href="../_static/sphinx-bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/pandas.css" />
+    <link href="../_static/css/custom.css" rel="stylesheet">
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Developer" href="developer.html" />
+    <link rel="prev" title="Internals" href="internals.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main">
+
+<a class="navbar-brand" href="../index.html">
+  <img src="../_static/pandas.svg" class="logo" alt="logo">
+</a>
+
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+</button>
+
+<div id="navbar-menu" class="collapse navbar-collapse">
+  <ul id="navbar-main-elements" class="navbar-nav mr-auto">
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        1.0.0
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown" id="version-menu"></div>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="../index.html">Home</a>
+    </li>
+    
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../whatsnew/v1.1.0.html">What's New in 1.1.0</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../getting_started/index.html">Getting started</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../user_guide/index.html">User Guide</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../reference/index.html">API reference</a>
+    </li>
+    
+    <li class="nav-item active">
+        <a class="nav-link" href="index.html">Development</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../whatsnew/index.html">Release Notes</a>
+    </li>
+    
+    
+  </ul>
+  <ul class="navbar-nav ml-auto">
+    
+      <li class="nav-item">
+        <a class="nav-link" href="https://github.com/pandas-dev/pandas" target="_blank" rel="noopener">
+          <span><i class="fab fa-github-square"></i></span>
+        </a>
+      </li>
+    
+    
+      <li class="nav-item">
+        <a class="nav-link" href="https://twitter.com/pandas_dev" target="_blank" rel="noopener">
+          <span><i class="fab fa-twitter-square"></i></span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row flex-xl-nowrap">
+          <div class="col-12 col-md-3 col-xl-2 bd-sidebar">
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+
+  <div class="bd-toc-item active">
+  
+
+  <ul class="nav bd-sidenav">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+        
+          
+              <li class="">
+                  <a href="contributing.html">Contributing to pandas</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="code_style.html">pandas code style guide</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="maintaining.html">Pandas Maintenance</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="internals.html">Internals</a>
+              </li>
+          
+        
+          
+              <li class="active">
+                  <a href="">Extending pandas</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="developer.html">Developer</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="policies.html">Policies</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="roadmap.html">Roadmap</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="meeting.html">Developer Meetings</a>
+              </li>
+          
+        
+      
+      
+      
+      
+    </ul>
+
+</nav>
+          </div>
+
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+              
+<div class="tocsection onthispage"><i class="fas fa-list"></i> On this page</div>
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#registering-custom-accessors" class="nav-link">Registering custom accessors</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#extension-types" class="nav-link">Extension types</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#extensiondtype" class="nav-link">ExtensionDtype</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#extensionarray" class="nav-link">ExtensionArray</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#extensionarray-operator-support" class="nav-link">ExtensionArray Operator Support</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#numpy-universal-functions" class="nav-link">NumPy Universal Functions</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#testing-extension-arrays" class="nav-link">Testing extension arrays</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#compatibility-with-apache-arrow" class="nav-link">Compatibility with Apache Arrow</a>
+        </li>
+    
+            </ul>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#subclassing-pandas-data-structures" class="nav-link">Subclassing pandas data structures</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#override-constructor-properties" class="nav-link">Override constructor properties</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#define-original-properties" class="nav-link">Define original properties</a>
+        </li>
+    
+            </ul>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#plotting-backends" class="nav-link">Plotting backends</a>
+        </li>
+    
+    </ul>
+</nav>
+              
+            </div>
+
+          <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
+              <div>
+                
+  <div class="section" id="extending-pandas">
+<span id="extending"></span><h1>Extending pandas<a class="headerlink" href="#extending-pandas" title="Permalink to this headline">¶</a></h1>
+<p>While pandas provides a rich set of methods, containers, and data types, your
+needs may not be fully satisfied. Pandas offers a few options for extending
+pandas.</p>
+<div class="section" id="registering-custom-accessors">
+<span id="extending-register-accessors"></span><h2>Registering custom accessors<a class="headerlink" href="#registering-custom-accessors" title="Permalink to this headline">¶</a></h2>
+<p>Libraries can use the decorators
+<code class="xref py py-func docutils literal notranslate"><span class="pre">pandas.api.extensions.register_dataframe_accessor()</span></code>,
+<code class="xref py py-func docutils literal notranslate"><span class="pre">pandas.api.extensions.register_series_accessor()</span></code>, and
+<code class="xref py py-func docutils literal notranslate"><span class="pre">pandas.api.extensions.register_index_accessor()</span></code>, to add additional
+“namespaces” to pandas objects. All of these follow a similar convention: you
+decorate a class, providing the name of attribute to add. The class’s
+<code class="docutils literal notranslate"><span class="pre">__init__</span></code> method gets the object being decorated. For example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@pd.api.extensions.register_dataframe_accessor</span><span class="p">(</span><span class="s2">&quot;geo&quot;</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">GeoAccessor</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pandas_obj</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_validate</span><span class="p">(</span><span class="n">pandas_obj</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_obj</span> <span class="o">=</span> <span class="n">pandas_obj</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_validate</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
+        <span class="c1"># verify there is a column latitude and a column longitude</span>
+        <span class="k">if</span> <span class="s1">&#39;latitude&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">obj</span><span class="o">.</span><span class="n">columns</span> <span class="ow">or</span> <span class="s1">&#39;longitude&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">obj</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s2">&quot;Must have &#39;latitude&#39; and &#39;longitude&#39;.&quot;</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">center</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># return the geographic center point of this DataFrame</span>
+        <span class="n">lat</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_obj</span><span class="o">.</span><span class="n">latitude</span>
+        <span class="n">lon</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_obj</span><span class="o">.</span><span class="n">longitude</span>
+        <span class="k">return</span> <span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">lon</span><span class="o">.</span><span class="n">mean</span><span class="p">()),</span> <span class="nb">float</span><span class="p">(</span><span class="n">lat</span><span class="o">.</span><span class="n">mean</span><span class="p">()))</span>
+
+    <span class="k">def</span> <span class="nf">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># plot this array&#39;s data on a map, e.g., using Cartopy</span>
+        <span class="k">pass</span>
+</pre></div>
+</div>
+<p>Now users can access your methods using the <code class="docutils literal notranslate"><span class="pre">geo</span></code> namespace:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ds</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;longitude&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
+<span class="gp">... </span>                   <span class="s1">&#39;latitude&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">)})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ds</span><span class="o">.</span><span class="n">geo</span><span class="o">.</span><span class="n">center</span>
+<span class="go">(5.0, 10.0)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ds</span><span class="o">.</span><span class="n">geo</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="go"># plots data on a map</span>
+</pre></div>
+</div>
+<p>This can be a convenient way to extend pandas objects without subclassing them.
+If you write a custom accessor, make a pull request adding it to our
+<a class="reference internal" href="../ecosystem.html#ecosystem"><span class="std std-ref">Pandas ecosystem</span></a> page.</p>
+<p>We highly recommend validating the data in your accessor’s <cite>__init__</cite>.
+In our <code class="docutils literal notranslate"><span class="pre">GeoAccessor</span></code>, we validate that the data contains the expected columns,
+raising an <code class="docutils literal notranslate"><span class="pre">AttributeError</span></code> when the validation fails.
+For a <code class="docutils literal notranslate"><span class="pre">Series</span></code> accessor, you should validate the <code class="docutils literal notranslate"><span class="pre">dtype</span></code> if the accessor
+applies only to certain dtypes.</p>
+</div>
+<div class="section" id="extension-types">
+<span id="extending-extension-types"></span><h2>Extension types<a class="headerlink" href="#extension-types" title="Permalink to this headline">¶</a></h2>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 0.23.0.</span></p>
+</div>
+<div class="alert alert-warning">
+<p class="admonition-title">Warning</p>
+<p>The <code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.api.extensions.ExtensionDtype</span></code> and <code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.api.extensions.ExtensionArray</span></code> APIs are new and
+experimental. They may change between versions without warning.</p>
+</div>
+<p>Pandas defines an interface for implementing data types and arrays that <em>extend</em>
+NumPy’s type system. Pandas itself uses the extension system for some types
+that aren’t built into NumPy (categorical, period, interval, datetime with
+timezone).</p>
+<p>Libraries can define a custom array and data type. When pandas encounters these
+objects, they will be handled properly (i.e. not converted to an ndarray of
+objects). Many methods like <code class="xref py py-func docutils literal notranslate"><span class="pre">pandas.isna()</span></code> will dispatch to the extension
+type’s implementation.</p>
+<p>If you’re building a library that implements the interface, please publicize it
+on <a class="reference internal" href="../ecosystem.html#ecosystem-extensions"><span class="std std-ref">Extension data types</span></a>.</p>
+<p>The interface consists of two classes.</p>
+<div class="section" id="extensiondtype">
+<h3><code class="xref py py-class docutils literal notranslate"><span class="pre">ExtensionDtype</span></code><a class="headerlink" href="#extensiondtype" title="Permalink to this headline">¶</a></h3>
+<p>A <code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.api.extensions.ExtensionDtype</span></code> is similar to a <code class="docutils literal notranslate"><span class="pre">numpy.dtype</span></code> object. It describes the
+data type. Implementors are responsible for a few unique items like the name.</p>
+<p>One particularly important item is the <code class="docutils literal notranslate"><span class="pre">type</span></code> property. This should be the
+class that is the scalar type for your data. For example, if you were writing an
+extension array for IP Address data, this might be <code class="docutils literal notranslate"><span class="pre">ipaddress.IPv4Address</span></code>.</p>
+<p>See the <a class="reference external" href="https://github.com/pandas-dev/pandas/blob/master/pandas/core/dtypes/base.py">extension dtype source</a> for interface definition.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 0.24.0.</span></p>
+</div>
+<p><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.api.extension.ExtensionDtype</span></code> can be registered to pandas to allow creation via a string dtype name.
+This allows one to instantiate <code class="docutils literal notranslate"><span class="pre">Series</span></code> and <code class="docutils literal notranslate"><span class="pre">.astype()</span></code> with a registered string name, for
+example <code class="docutils literal notranslate"><span class="pre">'category'</span></code> is a registered string accessor for the <code class="docutils literal notranslate"><span class="pre">CategoricalDtype</span></code>.</p>
+<p>See the <a class="reference external" href="https://github.com/pandas-dev/pandas/blob/master/pandas/core/dtypes/dtypes.py">extension dtype dtypes</a> for more on how to register dtypes.</p>
+</div>
+<div class="section" id="extensionarray">
+<h3><code class="xref py py-class docutils literal notranslate"><span class="pre">ExtensionArray</span></code><a class="headerlink" href="#extensionarray" title="Permalink to this headline">¶</a></h3>
+<p>This class provides all the array-like functionality. ExtensionArrays are
+limited to 1 dimension. An ExtensionArray is linked to an ExtensionDtype via the
+<code class="docutils literal notranslate"><span class="pre">dtype</span></code> attribute.</p>
+<p>Pandas makes no restrictions on how an extension array is created via its
+<code class="docutils literal notranslate"><span class="pre">__new__</span></code> or <code class="docutils literal notranslate"><span class="pre">__init__</span></code>, and puts no restrictions on how you store your
+data. We do require that your array be convertible to a NumPy array, even if
+this is relatively expensive (as it is for <code class="docutils literal notranslate"><span class="pre">Categorical</span></code>).</p>
+<p>They may be backed by none, one, or many NumPy arrays. For example,
+<code class="docutils literal notranslate"><span class="pre">pandas.Categorical</span></code> is an extension array backed by two arrays,
+one for codes and one for categories. An array of IPv6 addresses may
+be backed by a NumPy structured array with two fields, one for the
+lower 64 bits and one for the upper 64 bits. Or they may be backed
+by some other storage type, like Python lists.</p>
+<p>See the <a class="reference external" href="https://github.com/pandas-dev/pandas/blob/master/pandas/core/arrays/base.py">extension array source</a> for the interface definition. The docstrings
+and comments contain guidance for properly implementing the interface.</p>
+</div>
+<div class="section" id="extensionarray-operator-support">
+<span id="extending-extension-operator"></span><h3><code class="xref py py-class docutils literal notranslate"><span class="pre">ExtensionArray</span></code> Operator Support<a class="headerlink" href="#extensionarray-operator-support" title="Permalink to this headline">¶</a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 0.24.0.</span></p>
+</div>
+<p>By default, there are no operators defined for the class <code class="xref py py-class docutils literal notranslate"><span class="pre">ExtensionArray</span></code>.
+There are two approaches for providing operator support for your ExtensionArray:</p>
+<ol class="arabic simple">
+<li><p>Define each of the operators on your <code class="docutils literal notranslate"><span class="pre">ExtensionArray</span></code> subclass.</p></li>
+<li><p>Use an operator implementation from pandas that depends on operators that are already defined
+on the underlying elements (scalars) of the ExtensionArray.</p></li>
+</ol>
+<div class="alert alert-info">
+<p class="admonition-title">Note</p>
+<p>Regardless of the approach, you may want to set <code class="docutils literal notranslate"><span class="pre">__array_priority__</span></code>
+if you want your implementation to be called when involved in binary operations
+with NumPy arrays.</p>
+</div>
+<p>For the first approach, you define selected operators, e.g., <code class="docutils literal notranslate"><span class="pre">__add__</span></code>, <code class="docutils literal notranslate"><span class="pre">__le__</span></code>, etc. that
+you want your <code class="docutils literal notranslate"><span class="pre">ExtensionArray</span></code> subclass to support.</p>
+<p>The second approach assumes that the underlying elements (i.e., scalar type) of the <code class="docutils literal notranslate"><span class="pre">ExtensionArray</span></code>
+have the individual operators already defined.  In other words, if your <code class="docutils literal notranslate"><span class="pre">ExtensionArray</span></code>
+named <code class="docutils literal notranslate"><span class="pre">MyExtensionArray</span></code> is implemented so that each element is an instance
+of the class <code class="docutils literal notranslate"><span class="pre">MyExtensionElement</span></code>, then if the operators are defined
+for <code class="docutils literal notranslate"><span class="pre">MyExtensionElement</span></code>, the second approach will automatically
+define the operators for <code class="docutils literal notranslate"><span class="pre">MyExtensionArray</span></code>.</p>
+<p>A mixin class, <code class="xref py py-class docutils literal notranslate"><span class="pre">ExtensionScalarOpsMixin</span></code> supports this second
+approach.  If developing an <code class="docutils literal notranslate"><span class="pre">ExtensionArray</span></code> subclass, for example <code class="docutils literal notranslate"><span class="pre">MyExtensionArray</span></code>,
+can simply include <code class="docutils literal notranslate"><span class="pre">ExtensionScalarOpsMixin</span></code> as a parent class of <code class="docutils literal notranslate"><span class="pre">MyExtensionArray</span></code>,
+and then call the methods <code class="xref py py-meth docutils literal notranslate"><span class="pre">_add_arithmetic_ops()</span></code> and/or
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">_add_comparison_ops()</span></code> to hook the operators into
+your <code class="docutils literal notranslate"><span class="pre">MyExtensionArray</span></code> class, as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pandas.api.extensions</span> <span class="kn">import</span> <span class="n">ExtensionArray</span><span class="p">,</span> <span class="n">ExtensionScalarOpsMixin</span>
+
+<span class="k">class</span> <span class="nc">MyExtensionArray</span><span class="p">(</span><span class="n">ExtensionArray</span><span class="p">,</span> <span class="n">ExtensionScalarOpsMixin</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+
+<span class="n">MyExtensionArray</span><span class="o">.</span><span class="n">_add_arithmetic_ops</span><span class="p">()</span>
+<span class="n">MyExtensionArray</span><span class="o">.</span><span class="n">_add_comparison_ops</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="alert alert-info">
+<p class="admonition-title">Note</p>
+<p>Since <code class="docutils literal notranslate"><span class="pre">pandas</span></code> automatically calls the underlying operator on each
+element one-by-one, this might not be as performant as implementing your own
+version of the associated operators directly on the <code class="docutils literal notranslate"><span class="pre">ExtensionArray</span></code>.</p>
+</div>
+<p>For arithmetic operations, this implementation will try to reconstruct a new
+<code class="docutils literal notranslate"><span class="pre">ExtensionArray</span></code> with the result of the element-wise operation. Whether
+or not that succeeds depends on whether the operation returns a result
+that’s valid for the <code class="docutils literal notranslate"><span class="pre">ExtensionArray</span></code>. If an <code class="docutils literal notranslate"><span class="pre">ExtensionArray</span></code> cannot
+be reconstructed, an ndarray containing the scalars returned instead.</p>
+<p>For ease of implementation and consistency with operations between pandas
+and NumPy ndarrays, we recommend <em>not</em> handling Series and Indexes in your binary ops.
+Instead, you should detect these cases and return <code class="docutils literal notranslate"><span class="pre">NotImplemented</span></code>.
+When pandas encounters an operation like <code class="docutils literal notranslate"><span class="pre">op(Series,</span> <span class="pre">ExtensionArray)</span></code>, pandas
+will</p>
+<ol class="arabic simple">
+<li><p>unbox the array from the <code class="docutils literal notranslate"><span class="pre">Series</span></code> (<code class="docutils literal notranslate"><span class="pre">Series.array</span></code>)</p></li>
+<li><p>call <code class="docutils literal notranslate"><span class="pre">result</span> <span class="pre">=</span> <span class="pre">op(values,</span> <span class="pre">ExtensionArray)</span></code></p></li>
+<li><p>re-box the result in a <code class="docutils literal notranslate"><span class="pre">Series</span></code></p></li>
+</ol>
+</div>
+<div class="section" id="numpy-universal-functions">
+<span id="extending-extension-ufunc"></span><h3>NumPy Universal Functions<a class="headerlink" href="#numpy-universal-functions" title="Permalink to this headline">¶</a></h3>
+<p><code class="xref py py-class docutils literal notranslate"><span class="pre">Series</span></code> implements <code class="docutils literal notranslate"><span class="pre">__array_ufunc__</span></code>. As part of the implementation,
+pandas unboxes the <code class="docutils literal notranslate"><span class="pre">ExtensionArray</span></code> from the <code class="xref py py-class docutils literal notranslate"><span class="pre">Series</span></code>, applies the ufunc,
+and re-boxes it if necessary.</p>
+<p>If applicable, we highly recommend that you implement <code class="docutils literal notranslate"><span class="pre">__array_ufunc__</span></code> in your
+extension array to avoid coercion to an ndarray. See
+<a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.lib.mixins.NDArrayOperatorsMixin.html">the numpy documentation</a>
+for an example.</p>
+<p>As part of your implementation, we require that you defer to pandas when a pandas
+container (<code class="xref py py-class docutils literal notranslate"><span class="pre">Series</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Index</span></code>) is detected in <code class="docutils literal notranslate"><span class="pre">inputs</span></code>.
+If any of those is present, you should return <code class="docutils literal notranslate"><span class="pre">NotImplemented</span></code>. Pandas will take care of
+unboxing the array from the container and re-calling the ufunc with the unwrapped input.</p>
+</div>
+<div class="section" id="testing-extension-arrays">
+<span id="extending-extension-testing"></span><h3>Testing extension arrays<a class="headerlink" href="#testing-extension-arrays" title="Permalink to this headline">¶</a></h3>
+<p>We provide a test suite for ensuring that your extension arrays satisfy the expected
+behavior. To use the test suite, you must provide several pytest fixtures and inherit
+from the base test class. The required fixtures are found in
+<a class="reference external" href="https://github.com/pandas-dev/pandas/blob/master/pandas/tests/extension/conftest.py">https://github.com/pandas-dev/pandas/blob/master/pandas/tests/extension/conftest.py</a>.</p>
+<p>To use a test, subclass it:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pandas.tests.extension</span> <span class="kn">import</span> <span class="n">base</span>
+
+
+<span class="k">class</span> <span class="nc">TestConstructors</span><span class="p">(</span><span class="n">base</span><span class="o">.</span><span class="n">BaseConstructorsTests</span><span class="p">):</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+<p>See <a class="reference external" href="https://github.com/pandas-dev/pandas/blob/master/pandas/tests/extension/base/__init__.py">https://github.com/pandas-dev/pandas/blob/master/pandas/tests/extension/base/__init__.py</a>
+for a list of all the tests available.</p>
+</div>
+<div class="section" id="compatibility-with-apache-arrow">
+<span id="extending-extension-arrow"></span><h3>Compatibility with Apache Arrow<a class="headerlink" href="#compatibility-with-apache-arrow" title="Permalink to this headline">¶</a></h3>
+<p>An <code class="docutils literal notranslate"><span class="pre">ExtensionArray</span></code> can support conversion to / from <code class="docutils literal notranslate"><span class="pre">pyarrow</span></code> arrays
+(and thus support for example serialization to the Parquet file format)
+by implementing two methods: <code class="docutils literal notranslate"><span class="pre">ExtensionArray.__arrow_array__</span></code> and
+<code class="docutils literal notranslate"><span class="pre">ExtensionDtype.__from_arrow__</span></code>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">ExtensionArray.__arrow_array__</span></code> ensures that <code class="docutils literal notranslate"><span class="pre">pyarrow</span></code> knowns how
+to convert the specific extension array into a <code class="docutils literal notranslate"><span class="pre">pyarrow.Array</span></code> (also when
+included as a column in a pandas DataFrame):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyExtensionArray</span><span class="p">(</span><span class="n">ExtensionArray</span><span class="p">):</span>
+    <span class="o">...</span>
+
+    <span class="k">def</span> <span class="nf">__arrow_array__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="c1"># convert the underlying array values to a pyarrow Array</span>
+        <span class="kn">import</span> <span class="nn">pyarrow</span>
+        <span class="k">return</span> <span class="n">pyarrow</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">type</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">ExtensionDtype.__from_arrow__</span></code> method then controls the conversion
+back from pyarrow to a pandas ExtensionArray. This method receives a pyarrow
+<code class="docutils literal notranslate"><span class="pre">Array</span></code> or <code class="docutils literal notranslate"><span class="pre">ChunkedArray</span></code> as only argument and is expected to return the
+appropriate pandas <code class="docutils literal notranslate"><span class="pre">ExtensionArray</span></code> for this dtype and the passed values:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>class ExtensionDtype:
+    ...
+
+    def __from_arrow__(self, array: pyarrow.Array/ChunkedArray) -&gt; ExtensionArray:
+        ...
+</pre></div>
+</div>
+<p>See more in the <a class="reference external" href="https://arrow.apache.org/docs/python/extending_types.html">Arrow documentation</a>.</p>
+<p>Those methods have been implemented for the nullable integer and string extension
+dtypes included in pandas, and ensure roundtrip to pyarrow and the Parquet file format.</p>
+</div>
+</div>
+<div class="section" id="subclassing-pandas-data-structures">
+<span id="extending-subclassing-pandas"></span><h2>Subclassing pandas data structures<a class="headerlink" href="#subclassing-pandas-data-structures" title="Permalink to this headline">¶</a></h2>
+<div class="alert alert-warning">
+<p class="admonition-title">Warning</p>
+<p>There are some easier alternatives before considering subclassing <code class="docutils literal notranslate"><span class="pre">pandas</span></code> data structures.</p>
+<ol class="arabic simple">
+<li><p>Extensible method chains with <a class="reference internal" href="../getting_started/basics.html#basics-pipe"><span class="std std-ref">pipe</span></a></p></li>
+<li><p>Use <em>composition</em>. See <a class="reference external" href="http://en.wikipedia.org/wiki/Composition_over_inheritance">here</a>.</p></li>
+<li><p>Extending by <a class="reference internal" href="#extending-register-accessors"><span class="std std-ref">registering an accessor</span></a></p></li>
+<li><p>Extending by <a class="reference internal" href="#extending-extension-types"><span class="std std-ref">extension type</span></a></p></li>
+</ol>
+</div>
+<p>This section describes how to subclass <code class="docutils literal notranslate"><span class="pre">pandas</span></code> data structures to meet more specific needs. There are two points that need attention:</p>
+<ol class="arabic simple">
+<li><p>Override constructor properties.</p></li>
+<li><p>Define original properties</p></li>
+</ol>
+<div class="alert alert-info">
+<p class="admonition-title">Note</p>
+<p>You can find a nice example in <a class="reference external" href="https://github.com/geopandas/geopandas">geopandas</a> project.</p>
+</div>
+<div class="section" id="override-constructor-properties">
+<h3>Override constructor properties<a class="headerlink" href="#override-constructor-properties" title="Permalink to this headline">¶</a></h3>
+<p>Each data structure has several <em>constructor properties</em> for returning a new
+data structure as the result of an operation. By overriding these properties,
+you can retain subclasses through <code class="docutils literal notranslate"><span class="pre">pandas</span></code> data manipulations.</p>
+<p>There are 3 constructor properties to be defined:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">_constructor</span></code>: Used when a manipulation result has the same dimensions as the original.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">_constructor_sliced</span></code>: Used when a manipulation result has one lower dimension(s) as the original, such as <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> single columns slicing.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">_constructor_expanddim</span></code>: Used when a manipulation result has one higher dimension as the original, such as <code class="docutils literal notranslate"><span class="pre">Series.to_frame()</span></code>.</p></li>
+</ul>
+<p>Following table shows how <code class="docutils literal notranslate"><span class="pre">pandas</span></code> data structures define constructor properties by default.</p>
+<table class="table">
+<colgroup>
+<col style="width: 37%" />
+<col style="width: 32%" />
+<col style="width: 32%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Property Attributes</p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">Series</span></code></p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">DataFrame</span></code></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">_constructor</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Series</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">DataFrame</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">_constructor_sliced</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">NotImplementedError</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Series</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">_constructor_expanddim</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">DataFrame</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">NotImplementedError</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<p>Below example shows how to define <code class="docutils literal notranslate"><span class="pre">SubclassedSeries</span></code> and <code class="docutils literal notranslate"><span class="pre">SubclassedDataFrame</span></code> overriding constructor properties.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">SubclassedSeries</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">):</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">_constructor</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">SubclassedSeries</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">_constructor_expanddim</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">SubclassedDataFrame</span>
+
+
+<span class="k">class</span> <span class="nc">SubclassedDataFrame</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">_constructor</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">SubclassedDataFrame</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">_constructor_sliced</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">SubclassedSeries</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">SubclassedSeries</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="go">&lt;class &#39;__main__.SubclassedSeries&#39;&gt;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">to_framed</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">to_framed</span><span class="p">)</span>
+<span class="go">&lt;class &#39;__main__.SubclassedDataFrame&#39;&gt;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">SubclassedDataFrame</span><span class="p">({</span><span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="s1">&#39;B&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="s1">&#39;C&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span>
+<span class="go">   A  B  C</span>
+<span class="go">0  1  4  7</span>
+<span class="go">1  2  5  8</span>
+<span class="go">2  3  6  9</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="go">&lt;class &#39;__main__.SubclassedDataFrame&#39;&gt;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sliced1</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sliced1</span>
+<span class="go">   A  B</span>
+<span class="go">0  1  4</span>
+<span class="go">1  2  5</span>
+<span class="go">2  3  6</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">sliced1</span><span class="p">)</span>
+<span class="go">&lt;class &#39;__main__.SubclassedDataFrame&#39;&gt;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sliced2</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sliced2</span>
+<span class="go">0    1</span>
+<span class="go">1    2</span>
+<span class="go">2    3</span>
+<span class="go">Name: A, dtype: int64</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">sliced2</span><span class="p">)</span>
+<span class="go">&lt;class &#39;__main__.SubclassedSeries&#39;&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="define-original-properties">
+<h3>Define original properties<a class="headerlink" href="#define-original-properties" title="Permalink to this headline">¶</a></h3>
+<p>To let original data structures have additional properties, you should let <code class="docutils literal notranslate"><span class="pre">pandas</span></code> know what properties are added. <code class="docutils literal notranslate"><span class="pre">pandas</span></code> maps unknown properties to data names overriding <code class="docutils literal notranslate"><span class="pre">__getattribute__</span></code>. Defining original properties can be done in one of 2 ways:</p>
+<ol class="arabic simple">
+<li><p>Define <code class="docutils literal notranslate"><span class="pre">_internal_names</span></code> and <code class="docutils literal notranslate"><span class="pre">_internal_names_set</span></code> for temporary properties which WILL NOT be passed to manipulation results.</p></li>
+<li><p>Define <code class="docutils literal notranslate"><span class="pre">_metadata</span></code> for normal properties which will be passed to manipulation results.</p></li>
+</ol>
+<p>Below is an example to define two original properties, “internal_cache” as a temporary property and “added_property” as a normal property</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">SubclassedDataFrame2</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
+
+    <span class="c1"># temporary properties</span>
+    <span class="n">_internal_names</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">_internal_names</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;internal_cache&#39;</span><span class="p">]</span>
+    <span class="n">_internal_names_set</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">_internal_names</span><span class="p">)</span>
+
+    <span class="c1"># normal properties</span>
+    <span class="n">_metadata</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;added_property&#39;</span><span class="p">]</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">_constructor</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">SubclassedDataFrame2</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">SubclassedDataFrame2</span><span class="p">({</span><span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="s1">&#39;B&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="s1">&#39;C&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span>
+<span class="go">   A  B  C</span>
+<span class="go">0  1  4  7</span>
+<span class="go">1  2  5  8</span>
+<span class="go">2  3  6  9</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="o">.</span><span class="n">internal_cache</span> <span class="o">=</span> <span class="s1">&#39;cached&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="o">.</span><span class="n">added_property</span> <span class="o">=</span> <span class="s1">&#39;property&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="o">.</span><span class="n">internal_cache</span>
+<span class="go">cached</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="o">.</span><span class="n">added_property</span>
+<span class="go">property</span>
+
+<span class="go"># properties defined in _internal_names is reset after manipulation</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">internal_cache</span>
+<span class="go">AttributeError: &#39;SubclassedDataFrame2&#39; object has no attribute &#39;internal_cache&#39;</span>
+
+<span class="go"># properties defined in _metadata are retained</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">added_property</span>
+<span class="go">property</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="plotting-backends">
+<span id="extending-plotting-backends"></span><h2>Plotting backends<a class="headerlink" href="#plotting-backends" title="Permalink to this headline">¶</a></h2>
+<p>Starting in 0.25 pandas can be extended with third-party plotting backends. The
+main idea is letting users select a plotting backend different than the provided
+one based on Matplotlib. For example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;plotting.backend&#39;</span><span class="p">,</span> <span class="s1">&#39;backend.module&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This would be more or less equivalent to:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">backend.module</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">backend</span><span class="o">.</span><span class="n">module</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]))</span>
+</pre></div>
+</div>
+<p>The backend module can then use other visualization tools (Bokeh, Altair,…)
+to generate the plots.</p>
+<p>Libraries implementing the plotting backend should use <a class="reference external" href="https://setuptools.readthedocs.io/en/latest/setuptools.html#dynamic-discovery-of-services-and-plugins">entry points</a>
+to make their backend discoverable to pandas. The key is <code class="docutils literal notranslate"><span class="pre">&quot;pandas_plotting_backends&quot;</span></code>. For example, pandas
+registers the default “matplotlib” backend as follows.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># in setup.py</span>
+<span class="n">setup</span><span class="p">(</span>  <span class="c1"># noqa: F821</span>
+    <span class="o">...</span><span class="p">,</span>
+    <span class="n">entry_points</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">&quot;pandas_plotting_backends&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;matplotlib = pandas:plotting._matplotlib&quot;</span><span class="p">,</span>
+        <span class="p">],</span>
+    <span class="p">},</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>More information on how to implement a third-party plotting backend can be found at
+<a class="reference external" href="https://github.com/pandas-dev/pandas/blob/master/pandas/plotting/__init__.py#L1">https://github.com/pandas-dev/pandas/blob/master/pandas/plotting/__init__.py#L1</a>.</p>
+</div>
+</div>
+
+
+              </div>
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="internals.html" title="previous page">Internals</a>
+    <a class='right-next' id="next-link" href="developer.html" title="next page">Developer</a>
+
+              </div>
+              
+          </main>
+
+      </div>
+    </div><script>
+    // TOC sidebar - add "active" class to parent list
+    //
+    // Bootstrap's scrollspy adds the active class to the <a> link,
+    // but for the automatic collapsing we need this on the parent list item.
+    //
+    // The event is triggered on "window" (and not the nav item as documented),
+    // see https://github.com/twbs/bootstrap/issues/20086
+    $(window).on("activate.bs.scrollspy", function(){
+    var navLinks = document.querySelectorAll('#bd-toc-nav a');
+    for (var i = 0; i < navLinks.length; i++) {
+        var navLink = navLinks[i];
+        navLink.parentElement.classList.remove('active');
+    }
+    var navLinks = document.querySelectorAll('#bd-toc-nav a.active');
+    for (var i = 0; i < navLinks.length; i++) {
+        var navLink = navLinks[i];
+        navLink.parentElement.classList.add('active');
+    }
+    });
+
+    /**
+     * Use left and right arrow keys to navigate forward and backwards.
+    */
+    const LEFT_ARROW_KEYCODE = 37
+    const RIGHT_ARROW_KEYCODE = 39
+
+    const getPrevUrl = () => document.getElementById('prev-link').href
+    const getNextUrl = () => document.getElementById('next-link').href
+    const initPageNav = (event) => {
+        const keycode = event.which
+
+        if (keycode === LEFT_ARROW_KEYCODE) {
+            window.location.href = getPrevUrl();
+        } else if (keycode === RIGHT_ARROW_KEYCODE) {
+            window.location.href = getNextUrl();
+        }
+    };
+
+    var keyboardListener = false;
+    $( document ).ready(() => {
+        if (keyboardListener === false) {
+            document.addEventListener('keydown', initPageNav)
+            keyboardListener = true;
+        }
+    });
+</script>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2008-2020, the pandas development team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.3.0.
+    </div>
+  </body>
+</html>

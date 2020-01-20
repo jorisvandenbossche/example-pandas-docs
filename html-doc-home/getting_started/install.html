@@ -1,0 +1,732 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Installation &#8212; pandas 1.0.0rc0+111.ge72cd7c52 documentation</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link rel="stylesheet" href="../_static/sphinx-bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/pandas.css" />
+    <link href="../_static/css/custom.css" rel="stylesheet">
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Package overview" href="overview.html" />
+    <link rel="prev" title="Getting started" href="index.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main">
+
+<a class="navbar-brand" href="../index.html">
+  <img src="../_static/pandas.svg" class="logo" alt="logo">
+</a>
+
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+</button>
+
+<div id="navbar-menu" class="collapse navbar-collapse">
+  <ul id="navbar-main-elements" class="navbar-nav mr-auto">
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        1.0.0
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown" id="version-menu"></div>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="../index.html">Home</a>
+    </li>
+    
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../whatsnew/v1.1.0.html">What's New in 1.1.0</a>
+    </li>
+    
+    <li class="nav-item active">
+        <a class="nav-link" href="index.html">Getting started</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../user_guide/index.html">User Guide</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../reference/index.html">API reference</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../development/index.html">Development</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../whatsnew/index.html">Release Notes</a>
+    </li>
+    
+    
+  </ul>
+  <ul class="navbar-nav ml-auto">
+    
+      <li class="nav-item">
+        <a class="nav-link" href="https://github.com/pandas-dev/pandas" target="_blank" rel="noopener">
+          <span><i class="fab fa-github-square"></i></span>
+        </a>
+      </li>
+    
+    
+      <li class="nav-item">
+        <a class="nav-link" href="https://twitter.com/pandas_dev" target="_blank" rel="noopener">
+          <span><i class="fab fa-twitter-square"></i></span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row flex-xl-nowrap">
+          <div class="col-12 col-md-3 col-xl-2 bd-sidebar">
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+
+  <div class="bd-toc-item active">
+  
+
+  <ul class="nav bd-sidenav">
+      
+      
+      
+      
+        
+          
+              <li class="active">
+                  <a href="">Installation</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="overview.html">Package overview</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="10min.html">10 minutes to pandas</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="basics.html">Essential basic functionality</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="dsintro.html">Intro to data structures</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="comparison/index.html">Comparison with other tools</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="tutorials.html">Tutorials</a>
+              </li>
+          
+        
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    </ul>
+
+</nav>
+          </div>
+
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+              
+<div class="tocsection onthispage"><i class="fas fa-list"></i> On this page</div>
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#python-version-support" class="nav-link">Python version support</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#installing-pandas" class="nav-link">Installing pandas</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#installing-with-anaconda" class="nav-link">Installing with Anaconda</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#installing-with-miniconda" class="nav-link">Installing with Miniconda</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#installing-from-pypi" class="nav-link">Installing from PyPI</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#installing-with-activepython" class="nav-link">Installing with ActivePython</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#installing-using-your-linux-distribution-s-package-manager" class="nav-link">Installing using your Linux distribution’s package manager.</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#installing-from-source" class="nav-link">Installing from source</a>
+        </li>
+    
+            </ul>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#running-the-test-suite" class="nav-link">Running the test suite</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#dependencies" class="nav-link">Dependencies</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#recommended-dependencies" class="nav-link">Recommended dependencies</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#optional-dependencies" class="nav-link">Optional dependencies</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h4">
+            <a href="#optional-dependencies-for-parsing-html" class="nav-link">Optional dependencies for parsing HTML</a>
+        </li>
+    
+            </ul>
+        </li>
+    
+            </ul>
+        </li>
+    
+    </ul>
+</nav>
+              
+            </div>
+
+          <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
+              <div>
+                
+  <div class="section" id="installation">
+<span id="install"></span><h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
+<p>The easiest way to install pandas is to install it
+as part of the <a class="reference external" href="http://docs.continuum.io/anaconda/">Anaconda</a> distribution, a
+cross platform distribution for data analysis and scientific computing.
+This is the recommended installation method for most users.</p>
+<p>Instructions for installing from source,
+<a class="reference external" href="https://pypi.org/project/pandas">PyPI</a>, <a class="reference external" href="https://www.activestate.com/activepython/downloads">ActivePython</a>, various Linux distributions, or a
+<a class="reference external" href="http://github.com/pandas-dev/pandas">development version</a> are also provided.</p>
+<div class="section" id="python-version-support">
+<h2>Python version support<a class="headerlink" href="#python-version-support" title="Permalink to this headline">¶</a></h2>
+<p>Officially Python 3.6.1 and above, 3.7, and 3.8.</p>
+</div>
+<div class="section" id="installing-pandas">
+<h2>Installing pandas<a class="headerlink" href="#installing-pandas" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="installing-with-anaconda">
+<span id="install-anaconda"></span><h3>Installing with Anaconda<a class="headerlink" href="#installing-with-anaconda" title="Permalink to this headline">¶</a></h3>
+<p>Installing pandas and the rest of the <a class="reference external" href="http://www.numpy.org/">NumPy</a> and
+<a class="reference external" href="http://www.scipy.org/">SciPy</a> stack can be a little
+difficult for inexperienced users.</p>
+<p>The simplest way to install not only pandas, but Python and the most popular
+packages that make up the <a class="reference external" href="http://www.scipy.org/">SciPy</a> stack
+(<a class="reference external" href="http://ipython.org/">IPython</a>, <a class="reference external" href="http://www.numpy.org/">NumPy</a>,
+<a class="reference external" href="http://matplotlib.org/">Matplotlib</a>, …) is with
+<a class="reference external" href="http://docs.continuum.io/anaconda/">Anaconda</a>, a cross-platform
+(Linux, Mac OS X, Windows) Python distribution for data analytics and
+scientific computing.</p>
+<p>After running the installer, the user will have access to pandas and the
+rest of the <a class="reference external" href="http://www.scipy.org/">SciPy</a> stack without needing to install
+anything else, and without needing to wait for any software to be compiled.</p>
+<p>Installation instructions for <a class="reference external" href="http://docs.continuum.io/anaconda/">Anaconda</a>
+<a class="reference external" href="http://docs.continuum.io/anaconda/install.html">can be found here</a>.</p>
+<p>A full list of the packages available as part of the
+<a class="reference external" href="http://docs.continuum.io/anaconda/">Anaconda</a> distribution
+<a class="reference external" href="http://docs.continuum.io/anaconda/pkg-docs.html">can be found here</a>.</p>
+<p>Another advantage to installing Anaconda is that you don’t need
+admin rights to install it. Anaconda can install in the user’s home directory,
+which makes it trivial to delete Anaconda if you decide (just delete
+that folder).</p>
+</div>
+<div class="section" id="installing-with-miniconda">
+<span id="install-miniconda"></span><h3>Installing with Miniconda<a class="headerlink" href="#installing-with-miniconda" title="Permalink to this headline">¶</a></h3>
+<p>The previous section outlined how to get pandas installed as part of the
+<a class="reference external" href="http://docs.continuum.io/anaconda/">Anaconda</a> distribution.
+However this approach means you will install well over one hundred packages
+and involves downloading the installer which is a few hundred megabytes in size.</p>
+<p>If you want to have more control on which packages, or have a limited internet
+bandwidth, then installing pandas with
+<a class="reference external" href="http://conda.pydata.org/miniconda.html">Miniconda</a> may be a better solution.</p>
+<p><a class="reference external" href="http://conda.pydata.org/docs/">Conda</a> is the package manager that the
+<a class="reference external" href="http://docs.continuum.io/anaconda/">Anaconda</a> distribution is built upon.
+It is a package manager that is both cross-platform and language agnostic
+(it can play a similar role to a pip and virtualenv combination).</p>
+<p><a class="reference external" href="http://conda.pydata.org/miniconda.html">Miniconda</a> allows you to create a
+minimal self contained Python installation, and then use the
+<a class="reference external" href="http://conda.pydata.org/docs/">Conda</a> command to install additional packages.</p>
+<p>First you will need <a class="reference external" href="http://conda.pydata.org/docs/">Conda</a> to be installed and
+downloading and running the <a class="reference external" href="http://conda.pydata.org/miniconda.html">Miniconda</a>
+will do this for you. The installer
+<a class="reference external" href="http://conda.pydata.org/miniconda.html">can be found here</a></p>
+<p>The next step is to create a new conda environment. A conda environment is like a
+virtualenv that allows you to specify a specific version of Python and set of libraries.
+Run the following commands from a terminal window:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">create</span> <span class="o">-</span><span class="n">n</span> <span class="n">name_of_my_env</span> <span class="n">python</span>
+</pre></div>
+</div>
+<p>This will create a minimal environment with only Python installed in it.
+To put your self inside this environment run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="n">activate</span> <span class="n">name_of_my_env</span>
+</pre></div>
+</div>
+<p>On Windows the command is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">activate</span> <span class="n">name_of_my_env</span>
+</pre></div>
+</div>
+<p>The final step required is to install pandas. This can be done with the
+following command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="n">pandas</span>
+</pre></div>
+</div>
+<p>To install a specific pandas version:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="n">pandas</span><span class="o">=</span><span class="mf">0.20</span><span class="o">.</span><span class="mi">3</span>
+</pre></div>
+</div>
+<p>To install other packages, IPython for example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="n">ipython</span>
+</pre></div>
+</div>
+<p>To install the full <a class="reference external" href="http://docs.continuum.io/anaconda/">Anaconda</a>
+distribution:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="n">anaconda</span>
+</pre></div>
+</div>
+<p>If you need packages that are available to pip but not conda, then
+install pip, and then use pip to install those packages:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="n">pip</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">django</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="installing-from-pypi">
+<h3>Installing from PyPI<a class="headerlink" href="#installing-from-pypi" title="Permalink to this headline">¶</a></h3>
+<p>pandas can be installed via pip from
+<a class="reference external" href="https://pypi.org/project/pandas">PyPI</a>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">pandas</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="installing-with-activepython">
+<h3>Installing with ActivePython<a class="headerlink" href="#installing-with-activepython" title="Permalink to this headline">¶</a></h3>
+<p>Installation instructions for
+<a class="reference external" href="https://www.activestate.com/activepython">ActivePython</a> can be found
+<a class="reference external" href="https://www.activestate.com/activepython/downloads">here</a>. Versions
+2.7, 3.5 and 3.6 include pandas.</p>
+</div>
+<div class="section" id="installing-using-your-linux-distribution-s-package-manager">
+<h3>Installing using your Linux distribution’s package manager.<a class="headerlink" href="#installing-using-your-linux-distribution-s-package-manager" title="Permalink to this headline">¶</a></h3>
+<p>The commands in this table will install pandas for Python 3 from your distribution.
+To install pandas for Python 2, you may need to use the <code class="docutils literal notranslate"><span class="pre">python-pandas</span></code> package.</p>
+<table class="colwidths-given table">
+<colgroup>
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 22%" />
+<col style="width: 56%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Distribution</p></th>
+<th class="head"><p>Status</p></th>
+<th class="head"><p>Download / Repository Link</p></th>
+<th class="head"><p>Install method</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Debian</p></td>
+<td><p>stable</p></td>
+<td><p><a class="reference external" href="http://packages.debian.org/search?keywords=pandas&amp;searchon=names&amp;suite=all&amp;section=all">official Debian repository</a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">python3-pandas</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Debian &amp; Ubuntu</p></td>
+<td><p>unstable (latest packages)</p></td>
+<td><p><a class="reference external" href="http://neuro.debian.net/index.html#how-to-use-this-repository">NeuroDebian</a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">python3-pandas</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Ubuntu</p></td>
+<td><p>stable</p></td>
+<td><p><a class="reference external" href="http://packages.ubuntu.com/search?keywords=pandas&amp;searchon=names&amp;suite=all&amp;section=all">official Ubuntu repository</a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">python3-pandas</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>OpenSuse</p></td>
+<td><p>stable</p></td>
+<td><p><a class="reference external" href="http://software.opensuse.org/package/python-pandas?search_term=pandas">OpenSuse Repository</a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">zypper</span> <span class="pre">in</span> <span class="pre">python3-pandas</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Fedora</p></td>
+<td><p>stable</p></td>
+<td><p><a class="reference external" href="https://admin.fedoraproject.org/pkgdb/package/rpms/python-pandas/">official Fedora repository</a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">dnf</span> <span class="pre">install</span> <span class="pre">python3-pandas</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Centos/RHEL</p></td>
+<td><p>stable</p></td>
+<td><p><a class="reference external" href="https://admin.fedoraproject.org/pkgdb/package/rpms/python-pandas/">EPEL repository</a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">yum</span> <span class="pre">install</span> <span class="pre">python3-pandas</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>However</strong>, the packages in the linux package managers are often a few versions behind, so
+to get the newest version of pandas, it’s recommended to install using the <code class="docutils literal notranslate"><span class="pre">pip</span></code> or <code class="docutils literal notranslate"><span class="pre">conda</span></code>
+methods described above.</p>
+</div>
+<div class="section" id="installing-from-source">
+<h3>Installing from source<a class="headerlink" href="#installing-from-source" title="Permalink to this headline">¶</a></h3>
+<p>See the <a class="reference internal" href="../development/contributing.html#contributing"><span class="std std-ref">contributing guide</span></a> for complete instructions on building from the git source tree. Further, see <a class="reference internal" href="../development/contributing.html#contributing-dev-env"><span class="std std-ref">creating a development environment</span></a> if you wish to create a <em>pandas</em> development environment.</p>
+</div>
+</div>
+<div class="section" id="running-the-test-suite">
+<h2>Running the test suite<a class="headerlink" href="#running-the-test-suite" title="Permalink to this headline">¶</a></h2>
+<p>pandas is equipped with an exhaustive set of unit tests, covering about 97% of
+the code base as of this writing. To run it on your machine to verify that
+everything is working (and that you have all of the dependencies, soft and hard,
+installed), make sure you have <a class="reference external" href="http://docs.pytest.org/en/latest/">pytest</a> &gt;= 5.0.1 and <a class="reference external" href="https://hypothesis.readthedocs.io/">Hypothesis</a> &gt;= 3.58, then run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pd</span><span class="o">.</span><span class="n">test</span><span class="p">()</span>
+<span class="go">running: pytest --skip-slow --skip-network C:\Users\TP\Anaconda3\envs\py36\lib\site-packages\pandas</span>
+<span class="go">============================= test session starts =============================</span>
+<span class="go">platform win32 -- Python 3.6.2, pytest-3.6.0, py-1.4.34, pluggy-0.4.0</span>
+<span class="go">rootdir: C:\Users\TP\Documents\Python\pandasdev\pandas, inifile: setup.cfg</span>
+<span class="go">collected 12145 items / 3 skipped</span>
+
+<span class="go">..................................................................S......</span>
+<span class="go">........S................................................................</span>
+<span class="go">.........................................................................</span>
+
+<span class="go">==================== 12130 passed, 12 skipped in 368.339 seconds =====================</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="dependencies">
+<span id="install-dependencies"></span><h2>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h2>
+<table class="table">
+<colgroup>
+<col style="width: 71%" />
+<col style="width: 29%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Package</p></th>
+<th class="head"><p>Minimum supported version</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="https://setuptools.readthedocs.io/en/latest/">setuptools</a></p></td>
+<td><p>24.2.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="http://www.numpy.org">NumPy</a></p></td>
+<td><p>1.13.3</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://dateutil.readthedocs.io/en/stable/">python-dateutil</a></p></td>
+<td><p>2.6.1</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="http://pytz.sourceforge.net/">pytz</a></p></td>
+<td><p>2017.2</p></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="recommended-dependencies">
+<span id="install-recommended-dependencies"></span><h3>Recommended dependencies<a class="headerlink" href="#recommended-dependencies" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/pydata/numexpr">numexpr</a>: for accelerating certain numerical operations.
+<code class="docutils literal notranslate"><span class="pre">numexpr</span></code> uses multiple cores as well as smart chunking and caching to achieve large speedups.
+If installed, must be Version 2.6.2 or higher.</p></li>
+<li><p><a class="reference external" href="https://github.com/pydata/bottleneck">bottleneck</a>: for accelerating certain types of <code class="docutils literal notranslate"><span class="pre">nan</span></code>
+evaluations. <code class="docutils literal notranslate"><span class="pre">bottleneck</span></code> uses specialized cython routines to achieve large speedups. If installed,
+must be Version 1.2.1 or higher.</p></li>
+</ul>
+<div class="alert alert-info">
+<p class="admonition-title">Note</p>
+<p>You are highly encouraged to install these libraries, as they provide speed improvements, especially
+when working with large data sets.</p>
+</div>
+</div>
+<div class="section" id="optional-dependencies">
+<span id="install-optional-dependencies"></span><h3>Optional dependencies<a class="headerlink" href="#optional-dependencies" title="Permalink to this headline">¶</a></h3>
+<p>Pandas has many optional dependencies that are only used for specific methods.
+For example, <code class="xref py py-func docutils literal notranslate"><span class="pre">pandas.read_hdf()</span></code> requires the <code class="docutils literal notranslate"><span class="pre">pytables</span></code> package, while
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">DataFrame.to_markdown()</span></code> requires the <code class="docutils literal notranslate"><span class="pre">tabulate</span></code> package. If the
+optional dependency is not installed, pandas will raise an <code class="docutils literal notranslate"><span class="pre">ImportError</span></code> when
+the method requiring that dependency is called.</p>
+<table class="table">
+<colgroup>
+<col style="width: 24%" />
+<col style="width: 17%" />
+<col style="width: 59%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Dependency</p></th>
+<th class="head"><p>Minimum Version</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>BeautifulSoup4</p></td>
+<td><p>4.6.0</p></td>
+<td><p>HTML parser for read_html (see <a class="reference internal" href="#optional-html"><span class="std std-ref">note</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Jinja2</p></td>
+<td></td>
+<td><p>Conditional formatting with DataFrame.style</p></td>
+</tr>
+<tr class="row-even"><td><p>PyQt4</p></td>
+<td></td>
+<td><p>Clipboard I/O</p></td>
+</tr>
+<tr class="row-odd"><td><p>PyQt5</p></td>
+<td></td>
+<td><p>Clipboard I/O</p></td>
+</tr>
+<tr class="row-even"><td><p>PyTables</p></td>
+<td><p>3.4.2</p></td>
+<td><p>HDF5-based reading / writing</p></td>
+</tr>
+<tr class="row-odd"><td><p>SQLAlchemy</p></td>
+<td><p>1.1.4</p></td>
+<td><p>SQL support for databases other than sqlite</p></td>
+</tr>
+<tr class="row-even"><td><p>SciPy</p></td>
+<td><p>0.19.0</p></td>
+<td><p>Miscellaneous statistical functions</p></td>
+</tr>
+<tr class="row-odd"><td><p>XLsxWriter</p></td>
+<td><p>0.9.8</p></td>
+<td><p>Excel writing</p></td>
+</tr>
+<tr class="row-even"><td><p>blosc</p></td>
+<td></td>
+<td><p>Compression for HDF5</p></td>
+</tr>
+<tr class="row-odd"><td><p>fastparquet</p></td>
+<td><p>0.3.2</p></td>
+<td><p>Parquet reading / writing</p></td>
+</tr>
+<tr class="row-even"><td><p>gcsfs</p></td>
+<td><p>0.2.2</p></td>
+<td><p>Google Cloud Storage access</p></td>
+</tr>
+<tr class="row-odd"><td><p>html5lib</p></td>
+<td></td>
+<td><p>HTML parser for read_html (see <a class="reference internal" href="#optional-html"><span class="std std-ref">note</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p>lxml</p></td>
+<td><p>3.8.0</p></td>
+<td><p>HTML parser for read_html (see <a class="reference internal" href="#optional-html"><span class="std std-ref">note</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p>matplotlib</p></td>
+<td><p>2.2.2</p></td>
+<td><p>Visualization</p></td>
+</tr>
+<tr class="row-even"><td><p>numba</p></td>
+<td><p>0.46.0</p></td>
+<td><p>Alternative execution engine for rolling operations</p></td>
+</tr>
+<tr class="row-odd"><td><p>openpyxl</p></td>
+<td><p>2.5.7</p></td>
+<td><p>Reading / writing for xlsx files</p></td>
+</tr>
+<tr class="row-even"><td><p>pandas-gbq</p></td>
+<td><p>0.8.0</p></td>
+<td><p>Google Big Query access</p></td>
+</tr>
+<tr class="row-odd"><td><p>psycopg2</p></td>
+<td></td>
+<td><p>PostgreSQL engine for sqlalchemy</p></td>
+</tr>
+<tr class="row-even"><td><p>pyarrow</p></td>
+<td><p>0.12.0</p></td>
+<td><p>Parquet, ORC (requires 0.13.0), and feather reading / writing</p></td>
+</tr>
+<tr class="row-odd"><td><p>pymysql</p></td>
+<td><p>0.7.11</p></td>
+<td><p>MySQL engine for sqlalchemy</p></td>
+</tr>
+<tr class="row-even"><td><p>pyreadstat</p></td>
+<td></td>
+<td><p>SPSS files (.sav) reading</p></td>
+</tr>
+<tr class="row-odd"><td><p>pytables</p></td>
+<td><p>3.4.2</p></td>
+<td><p>HDF5 reading / writing</p></td>
+</tr>
+<tr class="row-even"><td><p>qtpy</p></td>
+<td></td>
+<td><p>Clipboard I/O</p></td>
+</tr>
+<tr class="row-odd"><td><p>s3fs</p></td>
+<td><p>0.3.0</p></td>
+<td><p>Amazon S3 access</p></td>
+</tr>
+<tr class="row-even"><td><p>tabulate</p></td>
+<td><p>0.8.3</p></td>
+<td><p>Printing in Markdown-friendly format (see <a class="reference external" href="https://github.com/astanin/python-tabulate">tabulate</a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p>xarray</p></td>
+<td><p>0.8.2</p></td>
+<td><p>pandas-like API for N-dimensional data</p></td>
+</tr>
+<tr class="row-even"><td><p>xclip</p></td>
+<td></td>
+<td><p>Clipboard I/O on linux</p></td>
+</tr>
+<tr class="row-odd"><td><p>xlrd</p></td>
+<td><p>1.1.0</p></td>
+<td><p>Excel reading</p></td>
+</tr>
+<tr class="row-even"><td><p>xlwt</p></td>
+<td><p>1.2.0</p></td>
+<td><p>Excel writing</p></td>
+</tr>
+<tr class="row-odd"><td><p>xsel</p></td>
+<td></td>
+<td><p>Clipboard I/O on linux</p></td>
+</tr>
+<tr class="row-even"><td><p>zlib</p></td>
+<td></td>
+<td><p>Compression for HDF5</p></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="optional-dependencies-for-parsing-html">
+<span id="optional-html"></span><h4>Optional dependencies for parsing HTML<a class="headerlink" href="#optional-dependencies-for-parsing-html" title="Permalink to this headline">¶</a></h4>
+<p>One of the following combinations of libraries is needed to use the
+top-level <code class="xref py py-func docutils literal notranslate"><span class="pre">read_html()</span></code> function:</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.23.0.</span></p>
+</div>
+<ul class="simple">
+<li><p><a class="reference external" href="http://www.crummy.com/software/BeautifulSoup">BeautifulSoup4</a> and <a class="reference external" href="https://github.com/html5lib/html5lib-python">html5lib</a></p></li>
+<li><p><a class="reference external" href="http://www.crummy.com/software/BeautifulSoup">BeautifulSoup4</a> and <a class="reference external" href="http://lxml.de">lxml</a></p></li>
+<li><p><a class="reference external" href="http://www.crummy.com/software/BeautifulSoup">BeautifulSoup4</a> and <a class="reference external" href="https://github.com/html5lib/html5lib-python">html5lib</a> and <a class="reference external" href="http://lxml.de">lxml</a></p></li>
+<li><p>Only <a class="reference external" href="http://lxml.de">lxml</a>, although see <a class="reference internal" href="../user_guide/io.html#io-html-gotchas"><span class="std std-ref">HTML Table Parsing</span></a>
+for reasons as to why you should probably <strong>not</strong> take this approach.</p></li>
+</ul>
+<div class="alert alert-warning">
+<p class="admonition-title">Warning</p>
+<ul class="simple">
+<li><p>if you install <a class="reference external" href="http://www.crummy.com/software/BeautifulSoup">BeautifulSoup4</a> you must install either
+<a class="reference external" href="http://lxml.de">lxml</a> or <a class="reference external" href="https://github.com/html5lib/html5lib-python">html5lib</a> or both.
+<code class="xref py py-func docutils literal notranslate"><span class="pre">read_html()</span></code> will <strong>not</strong> work with <em>only</em>
+<a class="reference external" href="http://www.crummy.com/software/BeautifulSoup">BeautifulSoup4</a> installed.</p></li>
+<li><p>You are highly encouraged to read <a class="reference internal" href="../user_guide/io.html#io-html-gotchas"><span class="std std-ref">HTML Table Parsing gotchas</span></a>.
+It explains issues surrounding the installation and
+usage of the above three libraries.</p></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+              </div>
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="index.html" title="previous page">Getting started</a>
+    <a class='right-next' id="next-link" href="overview.html" title="next page">Package overview</a>
+
+              </div>
+              
+          </main>
+
+      </div>
+    </div><script>
+    // TOC sidebar - add "active" class to parent list
+    //
+    // Bootstrap's scrollspy adds the active class to the <a> link,
+    // but for the automatic collapsing we need this on the parent list item.
+    //
+    // The event is triggered on "window" (and not the nav item as documented),
+    // see https://github.com/twbs/bootstrap/issues/20086
+    $(window).on("activate.bs.scrollspy", function(){
+    var navLinks = document.querySelectorAll('#bd-toc-nav a');
+    for (var i = 0; i < navLinks.length; i++) {
+        var navLink = navLinks[i];
+        navLink.parentElement.classList.remove('active');
+    }
+    var navLinks = document.querySelectorAll('#bd-toc-nav a.active');
+    for (var i = 0; i < navLinks.length; i++) {
+        var navLink = navLinks[i];
+        navLink.parentElement.classList.add('active');
+    }
+    });
+
+    /**
+     * Use left and right arrow keys to navigate forward and backwards.
+    */
+    const LEFT_ARROW_KEYCODE = 37
+    const RIGHT_ARROW_KEYCODE = 39
+
+    const getPrevUrl = () => document.getElementById('prev-link').href
+    const getNextUrl = () => document.getElementById('next-link').href
+    const initPageNav = (event) => {
+        const keycode = event.which
+
+        if (keycode === LEFT_ARROW_KEYCODE) {
+            window.location.href = getPrevUrl();
+        } else if (keycode === RIGHT_ARROW_KEYCODE) {
+            window.location.href = getNextUrl();
+        }
+    };
+
+    var keyboardListener = false;
+    $( document ).ready(() => {
+        if (keyboardListener === false) {
+            document.addEventListener('keydown', initPageNav)
+            keyboardListener = true;
+        }
+    });
+</script>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2008-2020, the pandas development team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.3.0.
+    </div>
+  </body>
+</html>

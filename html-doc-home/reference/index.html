@@ -1,0 +1,500 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>API reference &#8212; pandas 1.0.0rc0+111.ge72cd7c52 documentation</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link rel="stylesheet" href="../_static/sphinx-bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/pandas.css" />
+    <link href="../_static/css/custom.css" rel="stylesheet">
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Input/output" href="io.html" />
+    <link rel="prev" title="Cookbook" href="../user_guide/cookbook.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main">
+
+<a class="navbar-brand" href="../index.html">
+  <img src="../_static/pandas.svg" class="logo" alt="logo">
+</a>
+
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+</button>
+
+<div id="navbar-menu" class="collapse navbar-collapse">
+  <ul id="navbar-main-elements" class="navbar-nav mr-auto">
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        1.0.0
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown" id="version-menu"></div>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="../index.html">Home</a>
+    </li>
+    
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../whatsnew/v1.1.0.html">What's New in 1.1.0</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../getting_started/index.html">Getting started</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../user_guide/index.html">User Guide</a>
+    </li>
+    
+    <li class="nav-item active">
+        <a class="nav-link" href="">API reference</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../development/index.html">Development</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../whatsnew/index.html">Release Notes</a>
+    </li>
+    
+    
+  </ul>
+  <ul class="navbar-nav ml-auto">
+    
+      <li class="nav-item">
+        <a class="nav-link" href="https://github.com/pandas-dev/pandas" target="_blank" rel="noopener">
+          <span><i class="fab fa-github-square"></i></span>
+        </a>
+      </li>
+    
+    
+      <li class="nav-item">
+        <a class="nav-link" href="https://twitter.com/pandas_dev" target="_blank" rel="noopener">
+          <span><i class="fab fa-twitter-square"></i></span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row flex-xl-nowrap">
+          <div class="col-12 col-md-3 col-xl-2 bd-sidebar">
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+
+  <div class="bd-toc-item active">
+  
+
+  <ul class="nav bd-sidenav">
+      
+      
+      
+      
+      
+      
+      
+      
+        
+          
+              <li class="">
+                  <a href="io.html">Input/output</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="general_functions.html">General functions</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="series.html">Series</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="frame.html">DataFrame</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="arrays.html">Pandas arrays</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="panel.html">Panel</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="indexing.html">Index objects</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="offset_frequency.html">Date offsets</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="window.html">Window</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="groupby.html">GroupBy</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="resampling.html">Resampling</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="style.html">Style</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="plotting.html">Plotting</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="general_utility_functions.html">General utility functions</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="extensions.html">Extensions</a>
+              </li>
+          
+        
+      
+      
+      
+      
+      
+      
+    </ul>
+
+</nav>
+          </div>
+
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+              <nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+    </ul>
+</nav>
+              
+            </div>
+
+          <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
+              <div>
+                
+  <div class="section" id="api-reference">
+<span id="api"></span><h1>API reference<a class="headerlink" href="#api-reference" title="Permalink to this headline">¶</a></h1>
+<p>This page gives an overview of all public pandas objects, functions and
+methods. All classes and functions exposed in <code class="docutils literal notranslate"><span class="pre">pandas.*</span></code> namespace are public.</p>
+<p>Some subpackages are public which include <code class="docutils literal notranslate"><span class="pre">pandas.errors</span></code>,
+<code class="docutils literal notranslate"><span class="pre">pandas.plotting</span></code>, and <code class="docutils literal notranslate"><span class="pre">pandas.testing</span></code>. Public functions in
+<code class="docutils literal notranslate"><span class="pre">pandas.io</span></code> and <code class="docutils literal notranslate"><span class="pre">pandas.tseries</span></code> submodules are mentioned in
+the documentation. <code class="docutils literal notranslate"><span class="pre">pandas.api.types</span></code> subpackage holds some
+public functions related to data types in pandas.</p>
+<div class="alert alert-warning">
+<p class="admonition-title">Warning</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">pandas.core</span></code>, <code class="docutils literal notranslate"><span class="pre">pandas.compat</span></code>, and <code class="docutils literal notranslate"><span class="pre">pandas.util</span></code> top-level modules are PRIVATE. Stable functionality in such modules is not guaranteed.</p>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="io.html">Input/output</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="io.html#pickling">Pickling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="io.html#flat-file">Flat file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="io.html#clipboard">Clipboard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="io.html#excel">Excel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="io.html#json">JSON</a></li>
+<li class="toctree-l2"><a class="reference internal" href="io.html#html">HTML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="io.html#hdfstore-pytables-hdf5">HDFStore: PyTables (HDF5)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="io.html#feather">Feather</a></li>
+<li class="toctree-l2"><a class="reference internal" href="io.html#parquet">Parquet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="io.html#orc">ORC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="io.html#sas">SAS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="io.html#spss">SPSS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="io.html#sql">SQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="io.html#google-bigquery">Google BigQuery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="io.html#stata">STATA</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="general_functions.html">General functions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="general_functions.html#data-manipulations">Data manipulations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="general_functions.html#top-level-missing-data">Top-level missing data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="general_functions.html#top-level-conversions">Top-level conversions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="general_functions.html#top-level-dealing-with-datetimelike">Top-level dealing with datetimelike</a></li>
+<li class="toctree-l2"><a class="reference internal" href="general_functions.html#top-level-dealing-with-intervals">Top-level dealing with intervals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="general_functions.html#top-level-evaluation">Top-level evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="general_functions.html#hashing">Hashing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="general_functions.html#testing">Testing</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="series.html">Series</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="series.html#constructor">Constructor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="series.html#attributes">Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="series.html#conversion">Conversion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="series.html#indexing-iteration">Indexing, iteration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="series.html#binary-operator-functions">Binary operator functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="series.html#function-application-groupby-window">Function application, groupby &amp; window</a></li>
+<li class="toctree-l2"><a class="reference internal" href="series.html#computations-descriptive-stats">Computations / descriptive stats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="series.html#reindexing-selection-label-manipulation">Reindexing / selection / label manipulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="series.html#missing-data-handling">Missing data handling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="series.html#reshaping-sorting">Reshaping, sorting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="series.html#combining-joining-merging">Combining / joining / merging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="series.html#time-series-related">Time series-related</a></li>
+<li class="toctree-l2"><a class="reference internal" href="series.html#accessors">Accessors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="series.html#plotting">Plotting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="series.html#serialization-io-conversion">Serialization / IO / conversion</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="frame.html">DataFrame</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="frame.html#constructor">Constructor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="frame.html#attributes-and-underlying-data">Attributes and underlying data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="frame.html#conversion">Conversion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="frame.html#indexing-iteration">Indexing, iteration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="frame.html#binary-operator-functions">Binary operator functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="frame.html#function-application-groupby-window">Function application, GroupBy &amp; window</a></li>
+<li class="toctree-l2"><a class="reference internal" href="frame.html#computations-descriptive-stats">Computations / descriptive stats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="frame.html#reindexing-selection-label-manipulation">Reindexing / selection / label manipulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="frame.html#missing-data-handling">Missing data handling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="frame.html#reshaping-sorting-transposing">Reshaping, sorting, transposing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="frame.html#combining-joining-merging">Combining / joining / merging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="frame.html#time-series-related">Time series-related</a></li>
+<li class="toctree-l2"><a class="reference internal" href="frame.html#metadata">Metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="frame.html#plotting">Plotting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="frame.html#sparse-accessor">Sparse accessor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="frame.html#serialization-io-conversion">Serialization / IO / conversion</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="arrays.html">Pandas arrays</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#datetime-data">Datetime data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#timedelta-data">Timedelta data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#timespan-data">Timespan data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#period">Period</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#interval-data">Interval data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#nullable-integer">Nullable integer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#categorical-data">Categorical data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#sparse-data">Sparse data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#text-data">Text data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#boolean-data-with-missing-values">Boolean data with missing values</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="panel.html">Panel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="indexing.html">Index objects</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="indexing.html#index">Index</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexing.html#numeric-index">Numeric Index</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexing.html#categoricalindex">CategoricalIndex</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexing.html#intervalindex">IntervalIndex</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexing.html#multiindex">MultiIndex</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexing.html#datetimeindex">DatetimeIndex</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexing.html#timedeltaindex">TimedeltaIndex</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexing.html#periodindex">PeriodIndex</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="offset_frequency.html">Date offsets</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="offset_frequency.html#dateoffset">DateOffset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="offset_frequency.html#businessday">BusinessDay</a></li>
+<li class="toctree-l2"><a class="reference internal" href="offset_frequency.html#businesshour">BusinessHour</a></li>
+<li class="toctree-l2"><a class="reference internal" href="offset_frequency.html#custombusinessday">CustomBusinessDay</a></li>
+<li class="toctree-l2"><a class="reference internal" href="offset_frequency.html#custombusinesshour">CustomBusinessHour</a></li>
+<li class="toctree-l2"><a class="reference internal" href="offset_frequency.html#monthoffset">MonthOffset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="offset_frequency.html#monthend">MonthEnd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="offset_frequency.html#monthbegin">MonthBegin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="offset_frequency.html#businessmonthend">BusinessMonthEnd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="offset_frequency.html#businessmonthbegin">BusinessMonthBegin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="offset_frequency.html#custombusinessmonthend">CustomBusinessMonthEnd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="offset_frequency.html#custombusinessmonthbegin">CustomBusinessMonthBegin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="offset_frequency.html#semimonthoffset">SemiMonthOffset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="offset_frequency.html#semimonthend">SemiMonthEnd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="offset_frequency.html#semimonthbegin">SemiMonthBegin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="offset_frequency.html#week">Week</a></li>
+<li class="toctree-l2"><a class="reference internal" href="offset_frequency.html#weekofmonth">WeekOfMonth</a></li>
+<li class="toctree-l2"><a class="reference internal" href="offset_frequency.html#lastweekofmonth">LastWeekOfMonth</a></li>
+<li class="toctree-l2"><a class="reference internal" href="offset_frequency.html#quarteroffset">QuarterOffset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="offset_frequency.html#bquarterend">BQuarterEnd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="offset_frequency.html#bquarterbegin">BQuarterBegin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="offset_frequency.html#quarterend">QuarterEnd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="offset_frequency.html#quarterbegin">QuarterBegin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="offset_frequency.html#yearoffset">YearOffset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="offset_frequency.html#byearend">BYearEnd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="offset_frequency.html#byearbegin">BYearBegin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="offset_frequency.html#yearend">YearEnd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="offset_frequency.html#yearbegin">YearBegin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="offset_frequency.html#fy5253">FY5253</a></li>
+<li class="toctree-l2"><a class="reference internal" href="offset_frequency.html#fy5253quarter">FY5253Quarter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="offset_frequency.html#easter">Easter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="offset_frequency.html#tick">Tick</a></li>
+<li class="toctree-l2"><a class="reference internal" href="offset_frequency.html#day">Day</a></li>
+<li class="toctree-l2"><a class="reference internal" href="offset_frequency.html#hour">Hour</a></li>
+<li class="toctree-l2"><a class="reference internal" href="offset_frequency.html#minute">Minute</a></li>
+<li class="toctree-l2"><a class="reference internal" href="offset_frequency.html#second">Second</a></li>
+<li class="toctree-l2"><a class="reference internal" href="offset_frequency.html#milli">Milli</a></li>
+<li class="toctree-l2"><a class="reference internal" href="offset_frequency.html#micro">Micro</a></li>
+<li class="toctree-l2"><a class="reference internal" href="offset_frequency.html#nano">Nano</a></li>
+<li class="toctree-l2"><a class="reference internal" href="offset_frequency.html#bday">BDay</a></li>
+<li class="toctree-l2"><a class="reference internal" href="offset_frequency.html#bmonthend">BMonthEnd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="offset_frequency.html#bmonthbegin">BMonthBegin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="offset_frequency.html#cbmonthend">CBMonthEnd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="offset_frequency.html#cbmonthbegin">CBMonthBegin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="offset_frequency.html#cday">CDay</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="offset_frequency.html#frequencies">Frequencies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="window.html">Window</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="window.html#standard-moving-window-functions">Standard moving window functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="window.html#standard-expanding-window-functions">Standard expanding window functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="window.html#exponentially-weighted-moving-window-functions">Exponentially-weighted moving window functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="window.html#window-indexer">Window Indexer</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="groupby.html">GroupBy</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="groupby.html#indexing-iteration">Indexing, iteration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="groupby.html#function-application">Function application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="groupby.html#computations-descriptive-stats">Computations / descriptive stats</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="resampling.html">Resampling</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="resampling.html#indexing-iteration">Indexing, iteration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resampling.html#function-application">Function application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resampling.html#upsampling">Upsampling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resampling.html#computations-descriptive-stats">Computations / descriptive stats</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="style.html">Style</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="style.html#styler-constructor">Styler constructor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="style.html#styler-properties">Styler properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="style.html#style-application">Style application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="style.html#builtin-styles">Builtin styles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="style.html#style-export-and-import">Style export and import</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html">Plotting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general_utility_functions.html">General utility functions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="general_utility_functions.html#working-with-options">Working with options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="general_utility_functions.html#testing-functions">Testing functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="general_utility_functions.html#exceptions-and-warnings">Exceptions and warnings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="general_utility_functions.html#data-types-related-functionality">Data types related functionality</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="extensions.html">Extensions</a></li>
+</ul>
+</div>
+</div>
+
+
+              </div>
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="../user_guide/cookbook.html" title="previous page">Cookbook</a>
+    <a class='right-next' id="next-link" href="io.html" title="next page">Input/output</a>
+
+              </div>
+              
+          </main>
+
+      </div>
+    </div><script>
+    // TOC sidebar - add "active" class to parent list
+    //
+    // Bootstrap's scrollspy adds the active class to the <a> link,
+    // but for the automatic collapsing we need this on the parent list item.
+    //
+    // The event is triggered on "window" (and not the nav item as documented),
+    // see https://github.com/twbs/bootstrap/issues/20086
+    $(window).on("activate.bs.scrollspy", function(){
+    var navLinks = document.querySelectorAll('#bd-toc-nav a');
+    for (var i = 0; i < navLinks.length; i++) {
+        var navLink = navLinks[i];
+        navLink.parentElement.classList.remove('active');
+    }
+    var navLinks = document.querySelectorAll('#bd-toc-nav a.active');
+    for (var i = 0; i < navLinks.length; i++) {
+        var navLink = navLinks[i];
+        navLink.parentElement.classList.add('active');
+    }
+    });
+
+    /**
+     * Use left and right arrow keys to navigate forward and backwards.
+    */
+    const LEFT_ARROW_KEYCODE = 37
+    const RIGHT_ARROW_KEYCODE = 39
+
+    const getPrevUrl = () => document.getElementById('prev-link').href
+    const getNextUrl = () => document.getElementById('next-link').href
+    const initPageNav = (event) => {
+        const keycode = event.which
+
+        if (keycode === LEFT_ARROW_KEYCODE) {
+            window.location.href = getPrevUrl();
+        } else if (keycode === RIGHT_ARROW_KEYCODE) {
+            window.location.href = getNextUrl();
+        }
+    };
+
+    var keyboardListener = false;
+    $( document ).ready(() => {
+        if (keyboardListener === false) {
+            document.addEventListener('keydown', initPageNav)
+            keyboardListener = true;
+        }
+    });
+</script>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2008-2020, the pandas development team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.3.0.
+    </div>
+  </body>
+</html>

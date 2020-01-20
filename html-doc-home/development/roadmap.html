@@ -1,0 +1,457 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Roadmap &#8212; pandas 1.0.0rc0+111.ge72cd7c52 documentation</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link rel="stylesheet" href="../_static/sphinx-bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/pandas.css" />
+    <link href="../_static/css/custom.css" rel="stylesheet">
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Developer Meetings" href="meeting.html" />
+    <link rel="prev" title="Policies" href="policies.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main">
+
+<a class="navbar-brand" href="../index.html">
+  <img src="../_static/pandas.svg" class="logo" alt="logo">
+</a>
+
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+</button>
+
+<div id="navbar-menu" class="collapse navbar-collapse">
+  <ul id="navbar-main-elements" class="navbar-nav mr-auto">
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        1.0.0
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown" id="version-menu"></div>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="../index.html">Home</a>
+    </li>
+    
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../whatsnew/v1.1.0.html">What's New in 1.1.0</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../getting_started/index.html">Getting started</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../user_guide/index.html">User Guide</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../reference/index.html">API reference</a>
+    </li>
+    
+    <li class="nav-item active">
+        <a class="nav-link" href="index.html">Development</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../whatsnew/index.html">Release Notes</a>
+    </li>
+    
+    
+  </ul>
+  <ul class="navbar-nav ml-auto">
+    
+      <li class="nav-item">
+        <a class="nav-link" href="https://github.com/pandas-dev/pandas" target="_blank" rel="noopener">
+          <span><i class="fab fa-github-square"></i></span>
+        </a>
+      </li>
+    
+    
+      <li class="nav-item">
+        <a class="nav-link" href="https://twitter.com/pandas_dev" target="_blank" rel="noopener">
+          <span><i class="fab fa-twitter-square"></i></span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row flex-xl-nowrap">
+          <div class="col-12 col-md-3 col-xl-2 bd-sidebar">
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+
+  <div class="bd-toc-item active">
+  
+
+  <ul class="nav bd-sidenav">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+        
+          
+              <li class="">
+                  <a href="contributing.html">Contributing to pandas</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="code_style.html">pandas code style guide</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="maintaining.html">Pandas Maintenance</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="internals.html">Internals</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="extending.html">Extending pandas</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="developer.html">Developer</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="policies.html">Policies</a>
+              </li>
+          
+        
+          
+              <li class="active">
+                  <a href="">Roadmap</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="meeting.html">Developer Meetings</a>
+              </li>
+          
+        
+      
+      
+      
+      
+    </ul>
+
+</nav>
+          </div>
+
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+              
+<div class="tocsection onthispage"><i class="fas fa-list"></i> On this page</div>
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#extensibility" class="nav-link">Extensibility</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#string-data-type" class="nav-link">String data type</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#apache-arrow-interoperability" class="nav-link">Apache Arrow interoperability</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#block-manager-rewrite" class="nav-link">Block manager rewrite</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#decoupling-of-indexing-and-internals" class="nav-link">Decoupling of indexing and internals</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#numba-accelerated-operations" class="nav-link">Numba-accelerated operations</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#documentation-improvements" class="nav-link">Documentation improvements</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#performance-monitoring" class="nav-link">Performance monitoring</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#roadmap-evolution" class="nav-link">Roadmap Evolution</a>
+        </li>
+    
+    </ul>
+</nav>
+              
+            </div>
+
+          <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
+              <div>
+                
+  <div class="section" id="roadmap">
+<span id="id1"></span><h1>Roadmap<a class="headerlink" href="#roadmap" title="Permalink to this headline">¶</a></h1>
+<p>This page provides an overview of the major themes in pandas’ development. Each of
+these items requires a relatively large amount of effort to implement. These may
+be achieved more quickly with dedicated funding or interest from contributors.</p>
+<p>An item being on the roadmap does not mean that it will <em>necessarily</em> happen, even
+with unlimited funding. During the implementation period we may discover issues
+preventing the adoption of the feature.</p>
+<p>Additionally, an item <em>not</em> being on the roadmap does not exclude it from inclusion
+in pandas. The roadmap is intended for larger, fundamental changes to the project that
+are likely to take months or years of developer time. Smaller-scoped items will continue
+to be tracked on our <a class="reference external" href="https://github.com/pandas-dev/pandas/issues">issue tracker</a>.</p>
+<p>See <a class="reference internal" href="#roadmap-evolution"><span class="std std-ref">Roadmap Evolution</span></a> for proposing changes to this document.</p>
+<div class="section" id="extensibility">
+<h2>Extensibility<a class="headerlink" href="#extensibility" title="Permalink to this headline">¶</a></h2>
+<p>Pandas <a class="reference internal" href="extending.html#extending-extension-types"><span class="std std-ref">Extension types</span></a> allow for extending NumPy types with custom
+data types and array storage. Pandas uses extension types internally, and provides
+an interface for 3rd-party libraries to define their own custom data types.</p>
+<p>Many parts of pandas still unintentionally convert data to a NumPy array.
+These problems are especially pronounced for nested data.</p>
+<p>We’d like to improve the handling of extension arrays throughout the library,
+making their behavior more consistent with the handling of NumPy arrays. We’ll do this
+by cleaning up pandas’ internals and adding new methods to the extension array interface.</p>
+</div>
+<div class="section" id="string-data-type">
+<h2>String data type<a class="headerlink" href="#string-data-type" title="Permalink to this headline">¶</a></h2>
+<p>Currently, pandas stores text data in an <code class="docutils literal notranslate"><span class="pre">object</span></code> -dtype NumPy array.
+The current implementation has two primary drawbacks: First, <code class="docutils literal notranslate"><span class="pre">object</span></code> -dtype
+is not specific to strings: any Python object can be stored in an <code class="docutils literal notranslate"><span class="pre">object</span></code> -dtype
+array, not just strings. Second: this is not efficient. The NumPy memory model
+isn’t especially well-suited to variable width text data.</p>
+<p>To solve the first issue, we propose a new extension type for string data. This
+will initially be opt-in, with users explicitly requesting <code class="docutils literal notranslate"><span class="pre">dtype=&quot;string&quot;</span></code>.
+The array backing this string dtype may initially be the current implementation:
+an <code class="docutils literal notranslate"><span class="pre">object</span></code> -dtype NumPy array of Python strings.</p>
+<p>To solve the second issue (performance), we’ll explore alternative in-memory
+array libraries (for example, Apache Arrow). As part of the work, we may
+need to implement certain operations expected by pandas users (for example
+the algorithm used in, <code class="docutils literal notranslate"><span class="pre">Series.str.upper</span></code>). That work may be done outside of
+pandas.</p>
+</div>
+<div class="section" id="apache-arrow-interoperability">
+<h2>Apache Arrow interoperability<a class="headerlink" href="#apache-arrow-interoperability" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://arrow.apache.org">Apache Arrow</a> is a cross-language development
+platform for in-memory data. The Arrow logical types are closely aligned with
+typical pandas use cases.</p>
+<p>We’d like to provide better-integrated support for Arrow memory and data types
+within pandas. This will let us take advantage of its I/O capabilities and
+provide for better interoperability with other languages and libraries
+using Arrow.</p>
+</div>
+<div class="section" id="block-manager-rewrite">
+<h2>Block manager rewrite<a class="headerlink" href="#block-manager-rewrite" title="Permalink to this headline">¶</a></h2>
+<p>We’d like to replace pandas current internal data structures (a collection of
+1 or 2-D arrays) with a simpler collection of 1-D arrays.</p>
+<p>Pandas internal data model is quite complex. A DataFrame is made up of
+one or more 2-dimensional “blocks”, with one or more blocks per dtype. This
+collection of 2-D arrays is managed by the BlockManager.</p>
+<p>The primary benefit of the BlockManager is improved performance on certain
+operations (construction from a 2D array, binary operations, reductions across the columns),
+especially for wide DataFrames. However, the BlockManager substantially increases the
+complexity and maintenance burden of pandas.</p>
+<p>By replacing the BlockManager we hope to achieve</p>
+<ul class="simple">
+<li><p>Substantially simpler code</p></li>
+<li><p>Easier extensibility with new logical types</p></li>
+<li><p>Better user control over memory use and layout</p></li>
+<li><p>Improved micro-performance</p></li>
+<li><p>Option to provide a C / Cython API to pandas’ internals</p></li>
+</ul>
+<p>See <a class="reference external" href="https://dev.pandas.io/pandas2/internal-architecture.html#removal-of-blockmanager-new-dataframe-internals">these design documents</a>
+for more.</p>
+</div>
+<div class="section" id="decoupling-of-indexing-and-internals">
+<h2>Decoupling of indexing and internals<a class="headerlink" href="#decoupling-of-indexing-and-internals" title="Permalink to this headline">¶</a></h2>
+<p>The code for getting and setting values in pandas’ data structures needs refactoring.
+In particular, we must clearly separate code that converts keys (e.g., the argument
+to <code class="docutils literal notranslate"><span class="pre">DataFrame.loc</span></code>) to positions from code that uses these positions to get
+or set values. This is related to the proposed BlockManager rewrite. Currently, the
+BlockManager sometimes uses label-based, rather than position-based, indexing.
+We propose that it should only work with positional indexing, and the translation of keys
+to positions should be entirely done at a higher level.</p>
+<p>Indexing is a complicated API with many subtleties. This refactor will require care
+and attention. More details are discussed at
+<a class="reference external" href="https://github.com/pandas-dev/pandas/wiki/(Tentative)-rules-for-restructuring-indexing-code">https://github.com/pandas-dev/pandas/wiki/(Tentative)-rules-for-restructuring-indexing-code</a></p>
+</div>
+<div class="section" id="numba-accelerated-operations">
+<h2>Numba-accelerated operations<a class="headerlink" href="#numba-accelerated-operations" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://numba.pydata.org">Numba</a> is a JIT compiler for Python code. We’d like to provide
+ways for users to apply their own Numba-jitted functions where pandas accepts user-defined functions
+(for example, <code class="xref py py-meth docutils literal notranslate"><span class="pre">Series.apply()</span></code>, <code class="xref py py-meth docutils literal notranslate"><span class="pre">DataFrame.apply()</span></code>, <code class="xref py py-meth docutils literal notranslate"><span class="pre">DataFrame.applymap()</span></code>,
+and in groupby and window contexts). This will improve the performance of
+user-defined-functions in these operations by staying within compiled code.</p>
+</div>
+<div class="section" id="documentation-improvements">
+<h2>Documentation improvements<a class="headerlink" href="#documentation-improvements" title="Permalink to this headline">¶</a></h2>
+<p>We’d like to improve the content, structure, and presentation of the pandas documentation.
+Some specific goals include</p>
+<ul class="simple">
+<li><p>Overhaul the HTML theme with a modern, responsive design (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/15556">GH15556</a>)</p></li>
+<li><p>Improve the “Getting Started” documentation, designing and writing learning paths
+for users different backgrounds (e.g. brand new to programming, familiar with
+other languages like R, already familiar with Python).</p></li>
+<li><p>Improve the overall organization of the documentation and specific subsections
+of the documentation to make navigation and finding content easier.</p></li>
+</ul>
+</div>
+<div class="section" id="performance-monitoring">
+<h2>Performance monitoring<a class="headerlink" href="#performance-monitoring" title="Permalink to this headline">¶</a></h2>
+<p>Pandas uses <a class="reference external" href="https://asv.readthedocs.io/en/stable/">airspeed velocity</a> to
+monitor for performance regressions. ASV itself is a fabulous tool, but requires
+some additional work to be integrated into an open source project’s workflow.</p>
+<p>The <a class="reference external" href="https://github.com/asv-runner">asv-runner</a> organization, currently made up
+of pandas maintainers, provides tools built on top of ASV. We have a physical
+machine for running a number of project’s benchmarks, and tools managing the
+benchmark runs and reporting on results.</p>
+<p>We’d like to fund improvements and maintenance of these tools to</p>
+<ul class="simple">
+<li><p>Be more stable. Currently, they’re maintained on the nights and weekends when
+a maintainer has free time.</p></li>
+<li><p>Tune the system for benchmarks to improve stability, following
+<a class="reference external" href="https://pyperf.readthedocs.io/en/latest/system.html">https://pyperf.readthedocs.io/en/latest/system.html</a></p></li>
+<li><p>Build a GitHub bot to request ASV runs <em>before</em> a PR is merged. Currently, the
+benchmarks are only run nightly.</p></li>
+</ul>
+</div>
+<div class="section" id="roadmap-evolution">
+<span id="id2"></span><h2>Roadmap Evolution<a class="headerlink" href="#roadmap-evolution" title="Permalink to this headline">¶</a></h2>
+<p>Pandas continues to evolve. The direction is primarily determined by community
+interest. Everyone is welcome to review existing items on the roadmap and
+to propose a new item.</p>
+<p>Each item on the roadmap should be a short summary of a larger design proposal.
+The proposal should include</p>
+<ol class="arabic simple">
+<li><p>Short summary of the changes, which would be appropriate for inclusion in
+the roadmap if accepted.</p></li>
+<li><p>Motivation for the changes.</p></li>
+<li><p>An explanation of why the change is in scope for pandas.</p></li>
+<li><p>Detailed design: Preferably with example-usage (even if not implemented yet)
+and API documentation</p></li>
+<li><p>API Change: Any API changes that may result from the proposal.</p></li>
+</ol>
+<p>That proposal may then be submitted as a GitHub issue, where the pandas maintainers
+can review and comment on the design. The <a class="reference external" href="https://mail.python.org/mailman/listinfo/pandas-dev">pandas mailing list</a>
+should be notified of the proposal.</p>
+<p>When there’s agreement that an implementation
+would be welcome, the roadmap should be updated to include the summary and a
+link to the discussion issue.</p>
+</div>
+</div>
+
+
+              </div>
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="policies.html" title="previous page">Policies</a>
+    <a class='right-next' id="next-link" href="meeting.html" title="next page">Developer Meetings</a>
+
+              </div>
+              
+          </main>
+
+      </div>
+    </div><script>
+    // TOC sidebar - add "active" class to parent list
+    //
+    // Bootstrap's scrollspy adds the active class to the <a> link,
+    // but for the automatic collapsing we need this on the parent list item.
+    //
+    // The event is triggered on "window" (and not the nav item as documented),
+    // see https://github.com/twbs/bootstrap/issues/20086
+    $(window).on("activate.bs.scrollspy", function(){
+    var navLinks = document.querySelectorAll('#bd-toc-nav a');
+    for (var i = 0; i < navLinks.length; i++) {
+        var navLink = navLinks[i];
+        navLink.parentElement.classList.remove('active');
+    }
+    var navLinks = document.querySelectorAll('#bd-toc-nav a.active');
+    for (var i = 0; i < navLinks.length; i++) {
+        var navLink = navLinks[i];
+        navLink.parentElement.classList.add('active');
+    }
+    });
+
+    /**
+     * Use left and right arrow keys to navigate forward and backwards.
+    */
+    const LEFT_ARROW_KEYCODE = 37
+    const RIGHT_ARROW_KEYCODE = 39
+
+    const getPrevUrl = () => document.getElementById('prev-link').href
+    const getNextUrl = () => document.getElementById('next-link').href
+    const initPageNav = (event) => {
+        const keycode = event.which
+
+        if (keycode === LEFT_ARROW_KEYCODE) {
+            window.location.href = getPrevUrl();
+        } else if (keycode === RIGHT_ARROW_KEYCODE) {
+            window.location.href = getNextUrl();
+        }
+    };
+
+    var keyboardListener = false;
+    $( document ).ready(() => {
+        if (keyboardListener === false) {
+            document.addEventListener('keydown', initPageNav)
+            keyboardListener = true;
+        }
+    });
+</script>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2008-2020, the pandas development team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.3.0.
+    </div>
+  </body>
+</html>

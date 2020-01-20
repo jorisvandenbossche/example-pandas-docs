@@ -1,0 +1,629 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>GroupBy &#8212; pandas 1.0.0rc0+111.ge72cd7c52 documentation</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link rel="stylesheet" href="../_static/sphinx-bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/pandas.css" />
+    <link href="../_static/css/custom.css" rel="stylesheet">
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Resampling" href="resampling.html" />
+    <link rel="prev" title="Window" href="window.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main">
+
+<a class="navbar-brand" href="../index.html">
+  <img src="../_static/pandas.svg" class="logo" alt="logo">
+</a>
+
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+</button>
+
+<div id="navbar-menu" class="collapse navbar-collapse">
+  <ul id="navbar-main-elements" class="navbar-nav mr-auto">
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        1.0.0
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown" id="version-menu"></div>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="../index.html">Home</a>
+    </li>
+    
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../whatsnew/v1.1.0.html">What's New in 1.1.0</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../getting_started/index.html">Getting started</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../user_guide/index.html">User Guide</a>
+    </li>
+    
+    <li class="nav-item active">
+        <a class="nav-link" href="index.html">API reference</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../development/index.html">Development</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../whatsnew/index.html">Release Notes</a>
+    </li>
+    
+    
+  </ul>
+  <ul class="navbar-nav ml-auto">
+    
+      <li class="nav-item">
+        <a class="nav-link" href="https://github.com/pandas-dev/pandas" target="_blank" rel="noopener">
+          <span><i class="fab fa-github-square"></i></span>
+        </a>
+      </li>
+    
+    
+      <li class="nav-item">
+        <a class="nav-link" href="https://twitter.com/pandas_dev" target="_blank" rel="noopener">
+          <span><i class="fab fa-twitter-square"></i></span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row flex-xl-nowrap">
+          <div class="col-12 col-md-3 col-xl-2 bd-sidebar">
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+
+  <div class="bd-toc-item active">
+  
+
+  <ul class="nav bd-sidenav">
+      
+      
+      
+      
+      
+      
+      
+      
+        
+          
+              <li class="">
+                  <a href="io.html">Input/output</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="general_functions.html">General functions</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="series.html">Series</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="frame.html">DataFrame</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="arrays.html">Pandas arrays</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="panel.html">Panel</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="indexing.html">Index objects</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="offset_frequency.html">Date offsets</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="window.html">Window</a>
+              </li>
+          
+        
+          
+              <li class="active">
+                  <a href="">GroupBy</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="resampling.html">Resampling</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="style.html">Style</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="plotting.html">Plotting</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="general_utility_functions.html">General utility functions</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="extensions.html">Extensions</a>
+              </li>
+          
+        
+      
+      
+      
+      
+      
+      
+    </ul>
+
+</nav>
+          </div>
+
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+              
+<div class="tocsection onthispage"><i class="fas fa-list"></i> On this page</div>
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#indexing-iteration" class="nav-link">Indexing, iteration</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#function-application" class="nav-link">Function application</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#computations-descriptive-stats" class="nav-link">Computations / descriptive stats</a>
+        </li>
+    
+    </ul>
+</nav>
+              
+            </div>
+
+          <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
+              <div>
+                
+  <div class="section" id="groupby">
+<span id="api-groupby"></span><h1>GroupBy<a class="headerlink" href="#groupby" title="Permalink to this headline">¶</a></h1>
+<p>GroupBy objects are returned by groupby calls: <code class="xref py py-func docutils literal notranslate"><span class="pre">pandas.DataFrame.groupby()</span></code>, <code class="xref py py-func docutils literal notranslate"><span class="pre">pandas.Series.groupby()</span></code>, etc.</p>
+<div class="section" id="indexing-iteration">
+<h2>Indexing, iteration<a class="headerlink" href="#indexing-iteration" title="Permalink to this headline">¶</a></h2>
+<table class="longtable table">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">GroupBy.__iter__</span></code>(self)</p></td>
+<td><p>Groupby iterator.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">GroupBy.groups</span></code></p></td>
+<td><p>Dict {group name -&gt; group labels}.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">GroupBy.indices</span></code></p></td>
+<td><p>Dict {group name -&gt; group indices}.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">GroupBy.get_group</span></code>(self, name[, obj])</p></td>
+<td><p>Construct DataFrame from group with provided name.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="longtable table">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Grouper</span></code>([key, level, freq, axis, sort])</p></td>
+<td><p>A Grouper allows the user to specify a groupby instruction for an object.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="function-application">
+<h2>Function application<a class="headerlink" href="#function-application" title="Permalink to this headline">¶</a></h2>
+<table class="longtable table">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">GroupBy.apply</span></code>(self, func, \*args, \*\*kwargs)</p></td>
+<td><p>Apply function <cite>func</cite>  group-wise and combine the results together.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">GroupBy.agg</span></code>(self, func, \*args, \*\*kwargs)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">GroupBy.aggregate</span></code>(self, func, \*args, \*\*kwargs)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">GroupBy.transform</span></code>(self, func, \*args, \*\*kwargs)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">GroupBy.pipe</span></code>(self, func, \*args, \*\*kwargs)</p></td>
+<td><p>Apply a function <cite>func</cite> with arguments to this GroupBy object and return the function’s result.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="computations-descriptive-stats">
+<h2>Computations / descriptive stats<a class="headerlink" href="#computations-descriptive-stats" title="Permalink to this headline">¶</a></h2>
+<table class="longtable table">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">GroupBy.all</span></code>(self, skipna)</p></td>
+<td><p>Return True if all values in the group are truthful, else False.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">GroupBy.any</span></code>(self, skipna)</p></td>
+<td><p>Return True if any value in the group is truthful, else False.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">GroupBy.bfill</span></code>(self[, limit])</p></td>
+<td><p>Backward fill the values.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">GroupBy.count</span></code>(self)</p></td>
+<td><p>Compute count of group, excluding missing values.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">GroupBy.cumcount</span></code>(self, ascending)</p></td>
+<td><p>Number each item in each group from 0 to the length of that group - 1.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">GroupBy.cummax</span></code>(self[, axis])</p></td>
+<td><p>Cumulative max for each group.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">GroupBy.cummin</span></code>(self[, axis])</p></td>
+<td><p>Cumulative min for each group.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">GroupBy.cumprod</span></code>(self[, axis])</p></td>
+<td><p>Cumulative product for each group.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">GroupBy.cumsum</span></code>(self[, axis])</p></td>
+<td><p>Cumulative sum for each group.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">GroupBy.ffill</span></code>(self[, limit])</p></td>
+<td><p>Forward fill the values.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">GroupBy.first</span></code>(self, \*\*kwargs)</p></td>
+<td><p>Compute first of group values.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">GroupBy.head</span></code>(self[, n])</p></td>
+<td><p>Return first n rows of each group.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">GroupBy.last</span></code>(self, \*\*kwargs)</p></td>
+<td><p>Compute last of group values.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">GroupBy.max</span></code>(self, \*\*kwargs)</p></td>
+<td><p>Compute max of group values.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">GroupBy.mean</span></code>(self, \*args, \*\*kwargs)</p></td>
+<td><p>Compute mean of groups, excluding missing values.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">GroupBy.median</span></code>(self, \*\*kwargs)</p></td>
+<td><p>Compute median of groups, excluding missing values.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">GroupBy.min</span></code>(self, \*\*kwargs)</p></td>
+<td><p>Compute min of group values.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">GroupBy.ngroup</span></code>(self, ascending)</p></td>
+<td><p>Number each group from 0 to the number of groups - 1.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">GroupBy.nth</span></code>(self, n, List[int]], dropna, …)</p></td>
+<td><p>Take the nth row from each group if n is an int, or a subset of rows if n is a list of ints.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">GroupBy.ohlc</span></code>(self)</p></td>
+<td><p>Compute sum of values, excluding missing values.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">GroupBy.prod</span></code>(self, \*\*kwargs)</p></td>
+<td><p>Compute prod of group values.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">GroupBy.rank</span></code>(self, method, ascending, …)</p></td>
+<td><p>Provide the rank of values within each group.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">GroupBy.pct_change</span></code>(self[, periods, …])</p></td>
+<td><p>Calculate pct_change of each value to previous entry in group.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">GroupBy.size</span></code>(self)</p></td>
+<td><p>Compute group sizes.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">GroupBy.sem</span></code>(self, ddof)</p></td>
+<td><p>Compute standard error of the mean of groups, excluding missing values.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">GroupBy.std</span></code>(self, ddof, \*args, \*\*kwargs)</p></td>
+<td><p>Compute standard deviation of groups, excluding missing values.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">GroupBy.sum</span></code>(self, \*\*kwargs)</p></td>
+<td><p>Compute sum of group values.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">GroupBy.var</span></code>(self, ddof, \*args, \*\*kwargs)</p></td>
+<td><p>Compute variance of groups, excluding missing values.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">GroupBy.tail</span></code>(self[, n])</p></td>
+<td><p>Return last n rows of each group.</p></td>
+</tr>
+</tbody>
+</table>
+<p>The following methods are available in both <code class="docutils literal notranslate"><span class="pre">SeriesGroupBy</span></code> and
+<code class="docutils literal notranslate"><span class="pre">DataFrameGroupBy</span></code> objects, but may differ slightly, usually in that
+the <code class="docutils literal notranslate"><span class="pre">DataFrameGroupBy</span></code> version usually permits the specification of an
+axis argument, and often an argument indicating whether to restrict
+application to columns of a specific data type.</p>
+<table class="longtable table">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataFrameGroupBy.all</span></code>(self, skipna)</p></td>
+<td><p>Return True if all values in the group are truthful, else False.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataFrameGroupBy.any</span></code>(self, skipna)</p></td>
+<td><p>Return True if any value in the group is truthful, else False.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataFrameGroupBy.bfill</span></code>(self[, limit])</p></td>
+<td><p>Backward fill the values.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataFrameGroupBy.corr</span></code></p></td>
+<td><p>Compute pairwise correlation of columns, excluding NA/null values.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataFrameGroupBy.count</span></code>(self)</p></td>
+<td><p>Compute count of group, excluding missing values.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataFrameGroupBy.cov</span></code></p></td>
+<td><p>Compute pairwise covariance of columns, excluding NA/null values.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataFrameGroupBy.cummax</span></code>(self[, axis])</p></td>
+<td><p>Cumulative max for each group.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataFrameGroupBy.cummin</span></code>(self[, axis])</p></td>
+<td><p>Cumulative min for each group.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataFrameGroupBy.cumprod</span></code>(self[, axis])</p></td>
+<td><p>Cumulative product for each group.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataFrameGroupBy.cumsum</span></code>(self[, axis])</p></td>
+<td><p>Cumulative sum for each group.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataFrameGroupBy.describe</span></code>(self, \*\*kwargs)</p></td>
+<td><p>Generate descriptive statistics.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataFrameGroupBy.diff</span></code></p></td>
+<td><p>First discrete difference of element.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataFrameGroupBy.ffill</span></code>(self[, limit])</p></td>
+<td><p>Forward fill the values.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataFrameGroupBy.fillna</span></code></p></td>
+<td><p>Fill NA/NaN values using the specified method.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataFrameGroupBy.filter</span></code>(self, func[, dropna])</p></td>
+<td><p>Return a copy of a DataFrame excluding elements from groups that do not satisfy the boolean criterion specified by func.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataFrameGroupBy.hist</span></code></p></td>
+<td><p>Make a histogram of the DataFrame’s.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataFrameGroupBy.idxmax</span></code></p></td>
+<td><p>Return index of first occurrence of maximum over requested axis.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataFrameGroupBy.idxmin</span></code></p></td>
+<td><p>Return index of first occurrence of minimum over requested axis.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataFrameGroupBy.mad</span></code></p></td>
+<td><p>Return the mean absolute deviation of the values for the requested axis.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataFrameGroupBy.nunique</span></code>(self, dropna)</p></td>
+<td><p>Return DataFrame with number of distinct observations per group for each column.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataFrameGroupBy.pct_change</span></code>(self[, periods, …])</p></td>
+<td><p>Calculate pct_change of each value to previous entry in group.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataFrameGroupBy.plot</span></code></p></td>
+<td><p>Class implementing the .plot attribute for groupby objects.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataFrameGroupBy.quantile</span></code>(self[, q])</p></td>
+<td><p>Return group values at the given quantile, a la numpy.percentile.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataFrameGroupBy.rank</span></code>(self, method, …)</p></td>
+<td><p>Provide the rank of values within each group.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataFrameGroupBy.resample</span></code>(self, rule, …)</p></td>
+<td><p>Provide resampling when using a TimeGrouper.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataFrameGroupBy.shift</span></code>(self[, periods, …])</p></td>
+<td><p>Shift each group by periods observations.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataFrameGroupBy.size</span></code>(self)</p></td>
+<td><p>Compute group sizes.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataFrameGroupBy.skew</span></code></p></td>
+<td><p>Return unbiased skew over requested axis.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataFrameGroupBy.take</span></code></p></td>
+<td><p>Return the elements in the given <em>positional</em> indices along an axis.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataFrameGroupBy.tshift</span></code></p></td>
+<td><p>Shift the time index, using the index’s frequency if available.</p></td>
+</tr>
+</tbody>
+</table>
+<p>The following methods are available only for <code class="docutils literal notranslate"><span class="pre">SeriesGroupBy</span></code> objects.</p>
+<table class="longtable table">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">SeriesGroupBy.nlargest</span></code></p></td>
+<td><p>Return the largest <cite>n</cite> elements.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">SeriesGroupBy.nsmallest</span></code></p></td>
+<td><p>Return the smallest <cite>n</cite> elements.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">SeriesGroupBy.nunique</span></code>(self, dropna)</p></td>
+<td><p>Return number of unique elements in the group.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">SeriesGroupBy.unique</span></code></p></td>
+<td><p>Return unique values of Series object.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">SeriesGroupBy.value_counts</span></code>(self[, …])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">SeriesGroupBy.is_monotonic_increasing</span></code></p></td>
+<td><p>Return boolean if values in the object are monotonic_increasing.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">SeriesGroupBy.is_monotonic_decreasing</span></code></p></td>
+<td><p>Return boolean if values in the object are monotonic_decreasing.</p></td>
+</tr>
+</tbody>
+</table>
+<p>The following methods are available only for <code class="docutils literal notranslate"><span class="pre">DataFrameGroupBy</span></code> objects.</p>
+<table class="longtable table">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataFrameGroupBy.corrwith</span></code></p></td>
+<td><p>Compute pairwise correlation.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataFrameGroupBy.boxplot</span></code>(grouped[, …])</p></td>
+<td><p>Make box plots from DataFrameGroupBy data.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+              </div>
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="window.html" title="previous page">Window</a>
+    <a class='right-next' id="next-link" href="resampling.html" title="next page">Resampling</a>
+
+              </div>
+              
+          </main>
+
+      </div>
+    </div><script>
+    // TOC sidebar - add "active" class to parent list
+    //
+    // Bootstrap's scrollspy adds the active class to the <a> link,
+    // but for the automatic collapsing we need this on the parent list item.
+    //
+    // The event is triggered on "window" (and not the nav item as documented),
+    // see https://github.com/twbs/bootstrap/issues/20086
+    $(window).on("activate.bs.scrollspy", function(){
+    var navLinks = document.querySelectorAll('#bd-toc-nav a');
+    for (var i = 0; i < navLinks.length; i++) {
+        var navLink = navLinks[i];
+        navLink.parentElement.classList.remove('active');
+    }
+    var navLinks = document.querySelectorAll('#bd-toc-nav a.active');
+    for (var i = 0; i < navLinks.length; i++) {
+        var navLink = navLinks[i];
+        navLink.parentElement.classList.add('active');
+    }
+    });
+
+    /**
+     * Use left and right arrow keys to navigate forward and backwards.
+    */
+    const LEFT_ARROW_KEYCODE = 37
+    const RIGHT_ARROW_KEYCODE = 39
+
+    const getPrevUrl = () => document.getElementById('prev-link').href
+    const getNextUrl = () => document.getElementById('next-link').href
+    const initPageNav = (event) => {
+        const keycode = event.which
+
+        if (keycode === LEFT_ARROW_KEYCODE) {
+            window.location.href = getPrevUrl();
+        } else if (keycode === RIGHT_ARROW_KEYCODE) {
+            window.location.href = getNextUrl();
+        }
+    };
+
+    var keyboardListener = false;
+    $( document ).ready(() => {
+        if (keyboardListener === false) {
+            document.addEventListener('keydown', initPageNav)
+            keyboardListener = true;
+        }
+    });
+</script>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2008-2020, the pandas development team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.3.0.
+    </div>
+  </body>
+</html>

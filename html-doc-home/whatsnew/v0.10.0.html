@@ -1,0 +1,879 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>v0.10.0 (December 17, 2012) &#8212; pandas 1.0.0rc0+111.ge72cd7c52 documentation</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link rel="stylesheet" href="../_static/sphinx-bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/pandas.css" />
+    <link href="../_static/css/custom.css" rel="stylesheet">
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="v0.9.1 (November 14, 2012)" href="v0.9.1.html" />
+    <link rel="prev" title="v0.10.1 (January 22, 2013)" href="v0.10.1.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main">
+
+<a class="navbar-brand" href="../index.html">
+  <img src="../_static/pandas.svg" class="logo" alt="logo">
+</a>
+
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+</button>
+
+<div id="navbar-menu" class="collapse navbar-collapse">
+  <ul id="navbar-main-elements" class="navbar-nav mr-auto">
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        1.0.0
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown" id="version-menu"></div>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="../index.html">Home</a>
+    </li>
+    
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="v1.1.0.html">What's New in 1.1.0</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../getting_started/index.html">Getting started</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../user_guide/index.html">User Guide</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../reference/index.html">API reference</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../development/index.html">Development</a>
+    </li>
+    
+    <li class="nav-item active">
+        <a class="nav-link" href="index.html">Release Notes</a>
+    </li>
+    
+    
+  </ul>
+  <ul class="navbar-nav ml-auto">
+    
+      <li class="nav-item">
+        <a class="nav-link" href="https://github.com/pandas-dev/pandas" target="_blank" rel="noopener">
+          <span><i class="fab fa-github-square"></i></span>
+        </a>
+      </li>
+    
+    
+      <li class="nav-item">
+        <a class="nav-link" href="https://twitter.com/pandas_dev" target="_blank" rel="noopener">
+          <span><i class="fab fa-twitter-square"></i></span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row flex-xl-nowrap">
+          <div class="col-12 col-md-3 col-xl-2 bd-sidebar">
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+
+  <div class="bd-toc-item active">
+  
+
+  <ul class="nav bd-sidenav">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+        
+      
+      
+    </ul>
+
+</nav>
+          </div>
+
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+              
+<div class="tocsection onthispage"><i class="fas fa-list"></i> On this page</div>
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#file-parsing-new-features" class="nav-link">File parsing new features</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#api-changes" class="nav-link">API changes</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#new-features" class="nav-link">New features</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#wide-dataframe-printing" class="nav-link">Wide DataFrame printing</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#updated-pytables-support" class="nav-link">Updated PyTables support</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#n-dimensional-panels-experimental" class="nav-link">N dimensional Panels (experimental)</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#contributors" class="nav-link">Contributors</a>
+        </li>
+    
+    </ul>
+</nav>
+              
+            </div>
+
+          <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
+              <div>
+                
+  <div class="section" id="v0-10-0-december-17-2012">
+<span id="whatsnew-0100"></span><h1>v0.10.0 (December 17, 2012)<a class="headerlink" href="#v0-10-0-december-17-2012" title="Permalink to this headline">¶</a></h1>
+<p>This is a major release from 0.9.1 and includes many new features and
+enhancements along with a large number of bug fixes. There are also a number of
+important API changes that long-time pandas users should pay close attention
+to.</p>
+<div class="section" id="file-parsing-new-features">
+<h2>File parsing new features<a class="headerlink" href="#file-parsing-new-features" title="Permalink to this headline">¶</a></h2>
+<p>The delimited file parsing engine (the guts of <code class="docutils literal notranslate"><span class="pre">read_csv</span></code> and <code class="docutils literal notranslate"><span class="pre">read_table</span></code>)
+has been rewritten from the ground up and now uses a fraction the amount of
+memory while parsing, while being 40% or more faster in most use cases (in some
+cases much faster).</p>
+<p>There are also many new features:</p>
+<ul class="simple">
+<li><p>Much-improved Unicode handling via the <code class="docutils literal notranslate"><span class="pre">encoding</span></code> option.</p></li>
+<li><p>Column filtering (<code class="docutils literal notranslate"><span class="pre">usecols</span></code>)</p></li>
+<li><p>Dtype specification (<code class="docutils literal notranslate"><span class="pre">dtype</span></code> argument)</p></li>
+<li><p>Ability to specify strings to be recognized as True/False</p></li>
+<li><p>Ability to yield NumPy record arrays (<code class="docutils literal notranslate"><span class="pre">as_recarray</span></code>)</p></li>
+<li><p>High performance <code class="docutils literal notranslate"><span class="pre">delim_whitespace</span></code> option</p></li>
+<li><p>Decimal format (e.g. European format) specification</p></li>
+<li><p>Easier CSV dialect options: <code class="docutils literal notranslate"><span class="pre">escapechar</span></code>, <code class="docutils literal notranslate"><span class="pre">lineterminator</span></code>,
+<code class="docutils literal notranslate"><span class="pre">quotechar</span></code>, etc.</p></li>
+<li><p>More robust handling of many exceptional kinds of files observed in the wild</p></li>
+</ul>
+</div>
+<div class="section" id="api-changes">
+<h2>API changes<a class="headerlink" href="#api-changes" title="Permalink to this headline">¶</a></h2>
+<p><strong>Deprecated DataFrame BINOP TimeSeries special case behavior</strong></p>
+<p>The default behavior of binary operations between a DataFrame and a Series has
+always been to align on the DataFrame’s columns and broadcast down the rows,
+<strong>except</strong> in the special case that the DataFrame contains time series. Since
+there are now method for each binary operator enabling you to specify how you
+want to broadcast, we are phasing out this special case (Zen of Python:
+<em>Special cases aren’t special enough to break the rules</em>). Here’s what I’m
+talking about:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+
+<span class="gp">In [2]: </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span>
+<span class="gp">   ...: </span>                  <span class="n">index</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s1">&#39;1/1/2000&#39;</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="mi">6</span><span class="p">))</span>
+<span class="gp">   ...: </span>
+
+<span class="gp">In [3]: </span><span class="n">df</span>
+<span class="gh">Out[3]: </span><span class="go"></span>
+<span class="go">                   0         1         2         3</span>
+<span class="go">2000-01-01  0.469112 -0.282863 -1.509059 -1.135632</span>
+<span class="go">2000-01-02  1.212112 -0.173215  0.119209 -1.044236</span>
+<span class="go">2000-01-03 -0.861849 -2.104569 -0.494929  1.071804</span>
+<span class="go">2000-01-04  0.721555 -0.706771 -1.039575  0.271860</span>
+<span class="go">2000-01-05 -0.424972  0.567020  0.276232 -1.087401</span>
+<span class="go">2000-01-06 -0.673690  0.113648 -1.478427  0.524988</span>
+
+<span class="go"># deprecated now</span>
+<span class="gp">In [4]: </span><span class="n">df</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="gh">Out[4]: </span><span class="go"></span>
+<span class="go">            2000-01-01 00:00:00  2000-01-02 00:00:00  2000-01-03 00:00:00  2000-01-04 00:00:00  2000-01-05 00:00:00  2000-01-06 00:00:00   0   1   2   3</span>
+<span class="go">2000-01-01                  NaN                  NaN                  NaN                  NaN                  NaN                  NaN NaN NaN NaN NaN</span>
+<span class="go">2000-01-02                  NaN                  NaN                  NaN                  NaN                  NaN                  NaN NaN NaN NaN NaN</span>
+<span class="go">2000-01-03                  NaN                  NaN                  NaN                  NaN                  NaN                  NaN NaN NaN NaN NaN</span>
+<span class="go">2000-01-04                  NaN                  NaN                  NaN                  NaN                  NaN                  NaN NaN NaN NaN NaN</span>
+<span class="go">2000-01-05                  NaN                  NaN                  NaN                  NaN                  NaN                  NaN NaN NaN NaN NaN</span>
+<span class="go">2000-01-06                  NaN                  NaN                  NaN                  NaN                  NaN                  NaN NaN NaN NaN NaN</span>
+
+<span class="go"># Change your code to</span>
+<span class="gp">In [5]: </span><span class="n">df</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># align on axis 0 (rows)</span>
+<span class="gh">Out[5]: </span><span class="go"></span>
+<span class="go">              0         1         2         3</span>
+<span class="go">2000-01-01  0.0 -0.751976 -1.978171 -1.604745</span>
+<span class="go">2000-01-02  0.0 -1.385327 -1.092903 -2.256348</span>
+<span class="go">2000-01-03  0.0 -1.242720  0.366920  1.933653</span>
+<span class="go">2000-01-04  0.0 -1.428326 -1.761130 -0.449695</span>
+<span class="go">2000-01-05  0.0  0.991993  0.701204 -0.662428</span>
+<span class="go">2000-01-06  0.0  0.787338 -0.804737  1.198677</span>
+</pre></div>
+</div>
+<p>You will get a deprecation warning in the 0.10.x series, and the deprecated
+functionality will be removed in 0.11 or later.</p>
+<p><strong>Altered resample default behavior</strong></p>
+<p>The default time series <code class="docutils literal notranslate"><span class="pre">resample</span></code> binning behavior of daily <code class="docutils literal notranslate"><span class="pre">D</span></code> and
+<em>higher</em> frequencies has been changed to <code class="docutils literal notranslate"><span class="pre">closed='left',</span> <span class="pre">label='left'</span></code>. Lower
+nfrequencies are unaffected. The prior defaults were causing a great deal of
+confusion for users, especially resampling data to daily frequency (which
+labeled the aggregated group with the end of the interval: the next day).</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="n">dates</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s1">&#39;1/1/2000&#39;</span><span class="p">,</span> <span class="s1">&#39;1/5/2000&#39;</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;4h&#39;</span><span class="p">)</span>
+
+<span class="gp">In [2]: </span><span class="n">series</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">dates</span><span class="p">)),</span> <span class="n">index</span><span class="o">=</span><span class="n">dates</span><span class="p">)</span>
+
+<span class="gp">In [3]: </span><span class="n">series</span>
+<span class="gh">Out[3]:</span>
+<span class="go">2000-01-01 00:00:00     0</span>
+<span class="go">2000-01-01 04:00:00     1</span>
+<span class="go">2000-01-01 08:00:00     2</span>
+<span class="go">2000-01-01 12:00:00     3</span>
+<span class="go">2000-01-01 16:00:00     4</span>
+<span class="go">2000-01-01 20:00:00     5</span>
+<span class="go">2000-01-02 00:00:00     6</span>
+<span class="go">2000-01-02 04:00:00     7</span>
+<span class="go">2000-01-02 08:00:00     8</span>
+<span class="go">2000-01-02 12:00:00     9</span>
+<span class="go">2000-01-02 16:00:00    10</span>
+<span class="go">2000-01-02 20:00:00    11</span>
+<span class="go">2000-01-03 00:00:00    12</span>
+<span class="go">2000-01-03 04:00:00    13</span>
+<span class="go">2000-01-03 08:00:00    14</span>
+<span class="go">2000-01-03 12:00:00    15</span>
+<span class="go">2000-01-03 16:00:00    16</span>
+<span class="go">2000-01-03 20:00:00    17</span>
+<span class="go">2000-01-04 00:00:00    18</span>
+<span class="go">2000-01-04 04:00:00    19</span>
+<span class="go">2000-01-04 08:00:00    20</span>
+<span class="go">2000-01-04 12:00:00    21</span>
+<span class="go">2000-01-04 16:00:00    22</span>
+<span class="go">2000-01-04 20:00:00    23</span>
+<span class="go">2000-01-05 00:00:00    24</span>
+<span class="go">Freq: 4H, dtype: int64</span>
+
+<span class="gp">In [4]: </span><span class="n">series</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;sum&#39;</span><span class="p">)</span>
+<span class="gh">Out[4]:</span>
+<span class="go">2000-01-01     15</span>
+<span class="go">2000-01-02     51</span>
+<span class="go">2000-01-03     87</span>
+<span class="go">2000-01-04    123</span>
+<span class="go">2000-01-05     24</span>
+<span class="go">Freq: D, dtype: int64</span>
+
+<span class="gp">In [5]: </span><span class="c1"># old behavior</span>
+<span class="gp">In [6]: </span><span class="n">series</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;sum&#39;</span><span class="p">,</span> <span class="n">closed</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">)</span>
+<span class="gh">Out[6]:</span>
+<span class="go">2000-01-01      0</span>
+<span class="go">2000-01-02     21</span>
+<span class="go">2000-01-03     57</span>
+<span class="go">2000-01-04     93</span>
+<span class="go">2000-01-05    129</span>
+<span class="go">Freq: D, dtype: int64</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Infinity and negative infinity are no longer treated as NA by <code class="docutils literal notranslate"><span class="pre">isnull</span></code> and
+<code class="docutils literal notranslate"><span class="pre">notnull</span></code>. That they ever were was a relic of early pandas. This behavior
+can be re-enabled globally by the <code class="docutils literal notranslate"><span class="pre">mode.use_inf_as_null</span></code> option:</p></li>
+</ul>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [6]: </span><span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span> <span class="mf">3.4</span><span class="p">,</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">])</span>
+
+<span class="gp">In [7]: </span><span class="n">pd</span><span class="o">.</span><span class="n">isnull</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="gh">Out[7]:</span>
+<span class="go">0    False</span>
+<span class="go">1    False</span>
+<span class="go">2    False</span>
+<span class="go">3    False</span>
+<span class="go">Length: 4, dtype: bool</span>
+
+<span class="gp">In [8]: </span><span class="n">s</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="gh">Out[8]:</span>
+<span class="go">0    1.500000</span>
+<span class="go">1         inf</span>
+<span class="go">2    3.400000</span>
+<span class="go">3        -inf</span>
+<span class="go">Length: 4, dtype: float64</span>
+
+<span class="gp">In [9]: </span><span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;use_inf_as_null&#39;</span><span class="p">,</span> <span class="bp">True</span><span class="p">)</span>
+
+<span class="gp">In [10]: </span><span class="n">pd</span><span class="o">.</span><span class="n">isnull</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="gh">Out[10]:</span>
+<span class="go">0    False</span>
+<span class="go">1     True</span>
+<span class="go">2    False</span>
+<span class="go">3     True</span>
+<span class="go">Length: 4, dtype: bool</span>
+
+<span class="gp">In [11]: </span><span class="n">s</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="gh">Out[11]:</span>
+<span class="go">0    1.5</span>
+<span class="go">1    0.0</span>
+<span class="go">2    3.4</span>
+<span class="go">3    0.0</span>
+<span class="go">Length: 4, dtype: float64</span>
+
+<span class="gp">In [12]: </span><span class="n">pd</span><span class="o">.</span><span class="n">reset_option</span><span class="p">(</span><span class="s1">&#39;use_inf_as_null&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Methods with the <code class="docutils literal notranslate"><span class="pre">inplace</span></code> option now all return <code class="docutils literal notranslate"><span class="pre">None</span></code> instead of the
+calling object. E.g. code written like <code class="docutils literal notranslate"><span class="pre">df</span> <span class="pre">=</span> <span class="pre">df.fillna(0,</span> <span class="pre">inplace=True)</span></code>
+may stop working. To fix, simply delete the unnecessary variable assignment.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pandas.merge</span></code> no longer sorts the group keys (<code class="docutils literal notranslate"><span class="pre">sort=False</span></code>) by
+default. This was done for performance reasons: the group-key sorting is
+often one of the more expensive parts of the computation and is often
+unnecessary.</p></li>
+<li><p>The default column names for a file with no header have been changed to the
+integers <code class="docutils literal notranslate"><span class="pre">0</span></code> through <code class="docutils literal notranslate"><span class="pre">N</span> <span class="pre">-</span> <span class="pre">1</span></code>. This is to create consistency with the
+DataFrame constructor with no columns specified. The v0.9.0 behavior (names
+<code class="docutils literal notranslate"><span class="pre">X0</span></code>, <code class="docutils literal notranslate"><span class="pre">X1</span></code>, …) can be reproduced by specifying <code class="docutils literal notranslate"><span class="pre">prefix='X'</span></code>:</p></li>
+</ul>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [6]: </span><span class="kn">import</span> <span class="nn">io</span>
+
+<span class="gp">In [7]: </span><span class="n">data</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;a,b,c</span><span class="se">\n</span><span class="s1">&#39;</span>
+<span class="gp">   ...: </span>        <span class="s1">&#39;1,Yes,2</span><span class="se">\n</span><span class="s1">&#39;</span>
+<span class="gp">   ...: </span>        <span class="s1">&#39;3,No,4&#39;</span><span class="p">)</span>
+<span class="gp">   ...: </span>
+
+<span class="gp">In [8]: </span><span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="go">a,b,c</span>
+<span class="go">1,Yes,2</span>
+<span class="go">3,No,4</span>
+
+<span class="gp">In [9]: </span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">io</span><span class="o">.</span><span class="n">StringIO</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="n">header</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
+<span class="gh">Out[9]: </span><span class="go"></span>
+<span class="go">   0    1  2</span>
+<span class="go">0  a    b  c</span>
+<span class="go">1  1  Yes  2</span>
+<span class="go">2  3   No  4</span>
+
+<span class="gp">In [10]: </span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">io</span><span class="o">.</span><span class="n">StringIO</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="n">header</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="s1">&#39;X&#39;</span><span class="p">)</span>
+<span class="gh">Out[10]: </span><span class="go"></span>
+<span class="go">  X0   X1 X2</span>
+<span class="go">0  a    b  c</span>
+<span class="go">1  1  Yes  2</span>
+<span class="go">2  3   No  4</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Values like <code class="docutils literal notranslate"><span class="pre">'Yes'</span></code> and <code class="docutils literal notranslate"><span class="pre">'No'</span></code> are not interpreted as boolean by default,
+though this can be controlled by new <code class="docutils literal notranslate"><span class="pre">true_values</span></code> and <code class="docutils literal notranslate"><span class="pre">false_values</span></code>
+arguments:</p></li>
+</ul>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [11]: </span><span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="go">a,b,c</span>
+<span class="go">1,Yes,2</span>
+<span class="go">3,No,4</span>
+
+<span class="gp">In [12]: </span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">io</span><span class="o">.</span><span class="n">StringIO</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+<span class="gh">Out[12]: </span><span class="go"></span>
+<span class="go">   a    b  c</span>
+<span class="go">0  1  Yes  2</span>
+<span class="go">1  3   No  4</span>
+
+<span class="gp">In [13]: </span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">io</span><span class="o">.</span><span class="n">StringIO</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="n">true_values</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Yes&#39;</span><span class="p">],</span> <span class="n">false_values</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;No&#39;</span><span class="p">])</span>
+<span class="gh">Out[13]: </span><span class="go"></span>
+<span class="go">   a      b  c</span>
+<span class="go">0  1   True  2</span>
+<span class="go">1  3  False  4</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>The file parsers will not recognize non-string values arising from a
+converter function as NA if passed in the <code class="docutils literal notranslate"><span class="pre">na_values</span></code> argument. It’s better
+to do post-processing using the <code class="docutils literal notranslate"><span class="pre">replace</span></code> function instead.</p></li>
+<li><p>Calling <code class="docutils literal notranslate"><span class="pre">fillna</span></code> on Series or DataFrame with no arguments is no longer
+valid code. You must either specify a fill value or an interpolation method:</p></li>
+</ul>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [14]: </span><span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+
+<span class="gp">In [15]: </span><span class="n">s</span>
+<span class="gh">Out[15]: </span><span class="go"></span>
+<span class="go">0    NaN</span>
+<span class="go">1    1.0</span>
+<span class="go">2    2.0</span>
+<span class="go">3    NaN</span>
+<span class="go">4    4.0</span>
+<span class="go">dtype: float64</span>
+
+<span class="gp">In [16]: </span><span class="n">s</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="gh">Out[16]: </span><span class="go"></span>
+<span class="go">0    0.0</span>
+<span class="go">1    1.0</span>
+<span class="go">2    2.0</span>
+<span class="go">3    0.0</span>
+<span class="go">4    4.0</span>
+<span class="go">dtype: float64</span>
+
+<span class="gp">In [17]: </span><span class="n">s</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;pad&#39;</span><span class="p">)</span>
+<span class="gh">Out[17]: </span><span class="go"></span>
+<span class="go">0    NaN</span>
+<span class="go">1    1.0</span>
+<span class="go">2    2.0</span>
+<span class="go">3    2.0</span>
+<span class="go">4    4.0</span>
+<span class="go">dtype: float64</span>
+</pre></div>
+</div>
+<p>Convenience methods <code class="docutils literal notranslate"><span class="pre">ffill</span></code> and  <code class="docutils literal notranslate"><span class="pre">bfill</span></code> have been added:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [18]: </span><span class="n">s</span><span class="o">.</span><span class="n">ffill</span><span class="p">()</span>
+<span class="gh">Out[18]: </span><span class="go"></span>
+<span class="go">0    NaN</span>
+<span class="go">1    1.0</span>
+<span class="go">2    2.0</span>
+<span class="go">3    2.0</span>
+<span class="go">4    4.0</span>
+<span class="go">dtype: float64</span>
+</pre></div>
+</div>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">Series.apply</span></code> will now operate on a returned value from the applied
+function, that is itself a series, and possibly upcast the result to a
+DataFrame</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [19]: </span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<span class="gp">   ....: </span>    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;x^2&#39;</span><span class="p">])</span>
+<span class="gp">   ....: </span>
+
+<span class="gp">In [20]: </span><span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+
+<span class="gp">In [21]: </span><span class="n">s</span>
+<span class="gh">Out[21]: </span><span class="go"></span>
+<span class="go">0    0.340445</span>
+<span class="go">1    0.984729</span>
+<span class="go">2    0.919540</span>
+<span class="go">3    0.037772</span>
+<span class="go">4    0.861549</span>
+<span class="go">dtype: float64</span>
+
+<span class="gp">In [22]: </span><span class="n">s</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<span class="gh">Out[22]: </span><span class="go"></span>
+<span class="go">          x       x^2</span>
+<span class="go">0  0.340445  0.115903</span>
+<span class="go">1  0.984729  0.969691</span>
+<span class="go">2  0.919540  0.845555</span>
+<span class="go">3  0.037772  0.001427</span>
+<span class="go">4  0.861549  0.742267</span>
+</pre></div>
+</div>
+</li>
+<li><p>New API functions for working with pandas options (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/2097">GH2097</a>):</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">get_option</span></code> / <code class="docutils literal notranslate"><span class="pre">set_option</span></code> - get/set the value of an option. Partial
+names are accepted.  - <code class="docutils literal notranslate"><span class="pre">reset_option</span></code> - reset one or more options to
+their default value. Partial names are accepted.  - <code class="docutils literal notranslate"><span class="pre">describe_option</span></code> -
+print a description of one or more options. When called with no
+arguments. print all registered options.</p></li>
+</ul>
+<p>Note: <code class="docutils literal notranslate"><span class="pre">set_printoptions</span></code>/ <code class="docutils literal notranslate"><span class="pre">reset_printoptions</span></code> are now deprecated (but
+functioning), the print options now live under “display.XYZ”. For example:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [23]: </span><span class="n">pd</span><span class="o">.</span><span class="n">get_option</span><span class="p">(</span><span class="s2">&quot;display.max_rows&quot;</span><span class="p">)</span>
+<span class="gh">Out[23]: </span><span class="go">15</span>
+</pre></div>
+</div>
+</li>
+<li><p>to_string() methods now always return unicode strings  (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/2224">GH2224</a>).</p></li>
+</ul>
+</div>
+<div class="section" id="new-features">
+<h2>New features<a class="headerlink" href="#new-features" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="wide-dataframe-printing">
+<h2>Wide DataFrame printing<a class="headerlink" href="#wide-dataframe-printing" title="Permalink to this headline">¶</a></h2>
+<p>Instead of printing the summary information, pandas now splits the string
+representation across multiple rows by default:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [24]: </span><span class="n">wide_frame</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">16</span><span class="p">))</span>
+
+<span class="gp">In [25]: </span><span class="n">wide_frame</span>
+<span class="gh">Out[25]: </span><span class="go"></span>
+<span class="go">          0         1         2         3         4         5         6         7         8         9        10        11        12        13        14        15</span>
+<span class="go">0 -0.548702  1.467327 -1.015962 -0.483075  1.637550 -1.217659 -0.291519 -1.745505 -0.263952  0.991460 -0.919069  0.266046 -0.709661  1.669052  1.037882 -1.705775</span>
+<span class="go">1 -0.919854 -0.042379  1.247642 -0.009920  0.290213  0.495767  0.362949  1.548106 -1.131345 -0.089329  0.337863 -0.945867 -0.932132  1.956030  0.017587 -0.016692</span>
+<span class="go">2 -0.575247  0.254161 -1.143704  0.215897  1.193555 -0.077118 -0.408530 -0.862495  1.346061  1.511763  1.627081 -0.990582 -0.441652  1.211526  0.268520  0.024580</span>
+<span class="go">3 -1.577585  0.396823 -0.105381 -0.532532  1.453749  1.208843 -0.080952 -0.264610 -0.727965 -0.589346  0.339969 -0.693205 -0.339355  0.593616  0.884345  1.591431</span>
+<span class="go">4  0.141809  0.220390  0.435589  0.192451 -0.096701  0.803351  1.715071 -0.708758 -1.202872 -1.814470  1.018601 -0.595447  1.395433 -0.392670  0.007207  1.928123</span>
+</pre></div>
+</div>
+<p>The old behavior of printing out summary information can be achieved via the
+‘expand_frame_repr’ print option:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [26]: </span><span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;expand_frame_repr&#39;</span><span class="p">,</span> <span class="bp">False</span><span class="p">)</span>
+
+<span class="gp">In [27]: </span><span class="n">wide_frame</span>
+<span class="gh">Out[27]: </span><span class="go"></span>
+<span class="go">          0         1         2         3         4         5         6         7         8         9        10        11        12        13        14        15</span>
+<span class="go">0 -0.548702  1.467327 -1.015962 -0.483075  1.637550 -1.217659 -0.291519 -1.745505 -0.263952  0.991460 -0.919069  0.266046 -0.709661  1.669052  1.037882 -1.705775</span>
+<span class="go">1 -0.919854 -0.042379  1.247642 -0.009920  0.290213  0.495767  0.362949  1.548106 -1.131345 -0.089329  0.337863 -0.945867 -0.932132  1.956030  0.017587 -0.016692</span>
+<span class="go">2 -0.575247  0.254161 -1.143704  0.215897  1.193555 -0.077118 -0.408530 -0.862495  1.346061  1.511763  1.627081 -0.990582 -0.441652  1.211526  0.268520  0.024580</span>
+<span class="go">3 -1.577585  0.396823 -0.105381 -0.532532  1.453749  1.208843 -0.080952 -0.264610 -0.727965 -0.589346  0.339969 -0.693205 -0.339355  0.593616  0.884345  1.591431</span>
+<span class="go">4  0.141809  0.220390  0.435589  0.192451 -0.096701  0.803351  1.715071 -0.708758 -1.202872 -1.814470  1.018601 -0.595447  1.395433 -0.392670  0.007207  1.928123</span>
+</pre></div>
+</div>
+<p>The width of each line can be changed via ‘line_width’ (80 by default):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;line_width&#39;</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span>
+
+<span class="n">wide_frame</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="updated-pytables-support">
+<h2>Updated PyTables support<a class="headerlink" href="#updated-pytables-support" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="../user_guide/io.html#io-hdf5"><span class="std std-ref">Docs</span></a> for PyTables <code class="docutils literal notranslate"><span class="pre">Table</span></code> format &amp; several enhancements to the api. Here is a taste of what to expect.</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [41]: </span><span class="n">store</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">HDFStore</span><span class="p">(</span><span class="s1">&#39;store.h5&#39;</span><span class="p">)</span>
+
+<span class="gp">In [42]: </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
+<span class="gp">   ....: </span>                  <span class="n">index</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s1">&#39;1/1/2000&#39;</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="mi">8</span><span class="p">),</span>
+<span class="gp">   ....: </span>                  <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">])</span>
+
+<span class="gp">In [43]: </span><span class="n">df</span>
+<span class="gh">Out[43]:</span>
+<span class="go">                   A         B         C</span>
+<span class="go">2000-01-01 -2.036047  0.000830 -0.955697</span>
+<span class="go">2000-01-02 -0.898872 -0.725411  0.059904</span>
+<span class="go">2000-01-03 -0.449644  1.082900 -1.221265</span>
+<span class="go">2000-01-04  0.361078  1.330704  0.855932</span>
+<span class="go">2000-01-05 -1.216718  1.488887  0.018993</span>
+<span class="go">2000-01-06 -0.877046  0.045976  0.437274</span>
+<span class="go">2000-01-07 -0.567182 -0.888657 -0.556383</span>
+<span class="go">2000-01-08  0.655457  1.117949 -2.782376</span>
+
+<span class="go">[8 rows x 3 columns]</span>
+
+<span class="go"># appending data frames</span>
+<span class="gp">In [44]: </span><span class="n">df1</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span>
+
+<span class="gp">In [45]: </span><span class="n">df2</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="mi">4</span><span class="p">:]</span>
+
+<span class="gp">In [46]: </span><span class="n">store</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;df&#39;</span><span class="p">,</span> <span class="n">df1</span><span class="p">)</span>
+
+<span class="gp">In [47]: </span><span class="n">store</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;df&#39;</span><span class="p">,</span> <span class="n">df2</span><span class="p">)</span>
+
+<span class="gp">In [48]: </span><span class="n">store</span>
+<span class="gh">Out[48]:</span>
+<span class="go">&lt;class &#39;pandas.io.pytables.HDFStore&#39;&gt;</span>
+<span class="go">File path: store.h5</span>
+<span class="go">/df            frame_table  (typ-&gt;appendable,nrows-&gt;8,ncols-&gt;3,indexers-&gt;[index])</span>
+
+<span class="go"># selecting the entire store</span>
+<span class="gp">In [49]: </span><span class="n">store</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;df&#39;</span><span class="p">)</span>
+<span class="gh">Out[49]:</span>
+<span class="go">                   A         B         C</span>
+<span class="go">2000-01-01 -2.036047  0.000830 -0.955697</span>
+<span class="go">2000-01-02 -0.898872 -0.725411  0.059904</span>
+<span class="go">2000-01-03 -0.449644  1.082900 -1.221265</span>
+<span class="go">2000-01-04  0.361078  1.330704  0.855932</span>
+<span class="go">2000-01-05 -1.216718  1.488887  0.018993</span>
+<span class="go">2000-01-06 -0.877046  0.045976  0.437274</span>
+<span class="go">2000-01-07 -0.567182 -0.888657 -0.556383</span>
+<span class="go">2000-01-08  0.655457  1.117949 -2.782376</span>
+
+<span class="go">[8 rows x 3 columns]</span>
+</pre></div>
+</div>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [50]: </span><span class="n">wp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Panel</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">items</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Item1&#39;</span><span class="p">,</span> <span class="s1">&#39;Item2&#39;</span><span class="p">],</span>
+<span class="gp">   ....: </span>              <span class="n">major_axis</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s1">&#39;1/1/2000&#39;</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="mi">5</span><span class="p">),</span>
+<span class="gp">   ....: </span>              <span class="n">minor_axis</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">])</span>
+
+<span class="gp">In [51]: </span><span class="n">wp</span>
+<span class="gh">Out[51]:</span>
+<span class="go">&lt;class &#39;pandas.core.panel.Panel&#39;&gt;</span>
+<span class="go">Dimensions: 2 (items) x 5 (major_axis) x 4 (minor_axis)</span>
+<span class="go">Items axis: Item1 to Item2</span>
+<span class="go">Major_axis axis: 2000-01-01 00:00:00 to 2000-01-05 00:00:00</span>
+<span class="go">Minor_axis axis: A to D</span>
+
+<span class="go"># storing a panel</span>
+<span class="gp">In [52]: </span><span class="n">store</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;wp&#39;</span><span class="p">,</span> <span class="n">wp</span><span class="p">)</span>
+
+<span class="go"># selecting via A QUERY</span>
+<span class="gp">In [53]: </span><span class="n">store</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;wp&#39;</span><span class="p">,</span> <span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">Term</span><span class="p">(</span><span class="s1">&#39;major_axis&gt;20000102&#39;</span><span class="p">),</span>
+<span class="gp">   ....: </span>                    <span class="n">pd</span><span class="o">.</span><span class="n">Term</span><span class="p">(</span><span class="s1">&#39;minor_axis&#39;</span><span class="p">,</span> <span class="s1">&#39;=&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">])])</span>
+<span class="gp">   ....:</span>
+<span class="gh">Out[53]:</span>
+<span class="go">&lt;class &#39;pandas.core.panel.Panel&#39;&gt;</span>
+<span class="go">Dimensions: 2 (items) x 3 (major_axis) x 2 (minor_axis)</span>
+<span class="go">Items axis: Item1 to Item2</span>
+<span class="go">Major_axis axis: 2000-01-03 00:00:00 to 2000-01-05 00:00:00</span>
+<span class="go">Minor_axis axis: A to B</span>
+
+<span class="go"># removing data from tables</span>
+<span class="gp">In [54]: </span><span class="n">store</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s1">&#39;wp&#39;</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">Term</span><span class="p">(</span><span class="s1">&#39;major_axis&gt;20000103&#39;</span><span class="p">))</span>
+<span class="gh">Out[54]: </span><span class="go">8</span>
+
+<span class="gp">In [55]: </span><span class="n">store</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;wp&#39;</span><span class="p">)</span>
+<span class="gh">Out[55]:</span>
+<span class="go">&lt;class &#39;pandas.core.panel.Panel&#39;&gt;</span>
+<span class="go">Dimensions: 2 (items) x 3 (major_axis) x 4 (minor_axis)</span>
+<span class="go">Items axis: Item1 to Item2</span>
+<span class="go">Major_axis axis: 2000-01-01 00:00:00 to 2000-01-03 00:00:00</span>
+<span class="go">Minor_axis axis: A to D</span>
+
+<span class="go"># deleting a store</span>
+<span class="gp">In [56]: </span><span class="k">del</span> <span class="n">store</span><span class="p">[</span><span class="s1">&#39;df&#39;</span><span class="p">]</span>
+
+<span class="gp">In [57]: </span><span class="n">store</span>
+<span class="gh">Out[57]:</span>
+<span class="go">&lt;class &#39;pandas.io.pytables.HDFStore&#39;&gt;</span>
+<span class="go">File path: store.h5</span>
+<span class="go">/wp            wide_table   (typ-&gt;appendable,nrows-&gt;12,ncols-&gt;2,indexers-&gt;[major_axis,minor_axis])</span>
+</pre></div>
+</div>
+<p><strong>Enhancements</strong></p>
+<ul>
+<li><p>added ability to hierarchical keys</p>
+<blockquote>
+<div><div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [58]: </span><span class="n">store</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="s1">&#39;foo/bar/bah&#39;</span><span class="p">,</span> <span class="n">df</span><span class="p">)</span>
+
+<span class="gp">In [59]: </span><span class="n">store</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;food/orange&#39;</span><span class="p">,</span> <span class="n">df</span><span class="p">)</span>
+
+<span class="gp">In [60]: </span><span class="n">store</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;food/apple&#39;</span><span class="p">,</span> <span class="n">df</span><span class="p">)</span>
+
+<span class="gp">In [61]: </span><span class="n">store</span>
+<span class="gh">Out[61]:</span>
+<span class="go">&lt;class &#39;pandas.io.pytables.HDFStore&#39;&gt;</span>
+<span class="go">File path: store.h5</span>
+<span class="go">/foo/bar/bah            frame        (shape-&gt;[8,3])</span>
+<span class="go">/food/apple             frame_table  (typ-&gt;appendable,nrows-&gt;8,ncols-&gt;3,indexers-&gt;[index])</span>
+<span class="go">/food/orange            frame_table  (typ-&gt;appendable,nrows-&gt;8,ncols-&gt;3,indexers-&gt;[index])</span>
+<span class="go">/wp                     wide_table   (typ-&gt;appendable,nrows-&gt;12,ncols-&gt;2,indexers-&gt;[major_axis,minor_axis])</span>
+
+<span class="go"># remove all nodes under this level</span>
+<span class="gp">In [62]: </span><span class="n">store</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s1">&#39;food&#39;</span><span class="p">)</span>
+
+<span class="gp">In [63]: </span><span class="n">store</span>
+<span class="gh">Out[63]:</span>
+<span class="go">&lt;class &#39;pandas.io.pytables.HDFStore&#39;&gt;</span>
+<span class="go">File path: store.h5</span>
+<span class="go">/foo/bar/bah            frame        (shape-&gt;[8,3])</span>
+<span class="go">/wp                     wide_table   (typ-&gt;appendable,nrows-&gt;12,ncols-&gt;2,indexers-&gt;[major_axis,minor_axis])</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>added mixed-dtype support!</p>
+<blockquote>
+<div><div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [64]: </span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;string&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;string&#39;</span>
+
+<span class="gp">In [65]: </span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;int&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="gp">In [66]: </span><span class="n">store</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;df&#39;</span><span class="p">,</span> <span class="n">df</span><span class="p">)</span>
+
+<span class="gp">In [67]: </span><span class="n">df1</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;df&#39;</span><span class="p">)</span>
+
+<span class="gp">In [68]: </span><span class="n">df1</span>
+<span class="gh">Out[68]:</span>
+<span class="go">                   A         B         C  string  int</span>
+<span class="go">2000-01-01 -2.036047  0.000830 -0.955697  string    1</span>
+<span class="go">2000-01-02 -0.898872 -0.725411  0.059904  string    1</span>
+<span class="go">2000-01-03 -0.449644  1.082900 -1.221265  string    1</span>
+<span class="go">2000-01-04  0.361078  1.330704  0.855932  string    1</span>
+<span class="go">2000-01-05 -1.216718  1.488887  0.018993  string    1</span>
+<span class="go">2000-01-06 -0.877046  0.045976  0.437274  string    1</span>
+<span class="go">2000-01-07 -0.567182 -0.888657 -0.556383  string    1</span>
+<span class="go">2000-01-08  0.655457  1.117949 -2.782376  string    1</span>
+
+<span class="go">[8 rows x 5 columns]</span>
+
+<span class="gp">In [69]: </span><span class="n">df1</span><span class="o">.</span><span class="n">get_dtype_counts</span><span class="p">()</span>
+<span class="gh">Out[69]:</span>
+<span class="go">float64    3</span>
+<span class="go">int64      1</span>
+<span class="go">object     1</span>
+<span class="go">dtype: int64</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>performance improvements on table writing</p></li>
+<li><p>support for arbitrarily indexed dimensions</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SparseSeries</span></code> now has a <code class="docutils literal notranslate"><span class="pre">density</span></code> property (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/2384">GH2384</a>)</p></li>
+<li><p>enable <code class="docutils literal notranslate"><span class="pre">Series.str.strip/lstrip/rstrip</span></code> methods to take an input argument
+to strip arbitrary characters (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/2411">GH2411</a>)</p></li>
+<li><p>implement <code class="docutils literal notranslate"><span class="pre">value_vars</span></code> in <code class="docutils literal notranslate"><span class="pre">melt</span></code> to limit values to certain columns
+and add <code class="docutils literal notranslate"><span class="pre">melt</span></code> to pandas namespace (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/2412">GH2412</a>)</p></li>
+</ul>
+<p><strong>Bug Fixes</strong></p>
+<ul class="simple">
+<li><p>added <code class="docutils literal notranslate"><span class="pre">Term</span></code> method of specifying where conditions (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/1996">GH1996</a>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">del</span> <span class="pre">store['df']</span></code> now call <code class="docutils literal notranslate"><span class="pre">store.remove('df')</span></code> for store deletion</p></li>
+<li><p>deleting of consecutive rows is much faster than before</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">min_itemsize</span></code> parameter can be specified in table creation to force a
+minimum size for indexing columns (the previous implementation would set the
+column size based on the first append)</p></li>
+<li><p>indexing support via <code class="docutils literal notranslate"><span class="pre">create_table_index</span></code> (requires PyTables &gt;= 2.3)
+(<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/698">GH698</a>).</p></li>
+<li><p>appending on a store would fail if the table was not first created via <code class="docutils literal notranslate"><span class="pre">put</span></code></p></li>
+<li><p>fixed issue with missing attributes after loading a pickled dataframe (GH2431)</p></li>
+<li><p>minor change to select and remove: require a table ONLY if where is also
+provided (and not None)</p></li>
+</ul>
+<p><strong>Compatibility</strong></p>
+<p>0.10 of <code class="docutils literal notranslate"><span class="pre">HDFStore</span></code> is backwards compatible for reading tables created in a prior version of pandas,
+however, query terms using the prior (undocumented) methodology are unsupported. You must read in the entire
+file and write it out using the new format to take advantage of the updates.</p>
+</div>
+<div class="section" id="n-dimensional-panels-experimental">
+<h2>N dimensional Panels (experimental)<a class="headerlink" href="#n-dimensional-panels-experimental" title="Permalink to this headline">¶</a></h2>
+<p>Adding experimental support for Panel4D and factory functions to create n-dimensional named panels.
+Here is a taste of what to expect.</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [58]: </span><span class="n">p4d</span> <span class="o">=</span> <span class="n">Panel4D</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span>
+<span class="go">  ....:       labels=[&#39;Label1&#39;,&#39;Label2&#39;],</span>
+<span class="go">  ....:       items=[&#39;Item1&#39;, &#39;Item2&#39;],</span>
+<span class="go">  ....:       major_axis=date_range(&#39;1/1/2000&#39;, periods=5),</span>
+<span class="go">  ....:       minor_axis=[&#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;D&#39;])</span>
+<span class="go">  ....:</span>
+
+<span class="gp">In [59]: </span><span class="n">p4d</span>
+<span class="gh">Out[59]:</span>
+<span class="go">&lt;class &#39;pandas.core.panelnd.Panel4D&#39;&gt;</span>
+<span class="go">Dimensions: 2 (labels) x 2 (items) x 5 (major_axis) x 4 (minor_axis)</span>
+<span class="go">Labels axis: Label1 to Label2</span>
+<span class="go">Items axis: Item1 to Item2</span>
+<span class="go">Major_axis axis: 2000-01-01 00:00:00 to 2000-01-05 00:00:00</span>
+<span class="go">Minor_axis axis: A to D</span>
+</pre></div>
+</div>
+<p>See the <a class="reference internal" href="index.html#release"><span class="std std-ref">full release notes</span></a> or issue tracker
+on GitHub for a complete list.</p>
+</div>
+<div class="section" id="contributors">
+<span id="whatsnew-0-10-0-contributors"></span><h2>Contributors<a class="headerlink" href="#contributors" title="Permalink to this headline">¶</a></h2>
+<p>A total of 26 people contributed patches to this release.  People with a
+“+” by their names contributed a patch for the first time.
+</p>
+<ul class="simple">
+<li><p>A. Flaxman +</p></li>
+<li><p>Abraham Flaxman</p></li>
+<li><p>Adam Obeng +</p></li>
+<li><p>Brenda Moon +</p></li>
+<li><p>Chang She</p></li>
+<li><p>Chris Mulligan +</p></li>
+<li><p>Dieter Vandenbussche</p></li>
+<li><p>Donald Curtis +</p></li>
+<li><p>Jay Bourque +</p></li>
+<li><p>Jeff Reback +</p></li>
+<li><p>Justin C Johnson +</p></li>
+<li><p>K.-Michael Aye</p></li>
+<li><p>Keith Hughitt +</p></li>
+<li><p>Ken Van Haren +</p></li>
+<li><p>Laurent Gautier +</p></li>
+<li><p>Luke Lee +</p></li>
+<li><p>Martin Blais</p></li>
+<li><p>Tobias Brandt +</p></li>
+<li><p>Wes McKinney</p></li>
+<li><p>Wouter Overmeire</p></li>
+<li><p>alex arsenovic +</p></li>
+<li><p>jreback +</p></li>
+<li><p>locojaydev +</p></li>
+<li><p>timmie</p></li>
+<li><p>y-p</p></li>
+<li><p>zach powers +</p></li>
+</ul>
+</div>
+</div>
+
+
+              </div>
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="v0.10.1.html" title="previous page">v0.10.1 (January 22, 2013)</a>
+    <a class='right-next' id="next-link" href="v0.9.1.html" title="next page">v0.9.1 (November 14, 2012)</a>
+
+              </div>
+              
+          </main>
+
+      </div>
+    </div><script>
+    // TOC sidebar - add "active" class to parent list
+    //
+    // Bootstrap's scrollspy adds the active class to the <a> link,
+    // but for the automatic collapsing we need this on the parent list item.
+    //
+    // The event is triggered on "window" (and not the nav item as documented),
+    // see https://github.com/twbs/bootstrap/issues/20086
+    $(window).on("activate.bs.scrollspy", function(){
+    var navLinks = document.querySelectorAll('#bd-toc-nav a');
+    for (var i = 0; i < navLinks.length; i++) {
+        var navLink = navLinks[i];
+        navLink.parentElement.classList.remove('active');
+    }
+    var navLinks = document.querySelectorAll('#bd-toc-nav a.active');
+    for (var i = 0; i < navLinks.length; i++) {
+        var navLink = navLinks[i];
+        navLink.parentElement.classList.add('active');
+    }
+    });
+
+    /**
+     * Use left and right arrow keys to navigate forward and backwards.
+    */
+    const LEFT_ARROW_KEYCODE = 37
+    const RIGHT_ARROW_KEYCODE = 39
+
+    const getPrevUrl = () => document.getElementById('prev-link').href
+    const getNextUrl = () => document.getElementById('next-link').href
+    const initPageNav = (event) => {
+        const keycode = event.which
+
+        if (keycode === LEFT_ARROW_KEYCODE) {
+            window.location.href = getPrevUrl();
+        } else if (keycode === RIGHT_ARROW_KEYCODE) {
+            window.location.href = getNextUrl();
+        }
+    };
+
+    var keyboardListener = false;
+    $( document ).ready(() => {
+        if (keyboardListener === false) {
+            document.addEventListener('keydown', initPageNav)
+            keyboardListener = true;
+        }
+    });
+</script>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2008-2020, the pandas development team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.3.0.
+    </div>
+  </body>
+</html>

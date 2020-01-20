@@ -1,0 +1,611 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>General utility functions &#8212; pandas 1.0.0rc0+111.ge72cd7c52 documentation</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link rel="stylesheet" href="../_static/sphinx-bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/pandas.css" />
+    <link href="../_static/css/custom.css" rel="stylesheet">
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Extensions" href="extensions.html" />
+    <link rel="prev" title="Plotting" href="plotting.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main">
+
+<a class="navbar-brand" href="../index.html">
+  <img src="../_static/pandas.svg" class="logo" alt="logo">
+</a>
+
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+</button>
+
+<div id="navbar-menu" class="collapse navbar-collapse">
+  <ul id="navbar-main-elements" class="navbar-nav mr-auto">
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        1.0.0
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown" id="version-menu"></div>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="../index.html">Home</a>
+    </li>
+    
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../whatsnew/v1.1.0.html">What's New in 1.1.0</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../getting_started/index.html">Getting started</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../user_guide/index.html">User Guide</a>
+    </li>
+    
+    <li class="nav-item active">
+        <a class="nav-link" href="index.html">API reference</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../development/index.html">Development</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../whatsnew/index.html">Release Notes</a>
+    </li>
+    
+    
+  </ul>
+  <ul class="navbar-nav ml-auto">
+    
+      <li class="nav-item">
+        <a class="nav-link" href="https://github.com/pandas-dev/pandas" target="_blank" rel="noopener">
+          <span><i class="fab fa-github-square"></i></span>
+        </a>
+      </li>
+    
+    
+      <li class="nav-item">
+        <a class="nav-link" href="https://twitter.com/pandas_dev" target="_blank" rel="noopener">
+          <span><i class="fab fa-twitter-square"></i></span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row flex-xl-nowrap">
+          <div class="col-12 col-md-3 col-xl-2 bd-sidebar">
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+
+  <div class="bd-toc-item active">
+  
+
+  <ul class="nav bd-sidenav">
+      
+      
+      
+      
+      
+      
+      
+      
+        
+          
+              <li class="">
+                  <a href="io.html">Input/output</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="general_functions.html">General functions</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="series.html">Series</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="frame.html">DataFrame</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="arrays.html">Pandas arrays</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="panel.html">Panel</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="indexing.html">Index objects</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="offset_frequency.html">Date offsets</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="window.html">Window</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="groupby.html">GroupBy</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="resampling.html">Resampling</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="style.html">Style</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="plotting.html">Plotting</a>
+              </li>
+          
+        
+          
+              <li class="active">
+                  <a href="">General utility functions</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="extensions.html">Extensions</a>
+              </li>
+          
+        
+      
+      
+      
+      
+      
+      
+    </ul>
+
+</nav>
+          </div>
+
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+              
+<div class="tocsection onthispage"><i class="fas fa-list"></i> On this page</div>
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#working-with-options" class="nav-link">Working with options</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#testing-functions" class="nav-link">Testing functions</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#exceptions-and-warnings" class="nav-link">Exceptions and warnings</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#data-types-related-functionality" class="nav-link">Data types related functionality</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#dtype-introspection" class="nav-link">Dtype introspection</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#iterable-introspection" class="nav-link">Iterable introspection</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#scalar-introspection" class="nav-link">Scalar introspection</a>
+        </li>
+    
+            </ul>
+        </li>
+    
+    </ul>
+</nav>
+              
+            </div>
+
+          <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
+              <div>
+                
+  <div class="section" id="general-utility-functions">
+<span id="api-general-utility-functions"></span><h1>General utility functions<a class="headerlink" href="#general-utility-functions" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="working-with-options">
+<h2>Working with options<a class="headerlink" href="#working-with-options" title="Permalink to this headline">¶</a></h2>
+<table class="longtable table">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">describe_option</span></code>(pat[, _print_desc])</p></td>
+<td><p>Prints the description for one or more registered options.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset_option</span></code>(pat)</p></td>
+<td><p>Reset one or more options to their default value.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_option</span></code>(pat)</p></td>
+<td><p>Retrieves the value of the specified option.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_option</span></code>(pat, value)</p></td>
+<td><p>Sets the value of the specified option.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">option_context</span></code>(*args)</p></td>
+<td><p>Context manager to temporarily set options in the <cite>with</cite> statement context.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="testing-functions">
+<span id="api-general-testing"></span><h2>Testing functions<a class="headerlink" href="#testing-functions" title="Permalink to this headline">¶</a></h2>
+<table class="longtable table">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">testing.assert_frame_equal</span></code>(left, right[, …])</p></td>
+<td><p>Check that left and right DataFrame are equal.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">testing.assert_series_equal</span></code>(left, right[, …])</p></td>
+<td><p>Check that left and right Series are equal.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">testing.assert_index_equal</span></code>(left, right, …)</p></td>
+<td><p>Check that left and right Index are equal.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">testing.assert_extension_array_equal</span></code>(left, right)</p></td>
+<td><p>Check that left and right ExtensionArrays are equal.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="exceptions-and-warnings">
+<h2>Exceptions and warnings<a class="headerlink" href="#exceptions-and-warnings" title="Permalink to this headline">¶</a></h2>
+<table class="longtable table">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">errors.DtypeWarning</span></code></p></td>
+<td><p>Warning raised when reading different dtypes in a column from a file.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">errors.EmptyDataError</span></code></p></td>
+<td><p>Exception that is thrown in <cite>pd.read_csv</cite> (by both the C and Python engines) when empty data or header is encountered.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">errors.OutOfBoundsDatetime</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">errors.ParserError</span></code></p></td>
+<td><p>Exception that is raised by an error encountered in parsing file contents.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">errors.ParserWarning</span></code></p></td>
+<td><p>Warning raised when reading a file that doesn’t use the default ‘c’ parser.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">errors.PerformanceWarning</span></code></p></td>
+<td><p>Warning raised when there is a possible performance impact.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">errors.UnsortedIndexError</span></code></p></td>
+<td><p>Error raised when attempting to get a slice of a MultiIndex, and the index has not been lexsorted.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">errors.UnsupportedFunctionCall</span></code></p></td>
+<td><p>Exception raised when attempting to call a numpy function on a pandas object, but that function is not supported by the object e.g.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="data-types-related-functionality">
+<h2>Data types related functionality<a class="headerlink" href="#data-types-related-functionality" title="Permalink to this headline">¶</a></h2>
+<table class="longtable table">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">api.types.union_categoricals</span></code>(to_union, …)</p></td>
+<td><p>Combine list-like of Categorical-like, unioning categories.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">api.types.infer_dtype</span></code>()</p></td>
+<td><p>Efficiently infer the type of a passed val, or list-like array of values.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">api.types.pandas_dtype</span></code>(dtype)</p></td>
+<td><p>Convert input into a pandas only dtype object or a numpy dtype object.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="dtype-introspection">
+<h3>Dtype introspection<a class="headerlink" href="#dtype-introspection" title="Permalink to this headline">¶</a></h3>
+<table class="longtable table">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">api.types.is_bool_dtype</span></code>(arr_or_dtype)</p></td>
+<td><p>Check whether the provided array or dtype is of a boolean dtype.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">api.types.is_categorical_dtype</span></code>(arr_or_dtype)</p></td>
+<td><p>Check whether an array-like or dtype is of the Categorical dtype.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">api.types.is_complex_dtype</span></code>(arr_or_dtype)</p></td>
+<td><p>Check whether the provided array or dtype is of a complex dtype.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">api.types.is_datetime64_any_dtype</span></code>(arr_or_dtype)</p></td>
+<td><p>Check whether the provided array or dtype is of the datetime64 dtype.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">api.types.is_datetime64_dtype</span></code>(arr_or_dtype)</p></td>
+<td><p>Check whether an array-like or dtype is of the datetime64 dtype.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">api.types.is_datetime64_ns_dtype</span></code>(arr_or_dtype)</p></td>
+<td><p>Check whether the provided array or dtype is of the datetime64[ns] dtype.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">api.types.is_datetime64tz_dtype</span></code>(arr_or_dtype)</p></td>
+<td><p>Check whether an array-like or dtype is of a DatetimeTZDtype dtype.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">api.types.is_extension_type</span></code>(arr)</p></td>
+<td><p>(DEPRECATED) Check whether an array-like is of a pandas extension class instance.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">api.types.is_extension_array_dtype</span></code>(arr_or_dtype)</p></td>
+<td><p>Check if an object is a pandas extension array type.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">api.types.is_float_dtype</span></code>(arr_or_dtype)</p></td>
+<td><p>Check whether the provided array or dtype is of a float dtype.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">api.types.is_int64_dtype</span></code>(arr_or_dtype)</p></td>
+<td><p>Check whether the provided array or dtype is of the int64 dtype.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">api.types.is_integer_dtype</span></code>(arr_or_dtype)</p></td>
+<td><p>Check whether the provided array or dtype is of an integer dtype.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">api.types.is_interval_dtype</span></code>(arr_or_dtype)</p></td>
+<td><p>Check whether an array-like or dtype is of the Interval dtype.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">api.types.is_numeric_dtype</span></code>(arr_or_dtype)</p></td>
+<td><p>Check whether the provided array or dtype is of a numeric dtype.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">api.types.is_object_dtype</span></code>(arr_or_dtype)</p></td>
+<td><p>Check whether an array-like or dtype is of the object dtype.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">api.types.is_period_dtype</span></code>(arr_or_dtype)</p></td>
+<td><p>Check whether an array-like or dtype is of the Period dtype.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">api.types.is_signed_integer_dtype</span></code>(arr_or_dtype)</p></td>
+<td><p>Check whether the provided array or dtype is of a signed integer dtype.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">api.types.is_string_dtype</span></code>(arr_or_dtype)</p></td>
+<td><p>Check whether the provided array or dtype is of the string dtype.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">api.types.is_timedelta64_dtype</span></code>(arr_or_dtype)</p></td>
+<td><p>Check whether an array-like or dtype is of the timedelta64 dtype.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">api.types.is_timedelta64_ns_dtype</span></code>(arr_or_dtype)</p></td>
+<td><p>Check whether the provided array or dtype is of the timedelta64[ns] dtype.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">api.types.is_unsigned_integer_dtype</span></code>(arr_or_dtype)</p></td>
+<td><p>Check whether the provided array or dtype is of an unsigned integer dtype.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">api.types.is_sparse</span></code>(arr)</p></td>
+<td><p>Check whether an array-like is a 1-D pandas sparse array.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="iterable-introspection">
+<h3>Iterable introspection<a class="headerlink" href="#iterable-introspection" title="Permalink to this headline">¶</a></h3>
+<table class="longtable table">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">api.types.is_dict_like</span></code>(obj)</p></td>
+<td><p>Check if the object is dict-like.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">api.types.is_file_like</span></code>(obj)</p></td>
+<td><p>Check if the object is a file-like object.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">api.types.is_list_like</span></code>()</p></td>
+<td><p>Check if the object is list-like.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">api.types.is_named_tuple</span></code>(obj)</p></td>
+<td><p>Check if the object is a named tuple.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">api.types.is_iterator</span></code>(obj)</p></td>
+<td><p>Check if the object is an iterator.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="scalar-introspection">
+<h3>Scalar introspection<a class="headerlink" href="#scalar-introspection" title="Permalink to this headline">¶</a></h3>
+<table class="longtable table">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">api.types.is_bool</span></code>()</p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">api.types.is_categorical</span></code>(arr)</p></td>
+<td><p>Check whether an array-like is a Categorical instance.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">api.types.is_complex</span></code>()</p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">api.types.is_float</span></code>()</p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">api.types.is_hashable</span></code>(obj)</p></td>
+<td><p>Return True if hash(obj) will succeed, False otherwise.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">api.types.is_integer</span></code>()</p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">api.types.is_interval</span></code>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">api.types.is_number</span></code>(obj)</p></td>
+<td><p>Check if the object is a number.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">api.types.is_re</span></code>(obj)</p></td>
+<td><p>Check if the object is a regex pattern instance.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">api.types.is_re_compilable</span></code>(obj)</p></td>
+<td><p>Check if the object can be compiled into a regex pattern instance.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">api.types.is_scalar</span></code>()</p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+              </div>
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="plotting.html" title="previous page">Plotting</a>
+    <a class='right-next' id="next-link" href="extensions.html" title="next page">Extensions</a>
+
+              </div>
+              
+          </main>
+
+      </div>
+    </div><script>
+    // TOC sidebar - add "active" class to parent list
+    //
+    // Bootstrap's scrollspy adds the active class to the <a> link,
+    // but for the automatic collapsing we need this on the parent list item.
+    //
+    // The event is triggered on "window" (and not the nav item as documented),
+    // see https://github.com/twbs/bootstrap/issues/20086
+    $(window).on("activate.bs.scrollspy", function(){
+    var navLinks = document.querySelectorAll('#bd-toc-nav a');
+    for (var i = 0; i < navLinks.length; i++) {
+        var navLink = navLinks[i];
+        navLink.parentElement.classList.remove('active');
+    }
+    var navLinks = document.querySelectorAll('#bd-toc-nav a.active');
+    for (var i = 0; i < navLinks.length; i++) {
+        var navLink = navLinks[i];
+        navLink.parentElement.classList.add('active');
+    }
+    });
+
+    /**
+     * Use left and right arrow keys to navigate forward and backwards.
+    */
+    const LEFT_ARROW_KEYCODE = 37
+    const RIGHT_ARROW_KEYCODE = 39
+
+    const getPrevUrl = () => document.getElementById('prev-link').href
+    const getNextUrl = () => document.getElementById('next-link').href
+    const initPageNav = (event) => {
+        const keycode = event.which
+
+        if (keycode === LEFT_ARROW_KEYCODE) {
+            window.location.href = getPrevUrl();
+        } else if (keycode === RIGHT_ARROW_KEYCODE) {
+            window.location.href = getNextUrl();
+        }
+    };
+
+    var keyboardListener = false;
+    $( document ).ready(() => {
+        if (keyboardListener === false) {
+            document.addEventListener('keydown', initPageNav)
+            keyboardListener = true;
+        }
+    });
+</script>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2008-2020, the pandas development team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.3.0.
+    </div>
+  </body>
+</html>

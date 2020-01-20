@@ -1,0 +1,1111 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Sparse data structures &#8212; pandas 1.0.0rc0+111.ge72cd7c52 documentation</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link rel="stylesheet" href="../_static/sphinx-bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/pandas.css" />
+    <link href="../_static/css/custom.css" rel="stylesheet">
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Frequently Asked Questions (FAQ)" href="gotchas.html" />
+    <link rel="prev" title="Scaling to large datasets" href="scale.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main">
+
+<a class="navbar-brand" href="../index.html">
+  <img src="../_static/pandas.svg" class="logo" alt="logo">
+</a>
+
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+</button>
+
+<div id="navbar-menu" class="collapse navbar-collapse">
+  <ul id="navbar-main-elements" class="navbar-nav mr-auto">
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        1.0.0
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown" id="version-menu"></div>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="../index.html">Home</a>
+    </li>
+    
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../whatsnew/v1.1.0.html">What's New in 1.1.0</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../getting_started/index.html">Getting started</a>
+    </li>
+    
+    <li class="nav-item active">
+        <a class="nav-link" href="index.html">User Guide</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../reference/index.html">API reference</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../development/index.html">Development</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../whatsnew/index.html">Release Notes</a>
+    </li>
+    
+    
+  </ul>
+  <ul class="navbar-nav ml-auto">
+    
+      <li class="nav-item">
+        <a class="nav-link" href="https://github.com/pandas-dev/pandas" target="_blank" rel="noopener">
+          <span><i class="fab fa-github-square"></i></span>
+        </a>
+      </li>
+    
+    
+      <li class="nav-item">
+        <a class="nav-link" href="https://twitter.com/pandas_dev" target="_blank" rel="noopener">
+          <span><i class="fab fa-twitter-square"></i></span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row flex-xl-nowrap">
+          <div class="col-12 col-md-3 col-xl-2 bd-sidebar">
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+
+  <div class="bd-toc-item active">
+  
+
+  <ul class="nav bd-sidenav">
+      
+      
+      
+      
+      
+      
+        
+          
+              <li class="">
+                  <a href="io.html">IO tools (text, CSV, HDF5, …)</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="indexing.html">Indexing and selecting data</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="advanced.html">MultiIndex / advanced indexing</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="merging.html">Merge, join, and concatenate</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="reshaping.html">Reshaping and pivot tables</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="text.html">Working with text data</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="missing_data.html">Working with missing data</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="categorical.html">Categorical data</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="integer_na.html">Nullable integer data type</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="boolean.html">Nullable Boolean Data Type</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="visualization.html">Visualization</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="computation.html">Computational tools</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="groupby.html">Group By: split-apply-combine</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="timeseries.html">Time series / date functionality</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="timedeltas.html">Time deltas</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="style.html">Styling</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="options.html">Options and settings</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="enhancingperf.html">Enhancing performance</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="scale.html">Scaling to large datasets</a>
+              </li>
+          
+        
+          
+              <li class="active">
+                  <a href="">Sparse data structures</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="gotchas.html">Frequently Asked Questions (FAQ)</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="cookbook.html">Cookbook</a>
+              </li>
+          
+        
+      
+      
+      
+      
+      
+      
+      
+      
+    </ul>
+
+</nav>
+          </div>
+
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+              
+<div class="tocsection onthispage"><i class="fas fa-list"></i> On this page</div>
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#sparsearray" class="nav-link">SparseArray</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#sparsedtype" class="nav-link">SparseDtype</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#sparse-accessor" class="nav-link">Sparse accessor</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#sparse-calculation" class="nav-link">Sparse calculation</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#migrating" class="nav-link">Migrating</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#interaction-with-scipy-sparse" class="nav-link">Interaction with scipy.sparse</a>
+        </li>
+    
+    </ul>
+</nav>
+              
+            </div>
+
+          <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
+              <div>
+                
+  <div class="section" id="sparse-data-structures">
+<span id="sparse"></span><h1>Sparse data structures<a class="headerlink" href="#sparse-data-structures" title="Permalink to this headline">¶</a></h1>
+<p>Pandas provides data structures for efficiently storing sparse data.
+These are not necessarily sparse in the typical “mostly 0”. Rather, you can view these
+objects as being “compressed” where any data matching a specific value (<code class="docutils literal notranslate"><span class="pre">NaN</span></code> / missing value, though any value
+can be chosen, including 0) is omitted. The compressed values are not actually stored in the array.</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="gp">In [2]: </span><span class="n">arr</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+
+<span class="gp">In [3]: </span><span class="n">ts</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">arrays</span><span class="o">.</span><span class="n">SparseArray</span><span class="p">(</span><span class="n">arr</span><span class="p">))</span>
+
+<span class="gp">In [4]: </span><span class="n">ts</span>
+<span class="gh">Out[4]: </span><span class="go"></span>
+<span class="go">0    0.469112</span>
+<span class="go">1   -0.282863</span>
+<span class="go">2         NaN</span>
+<span class="go">3         NaN</span>
+<span class="go">4         NaN</span>
+<span class="go">5         NaN</span>
+<span class="go">6         NaN</span>
+<span class="go">7         NaN</span>
+<span class="go">8   -0.861849</span>
+<span class="go">9   -2.104569</span>
+<span class="go">dtype: Sparse[float64, nan]</span>
+</pre></div>
+</div>
+<p>Notice the dtype, <code class="docutils literal notranslate"><span class="pre">Sparse[float64,</span> <span class="pre">nan]</span></code>. The <code class="docutils literal notranslate"><span class="pre">nan</span></code> means that elements in the
+array that are <code class="docutils literal notranslate"><span class="pre">nan</span></code> aren’t actually stored, only the non-<code class="docutils literal notranslate"><span class="pre">nan</span></code> elements are.
+Those non-<code class="docutils literal notranslate"><span class="pre">nan</span></code> elements have a <code class="docutils literal notranslate"><span class="pre">float64</span></code> dtype.</p>
+<p>The sparse objects exist for memory efficiency reasons. Suppose you had a
+large, mostly NA <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [5]: </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10000</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="gp">In [6]: </span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">9998</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+
+<span class="gp">In [7]: </span><span class="n">sdf</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">SparseDtype</span><span class="p">(</span><span class="s2">&quot;float&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">))</span>
+
+<span class="gp">In [8]: </span><span class="n">sdf</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="gh">Out[8]: </span><span class="go"></span>
+<span class="go">    0   1   2   3</span>
+<span class="go">0 NaN NaN NaN NaN</span>
+<span class="go">1 NaN NaN NaN NaN</span>
+<span class="go">2 NaN NaN NaN NaN</span>
+<span class="go">3 NaN NaN NaN NaN</span>
+<span class="go">4 NaN NaN NaN NaN</span>
+
+<span class="gp">In [9]: </span><span class="n">sdf</span><span class="o">.</span><span class="n">dtypes</span>
+<span class="gh">Out[9]: </span><span class="go"></span>
+<span class="go">0    Sparse[float64, nan]</span>
+<span class="go">1    Sparse[float64, nan]</span>
+<span class="go">2    Sparse[float64, nan]</span>
+<span class="go">3    Sparse[float64, nan]</span>
+<span class="go">dtype: object</span>
+
+<span class="gp">In [10]: </span><span class="n">sdf</span><span class="o">.</span><span class="n">sparse</span><span class="o">.</span><span class="n">density</span>
+<span class="gh">Out[10]: </span><span class="go">0.0002</span>
+</pre></div>
+</div>
+<p>As you can see, the density (% of values that have not been “compressed”) is
+extremely low. This sparse object takes up much less memory on disk (pickled)
+and in the Python interpreter.</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [11]: </span><span class="s1">&#39;dense : {:0.2f} bytes&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">memory_usage</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="mf">1e3</span><span class="p">)</span>
+<span class="gh">Out[11]: </span><span class="go">&#39;dense : 320.13 bytes&#39;</span>
+
+<span class="gp">In [12]: </span><span class="s1">&#39;sparse: {:0.2f} bytes&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sdf</span><span class="o">.</span><span class="n">memory_usage</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="mf">1e3</span><span class="p">)</span>
+<span class="gh">Out[12]: </span><span class="go">&#39;sparse: 0.22 bytes&#39;</span>
+</pre></div>
+</div>
+<p>Functionally, their behavior should be nearly
+identical to their dense counterparts.</p>
+<div class="section" id="sparsearray">
+<span id="sparse-array"></span><h2>SparseArray<a class="headerlink" href="#sparsearray" title="Permalink to this headline">¶</a></h2>
+<p><code class="xref py py-class docutils literal notranslate"><span class="pre">arrays.SparseArray</span></code> is a <code class="xref py py-class docutils literal notranslate"><span class="pre">ExtensionArray</span></code>
+for storing an array of sparse values (see <a class="reference internal" href="../getting_started/basics.html#basics-dtypes"><span class="std std-ref">dtypes</span></a> for more
+on extension arrays). It is a 1-dimensional ndarray-like object storing
+only values distinct from the <code class="docutils literal notranslate"><span class="pre">fill_value</span></code>:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [13]: </span><span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="gp">In [14]: </span><span class="n">arr</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+
+<span class="gp">In [15]: </span><span class="n">arr</span><span class="p">[</span><span class="mi">7</span><span class="p">:</span><span class="mi">8</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+
+<span class="gp">In [16]: </span><span class="n">sparr</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">arrays</span><span class="o">.</span><span class="n">SparseArray</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
+
+<span class="gp">In [17]: </span><span class="n">sparr</span>
+<span class="gh">Out[17]: </span><span class="go"></span>
+<span class="go">[-1.9556635297215477, -1.6588664275960427, nan, nan, nan, 1.1589328886422277, 0.14529711373305043, nan, 0.6060271905134522, 1.3342113401317768]</span>
+<span class="go">Fill: nan</span>
+<span class="go">IntIndex</span>
+<span class="go">Indices: array([0, 1, 5, 6, 8, 9], dtype=int32)</span>
+</pre></div>
+</div>
+<p>A sparse array can be converted to a regular (dense) ndarray with <code class="xref py py-meth docutils literal notranslate"><span class="pre">numpy.asarray()</span></code></p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [18]: </span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">sparr</span><span class="p">)</span>
+<span class="gh">Out[18]: </span><span class="go"></span>
+<span class="go">array([-1.9557, -1.6589,     nan,     nan,     nan,  1.1589,  0.1453,</span>
+<span class="go">           nan,  0.606 ,  1.3342])</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="sparsedtype">
+<span id="sparse-dtype"></span><h2>SparseDtype<a class="headerlink" href="#sparsedtype" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="xref py py-attr docutils literal notranslate"><span class="pre">SparseArray.dtype</span></code> property stores two pieces of information</p>
+<ol class="arabic simple">
+<li><p>The dtype of the non-sparse values</p></li>
+<li><p>The scalar fill value</p></li>
+</ol>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [19]: </span><span class="n">sparr</span><span class="o">.</span><span class="n">dtype</span>
+<span class="gh">Out[19]: </span><span class="go">Sparse[float64, nan]</span>
+</pre></div>
+</div>
+<p>A <code class="xref py py-class docutils literal notranslate"><span class="pre">SparseDtype</span></code> may be constructed by passing each of these</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [20]: </span><span class="n">pd</span><span class="o">.</span><span class="n">SparseDtype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">(</span><span class="s1">&#39;datetime64[ns]&#39;</span><span class="p">))</span>
+<span class="gh">Out[20]: </span><span class="go">Sparse[datetime64[ns], NaT]</span>
+</pre></div>
+</div>
+<p>The default fill value for a given NumPy dtype is the “missing” value for that dtype,
+though it may be overridden.</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [21]: </span><span class="n">pd</span><span class="o">.</span><span class="n">SparseDtype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">(</span><span class="s1">&#39;datetime64[ns]&#39;</span><span class="p">),</span>
+<span class="gp">   ....: </span>               <span class="n">fill_value</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="s1">&#39;2017-01-01&#39;</span><span class="p">))</span>
+<span class="gp">   ....: </span>
+<span class="gh">Out[21]: </span><span class="go">Sparse[datetime64[ns], 2017-01-01 00:00:00]</span>
+</pre></div>
+</div>
+<p>Finally, the string alias <code class="docutils literal notranslate"><span class="pre">'Sparse[dtype]'</span></code> may be used to specify a sparse dtype
+in many places</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [22]: </span><span class="n">pd</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;Sparse[int]&#39;</span><span class="p">)</span>
+<span class="gh">Out[22]: </span><span class="go"></span>
+<span class="go">[1, 0, 0, 2]</span>
+<span class="go">Fill: 0</span>
+<span class="go">IntIndex</span>
+<span class="go">Indices: array([0, 3], dtype=int32)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="sparse-accessor">
+<span id="id1"></span><h2>Sparse accessor<a class="headerlink" href="#sparse-accessor" title="Permalink to this headline">¶</a></h2>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 0.24.0.</span></p>
+</div>
+<p>Pandas provides a <code class="docutils literal notranslate"><span class="pre">.sparse</span></code> accessor, similar to <code class="docutils literal notranslate"><span class="pre">.str</span></code> for string data, <code class="docutils literal notranslate"><span class="pre">.cat</span></code>
+for categorical data, and <code class="docutils literal notranslate"><span class="pre">.dt</span></code> for datetime-like data. This namespace provides
+attributes and methods that are specific to sparse data.</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [23]: </span><span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;Sparse[int]&quot;</span><span class="p">)</span>
+
+<span class="gp">In [24]: </span><span class="n">s</span><span class="o">.</span><span class="n">sparse</span><span class="o">.</span><span class="n">density</span>
+<span class="gh">Out[24]: </span><span class="go">0.5</span>
+
+<span class="gp">In [25]: </span><span class="n">s</span><span class="o">.</span><span class="n">sparse</span><span class="o">.</span><span class="n">fill_value</span>
+<span class="gh">Out[25]: </span><span class="go">0</span>
+</pre></div>
+</div>
+<p>This accessor is available only on data with <code class="docutils literal notranslate"><span class="pre">SparseDtype</span></code>, and on the <code class="xref py py-class docutils literal notranslate"><span class="pre">Series</span></code>
+class itself for creating a Series with sparse data from a scipy COO matrix with.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 0.25.0.</span></p>
+</div>
+<p>A <code class="docutils literal notranslate"><span class="pre">.sparse</span></code> accessor has been added for <code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code> as well.
+See <a class="reference internal" href="../reference/frame.html#api-frame-sparse"><span class="std std-ref">Sparse accessor</span></a> for more.</p>
+</div>
+<div class="section" id="sparse-calculation">
+<span id="id2"></span><h2>Sparse calculation<a class="headerlink" href="#sparse-calculation" title="Permalink to this headline">¶</a></h2>
+<p>You can apply NumPy <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/ufuncs.html">ufuncs</a>
+to <code class="docutils literal notranslate"><span class="pre">SparseArray</span></code> and get a <code class="docutils literal notranslate"><span class="pre">SparseArray</span></code> as a result.</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [26]: </span><span class="n">arr</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">arrays</span><span class="o">.</span><span class="n">SparseArray</span><span class="p">([</span><span class="mf">1.</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">])</span>
+
+<span class="gp">In [27]: </span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
+<span class="gh">Out[27]: </span><span class="go"></span>
+<span class="go">[1.0, nan, nan, 2.0, nan]</span>
+<span class="go">Fill: nan</span>
+<span class="go">IntIndex</span>
+<span class="go">Indices: array([0, 3], dtype=int32)</span>
+</pre></div>
+</div>
+<p>The <em>ufunc</em> is also applied to <code class="docutils literal notranslate"><span class="pre">fill_value</span></code>. This is needed to get
+the correct dense result.</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [28]: </span><span class="n">arr</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">arrays</span><span class="o">.</span><span class="n">SparseArray</span><span class="p">([</span><span class="mf">1.</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">fill_value</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="gp">In [29]: </span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
+<span class="gh">Out[29]: </span><span class="go"></span>
+<span class="go">[1.0, 1, 1, 2.0, 1]</span>
+<span class="go">Fill: 1</span>
+<span class="go">IntIndex</span>
+<span class="go">Indices: array([0, 3], dtype=int32)</span>
+
+<span class="gp">In [30]: </span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span><span class="o">.</span><span class="n">to_dense</span><span class="p">()</span>
+<span class="gh">Out[30]: </span><span class="go">array([1., 1., 1., 2., 1.])</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="migrating">
+<span id="sparse-migration"></span><h2>Migrating<a class="headerlink" href="#migrating" title="Permalink to this headline">¶</a></h2>
+<div class="alert alert-info">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">SparseSeries</span></code> and <code class="docutils literal notranslate"><span class="pre">SparseDataFrame</span></code> were removed in pandas 1.0.0. This migration
+guide is present to aid in migrating from previous versions.</p>
+</div>
+<p>In older versions of pandas, the <code class="docutils literal notranslate"><span class="pre">SparseSeries</span></code> and <code class="docutils literal notranslate"><span class="pre">SparseDataFrame</span></code> classes (documented below)
+were the preferred way to work with sparse data. With the advent of extension arrays, these subclasses
+are no longer needed. Their purpose is better served by using a regular Series or DataFrame with
+sparse values instead.</p>
+<div class="alert alert-info">
+<p class="admonition-title">Note</p>
+<p>There’s no performance or memory penalty to using a Series or DataFrame with sparse values,
+rather than a SparseSeries or SparseDataFrame.</p>
+</div>
+<p>This section provides some guidance on migrating your code to the new style. As a reminder,
+you can use the python warnings module to control warnings. But we recommend modifying
+your code, rather than ignoring the warning.</p>
+<p><strong>Construction</strong></p>
+<p>From an array-like, use the regular <code class="xref py py-class docutils literal notranslate"><span class="pre">Series</span></code> or
+<code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code> constructors with <code class="xref py py-class docutils literal notranslate"><span class="pre">SparseArray</span></code> values.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Previous way</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">SparseDataFrame</span><span class="p">({</span><span class="s2">&quot;A&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]})</span>
+</pre></div>
+</div>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="go"># New way</span>
+<span class="gp">In [31]: </span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;A&quot;</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">arrays</span><span class="o">.</span><span class="n">SparseArray</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])})</span>
+<span class="gh">Out[31]: </span><span class="go"></span>
+<span class="go">   A</span>
+<span class="go">0  0</span>
+<span class="go">1  1</span>
+</pre></div>
+</div>
+<p>From a SciPy sparse matrix, use <code class="xref py py-meth docutils literal notranslate"><span class="pre">DataFrame.sparse.from_spmatrix()</span></code>,</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Previous way</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">sparse</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">mat</span> <span class="o">=</span> <span class="n">sparse</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">SparseDataFrame</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="go"># New way</span>
+<span class="gp">In [32]: </span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">sparse</span>
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">32</span><span class="o">-</span><span class="n">cd6a00615037</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">sparse</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;scipy&#39;
+
+<span class="gp">In [33]: </span><span class="n">mat</span> <span class="o">=</span> <span class="n">sparse</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">33</span><span class="o">-</span><span class="n">b8a897596f66</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">mat</span> <span class="o">=</span> <span class="n">sparse</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;sparse&#39; is not defined
+
+<span class="gp">In [34]: </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">sparse</span><span class="o">.</span><span class="n">from_spmatrix</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">])</span>
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">34</span><span class="o">-</span><span class="mi">7</span><span class="n">bac7a79b916</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">sparse</span><span class="o">.</span><span class="n">from_spmatrix</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">])</span>
+
+<span class="ne">NameError</span>: name &#39;mat&#39; is not defined
+
+<span class="gp">In [35]: </span><span class="n">df</span><span class="o">.</span><span class="n">dtypes</span>
+<span class="gh">Out[35]: </span><span class="go"></span>
+<span class="go">0    float64</span>
+<span class="go">1    float64</span>
+<span class="go">2    float64</span>
+<span class="go">3    float64</span>
+<span class="go">dtype: object</span>
+</pre></div>
+</div>
+<p><strong>Conversion</strong></p>
+<p>From sparse to dense, use the <code class="docutils literal notranslate"><span class="pre">.sparse</span></code> accessors</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [36]: </span><span class="n">df</span><span class="o">.</span><span class="n">sparse</span><span class="o">.</span><span class="n">to_dense</span><span class="p">()</span>
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">36</span><span class="o">-</span><span class="mi">6</span><span class="n">c28aed8f0df</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">df</span><span class="o">.</span><span class="n">sparse</span><span class="o">.</span><span class="n">to_dense</span><span class="p">()</span>
+
+<span class="nn">~/scipy/pandas/pandas/core/generic.py</span> in <span class="ni">__getattr__</span><span class="nt">(self, name)</span>
+<span class="g g-Whitespace">   </span><span class="mi">5144</span>             <span class="ow">or</span> <span class="n">name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_accessors</span>
+<span class="g g-Whitespace">   </span><span class="mi">5145</span>         <span class="p">):</span>
+<span class="ne">-&gt; </span><span class="mi">5146</span>             <span class="k">return</span> <span class="nb">object</span><span class="o">.</span><span class="fm">__getattribute__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">5147</span>         <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">5148</span>             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_info_axis</span><span class="o">.</span><span class="n">_can_hold_identifiers_and_holds_name</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+
+<span class="nn">~/scipy/pandas/pandas/core/accessor.py</span> in <span class="ni">__get__</span><span class="nt">(self, obj, cls)</span>
+<span class="g g-Whitespace">    </span><span class="mi">185</span>             <span class="c1"># we&#39;re accessing the attribute of the class, i.e., Dataset.geo</span>
+<span class="g g-Whitespace">    </span><span class="mi">186</span>             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_accessor</span>
+<span class="ne">--&gt; </span><span class="mi">187</span>         <span class="n">accessor_obj</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_accessor</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">188</span>         <span class="c1"># Replace the property with the accessor object. Inspired by:</span>
+<span class="g g-Whitespace">    </span><span class="mi">189</span>         <span class="c1"># http://www.pydanny.com/cached-property.html</span>
+
+<span class="nn">~/scipy/pandas/pandas/core/arrays/sparse/accessor.py</span> in <span class="ni">__init__</span><span class="nt">(self, data)</span>
+<span class="g g-Whitespace">     </span><span class="mi">17</span>     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">18</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span> <span class="o">=</span> <span class="n">data</span>
+<span class="ne">---&gt; </span><span class="mi">19</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_validate</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">20</span> 
+<span class="g g-Whitespace">     </span><span class="mi">21</span>     <span class="k">def</span> <span class="nf">_validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+
+<span class="nn">~/scipy/pandas/pandas/core/arrays/sparse/accessor.py</span> in <span class="ni">_validate</span><span class="nt">(self, data)</span>
+<span class="g g-Whitespace">    </span><span class="mi">195</span>         <span class="n">dtypes</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">dtypes</span>
+<span class="g g-Whitespace">    </span><span class="mi">196</span>         <span class="k">if</span> <span class="ow">not</span> <span class="nb">all</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">SparseDtype</span><span class="p">)</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">dtypes</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">197</span>             <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_validation_msg</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">198</span> 
+<span class="g g-Whitespace">    </span><span class="mi">199</span>     <span class="nd">@classmethod</span>
+
+<span class="ne">AttributeError</span>: Can only use the &#39;.sparse&#39; accessor with Sparse data.
+
+<span class="gp">In [37]: </span><span class="n">df</span><span class="o">.</span><span class="n">sparse</span><span class="o">.</span><span class="n">to_coo</span><span class="p">()</span>
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">37</span><span class="o">-</span><span class="mi">4</span><span class="n">c6c08d2fee9</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">df</span><span class="o">.</span><span class="n">sparse</span><span class="o">.</span><span class="n">to_coo</span><span class="p">()</span>
+
+<span class="nn">~/scipy/pandas/pandas/core/generic.py</span> in <span class="ni">__getattr__</span><span class="nt">(self, name)</span>
+<span class="g g-Whitespace">   </span><span class="mi">5144</span>             <span class="ow">or</span> <span class="n">name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_accessors</span>
+<span class="g g-Whitespace">   </span><span class="mi">5145</span>         <span class="p">):</span>
+<span class="ne">-&gt; </span><span class="mi">5146</span>             <span class="k">return</span> <span class="nb">object</span><span class="o">.</span><span class="fm">__getattribute__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">5147</span>         <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">5148</span>             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_info_axis</span><span class="o">.</span><span class="n">_can_hold_identifiers_and_holds_name</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+
+<span class="nn">~/scipy/pandas/pandas/core/accessor.py</span> in <span class="ni">__get__</span><span class="nt">(self, obj, cls)</span>
+<span class="g g-Whitespace">    </span><span class="mi">185</span>             <span class="c1"># we&#39;re accessing the attribute of the class, i.e., Dataset.geo</span>
+<span class="g g-Whitespace">    </span><span class="mi">186</span>             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_accessor</span>
+<span class="ne">--&gt; </span><span class="mi">187</span>         <span class="n">accessor_obj</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_accessor</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">188</span>         <span class="c1"># Replace the property with the accessor object. Inspired by:</span>
+<span class="g g-Whitespace">    </span><span class="mi">189</span>         <span class="c1"># http://www.pydanny.com/cached-property.html</span>
+
+<span class="nn">~/scipy/pandas/pandas/core/arrays/sparse/accessor.py</span> in <span class="ni">__init__</span><span class="nt">(self, data)</span>
+<span class="g g-Whitespace">     </span><span class="mi">17</span>     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">18</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span> <span class="o">=</span> <span class="n">data</span>
+<span class="ne">---&gt; </span><span class="mi">19</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_validate</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">20</span> 
+<span class="g g-Whitespace">     </span><span class="mi">21</span>     <span class="k">def</span> <span class="nf">_validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+
+<span class="nn">~/scipy/pandas/pandas/core/arrays/sparse/accessor.py</span> in <span class="ni">_validate</span><span class="nt">(self, data)</span>
+<span class="g g-Whitespace">    </span><span class="mi">195</span>         <span class="n">dtypes</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">dtypes</span>
+<span class="g g-Whitespace">    </span><span class="mi">196</span>         <span class="k">if</span> <span class="ow">not</span> <span class="nb">all</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">SparseDtype</span><span class="p">)</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">dtypes</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">197</span>             <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_validation_msg</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">198</span> 
+<span class="g g-Whitespace">    </span><span class="mi">199</span>     <span class="nd">@classmethod</span>
+
+<span class="ne">AttributeError</span>: Can only use the &#39;.sparse&#39; accessor with Sparse data.
+</pre></div>
+</div>
+<p>From dense to sparse, use <code class="xref py py-meth docutils literal notranslate"><span class="pre">DataFrame.astype()</span></code> with a <code class="xref py py-class docutils literal notranslate"><span class="pre">SparseDtype</span></code>.</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [38]: </span><span class="n">dense</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;A&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]})</span>
+
+<span class="gp">In [39]: </span><span class="n">dtype</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">SparseDtype</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">fill_value</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="gp">In [40]: </span><span class="n">dense</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">dtype</span><span class="p">)</span>
+<span class="gh">Out[40]: </span><span class="go"></span>
+<span class="go">   A</span>
+<span class="go">0  1</span>
+<span class="go">1  0</span>
+<span class="go">2  0</span>
+<span class="go">3  1</span>
+</pre></div>
+</div>
+<p><strong>Sparse Properties</strong></p>
+<p>Sparse-specific properties, like <code class="docutils literal notranslate"><span class="pre">density</span></code>, are available on the <code class="docutils literal notranslate"><span class="pre">.sparse</span></code> accessor.</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [41]: </span><span class="n">df</span><span class="o">.</span><span class="n">sparse</span><span class="o">.</span><span class="n">density</span>
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">41</span><span class="o">-</span><span class="n">a2836336c5bf</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">df</span><span class="o">.</span><span class="n">sparse</span><span class="o">.</span><span class="n">density</span>
+
+<span class="nn">~/scipy/pandas/pandas/core/generic.py</span> in <span class="ni">__getattr__</span><span class="nt">(self, name)</span>
+<span class="g g-Whitespace">   </span><span class="mi">5144</span>             <span class="ow">or</span> <span class="n">name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_accessors</span>
+<span class="g g-Whitespace">   </span><span class="mi">5145</span>         <span class="p">):</span>
+<span class="ne">-&gt; </span><span class="mi">5146</span>             <span class="k">return</span> <span class="nb">object</span><span class="o">.</span><span class="fm">__getattribute__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">5147</span>         <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">5148</span>             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_info_axis</span><span class="o">.</span><span class="n">_can_hold_identifiers_and_holds_name</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+
+<span class="nn">~/scipy/pandas/pandas/core/accessor.py</span> in <span class="ni">__get__</span><span class="nt">(self, obj, cls)</span>
+<span class="g g-Whitespace">    </span><span class="mi">185</span>             <span class="c1"># we&#39;re accessing the attribute of the class, i.e., Dataset.geo</span>
+<span class="g g-Whitespace">    </span><span class="mi">186</span>             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_accessor</span>
+<span class="ne">--&gt; </span><span class="mi">187</span>         <span class="n">accessor_obj</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_accessor</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">188</span>         <span class="c1"># Replace the property with the accessor object. Inspired by:</span>
+<span class="g g-Whitespace">    </span><span class="mi">189</span>         <span class="c1"># http://www.pydanny.com/cached-property.html</span>
+
+<span class="nn">~/scipy/pandas/pandas/core/arrays/sparse/accessor.py</span> in <span class="ni">__init__</span><span class="nt">(self, data)</span>
+<span class="g g-Whitespace">     </span><span class="mi">17</span>     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">18</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span> <span class="o">=</span> <span class="n">data</span>
+<span class="ne">---&gt; </span><span class="mi">19</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_validate</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">20</span> 
+<span class="g g-Whitespace">     </span><span class="mi">21</span>     <span class="k">def</span> <span class="nf">_validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+
+<span class="nn">~/scipy/pandas/pandas/core/arrays/sparse/accessor.py</span> in <span class="ni">_validate</span><span class="nt">(self, data)</span>
+<span class="g g-Whitespace">    </span><span class="mi">195</span>         <span class="n">dtypes</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">dtypes</span>
+<span class="g g-Whitespace">    </span><span class="mi">196</span>         <span class="k">if</span> <span class="ow">not</span> <span class="nb">all</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">SparseDtype</span><span class="p">)</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">dtypes</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">197</span>             <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_validation_msg</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">198</span> 
+<span class="g g-Whitespace">    </span><span class="mi">199</span>     <span class="nd">@classmethod</span>
+
+<span class="ne">AttributeError</span>: Can only use the &#39;.sparse&#39; accessor with Sparse data.
+</pre></div>
+</div>
+<p><strong>General differences</strong></p>
+<p>In a <code class="docutils literal notranslate"><span class="pre">SparseDataFrame</span></code>, <em>all</em> columns were sparse. A <code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code> can have a mixture of
+sparse and dense columns. As a consequence, assigning new columns to a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> with sparse
+values will not automatically convert the input to be sparse.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Previous Way</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">SparseDataFrame</span><span class="p">({</span><span class="s2">&quot;A&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]})</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;B&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>  <span class="c1"># implicitly becomes Sparse</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;B&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dtype</span>
+<span class="n">Sparse</span><span class="p">[</span><span class="n">int64</span><span class="p">,</span> <span class="n">nan</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Instead, you’ll need to ensure that the values being assigned are sparse</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [42]: </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;A&quot;</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">arrays</span><span class="o">.</span><span class="n">SparseArray</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])})</span>
+
+<span class="gp">In [43]: </span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;B&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>  <span class="c1"># remains dense</span>
+
+<span class="gp">In [44]: </span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;B&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dtype</span>
+<span class="gh">Out[44]: </span><span class="go">dtype(&#39;int64&#39;)</span>
+
+<span class="gp">In [45]: </span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;B&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">arrays</span><span class="o">.</span><span class="n">SparseArray</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+
+<span class="gp">In [46]: </span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;B&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dtype</span>
+<span class="gh">Out[46]: </span><span class="go">Sparse[int64, 0]</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">SparseDataFrame.default_kind</span></code> and <code class="docutils literal notranslate"><span class="pre">SparseDataFrame.default_fill_value</span></code> attributes
+have no replacement.</p>
+</div>
+<div class="section" id="interaction-with-scipy-sparse">
+<span id="sparse-scipysparse"></span><h2>Interaction with scipy.sparse<a class="headerlink" href="#interaction-with-scipy-sparse" title="Permalink to this headline">¶</a></h2>
+<p>Use <code class="xref py py-meth docutils literal notranslate"><span class="pre">DataFrame.sparse.from_spmatrix()</span></code> to create a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> with sparse values from a sparse matrix.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 0.25.0.</span></p>
+</div>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [47]: </span><span class="kn">from</span> <span class="nn">scipy.sparse</span> <span class="kn">import</span> <span class="n">csr_matrix</span>
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">47</span><span class="o">-</span><span class="mi">4</span><span class="n">a61a219f322</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">scipy.sparse</span> <span class="kn">import</span> <span class="n">csr_matrix</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;scipy&#39;
+
+<span class="gp">In [48]: </span><span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+
+<span class="gp">In [49]: </span><span class="n">arr</span><span class="p">[</span><span class="n">arr</span> <span class="o">&lt;</span> <span class="o">.</span><span class="mi">9</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="gp">In [50]: </span><span class="n">sp_arr</span> <span class="o">=</span> <span class="n">csr_matrix</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">50</span><span class="o">-</span><span class="mf">318e903374</span><span class="n">d9</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">sp_arr</span> <span class="o">=</span> <span class="n">csr_matrix</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;csr_matrix&#39; is not defined
+
+<span class="gp">In [51]: </span><span class="n">sp_arr</span>
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">51</span><span class="o">-</span><span class="n">b1055a0a0153</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">sp_arr</span>
+
+<span class="ne">NameError</span>: name &#39;sp_arr&#39; is not defined
+
+<span class="gp">In [52]: </span><span class="n">sdf</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">sparse</span><span class="o">.</span><span class="n">from_spmatrix</span><span class="p">(</span><span class="n">sp_arr</span><span class="p">)</span>
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">52</span><span class="o">-</span><span class="mi">6</span><span class="n">cb924044411</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">sdf</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">sparse</span><span class="o">.</span><span class="n">from_spmatrix</span><span class="p">(</span><span class="n">sp_arr</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;sp_arr&#39; is not defined
+
+<span class="gp">In [53]: </span><span class="n">sdf</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="gh">Out[53]: </span><span class="go"></span>
+<span class="go">    0   1   2   3</span>
+<span class="go">0 NaN NaN NaN NaN</span>
+<span class="go">1 NaN NaN NaN NaN</span>
+<span class="go">2 NaN NaN NaN NaN</span>
+<span class="go">3 NaN NaN NaN NaN</span>
+<span class="go">4 NaN NaN NaN NaN</span>
+
+<span class="gp">In [54]: </span><span class="n">sdf</span><span class="o">.</span><span class="n">dtypes</span>
+<span class="gh">Out[54]: </span><span class="go"></span>
+<span class="go">0    Sparse[float64, nan]</span>
+<span class="go">1    Sparse[float64, nan]</span>
+<span class="go">2    Sparse[float64, nan]</span>
+<span class="go">3    Sparse[float64, nan]</span>
+<span class="go">dtype: object</span>
+</pre></div>
+</div>
+<p>All sparse formats are supported, but matrices that are not in <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/sparse.html#module-scipy.sparse" title="(in SciPy v1.4.1)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">COOrdinate</span></code></a> format will be converted, copying data as needed.
+To convert back to sparse SciPy matrix in COO format, you can use the <code class="xref py py-meth docutils literal notranslate"><span class="pre">DataFrame.sparse.to_coo()</span></code> method:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [55]: </span><span class="n">sdf</span><span class="o">.</span><span class="n">sparse</span><span class="o">.</span><span class="n">to_coo</span><span class="p">()</span>
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ImportError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">55</span><span class="o">-</span><span class="mi">139</span><span class="n">b822f8f1b</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">sdf</span><span class="o">.</span><span class="n">sparse</span><span class="o">.</span><span class="n">to_coo</span><span class="p">()</span>
+
+<span class="nn">~/scipy/pandas/pandas/core/arrays/sparse/accessor.py</span> in <span class="ni">to_coo</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">285</span>         <span class="ow">and</span> <span class="n">uint64</span> <span class="n">will</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">a</span> <span class="n">float64</span> <span class="n">dtype</span><span class="o">.</span>
+<span class="g g-Whitespace">    </span><span class="mi">286</span>         <span class="s2">&quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">287</span><span class="s2">         import_optional_dependency(&quot;scipy&quot;)</span>
+<span class="g g-Whitespace">    </span><span class="mi">288</span><span class="s2">         from scipy.sparse import coo_matrix</span>
+<span class="g g-Whitespace">    </span><span class="mi">289</span><span class="s2"> </span>
+
+<span class="nn">~/scipy/pandas/pandas/compat/_optional.py</span> in <span class="ni">import_optional_dependency</span><span class="nt">(name, extra, raise_on_missing, on_version)</span>
+<span class="g g-Whitespace">     </span><span class="mi">89</span><span class="s2">     except ImportError:</span>
+<span class="g g-Whitespace">     </span><span class="mi">90</span><span class="s2">         if raise_on_missing:</span>
+<span class="ne">---&gt; </span><span class="mi">91</span><span class="s2">             raise ImportError(msg) from None</span>
+<span class="g g-Whitespace">     </span><span class="mi">92</span><span class="s2">         else:</span>
+<span class="g g-Whitespace">     </span><span class="mi">93</span><span class="s2">             return None</span>
+
+<span class="ne">ImportError</span>: Missing optional dependency &#39;scipy&#39;.  Use pip or conda to install scipy.
+</pre></div>
+</div>
+<p>meth:<cite>Series.sparse.to_coo</cite> is implemented for transforming a <code class="docutils literal notranslate"><span class="pre">Series</span></code> with sparse values indexed by a <code class="xref py py-class docutils literal notranslate"><span class="pre">MultiIndex</span></code> to a <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.sparse.coo_matrix.html#scipy.sparse.coo_matrix" title="(in SciPy v1.4.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">scipy.sparse.coo_matrix</span></code></a>.</p>
+<p>The method requires a <code class="docutils literal notranslate"><span class="pre">MultiIndex</span></code> with two or more levels.</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [56]: </span><span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mf">3.0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">])</span>
+
+<span class="gp">In [57]: </span><span class="n">s</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">MultiIndex</span><span class="o">.</span><span class="n">from_tuples</span><span class="p">([(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+<span class="gp">   ....: </span>                                     <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+<span class="gp">   ....: </span>                                     <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+<span class="gp">   ....: </span>                                     <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+<span class="gp">   ....: </span>                                     <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+<span class="gp">   ....: </span>                                     <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)],</span>
+<span class="gp">   ....: </span>                                    <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">])</span>
+<span class="gp">   ....: </span>
+
+<span class="gp">In [58]: </span><span class="n">s</span>
+<span class="gh">Out[58]: </span><span class="go"></span>
+<span class="go">A  B  C  D</span>
+<span class="go">1  2  a  0    3.0</span>
+<span class="go">         1    NaN</span>
+<span class="go">   1  b  0    1.0</span>
+<span class="go">         1    3.0</span>
+<span class="go">2  1  b  0    NaN</span>
+<span class="go">         1    NaN</span>
+<span class="go">dtype: float64</span>
+
+<span class="gp">In [59]: </span><span class="n">ss</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;Sparse&#39;</span><span class="p">)</span>
+
+<span class="gp">In [60]: </span><span class="n">ss</span>
+<span class="gh">Out[60]: </span><span class="go"></span>
+<span class="go">A  B  C  D</span>
+<span class="go">1  2  a  0    3.0</span>
+<span class="go">         1    NaN</span>
+<span class="go">   1  b  0    1.0</span>
+<span class="go">         1    3.0</span>
+<span class="go">2  1  b  0    NaN</span>
+<span class="go">         1    NaN</span>
+<span class="go">dtype: Sparse[float64, nan]</span>
+</pre></div>
+</div>
+<p>In the example below, we transform the <code class="docutils literal notranslate"><span class="pre">Series</span></code> to a sparse representation of a 2-d array by specifying that the first and second <code class="docutils literal notranslate"><span class="pre">MultiIndex</span></code> levels define labels for the rows and the third and fourth levels define labels for the columns. We also specify that the column and row labels should be sorted in the final sparse representation.</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [61]: </span><span class="n">A</span><span class="p">,</span> <span class="n">rows</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">ss</span><span class="o">.</span><span class="n">sparse</span><span class="o">.</span><span class="n">to_coo</span><span class="p">(</span><span class="n">row_levels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">],</span>
+<span class="gp">   ....: </span>                                    <span class="n">column_levels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">],</span>
+<span class="gp">   ....: </span>                                    <span class="n">sort_labels</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="gp">   ....: </span>
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">61</span><span class="o">-</span><span class="mi">6</span><span class="n">a0432cd14ff</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">A</span><span class="p">,</span> <span class="n">rows</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">ss</span><span class="o">.</span><span class="n">sparse</span><span class="o">.</span><span class="n">to_coo</span><span class="p">(</span><span class="n">row_levels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">],</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span>                                     <span class="n">column_levels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">],</span>
+<span class="ne">----&gt; </span><span class="mi">3</span>                                     <span class="n">sort_labels</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="nn">~/scipy/pandas/pandas/core/arrays/sparse/accessor.py</span> in <span class="ni">to_coo</span><span class="nt">(self, row_levels, column_levels, sort_labels)</span>
+<span class="g g-Whitespace">    </span><span class="mi">146</span> 
+<span class="g g-Whitespace">    </span><span class="mi">147</span>         <span class="n">A</span><span class="p">,</span> <span class="n">rows</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">_sparse_series_to_coo</span><span class="p">(</span>
+<span class="ne">--&gt; </span><span class="mi">148</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span><span class="p">,</span> <span class="n">row_levels</span><span class="p">,</span> <span class="n">column_levels</span><span class="p">,</span> <span class="n">sort_labels</span><span class="o">=</span><span class="n">sort_labels</span>
+<span class="g g-Whitespace">    </span><span class="mi">149</span>         <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">150</span>         <span class="k">return</span> <span class="n">A</span><span class="p">,</span> <span class="n">rows</span><span class="p">,</span> <span class="n">columns</span>
+
+<span class="nn">~/scipy/pandas/pandas/core/arrays/sparse/scipy_sparse.py</span> in <span class="ni">_sparse_series_to_coo</span><span class="nt">(ss, row_levels, column_levels, sort_labels)</span>
+<span class="g g-Whitespace">     </span><span class="mi">91</span>     <span class="s2">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">     </span><span class="mi">92</span><span class="s2"> </span>
+<span class="ne">---&gt; </span><span class="mi">93</span><span class="s2">     import scipy.sparse</span>
+<span class="g g-Whitespace">     </span><span class="mi">94</span><span class="s2"> </span>
+<span class="g g-Whitespace">     </span><span class="mi">95</span><span class="s2">     if ss.index.nlevels &lt; 2:</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;scipy&#39;
+
+<span class="gp">In [62]: </span><span class="n">A</span>
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">62</span><span class="o">-</span><span class="mi">7</span><span class="n">d157d7c000a</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">A</span>
+
+<span class="ne">NameError</span>: name &#39;A&#39; is not defined
+
+<span class="gp">In [63]: </span><span class="n">A</span><span class="o">.</span><span class="n">todense</span><span class="p">()</span>
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">63</span><span class="o">-</span><span class="n">a3fb4a959fae</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">A</span><span class="o">.</span><span class="n">todense</span><span class="p">()</span>
+
+<span class="ne">NameError</span>: name &#39;A&#39; is not defined
+
+<span class="gp">In [64]: </span><span class="n">rows</span>
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">64</span><span class="o">-</span><span class="mi">870319074</span><span class="n">abe</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">rows</span>
+
+<span class="ne">NameError</span>: name &#39;rows&#39; is not defined
+
+<span class="gp">In [65]: </span><span class="n">columns</span>
+<span class="gh">Out[65]: </span><span class="go">[&#39;id_0&#39;, &#39;name_0&#39;, &#39;x_0&#39;, &#39;y_0&#39;]</span>
+</pre></div>
+</div>
+<p>Specifying different row and column labels (and not sorting them) yields a different sparse matrix:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [66]: </span><span class="n">A</span><span class="p">,</span> <span class="n">rows</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">ss</span><span class="o">.</span><span class="n">sparse</span><span class="o">.</span><span class="n">to_coo</span><span class="p">(</span><span class="n">row_levels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">],</span>
+<span class="gp">   ....: </span>                                    <span class="n">column_levels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;D&#39;</span><span class="p">],</span>
+<span class="gp">   ....: </span>                                    <span class="n">sort_labels</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="gp">   ....: </span>
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">66</span><span class="o">-</span><span class="n">e5cb088494bb</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">A</span><span class="p">,</span> <span class="n">rows</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">ss</span><span class="o">.</span><span class="n">sparse</span><span class="o">.</span><span class="n">to_coo</span><span class="p">(</span><span class="n">row_levels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">],</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span>                                     <span class="n">column_levels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;D&#39;</span><span class="p">],</span>
+<span class="ne">----&gt; </span><span class="mi">3</span>                                     <span class="n">sort_labels</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+
+<span class="nn">~/scipy/pandas/pandas/core/arrays/sparse/accessor.py</span> in <span class="ni">to_coo</span><span class="nt">(self, row_levels, column_levels, sort_labels)</span>
+<span class="g g-Whitespace">    </span><span class="mi">146</span> 
+<span class="g g-Whitespace">    </span><span class="mi">147</span>         <span class="n">A</span><span class="p">,</span> <span class="n">rows</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">_sparse_series_to_coo</span><span class="p">(</span>
+<span class="ne">--&gt; </span><span class="mi">148</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span><span class="p">,</span> <span class="n">row_levels</span><span class="p">,</span> <span class="n">column_levels</span><span class="p">,</span> <span class="n">sort_labels</span><span class="o">=</span><span class="n">sort_labels</span>
+<span class="g g-Whitespace">    </span><span class="mi">149</span>         <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">150</span>         <span class="k">return</span> <span class="n">A</span><span class="p">,</span> <span class="n">rows</span><span class="p">,</span> <span class="n">columns</span>
+
+<span class="nn">~/scipy/pandas/pandas/core/arrays/sparse/scipy_sparse.py</span> in <span class="ni">_sparse_series_to_coo</span><span class="nt">(ss, row_levels, column_levels, sort_labels)</span>
+<span class="g g-Whitespace">     </span><span class="mi">91</span>     <span class="s2">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">     </span><span class="mi">92</span><span class="s2"> </span>
+<span class="ne">---&gt; </span><span class="mi">93</span><span class="s2">     import scipy.sparse</span>
+<span class="g g-Whitespace">     </span><span class="mi">94</span><span class="s2"> </span>
+<span class="g g-Whitespace">     </span><span class="mi">95</span><span class="s2">     if ss.index.nlevels &lt; 2:</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;scipy&#39;
+
+<span class="gp">In [67]: </span><span class="n">A</span>
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">67</span><span class="o">-</span><span class="mi">7</span><span class="n">d157d7c000a</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">A</span>
+
+<span class="ne">NameError</span>: name &#39;A&#39; is not defined
+
+<span class="gp">In [68]: </span><span class="n">A</span><span class="o">.</span><span class="n">todense</span><span class="p">()</span>
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">68</span><span class="o">-</span><span class="n">a3fb4a959fae</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">A</span><span class="o">.</span><span class="n">todense</span><span class="p">()</span>
+
+<span class="ne">NameError</span>: name &#39;A&#39; is not defined
+
+<span class="gp">In [69]: </span><span class="n">rows</span>
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">69</span><span class="o">-</span><span class="mi">870319074</span><span class="n">abe</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">rows</span>
+
+<span class="ne">NameError</span>: name &#39;rows&#39; is not defined
+
+<span class="gp">In [70]: </span><span class="n">columns</span>
+<span class="gh">Out[70]: </span><span class="go">[&#39;id_0&#39;, &#39;name_0&#39;, &#39;x_0&#39;, &#39;y_0&#39;]</span>
+</pre></div>
+</div>
+<p>A convenience method <code class="xref py py-meth docutils literal notranslate"><span class="pre">Series.sparse.from_coo()</span></code> is implemented for creating a <code class="docutils literal notranslate"><span class="pre">Series</span></code> with sparse values from a <code class="docutils literal notranslate"><span class="pre">scipy.sparse.coo_matrix</span></code>.</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [71]: </span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">sparse</span>
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">71</span><span class="o">-</span><span class="n">cd6a00615037</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">sparse</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;scipy&#39;
+
+<span class="gp">In [72]: </span><span class="n">A</span> <span class="o">=</span> <span class="n">sparse</span><span class="o">.</span><span class="n">coo_matrix</span><span class="p">(([</span><span class="mf">3.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">],</span> <span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])),</span>
+<span class="gp">   ....: </span>                      <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="gp">   ....: </span>
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">72</span><span class="o">-</span><span class="mi">22</span><span class="n">b6f5faecd2</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">A</span> <span class="o">=</span> <span class="n">sparse</span><span class="o">.</span><span class="n">coo_matrix</span><span class="p">(([</span><span class="mf">3.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">],</span> <span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])),</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span>                       <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="ne">NameError</span>: name &#39;sparse&#39; is not defined
+
+<span class="gp">In [73]: </span><span class="n">A</span>
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">73</span><span class="o">-</span><span class="mi">7</span><span class="n">d157d7c000a</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">A</span>
+
+<span class="ne">NameError</span>: name &#39;A&#39; is not defined
+
+<span class="gp">In [74]: </span><span class="n">A</span><span class="o">.</span><span class="n">todense</span><span class="p">()</span>
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">74</span><span class="o">-</span><span class="n">a3fb4a959fae</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">A</span><span class="o">.</span><span class="n">todense</span><span class="p">()</span>
+
+<span class="ne">NameError</span>: name &#39;A&#39; is not defined
+</pre></div>
+</div>
+<p>The default behaviour (with <code class="docutils literal notranslate"><span class="pre">dense_index=False</span></code>) simply returns a <code class="docutils literal notranslate"><span class="pre">Series</span></code> containing
+only the non-null entries.</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [75]: </span><span class="n">ss</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="o">.</span><span class="n">sparse</span><span class="o">.</span><span class="n">from_coo</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">75</span><span class="o">-</span><span class="mi">5</span><span class="n">caf58835db8</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">ss</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="o">.</span><span class="n">sparse</span><span class="o">.</span><span class="n">from_coo</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;A&#39; is not defined
+
+<span class="gp">In [76]: </span><span class="n">ss</span>
+<span class="gh">Out[76]: </span><span class="go"></span>
+<span class="go">A  B  C  D</span>
+<span class="go">1  2  a  0    3.0</span>
+<span class="go">         1    NaN</span>
+<span class="go">   1  b  0    1.0</span>
+<span class="go">         1    3.0</span>
+<span class="go">2  1  b  0    NaN</span>
+<span class="go">         1    NaN</span>
+<span class="go">dtype: Sparse[float64, nan]</span>
+</pre></div>
+</div>
+<p>Specifying <code class="docutils literal notranslate"><span class="pre">dense_index=True</span></code> will result in an index that is the Cartesian product of the
+row and columns coordinates of the matrix. Note that this will consume a significant amount of memory
+(relative to <code class="docutils literal notranslate"><span class="pre">dense_index=False</span></code>) if the sparse matrix is large (and sparse) enough.</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [77]: </span><span class="n">ss_dense</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="o">.</span><span class="n">sparse</span><span class="o">.</span><span class="n">from_coo</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">dense_index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">77</span><span class="o">-</span><span class="mi">245</span><span class="n">bf04182d5</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">ss_dense</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="o">.</span><span class="n">sparse</span><span class="o">.</span><span class="n">from_coo</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">dense_index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;A&#39; is not defined
+
+<span class="gp">In [78]: </span><span class="n">ss_dense</span>
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">78</span><span class="o">-</span><span class="n">d9f97589c3d3</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">ss_dense</span>
+
+<span class="ne">NameError</span>: name &#39;ss_dense&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+
+
+              </div>
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="scale.html" title="previous page">Scaling to large datasets</a>
+    <a class='right-next' id="next-link" href="gotchas.html" title="next page">Frequently Asked Questions (FAQ)</a>
+
+              </div>
+              
+          </main>
+
+      </div>
+    </div><script>
+    // TOC sidebar - add "active" class to parent list
+    //
+    // Bootstrap's scrollspy adds the active class to the <a> link,
+    // but for the automatic collapsing we need this on the parent list item.
+    //
+    // The event is triggered on "window" (and not the nav item as documented),
+    // see https://github.com/twbs/bootstrap/issues/20086
+    $(window).on("activate.bs.scrollspy", function(){
+    var navLinks = document.querySelectorAll('#bd-toc-nav a');
+    for (var i = 0; i < navLinks.length; i++) {
+        var navLink = navLinks[i];
+        navLink.parentElement.classList.remove('active');
+    }
+    var navLinks = document.querySelectorAll('#bd-toc-nav a.active');
+    for (var i = 0; i < navLinks.length; i++) {
+        var navLink = navLinks[i];
+        navLink.parentElement.classList.add('active');
+    }
+    });
+
+    /**
+     * Use left and right arrow keys to navigate forward and backwards.
+    */
+    const LEFT_ARROW_KEYCODE = 37
+    const RIGHT_ARROW_KEYCODE = 39
+
+    const getPrevUrl = () => document.getElementById('prev-link').href
+    const getNextUrl = () => document.getElementById('next-link').href
+    const initPageNav = (event) => {
+        const keycode = event.which
+
+        if (keycode === LEFT_ARROW_KEYCODE) {
+            window.location.href = getPrevUrl();
+        } else if (keycode === RIGHT_ARROW_KEYCODE) {
+            window.location.href = getNextUrl();
+        }
+    };
+
+    var keyboardListener = false;
+    $( document ).ready(() => {
+        if (keyboardListener === false) {
+            document.addEventListener('keydown', initPageNav)
+            keyboardListener = true;
+        }
+    });
+</script>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2008-2020, the pandas development team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.3.0.
+    </div>
+  </body>
+</html>

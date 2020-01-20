@@ -1,0 +1,664 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Input/output &#8212; pandas 1.0.0rc0+111.ge72cd7c52 documentation</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link rel="stylesheet" href="../_static/sphinx-bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/pandas.css" />
+    <link href="../_static/css/custom.css" rel="stylesheet">
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="General functions" href="general_functions.html" />
+    <link rel="prev" title="API reference" href="index.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main">
+
+<a class="navbar-brand" href="../index.html">
+  <img src="../_static/pandas.svg" class="logo" alt="logo">
+</a>
+
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+</button>
+
+<div id="navbar-menu" class="collapse navbar-collapse">
+  <ul id="navbar-main-elements" class="navbar-nav mr-auto">
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        1.0.0
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown" id="version-menu"></div>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="../index.html">Home</a>
+    </li>
+    
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../whatsnew/v1.1.0.html">What's New in 1.1.0</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../getting_started/index.html">Getting started</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../user_guide/index.html">User Guide</a>
+    </li>
+    
+    <li class="nav-item active">
+        <a class="nav-link" href="index.html">API reference</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../development/index.html">Development</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../whatsnew/index.html">Release Notes</a>
+    </li>
+    
+    
+  </ul>
+  <ul class="navbar-nav ml-auto">
+    
+      <li class="nav-item">
+        <a class="nav-link" href="https://github.com/pandas-dev/pandas" target="_blank" rel="noopener">
+          <span><i class="fab fa-github-square"></i></span>
+        </a>
+      </li>
+    
+    
+      <li class="nav-item">
+        <a class="nav-link" href="https://twitter.com/pandas_dev" target="_blank" rel="noopener">
+          <span><i class="fab fa-twitter-square"></i></span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row flex-xl-nowrap">
+          <div class="col-12 col-md-3 col-xl-2 bd-sidebar">
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+
+  <div class="bd-toc-item active">
+  
+
+  <ul class="nav bd-sidenav">
+      
+      
+      
+      
+      
+      
+      
+      
+        
+          
+              <li class="active">
+                  <a href="">Input/output</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="general_functions.html">General functions</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="series.html">Series</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="frame.html">DataFrame</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="arrays.html">Pandas arrays</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="panel.html">Panel</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="indexing.html">Index objects</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="offset_frequency.html">Date offsets</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="window.html">Window</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="groupby.html">GroupBy</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="resampling.html">Resampling</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="style.html">Style</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="plotting.html">Plotting</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="general_utility_functions.html">General utility functions</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="extensions.html">Extensions</a>
+              </li>
+          
+        
+      
+      
+      
+      
+      
+      
+    </ul>
+
+</nav>
+          </div>
+
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+              
+<div class="tocsection onthispage"><i class="fas fa-list"></i> On this page</div>
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#pickling" class="nav-link">Pickling</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#flat-file" class="nav-link">Flat file</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#clipboard" class="nav-link">Clipboard</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#excel" class="nav-link">Excel</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#json" class="nav-link">JSON</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#html" class="nav-link">HTML</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#hdfstore-pytables-hdf5" class="nav-link">HDFStore: PyTables (HDF5)</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#feather" class="nav-link">Feather</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#parquet" class="nav-link">Parquet</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#orc" class="nav-link">ORC</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#sas" class="nav-link">SAS</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#spss" class="nav-link">SPSS</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#sql" class="nav-link">SQL</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#google-bigquery" class="nav-link">Google BigQuery</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#stata" class="nav-link">STATA</a>
+        </li>
+    
+    </ul>
+</nav>
+              
+            </div>
+
+          <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
+              <div>
+                
+  <div class="section" id="input-output">
+<span id="api-io"></span><h1>Input/output<a class="headerlink" href="#input-output" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="pickling">
+<h2>Pickling<a class="headerlink" href="#pickling" title="Permalink to this headline">¶</a></h2>
+<table class="longtable table">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">read_pickle</span></code>(filepath_or_buffer, …)</p></td>
+<td><p>Load pickled pandas object (or any object) from file.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="flat-file">
+<h2>Flat file<a class="headerlink" href="#flat-file" title="Permalink to this headline">¶</a></h2>
+<table class="longtable table">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">read_table</span></code>(filepath_or_buffer, pathlib.Path, …)</p></td>
+<td><p>Read general delimited file into DataFrame.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">read_csv</span></code>(filepath_or_buffer, pathlib.Path, …)</p></td>
+<td><p>Read a comma-separated values (csv) file into DataFrame.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">read_fwf</span></code>(filepath_or_buffer, pathlib.Path, …)</p></td>
+<td><p>Read a table of fixed-width formatted lines into DataFrame.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="clipboard">
+<h2>Clipboard<a class="headerlink" href="#clipboard" title="Permalink to this headline">¶</a></h2>
+<table class="longtable table">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">read_clipboard</span></code>([sep])</p></td>
+<td><p>Read text from clipboard and pass to read_csv.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="excel">
+<h2>Excel<a class="headerlink" href="#excel" title="Permalink to this headline">¶</a></h2>
+<table class="longtable table">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">read_excel</span></code>(io[, sheet_name, header, names, …])</p></td>
+<td><p>Read an Excel file into a pandas DataFrame.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExcelFile.parse</span></code>(self[, sheet_name, header, …])</p></td>
+<td><p>Parse specified sheet(s) into a DataFrame.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="longtable table">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExcelWriter</span></code>(path[, engine, date_format, …])</p></td>
+<td><p>Class for writing DataFrame objects into excel sheets.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="json">
+<h2>JSON<a class="headerlink" href="#json" title="Permalink to this headline">¶</a></h2>
+<table class="longtable table">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">read_json</span></code>([path_or_buf, orient, typ, dtype, …])</p></td>
+<td><p>Convert a JSON string to pandas object.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">json_normalize</span></code>(data, List[Dict]], …)</p></td>
+<td><p>Normalize semi-structured JSON data into a flat table.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="longtable table">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">build_table_schema</span></code>(data[, index, …])</p></td>
+<td><p>Create a Table schema from <code class="docutils literal notranslate"><span class="pre">data</span></code>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="html">
+<h2>HTML<a class="headerlink" href="#html" title="Permalink to this headline">¶</a></h2>
+<table class="longtable table">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">read_html</span></code>(io[, match, flavor, header, …])</p></td>
+<td><p>Read HTML tables into a <code class="docutils literal notranslate"><span class="pre">list</span></code> of <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> objects.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="hdfstore-pytables-hdf5">
+<h2>HDFStore: PyTables (HDF5)<a class="headerlink" href="#hdfstore-pytables-hdf5" title="Permalink to this headline">¶</a></h2>
+<table class="longtable table">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">read_hdf</span></code>(path_or_buf[, key, where, columns, …])</p></td>
+<td><p>Read from the store, close it if we opened it.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">HDFStore.put</span></code>(self, key, value[, format, …])</p></td>
+<td><p>Store object in HDFStore.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">HDFStore.append</span></code>(self, key, value[, format, …])</p></td>
+<td><p>Append to Table in file.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">HDFStore.get</span></code>(self, key)</p></td>
+<td><p>Retrieve pandas object stored in file.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">HDFStore.select</span></code>(self, key[, where, start, …])</p></td>
+<td><p>Retrieve pandas object stored in file, optionally based on where criteria.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">HDFStore.info</span></code>(self)</p></td>
+<td><p>Print detailed information on the store.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">HDFStore.keys</span></code>(self)</p></td>
+<td><p>Return a list of keys corresponding to objects stored in HDFStore.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">HDFStore.groups</span></code>(self)</p></td>
+<td><p>Return a list of all the top-level nodes.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">HDFStore.walk</span></code>(self[, where])</p></td>
+<td><p>Walk the pytables group hierarchy for pandas objects.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="feather">
+<h2>Feather<a class="headerlink" href="#feather" title="Permalink to this headline">¶</a></h2>
+<table class="longtable table">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">read_feather</span></code>(path[, columns])</p></td>
+<td><p>Load a feather-format object from the file path.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="parquet">
+<h2>Parquet<a class="headerlink" href="#parquet" title="Permalink to this headline">¶</a></h2>
+<table class="longtable table">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">read_parquet</span></code>(path, engine[, columns])</p></td>
+<td><p>Load a parquet object from the file path, returning a DataFrame.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="orc">
+<h2>ORC<a class="headerlink" href="#orc" title="Permalink to this headline">¶</a></h2>
+<table class="longtable table">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">read_orc</span></code>(path, pathlib.Path, IO[~AnyStr]], …)</p></td>
+<td><p>Load an ORC object from the file path, returning a DataFrame.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="sas">
+<h2>SAS<a class="headerlink" href="#sas" title="Permalink to this headline">¶</a></h2>
+<table class="longtable table">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">read_sas</span></code>(filepath_or_buffer[, format, …])</p></td>
+<td><p>Read SAS files stored as either XPORT or SAS7BDAT format files.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="spss">
+<h2>SPSS<a class="headerlink" href="#spss" title="Permalink to this headline">¶</a></h2>
+<table class="longtable table">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">read_spss</span></code>(path, pathlib.Path], usecols, …)</p></td>
+<td><p>Load an SPSS file from the file path, returning a DataFrame.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="sql">
+<h2>SQL<a class="headerlink" href="#sql" title="Permalink to this headline">¶</a></h2>
+<table class="longtable table">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">read_sql_table</span></code>(table_name, con[, schema, …])</p></td>
+<td><p>Read SQL database table into a DataFrame.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">read_sql_query</span></code>(sql, con[, index_col, …])</p></td>
+<td><p>Read SQL query into a DataFrame.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">read_sql</span></code>(sql, con[, index_col, …])</p></td>
+<td><p>Read SQL query or database table into a DataFrame.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="google-bigquery">
+<h2>Google BigQuery<a class="headerlink" href="#google-bigquery" title="Permalink to this headline">¶</a></h2>
+<table class="longtable table">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">read_gbq</span></code>(query, project_id, …[, …])</p></td>
+<td><p>Load data from Google BigQuery.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="stata">
+<h2>STATA<a class="headerlink" href="#stata" title="Permalink to this headline">¶</a></h2>
+<table class="longtable table">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">read_stata</span></code>(filepath_or_buffer[, …])</p></td>
+<td><p>Read Stata file into DataFrame.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="longtable table">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">StataReader.data_label</span></code></p></td>
+<td><p>Return data label of Stata file.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">StataReader.value_labels</span></code>(self)</p></td>
+<td><p>Return a dict, associating each variable name a dict, associating each value its corresponding label.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">StataReader.variable_labels</span></code>(self)</p></td>
+<td><p>Return variable labels as a dict, associating each variable name with corresponding label.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">StataWriter.write_file</span></code>(self)</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+              </div>
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="index.html" title="previous page">API reference</a>
+    <a class='right-next' id="next-link" href="general_functions.html" title="next page">General functions</a>
+
+              </div>
+              
+          </main>
+
+      </div>
+    </div><script>
+    // TOC sidebar - add "active" class to parent list
+    //
+    // Bootstrap's scrollspy adds the active class to the <a> link,
+    // but for the automatic collapsing we need this on the parent list item.
+    //
+    // The event is triggered on "window" (and not the nav item as documented),
+    // see https://github.com/twbs/bootstrap/issues/20086
+    $(window).on("activate.bs.scrollspy", function(){
+    var navLinks = document.querySelectorAll('#bd-toc-nav a');
+    for (var i = 0; i < navLinks.length; i++) {
+        var navLink = navLinks[i];
+        navLink.parentElement.classList.remove('active');
+    }
+    var navLinks = document.querySelectorAll('#bd-toc-nav a.active');
+    for (var i = 0; i < navLinks.length; i++) {
+        var navLink = navLinks[i];
+        navLink.parentElement.classList.add('active');
+    }
+    });
+
+    /**
+     * Use left and right arrow keys to navigate forward and backwards.
+    */
+    const LEFT_ARROW_KEYCODE = 37
+    const RIGHT_ARROW_KEYCODE = 39
+
+    const getPrevUrl = () => document.getElementById('prev-link').href
+    const getNextUrl = () => document.getElementById('next-link').href
+    const initPageNav = (event) => {
+        const keycode = event.which
+
+        if (keycode === LEFT_ARROW_KEYCODE) {
+            window.location.href = getPrevUrl();
+        } else if (keycode === RIGHT_ARROW_KEYCODE) {
+            window.location.href = getNextUrl();
+        }
+    };
+
+    var keyboardListener = false;
+    $( document ).ready(() => {
+        if (keyboardListener === false) {
+            document.addEventListener('keydown', initPageNav)
+            keyboardListener = true;
+        }
+    });
+</script>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2008-2020, the pandas development team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.3.0.
+    </div>
+  </body>
+</html>

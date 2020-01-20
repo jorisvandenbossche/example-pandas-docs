@@ -1,0 +1,294 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>v.0.4.1 through v0.4.3 (September 25 - October 9, 2011) &#8212; pandas 1.0.0rc0+111.ge72cd7c52 documentation</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link rel="stylesheet" href="../_static/sphinx-bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/pandas.css" />
+    <link href="../_static/css/custom.css" rel="stylesheet">
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="v.0.5.0 (October 24, 2011)" href="v0.5.0.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main">
+
+<a class="navbar-brand" href="../index.html">
+  <img src="../_static/pandas.svg" class="logo" alt="logo">
+</a>
+
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+</button>
+
+<div id="navbar-menu" class="collapse navbar-collapse">
+  <ul id="navbar-main-elements" class="navbar-nav mr-auto">
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        1.0.0
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown" id="version-menu"></div>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="../index.html">Home</a>
+    </li>
+    
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="v1.1.0.html">What's New in 1.1.0</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../getting_started/index.html">Getting started</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../user_guide/index.html">User Guide</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../reference/index.html">API reference</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../development/index.html">Development</a>
+    </li>
+    
+    <li class="nav-item active">
+        <a class="nav-link" href="index.html">Release Notes</a>
+    </li>
+    
+    
+  </ul>
+  <ul class="navbar-nav ml-auto">
+    
+      <li class="nav-item">
+        <a class="nav-link" href="https://github.com/pandas-dev/pandas" target="_blank" rel="noopener">
+          <span><i class="fab fa-github-square"></i></span>
+        </a>
+      </li>
+    
+    
+      <li class="nav-item">
+        <a class="nav-link" href="https://twitter.com/pandas_dev" target="_blank" rel="noopener">
+          <span><i class="fab fa-twitter-square"></i></span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row flex-xl-nowrap">
+          <div class="col-12 col-md-3 col-xl-2 bd-sidebar">
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+
+  <div class="bd-toc-item active">
+  
+
+  <ul class="nav bd-sidenav">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+        
+      
+      
+    </ul>
+
+</nav>
+          </div>
+
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+              
+<div class="tocsection onthispage"><i class="fas fa-list"></i> On this page</div>
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#new-features" class="nav-link">New features</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#performance-enhancements" class="nav-link">Performance enhancements</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#contributors" class="nav-link">Contributors</a>
+        </li>
+    
+    </ul>
+</nav>
+              
+            </div>
+
+          <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
+              <div>
+                
+  <div class="section" id="v-0-4-1-through-v0-4-3-september-25-october-9-2011">
+<span id="whatsnew-04x"></span><h1>v.0.4.1 through v0.4.3 (September 25 - October 9, 2011)<a class="headerlink" href="#v-0-4-1-through-v0-4-3-september-25-october-9-2011" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="new-features">
+<h2>New features<a class="headerlink" href="#new-features" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Added Python 3 support using 2to3 (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/200">GH200</a>)</p></li>
+<li><p><a class="reference internal" href="../getting_started/dsintro.html#dsintro-name-attribute"><span class="std std-ref">Added</span></a> <code class="docutils literal notranslate"><span class="pre">name</span></code> attribute to <code class="docutils literal notranslate"><span class="pre">Series</span></code>, now
+prints as part of <code class="docutils literal notranslate"><span class="pre">Series.__repr__</span></code></p></li>
+<li><p><a class="reference internal" href="../user_guide/missing_data.html#missing-isna"><span class="std std-ref">Added</span></a> instance methods <code class="docutils literal notranslate"><span class="pre">isnull</span></code> and <code class="docutils literal notranslate"><span class="pre">notnull</span></code> to
+Series (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/209">GH209</a>, <a class="reference external" href="https://github.com/pandas-dev/pandas/issues/203">GH203</a>)</p></li>
+<li><p><a class="reference internal" href="../getting_started/basics.html#basics-align"><span class="std std-ref">Added</span></a> <code class="docutils literal notranslate"><span class="pre">Series.align</span></code> method for aligning two series
+with choice of join method (<a class="reference external" href="https://github.com/pandas-dev/pandas/commit/56e0c9ffafac79ce262b55a6a13e1b10a88fbe93">ENH56</a>)</p></li>
+<li><p><a class="reference internal" href="../user_guide/advanced.html#advanced-get-level-values"><span class="std std-ref">Added</span></a> method <code class="docutils literal notranslate"><span class="pre">get_level_values</span></code> to
+<code class="docutils literal notranslate"><span class="pre">MultiIndex</span></code> (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/188">GH188</a>)</p></li>
+<li><p>Set values in mixed-type <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> objects via <code class="docutils literal notranslate"><span class="pre">.ix</span></code> indexing attribute (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/135">GH135</a>)</p></li>
+<li><p>Added new <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> <a class="reference internal" href="../getting_started/basics.html#basics-dtypes"><span class="std std-ref">methods</span></a>
+<code class="docutils literal notranslate"><span class="pre">get_dtype_counts</span></code> and property <code class="docutils literal notranslate"><span class="pre">dtypes</span></code> (<a class="reference external" href="https://github.com/pandas-dev/pandas/commit/dca3c5c5a6a3769ee01465baca04cfdfa66a4f76">ENHdc</a>)</p></li>
+<li><p>Added <a class="reference internal" href="../user_guide/merging.html#merging-ignore-index"><span class="std std-ref">ignore_index</span></a> option to
+<code class="docutils literal notranslate"><span class="pre">DataFrame.append</span></code> to stack DataFrames (<a class="reference external" href="https://github.com/pandas-dev/pandas/commit/1ba56251f0013ff7cd8834e9486cef2b10098371">ENH1b</a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">read_csv</span></code> tries to <a class="reference internal" href="../user_guide/io.html#io-sniff"><span class="std std-ref">sniff</span></a> delimiters using
+<code class="docutils literal notranslate"><span class="pre">csv.Sniffer</span></code> (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/146">GH146</a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">read_csv</span></code> can <a class="reference internal" href="../user_guide/io.html#io-csv-multiindex"><span class="std std-ref">read</span></a> multiple columns into a
+<code class="docutils literal notranslate"><span class="pre">MultiIndex</span></code>; DataFrame’s <code class="docutils literal notranslate"><span class="pre">to_csv</span></code> method writes out a corresponding
+<code class="docutils literal notranslate"><span class="pre">MultiIndex</span></code> (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/151">GH151</a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DataFrame.rename</span></code> has a new <code class="docutils literal notranslate"><span class="pre">copy</span></code> parameter to <a class="reference internal" href="../getting_started/basics.html#basics-rename"><span class="std std-ref">rename</span></a> a DataFrame in place (<a class="reference external" href="https://github.com/pandas-dev/pandas/commit/edd9f1945fc010a57fa0ae3b3444d1fffe592591">ENHed</a>)</p></li>
+<li><p><a class="reference internal" href="../user_guide/reshaping.html#reshaping-unstack-by-name"><span class="std std-ref">Enable</span></a> unstacking by name (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/142">GH142</a>)</p></li>
+<li><p><a class="reference internal" href="../user_guide/advanced.html#advanced-sortlevel-byname"><span class="std std-ref">Enable</span></a> <code class="docutils literal notranslate"><span class="pre">sortlevel</span></code> to work by level (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/141">GH141</a>)</p></li>
+</ul>
+</div>
+<div class="section" id="performance-enhancements">
+<h2>Performance enhancements<a class="headerlink" href="#performance-enhancements" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Altered binary operations on differently-indexed SparseSeries objects
+to use the integer-based (dense) alignment logic which is faster with a
+larger number of blocks (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/205">GH205</a>)</p></li>
+<li><p>Wrote faster Cython data alignment / merging routines resulting in
+substantial speed increases</p></li>
+<li><p>Improved performance of <code class="docutils literal notranslate"><span class="pre">isnull</span></code> and <code class="docutils literal notranslate"><span class="pre">notnull</span></code>, a regression from v0.3.0
+(<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/187">GH187</a>)</p></li>
+<li><p>Refactored code related to <code class="docutils literal notranslate"><span class="pre">DataFrame.join</span></code> so that intermediate aligned
+copies of the data in each <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> argument do not need to be created.
+Substantial performance increases result (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/176">GH176</a>)</p></li>
+<li><p>Substantially improved performance of generic <code class="docutils literal notranslate"><span class="pre">Index.intersection</span></code> and
+<code class="docutils literal notranslate"><span class="pre">Index.union</span></code></p></li>
+<li><p>Implemented <code class="docutils literal notranslate"><span class="pre">BlockManager.take</span></code> resulting in significantly faster <code class="docutils literal notranslate"><span class="pre">take</span></code>
+performance on mixed-type <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> objects (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/104">GH104</a>)</p></li>
+<li><p>Improved performance of <code class="docutils literal notranslate"><span class="pre">Series.sort_index</span></code></p></li>
+<li><p>Significant groupby performance enhancement: removed unnecessary integrity
+checks in DataFrame internals that were slowing down slicing operations to
+retrieve groups</p></li>
+<li><p>Optimized <code class="docutils literal notranslate"><span class="pre">_ensure_index</span></code> function resulting in performance savings in
+type-checking Index objects</p></li>
+<li><p>Wrote fast time series merging / joining methods in Cython. Will be
+integrated later into DataFrame.join and related functions</p></li>
+</ul>
+</div>
+<div class="section" id="contributors">
+<h2>Contributors<a class="headerlink" href="#contributors" title="Permalink to this headline">¶</a></h2>
+<p>A total of 2 people contributed patches to this release.  People with a
+“+” by their names contributed a patch for the first time.
+</p>
+<ul class="simple">
+<li><p>Thomas Kluyver +</p></li>
+<li><p>Wes McKinney</p></li>
+</ul>
+</div>
+</div>
+
+
+              </div>
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="v0.5.0.html" title="previous page">v.0.5.0 (October 24, 2011)</a>
+
+              </div>
+              
+          </main>
+
+      </div>
+    </div><script>
+    // TOC sidebar - add "active" class to parent list
+    //
+    // Bootstrap's scrollspy adds the active class to the <a> link,
+    // but for the automatic collapsing we need this on the parent list item.
+    //
+    // The event is triggered on "window" (and not the nav item as documented),
+    // see https://github.com/twbs/bootstrap/issues/20086
+    $(window).on("activate.bs.scrollspy", function(){
+    var navLinks = document.querySelectorAll('#bd-toc-nav a');
+    for (var i = 0; i < navLinks.length; i++) {
+        var navLink = navLinks[i];
+        navLink.parentElement.classList.remove('active');
+    }
+    var navLinks = document.querySelectorAll('#bd-toc-nav a.active');
+    for (var i = 0; i < navLinks.length; i++) {
+        var navLink = navLinks[i];
+        navLink.parentElement.classList.add('active');
+    }
+    });
+
+    /**
+     * Use left and right arrow keys to navigate forward and backwards.
+    */
+    const LEFT_ARROW_KEYCODE = 37
+    const RIGHT_ARROW_KEYCODE = 39
+
+    const getPrevUrl = () => document.getElementById('prev-link').href
+    const getNextUrl = () => document.getElementById('next-link').href
+    const initPageNav = (event) => {
+        const keycode = event.which
+
+        if (keycode === LEFT_ARROW_KEYCODE) {
+            window.location.href = getPrevUrl();
+        } else if (keycode === RIGHT_ARROW_KEYCODE) {
+            window.location.href = getNextUrl();
+        }
+    };
+
+    var keyboardListener = false;
+    $( document ).ready(() => {
+        if (keyboardListener === false) {
+            document.addEventListener('keydown', initPageNav)
+            keyboardListener = true;
+        }
+    });
+</script>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2008-2020, the pandas development team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.3.0.
+    </div>
+  </body>
+</html>

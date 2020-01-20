@@ -1,0 +1,286 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>v.0.5.0 (October 24, 2011) &#8212; pandas 1.0.0rc0+111.ge72cd7c52 documentation</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link rel="stylesheet" href="../_static/sphinx-bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/pandas.css" />
+    <link href="../_static/css/custom.css" rel="stylesheet">
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="v.0.4.1 through v0.4.3 (September 25 - October 9, 2011)" href="v0.4.x.html" />
+    <link rel="prev" title="v.0.6.0 (November 25, 2011)" href="v0.6.0.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main">
+
+<a class="navbar-brand" href="../index.html">
+  <img src="../_static/pandas.svg" class="logo" alt="logo">
+</a>
+
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+</button>
+
+<div id="navbar-menu" class="collapse navbar-collapse">
+  <ul id="navbar-main-elements" class="navbar-nav mr-auto">
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        1.0.0
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown" id="version-menu"></div>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="../index.html">Home</a>
+    </li>
+    
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="v1.1.0.html">What's New in 1.1.0</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../getting_started/index.html">Getting started</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../user_guide/index.html">User Guide</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../reference/index.html">API reference</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../development/index.html">Development</a>
+    </li>
+    
+    <li class="nav-item active">
+        <a class="nav-link" href="index.html">Release Notes</a>
+    </li>
+    
+    
+  </ul>
+  <ul class="navbar-nav ml-auto">
+    
+      <li class="nav-item">
+        <a class="nav-link" href="https://github.com/pandas-dev/pandas" target="_blank" rel="noopener">
+          <span><i class="fab fa-github-square"></i></span>
+        </a>
+      </li>
+    
+    
+      <li class="nav-item">
+        <a class="nav-link" href="https://twitter.com/pandas_dev" target="_blank" rel="noopener">
+          <span><i class="fab fa-twitter-square"></i></span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row flex-xl-nowrap">
+          <div class="col-12 col-md-3 col-xl-2 bd-sidebar">
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+
+  <div class="bd-toc-item active">
+  
+
+  <ul class="nav bd-sidenav">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+        
+      
+      
+    </ul>
+
+</nav>
+          </div>
+
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+              
+<div class="tocsection onthispage"><i class="fas fa-list"></i> On this page</div>
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#new-features" class="nav-link">New features</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#performance-enhancements" class="nav-link">Performance enhancements</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#contributors" class="nav-link">Contributors</a>
+        </li>
+    
+    </ul>
+</nav>
+              
+            </div>
+
+          <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
+              <div>
+                
+  <div class="section" id="v-0-5-0-october-24-2011">
+<span id="whatsnew-050"></span><h1>v.0.5.0 (October 24, 2011)<a class="headerlink" href="#v-0-5-0-october-24-2011" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="new-features">
+<h2>New features<a class="headerlink" href="#new-features" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="../getting_started/basics.html#basics-df-join"><span class="std std-ref">Added</span></a> <code class="docutils literal notranslate"><span class="pre">DataFrame.align</span></code> method with standard join options</p></li>
+<li><p><a class="reference internal" href="../user_guide/io.html#io-parse-dates"><span class="std std-ref">Added</span></a> <code class="docutils literal notranslate"><span class="pre">parse_dates</span></code> option to <code class="docutils literal notranslate"><span class="pre">read_csv</span></code> and <code class="docutils literal notranslate"><span class="pre">read_table</span></code> methods to optionally try to parse dates in the index columns</p></li>
+<li><p><a class="reference internal" href="../user_guide/io.html#io-parse-dates"><span class="std std-ref">Added</span></a> <code class="docutils literal notranslate"><span class="pre">nrows</span></code>, <code class="docutils literal notranslate"><span class="pre">chunksize</span></code>, and <code class="docutils literal notranslate"><span class="pre">iterator</span></code> arguments to <code class="docutils literal notranslate"><span class="pre">read_csv</span></code> and <code class="docutils literal notranslate"><span class="pre">read_table</span></code>. The last two return a new <code class="docutils literal notranslate"><span class="pre">TextParser</span></code> class capable of lazily iterating through chunks of a flat file (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/242">GH242</a>)</p></li>
+<li><p><a class="reference internal" href="../user_guide/merging.html#merging-multikey-join"><span class="std std-ref">Added</span></a> ability to join on multiple columns in <code class="docutils literal notranslate"><span class="pre">DataFrame.join</span></code> (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/214">GH214</a>)</p></li>
+<li><p>Added private <code class="docutils literal notranslate"><span class="pre">_get_duplicates</span></code> function to <code class="docutils literal notranslate"><span class="pre">Index</span></code> for identifying duplicate values more easily (<a class="reference external" href="https://github.com/pandas-dev/pandas/commit/5ca6ff5d822ee4ddef1ec0d87b6d83d8b4bbd3eb">ENH5c</a>)</p></li>
+<li><p><a class="reference internal" href="../user_guide/indexing.html#indexing-df-cols"><span class="std std-ref">Added</span></a> column attribute access to DataFrame.</p></li>
+<li><p><a class="reference internal" href="../user_guide/indexing.html#indexing-df-cols"><span class="std std-ref">Added</span></a> Python tab completion hook for DataFrame columns. (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/233">GH233</a>, <a class="reference external" href="https://github.com/pandas-dev/pandas/issues/230">GH230</a>)</p></li>
+<li><p><a class="reference internal" href="../getting_started/basics.html#basics-describe"><span class="std std-ref">Implemented</span></a> <code class="docutils literal notranslate"><span class="pre">Series.describe</span></code> for Series containing objects (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/241">GH241</a>)</p></li>
+<li><p><a class="reference internal" href="../user_guide/merging.html#merging-df-inner-join"><span class="std std-ref">Added</span></a> inner join option to <code class="docutils literal notranslate"><span class="pre">DataFrame.join</span></code> when joining on key(s) (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/248">GH248</a>)</p></li>
+<li><p><a class="reference internal" href="../user_guide/indexing.html#indexing-df-cols"><span class="std std-ref">Implemented</span></a> selecting DataFrame columns by passing a list to <code class="docutils literal notranslate"><span class="pre">__getitem__</span></code> (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/253">GH253</a>)</p></li>
+<li><p><a class="reference internal" href="../user_guide/indexing.html#indexing-set-ops"><span class="std std-ref">Implemented</span></a> &amp; and | to intersect / union Index objects, respectively (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/261">GH261</a>)</p></li>
+<li><p><a class="reference internal" href="../user_guide/reshaping.html#reshaping-pivot"><span class="std std-ref">Added</span></a> <code class="docutils literal notranslate"><span class="pre">pivot_table</span></code> convenience function to pandas namespace (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/234">GH234</a>)</p></li>
+<li><p><a class="reference internal" href="../getting_started/basics.html#basics-rename-axis"><span class="std std-ref">Implemented</span></a> <code class="docutils literal notranslate"><span class="pre">Panel.rename_axis</span></code> function (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/243">GH243</a>)</p></li>
+<li><p>DataFrame will show index level names in console output (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/334">GH334</a>)</p></li>
+<li><p><a class="reference internal" href="../user_guide/advanced.html#advanced-take"><span class="std std-ref">Implemented</span></a> <code class="docutils literal notranslate"><span class="pre">Panel.take</span></code></p></li>
+<li><p><a class="reference internal" href="../user_guide/options.html#basics-console-output"><span class="std std-ref">Added</span></a> <code class="docutils literal notranslate"><span class="pre">set_eng_float_format</span></code> for alternate DataFrame floating point string formatting (<a class="reference external" href="https://github.com/pandas-dev/pandas/commit/6141961">ENH61</a>)</p></li>
+<li><p><a class="reference internal" href="../user_guide/indexing.html#indexing-set-index"><span class="std std-ref">Added</span></a> convenience <code class="docutils literal notranslate"><span class="pre">set_index</span></code> function for creating a DataFrame index from its existing columns</p></li>
+<li><p><a class="reference internal" href="../user_guide/groupby.html#groupby-multiindex"><span class="std std-ref">Implemented</span></a> <code class="docutils literal notranslate"><span class="pre">groupby</span></code> hierarchical index level name  (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/223">GH223</a>)</p></li>
+<li><p><a class="reference internal" href="../user_guide/io.html#io-store-in-csv"><span class="std std-ref">Added</span></a> support for different delimiters in <code class="docutils literal notranslate"><span class="pre">DataFrame.to_csv</span></code> (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/244">GH244</a>)</p></li>
+<li><p>TODO: DOCS ABOUT TAKE METHODS</p></li>
+</ul>
+</div>
+<div class="section" id="performance-enhancements">
+<h2>Performance enhancements<a class="headerlink" href="#performance-enhancements" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>VBENCH Major performance improvements in file parsing functions <code class="docutils literal notranslate"><span class="pre">read_csv</span></code> and <code class="docutils literal notranslate"><span class="pre">read_table</span></code></p></li>
+<li><p>VBENCH Added Cython function for converting tuples to ndarray very fast. Speeds up many MultiIndex-related operations</p></li>
+<li><p>VBENCH Refactored merging / joining code into a tidy class and disabled unnecessary computations in the float/object case, thus getting about 10% better performance (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/211">GH211</a>)</p></li>
+<li><p>VBENCH Improved speed of <code class="docutils literal notranslate"><span class="pre">DataFrame.xs</span></code> on mixed-type DataFrame objects by about 5x, regression from 0.3.0 (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/215">GH215</a>)</p></li>
+<li><p>VBENCH With new <code class="docutils literal notranslate"><span class="pre">DataFrame.align</span></code> method, speeding up binary operations between differently-indexed DataFrame objects by 10-25%.</p></li>
+<li><p>VBENCH Significantly sped up conversion of nested dict into DataFrame (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/212">GH212</a>)</p></li>
+<li><p>VBENCH Significantly speed up DataFrame <code class="docutils literal notranslate"><span class="pre">__repr__</span></code> and <code class="docutils literal notranslate"><span class="pre">count</span></code> on large mixed-type DataFrame objects</p></li>
+</ul>
+</div>
+<div class="section" id="contributors">
+<span id="whatsnew-0-5-0-contributors"></span><h2>Contributors<a class="headerlink" href="#contributors" title="Permalink to this headline">¶</a></h2>
+<p>A total of 9 people contributed patches to this release.  People with a
+“+” by their names contributed a patch for the first time.
+</p>
+<ul class="simple">
+<li><p>Aman Thakral +</p></li>
+<li><p>Luca Beltrame +</p></li>
+<li><p>Nick Pentreath +</p></li>
+<li><p>Skipper Seabold</p></li>
+<li><p>Thomas Kluyver +</p></li>
+<li><p>Wes McKinney</p></li>
+<li><p>Yaroslav Halchenko +</p></li>
+<li><p>lodagro +</p></li>
+<li><p>unknown +</p></li>
+</ul>
+</div>
+</div>
+
+
+              </div>
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="v0.6.0.html" title="previous page">v.0.6.0 (November 25, 2011)</a>
+    <a class='right-next' id="next-link" href="v0.4.x.html" title="next page">v.0.4.1 through v0.4.3 (September 25 - October 9, 2011)</a>
+
+              </div>
+              
+          </main>
+
+      </div>
+    </div><script>
+    // TOC sidebar - add "active" class to parent list
+    //
+    // Bootstrap's scrollspy adds the active class to the <a> link,
+    // but for the automatic collapsing we need this on the parent list item.
+    //
+    // The event is triggered on "window" (and not the nav item as documented),
+    // see https://github.com/twbs/bootstrap/issues/20086
+    $(window).on("activate.bs.scrollspy", function(){
+    var navLinks = document.querySelectorAll('#bd-toc-nav a');
+    for (var i = 0; i < navLinks.length; i++) {
+        var navLink = navLinks[i];
+        navLink.parentElement.classList.remove('active');
+    }
+    var navLinks = document.querySelectorAll('#bd-toc-nav a.active');
+    for (var i = 0; i < navLinks.length; i++) {
+        var navLink = navLinks[i];
+        navLink.parentElement.classList.add('active');
+    }
+    });
+
+    /**
+     * Use left and right arrow keys to navigate forward and backwards.
+    */
+    const LEFT_ARROW_KEYCODE = 37
+    const RIGHT_ARROW_KEYCODE = 39
+
+    const getPrevUrl = () => document.getElementById('prev-link').href
+    const getNextUrl = () => document.getElementById('next-link').href
+    const initPageNav = (event) => {
+        const keycode = event.which
+
+        if (keycode === LEFT_ARROW_KEYCODE) {
+            window.location.href = getPrevUrl();
+        } else if (keycode === RIGHT_ARROW_KEYCODE) {
+            window.location.href = getNextUrl();
+        }
+    };
+
+    var keyboardListener = false;
+    $( document ).ready(() => {
+        if (keyboardListener === false) {
+            document.addEventListener('keydown', initPageNav)
+            keyboardListener = true;
+        }
+    });
+</script>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2008-2020, the pandas development team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.3.0.
+    </div>
+  </body>
+</html>

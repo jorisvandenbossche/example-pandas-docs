@@ -1,0 +1,519 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Nullable Boolean Data Type &#8212; pandas 1.0.0rc0+111.ge72cd7c52 documentation</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link rel="stylesheet" href="../_static/sphinx-bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/pandas.css" />
+    <link href="../_static/css/custom.css" rel="stylesheet">
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Visualization" href="visualization.html" />
+    <link rel="prev" title="Nullable integer data type" href="integer_na.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main">
+
+<a class="navbar-brand" href="../index.html">
+  <img src="../_static/pandas.svg" class="logo" alt="logo">
+</a>
+
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+</button>
+
+<div id="navbar-menu" class="collapse navbar-collapse">
+  <ul id="navbar-main-elements" class="navbar-nav mr-auto">
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        1.0.0
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown" id="version-menu"></div>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="../index.html">Home</a>
+    </li>
+    
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../whatsnew/v1.1.0.html">What's New in 1.1.0</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../getting_started/index.html">Getting started</a>
+    </li>
+    
+    <li class="nav-item active">
+        <a class="nav-link" href="index.html">User Guide</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../reference/index.html">API reference</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../development/index.html">Development</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../whatsnew/index.html">Release Notes</a>
+    </li>
+    
+    
+  </ul>
+  <ul class="navbar-nav ml-auto">
+    
+      <li class="nav-item">
+        <a class="nav-link" href="https://github.com/pandas-dev/pandas" target="_blank" rel="noopener">
+          <span><i class="fab fa-github-square"></i></span>
+        </a>
+      </li>
+    
+    
+      <li class="nav-item">
+        <a class="nav-link" href="https://twitter.com/pandas_dev" target="_blank" rel="noopener">
+          <span><i class="fab fa-twitter-square"></i></span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row flex-xl-nowrap">
+          <div class="col-12 col-md-3 col-xl-2 bd-sidebar">
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+
+  <div class="bd-toc-item active">
+  
+
+  <ul class="nav bd-sidenav">
+      
+      
+      
+      
+      
+      
+        
+          
+              <li class="">
+                  <a href="io.html">IO tools (text, CSV, HDF5, …)</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="indexing.html">Indexing and selecting data</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="advanced.html">MultiIndex / advanced indexing</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="merging.html">Merge, join, and concatenate</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="reshaping.html">Reshaping and pivot tables</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="text.html">Working with text data</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="missing_data.html">Working with missing data</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="categorical.html">Categorical data</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="integer_na.html">Nullable integer data type</a>
+              </li>
+          
+        
+          
+              <li class="active">
+                  <a href="">Nullable Boolean Data Type</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="visualization.html">Visualization</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="computation.html">Computational tools</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="groupby.html">Group By: split-apply-combine</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="timeseries.html">Time series / date functionality</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="timedeltas.html">Time deltas</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="style.html">Styling</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="options.html">Options and settings</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="enhancingperf.html">Enhancing performance</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="scale.html">Scaling to large datasets</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="sparse.html">Sparse data structures</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="gotchas.html">Frequently Asked Questions (FAQ)</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="cookbook.html">Cookbook</a>
+              </li>
+          
+        
+      
+      
+      
+      
+      
+      
+      
+      
+    </ul>
+
+</nav>
+          </div>
+
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+              
+<div class="tocsection onthispage"><i class="fas fa-list"></i> On this page</div>
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#indexing-with-na-values" class="nav-link">Indexing with NA values</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#kleene-logical-operations" class="nav-link">Kleene Logical Operations</a>
+        </li>
+    
+    </ul>
+</nav>
+              
+            </div>
+
+          <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
+              <div>
+                
+  <div class="section" id="nullable-boolean-data-type">
+<span id="boolean"></span><h1>Nullable Boolean Data Type<a class="headerlink" href="#nullable-boolean-data-type" title="Permalink to this headline">¶</a></h1>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.0.0.</span></p>
+</div>
+<div class="section" id="indexing-with-na-values">
+<span id="boolean-indexing"></span><h2>Indexing with NA values<a class="headerlink" href="#indexing-with-na-values" title="Permalink to this headline">¶</a></h2>
+<p>pandas does not allow indexing with NA values. Attempting to do so
+will raise a <code class="docutils literal notranslate"><span class="pre">ValueError</span></code>.</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+
+<span class="gp">In [2]: </span><span class="n">mask</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="bp">True</span><span class="p">,</span> <span class="bp">False</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">NA</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;boolean&quot;</span><span class="p">)</span>
+
+<span class="gp">In [3]: </span><span class="n">s</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">3</span><span class="o">-</span><span class="n">b9628bf46992</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">s</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+
+<span class="nn">~/scipy/pandas/pandas/core/series.py</span> in <span class="ni">__getitem__</span><span class="nt">(self, key)</span>
+<span class="g g-Whitespace">    </span><span class="mi">836</span>             <span class="n">key</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">837</span> 
+<span class="ne">--&gt; </span><span class="mi">838</span>         <span class="k">if</span> <span class="n">com</span><span class="o">.</span><span class="n">is_bool_indexer</span><span class="p">(</span><span class="n">key</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">839</span>             <span class="n">key</span> <span class="o">=</span> <span class="n">check_bool_indexer</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">840</span> 
+
+<span class="nn">~/scipy/pandas/pandas/core/common.py</span> in <span class="ni">is_bool_indexer</span><span class="nt">(key)</span>
+<span class="g g-Whitespace">    </span><span class="mi">142</span>             <span class="k">if</span> <span class="n">is_extension_array_dtype</span><span class="p">(</span><span class="n">key</span><span class="o">.</span><span class="n">dtype</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">143</span>                 <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">key</span><span class="o">.</span><span class="n">isna</span><span class="p">()):</span>
+<span class="ne">--&gt; </span><span class="mi">144</span>                     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">na_msg</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">145</span>             <span class="k">return</span> <span class="bp">True</span>
+<span class="g g-Whitespace">    </span><span class="mi">146</span>     <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+
+<span class="ne">ValueError</span>: cannot mask with array containing NA / NaN values
+</pre></div>
+</div>
+<p>The missing values will need to be explicitly filled with True or False prior
+to using the array as a mask.</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [4]: </span><span class="n">s</span><span class="p">[</span><span class="n">mask</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="bp">False</span><span class="p">)]</span>
+<span class="gh">Out[4]: </span><span class="go"></span>
+<span class="go">0    1</span>
+<span class="go">dtype: int64</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="kleene-logical-operations">
+<span id="boolean-kleene"></span><h2>Kleene Logical Operations<a class="headerlink" href="#kleene-logical-operations" title="Permalink to this headline">¶</a></h2>
+<p><code class="xref py py-class docutils literal notranslate"><span class="pre">arrays.BooleanArray</span></code> implements <a class="reference external" href="https://en.wikipedia.org/wiki/Three-valued_logic#Kleene_and_Priest_logics">Kleene Logic</a> (sometimes called three-value logic) for
+logical operations like <code class="docutils literal notranslate"><span class="pre">&amp;</span></code> (and), <code class="docutils literal notranslate"><span class="pre">|</span></code> (or) and <code class="docutils literal notranslate"><span class="pre">^</span></code> (exclusive-or).</p>
+<p>This table demonstrates the results for every combination. These operations are symmetrical,
+so flipping the left- and right-hand side makes no difference in the result.</p>
+<table class="table">
+<colgroup>
+<col style="width: 65%" />
+<col style="width: 35%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Expression</p></th>
+<th class="head"><p>Result</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">True</span> <span class="pre">&amp;</span> <span class="pre">True</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">True</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">True</span> <span class="pre">&amp;</span> <span class="pre">False</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">False</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">True</span> <span class="pre">&amp;</span> <span class="pre">NA</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">NA</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">False</span> <span class="pre">&amp;</span> <span class="pre">False</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">False</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">False</span> <span class="pre">&amp;</span> <span class="pre">NA</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">False</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">NA</span> <span class="pre">&amp;</span> <span class="pre">NA</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">NA</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">True</span> <span class="pre">|</span> <span class="pre">True</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">True</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">True</span> <span class="pre">|</span> <span class="pre">False</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">True</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">True</span> <span class="pre">|</span> <span class="pre">NA</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">True</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">False</span> <span class="pre">|</span> <span class="pre">False</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">False</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">False</span> <span class="pre">|</span> <span class="pre">NA</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">NA</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">NA</span> <span class="pre">|</span> <span class="pre">NA</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">NA</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">True</span> <span class="pre">^</span> <span class="pre">True</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">False</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">True</span> <span class="pre">^</span> <span class="pre">False</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">True</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">True</span> <span class="pre">^</span> <span class="pre">NA</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">NA</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">False</span> <span class="pre">^</span> <span class="pre">False</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">False</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">False</span> <span class="pre">^</span> <span class="pre">NA</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">NA</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">NA</span> <span class="pre">^</span> <span class="pre">NA</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">NA</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<p>When an <code class="docutils literal notranslate"><span class="pre">NA</span></code> is present in an operation, the output value is <code class="docutils literal notranslate"><span class="pre">NA</span></code> only if
+the result cannot be determined solely based on the other input. For example,
+<code class="docutils literal notranslate"><span class="pre">True</span> <span class="pre">|</span> <span class="pre">NA</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code>, because both <code class="docutils literal notranslate"><span class="pre">True</span> <span class="pre">|</span> <span class="pre">True</span></code> and <code class="docutils literal notranslate"><span class="pre">True</span> <span class="pre">|</span> <span class="pre">False</span></code>
+are <code class="docutils literal notranslate"><span class="pre">True</span></code>. In that case, we don’t actually need to consider the value
+of the <code class="docutils literal notranslate"><span class="pre">NA</span></code>.</p>
+<p>On the other hand, <code class="docutils literal notranslate"><span class="pre">True</span> <span class="pre">&amp;</span> <span class="pre">NA</span></code> is <code class="docutils literal notranslate"><span class="pre">NA</span></code>. The result depends on whether
+the <code class="docutils literal notranslate"><span class="pre">NA</span></code> really is <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code>, since <code class="docutils literal notranslate"><span class="pre">True</span> <span class="pre">&amp;</span> <span class="pre">True</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code>,
+but <code class="docutils literal notranslate"><span class="pre">True</span> <span class="pre">&amp;</span> <span class="pre">False</span></code> is <code class="docutils literal notranslate"><span class="pre">False</span></code>, so we can’t determine the output.</p>
+<p>This differs from how <code class="docutils literal notranslate"><span class="pre">np.nan</span></code> behaves in logical operations. Pandas treated
+<code class="docutils literal notranslate"><span class="pre">np.nan</span></code> is <em>always false in the output</em>.</p>
+<p>In <code class="docutils literal notranslate"><span class="pre">or</span></code></p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [5]: </span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="bp">True</span><span class="p">,</span> <span class="bp">False</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;object&quot;</span><span class="p">)</span> <span class="o">|</span> <span class="bp">True</span>
+<span class="gh">Out[5]: </span><span class="go"></span>
+<span class="go">0     True</span>
+<span class="go">1     True</span>
+<span class="go">2    False</span>
+<span class="go">dtype: bool</span>
+
+<span class="gp">In [6]: </span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="bp">True</span><span class="p">,</span> <span class="bp">False</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;boolean&quot;</span><span class="p">)</span> <span class="o">|</span> <span class="bp">True</span>
+<span class="gh">Out[6]: </span><span class="go"></span>
+<span class="go">0    True</span>
+<span class="go">1    True</span>
+<span class="go">2    True</span>
+<span class="go">dtype: boolean</span>
+</pre></div>
+</div>
+<p>In <code class="docutils literal notranslate"><span class="pre">and</span></code></p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [7]: </span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="bp">True</span><span class="p">,</span> <span class="bp">False</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;object&quot;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="bp">True</span>
+<span class="gh">Out[7]: </span><span class="go"></span>
+<span class="go">0     True</span>
+<span class="go">1    False</span>
+<span class="go">2    False</span>
+<span class="go">dtype: bool</span>
+
+<span class="gp">In [8]: </span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="bp">True</span><span class="p">,</span> <span class="bp">False</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;boolean&quot;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="bp">True</span>
+<span class="gh">Out[8]: </span><span class="go"></span>
+<span class="go">0     True</span>
+<span class="go">1    False</span>
+<span class="go">2     &lt;NA&gt;</span>
+<span class="go">dtype: boolean</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+              </div>
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="integer_na.html" title="previous page">Nullable integer data type</a>
+    <a class='right-next' id="next-link" href="visualization.html" title="next page">Visualization</a>
+
+              </div>
+              
+          </main>
+
+      </div>
+    </div><script>
+    // TOC sidebar - add "active" class to parent list
+    //
+    // Bootstrap's scrollspy adds the active class to the <a> link,
+    // but for the automatic collapsing we need this on the parent list item.
+    //
+    // The event is triggered on "window" (and not the nav item as documented),
+    // see https://github.com/twbs/bootstrap/issues/20086
+    $(window).on("activate.bs.scrollspy", function(){
+    var navLinks = document.querySelectorAll('#bd-toc-nav a');
+    for (var i = 0; i < navLinks.length; i++) {
+        var navLink = navLinks[i];
+        navLink.parentElement.classList.remove('active');
+    }
+    var navLinks = document.querySelectorAll('#bd-toc-nav a.active');
+    for (var i = 0; i < navLinks.length; i++) {
+        var navLink = navLinks[i];
+        navLink.parentElement.classList.add('active');
+    }
+    });
+
+    /**
+     * Use left and right arrow keys to navigate forward and backwards.
+    */
+    const LEFT_ARROW_KEYCODE = 37
+    const RIGHT_ARROW_KEYCODE = 39
+
+    const getPrevUrl = () => document.getElementById('prev-link').href
+    const getNextUrl = () => document.getElementById('next-link').href
+    const initPageNav = (event) => {
+        const keycode = event.which
+
+        if (keycode === LEFT_ARROW_KEYCODE) {
+            window.location.href = getPrevUrl();
+        } else if (keycode === RIGHT_ARROW_KEYCODE) {
+            window.location.href = getNextUrl();
+        }
+    };
+
+    var keyboardListener = false;
+    $( document ).ready(() => {
+        if (keyboardListener === false) {
+            document.addEventListener('keydown', initPageNav)
+            keyboardListener = true;
+        }
+    });
+</script>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2008-2020, the pandas development team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.3.0.
+    </div>
+  </body>
+</html>

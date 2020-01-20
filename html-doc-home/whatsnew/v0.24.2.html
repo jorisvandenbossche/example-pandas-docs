@@ -1,0 +1,325 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Whats new in 0.24.2 (March 12, 2019) &#8212; pandas 1.0.0rc0+111.ge72cd7c52 documentation</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link rel="stylesheet" href="../_static/sphinx-bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/pandas.css" />
+    <link href="../_static/css/custom.css" rel="stylesheet">
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Whats new in 0.24.1 (February 3, 2019)" href="v0.24.1.html" />
+    <link rel="prev" title="What’s new in 0.25.0 (July 18, 2019)" href="v0.25.0.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main">
+
+<a class="navbar-brand" href="../index.html">
+  <img src="../_static/pandas.svg" class="logo" alt="logo">
+</a>
+
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+</button>
+
+<div id="navbar-menu" class="collapse navbar-collapse">
+  <ul id="navbar-main-elements" class="navbar-nav mr-auto">
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        1.0.0
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown" id="version-menu"></div>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="../index.html">Home</a>
+    </li>
+    
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="v1.1.0.html">What's New in 1.1.0</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../getting_started/index.html">Getting started</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../user_guide/index.html">User Guide</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../reference/index.html">API reference</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../development/index.html">Development</a>
+    </li>
+    
+    <li class="nav-item active">
+        <a class="nav-link" href="index.html">Release Notes</a>
+    </li>
+    
+    
+  </ul>
+  <ul class="navbar-nav ml-auto">
+    
+      <li class="nav-item">
+        <a class="nav-link" href="https://github.com/pandas-dev/pandas" target="_blank" rel="noopener">
+          <span><i class="fab fa-github-square"></i></span>
+        </a>
+      </li>
+    
+    
+      <li class="nav-item">
+        <a class="nav-link" href="https://twitter.com/pandas_dev" target="_blank" rel="noopener">
+          <span><i class="fab fa-twitter-square"></i></span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row flex-xl-nowrap">
+          <div class="col-12 col-md-3 col-xl-2 bd-sidebar">
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+
+  <div class="bd-toc-item active">
+  
+
+  <ul class="nav bd-sidenav">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+        
+      
+      
+    </ul>
+
+</nav>
+          </div>
+
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+              
+<div class="tocsection onthispage"><i class="fas fa-list"></i> On this page</div>
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#fixed-regressions" class="nav-link">Fixed regressions</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#bug-fixes" class="nav-link">Bug fixes</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#contributors" class="nav-link">Contributors</a>
+        </li>
+    
+    </ul>
+</nav>
+              
+            </div>
+
+          <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
+              <div>
+                
+  <div class="section" id="whats-new-in-0-24-2-march-12-2019">
+<span id="whatsnew-0242"></span><h1>Whats new in 0.24.2 (March 12, 2019)<a class="headerlink" href="#whats-new-in-0-24-2-march-12-2019" title="Permalink to this headline">¶</a></h1>
+<div class="alert alert-warning">
+<p class="admonition-title">Warning</p>
+<p>The 0.24.x series of releases will be the last to support Python 2. Future feature
+releases will support Python 3 only. See <a class="reference external" href="https://pandas.pydata.org/pandas-docs/version/0.24/install.html#install-dropping-27">Dropping Python 2.7</a> for more.</p>
+</div>
+<p>These are the changes in pandas 0.24.2. See <a class="reference internal" href="index.html#release"><span class="std std-ref">Release Notes</span></a> for a full changelog
+including other versions of pandas.</p>
+<div class="section" id="fixed-regressions">
+<span id="whatsnew-0242-regressions"></span><h2>Fixed regressions<a class="headerlink" href="#fixed-regressions" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Fixed regression in <code class="xref py py-meth docutils literal notranslate"><span class="pre">DataFrame.all()</span></code> and <code class="xref py py-meth docutils literal notranslate"><span class="pre">DataFrame.any()</span></code> where <code class="docutils literal notranslate"><span class="pre">bool_only=True</span></code> was ignored (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/25101">GH25101</a>)</p></li>
+<li><p>Fixed issue in <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> construction with passing a mixed list of mixed types could segfault. (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/25075">GH25075</a>)</p></li>
+<li><p>Fixed regression in <code class="xref py py-meth docutils literal notranslate"><span class="pre">DataFrame.apply()</span></code> causing <code class="docutils literal notranslate"><span class="pre">RecursionError</span></code> when <code class="docutils literal notranslate"><span class="pre">dict</span></code>-like classes were passed as argument. (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/25196">GH25196</a>)</p></li>
+<li><p>Fixed regression in <code class="xref py py-meth docutils literal notranslate"><span class="pre">DataFrame.replace()</span></code> where <code class="docutils literal notranslate"><span class="pre">regex=True</span></code> was only replacing patterns matching the start of the string (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/25259">GH25259</a>)</p></li>
+<li><p>Fixed regression in <code class="xref py py-meth docutils literal notranslate"><span class="pre">DataFrame.duplicated()</span></code>, where empty dataframe was not returning a boolean dtyped Series. (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/25184">GH25184</a>)</p></li>
+<li><p>Fixed regression in <code class="xref py py-meth docutils literal notranslate"><span class="pre">Series.min()</span></code> and <code class="xref py py-meth docutils literal notranslate"><span class="pre">Series.max()</span></code> where <code class="docutils literal notranslate"><span class="pre">numeric_only=True</span></code> was ignored when the <code class="docutils literal notranslate"><span class="pre">Series</span></code> contained <code class="docutils literal notranslate"><span class="pre">Categorical</span></code> data (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/25299">GH25299</a>)</p></li>
+<li><p>Fixed regression in subtraction between <code class="xref py py-class docutils literal notranslate"><span class="pre">Series</span></code> objects with <code class="docutils literal notranslate"><span class="pre">datetime64[ns]</span></code> dtype incorrectly raising <code class="docutils literal notranslate"><span class="pre">OverflowError</span></code> when the <code class="docutils literal notranslate"><span class="pre">Series</span></code> on the right contains null values (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/25317">GH25317</a>)</p></li>
+<li><p>Fixed regression in <code class="xref py py-class docutils literal notranslate"><span class="pre">TimedeltaIndex</span></code> where <code class="docutils literal notranslate"><span class="pre">np.sum(index)</span></code> incorrectly returned a zero-dimensional object instead of a scalar (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/25282">GH25282</a>)</p></li>
+<li><p>Fixed regression in <code class="docutils literal notranslate"><span class="pre">IntervalDtype</span></code> construction where passing an incorrect string with ‘Interval’ as a prefix could result in a <code class="docutils literal notranslate"><span class="pre">RecursionError</span></code>. (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/25338">GH25338</a>)</p></li>
+<li><p>Fixed regression in creating a period-dtype array from a read-only NumPy array of period objects. (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/25403">GH25403</a>)</p></li>
+<li><p>Fixed regression in <code class="xref py py-class docutils literal notranslate"><span class="pre">Categorical</span></code>, where constructing it from a categorical <code class="docutils literal notranslate"><span class="pre">Series</span></code> and an explicit <code class="docutils literal notranslate"><span class="pre">categories=</span></code> that differed from that in the <code class="docutils literal notranslate"><span class="pre">Series</span></code> created an invalid object which could trigger segfaults. (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/25318">GH25318</a>)</p></li>
+<li><p>Fixed regression in <code class="xref py py-func docutils literal notranslate"><span class="pre">to_timedelta()</span></code> losing precision when converting floating data to <code class="docutils literal notranslate"><span class="pre">Timedelta</span></code> data (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/25077">GH25077</a>).</p></li>
+<li><p>Fixed pip installing from source into an environment without NumPy (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/25193">GH25193</a>)</p></li>
+<li><p>Fixed regression in <code class="xref py py-meth docutils literal notranslate"><span class="pre">DataFrame.replace()</span></code> where large strings of numbers would be coerced into <code class="docutils literal notranslate"><span class="pre">int64</span></code>, causing an <code class="docutils literal notranslate"><span class="pre">OverflowError</span></code> (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/25616">GH25616</a>)</p></li>
+<li><p>Fixed regression in <code class="xref py py-func docutils literal notranslate"><span class="pre">factorize()</span></code> when passing a custom <code class="docutils literal notranslate"><span class="pre">na_sentinel</span></code> value with <code class="docutils literal notranslate"><span class="pre">sort=True</span></code> (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/25409">GH25409</a>).</p></li>
+<li><p>Fixed regression in <code class="xref py py-meth docutils literal notranslate"><span class="pre">DataFrame.to_csv()</span></code> writing duplicate line endings with gzip compress (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/25311">GH25311</a>)</p></li>
+</ul>
+</div>
+<div class="section" id="bug-fixes">
+<span id="whatsnew-0242-bug-fixes"></span><h2>Bug fixes<a class="headerlink" href="#bug-fixes" title="Permalink to this headline">¶</a></h2>
+<p><strong>I/O</strong></p>
+<ul class="simple">
+<li><p>Better handling of terminal printing when the terminal dimensions are not known (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/25080">GH25080</a>)</p></li>
+<li><p>Bug in reading a HDF5 table-format <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> created in Python 2, in Python 3 (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/24925">GH24925</a>)</p></li>
+<li><p>Bug in reading a JSON with <code class="docutils literal notranslate"><span class="pre">orient='table'</span></code> generated by <code class="xref py py-meth docutils literal notranslate"><span class="pre">DataFrame.to_json()</span></code> with <code class="docutils literal notranslate"><span class="pre">index=False</span></code> (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/25170">GH25170</a>)</p></li>
+<li><p>Bug where float indexes could have misaligned values when printing (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/25061">GH25061</a>)</p></li>
+</ul>
+<p><strong>Categorical</strong></p>
+<ul class="simple">
+<li><p>Bug where calling <code class="xref py py-meth docutils literal notranslate"><span class="pre">Series.replace()</span></code> on categorical data could return a <code class="docutils literal notranslate"><span class="pre">Series</span></code> with incorrect dimensions (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/24971">GH24971</a>)</p></li>
+<li></li>
+<li></li>
+</ul>
+<p><strong>Reshaping</strong></p>
+<ul class="simple">
+<li><p>Bug in <code class="xref py py-meth docutils literal notranslate"><span class="pre">transform()</span></code> where applying a function to a timezone aware column would return a timezone naive result (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/24198">GH24198</a>)</p></li>
+<li><p>Bug in <code class="xref py py-func docutils literal notranslate"><span class="pre">DataFrame.join()</span></code> when joining on a timezone aware <code class="xref py py-class docutils literal notranslate"><span class="pre">DatetimeIndex</span></code> (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/23931">GH23931</a>)</p></li>
+</ul>
+<p><strong>Visualization</strong></p>
+<ul class="simple">
+<li><p>Bug in <code class="xref py py-meth docutils literal notranslate"><span class="pre">Series.plot()</span></code> where a secondary y axis could not be set to log scale (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/25545">GH25545</a>)</p></li>
+</ul>
+<p><strong>Other</strong></p>
+<ul class="simple">
+<li><p>Bug in <code class="xref py py-meth docutils literal notranslate"><span class="pre">Series.is_unique()</span></code> where single occurrences of <code class="docutils literal notranslate"><span class="pre">NaN</span></code> were not considered unique (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/25180">GH25180</a>)</p></li>
+<li><p>Bug in <code class="xref py py-func docutils literal notranslate"><span class="pre">merge()</span></code> when merging an empty <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> with an <code class="docutils literal notranslate"><span class="pre">Int64</span></code> column or a non-empty <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> with an <code class="docutils literal notranslate"><span class="pre">Int64</span></code> column that is all <code class="docutils literal notranslate"><span class="pre">NaN</span></code> (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/25183">GH25183</a>)</p></li>
+<li><p>Bug in <code class="docutils literal notranslate"><span class="pre">IntervalTree</span></code> where a <code class="docutils literal notranslate"><span class="pre">RecursionError</span></code> occurs upon construction due to an overflow when adding endpoints, which also causes <code class="xref py py-class docutils literal notranslate"><span class="pre">IntervalIndex</span></code> to crash during indexing operations (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/25485">GH25485</a>)</p></li>
+<li><p>Bug in <code class="xref py py-attr docutils literal notranslate"><span class="pre">Series.size</span></code> raising for some extension-array-backed <code class="docutils literal notranslate"><span class="pre">Series</span></code>, rather than returning the size (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/25580">GH25580</a>)</p></li>
+<li><p>Bug in resampling raising for nullable integer-dtype columns (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/25580">GH25580</a>)</p></li>
+</ul>
+</div>
+<div class="section" id="contributors">
+<span id="whatsnew-0242-contributors"></span><h2>Contributors<a class="headerlink" href="#contributors" title="Permalink to this headline">¶</a></h2>
+<p>A total of 25 people contributed patches to this release. People with a “+” by their names contributed a patch for the first time.</p>
+<ul class="simple">
+<li><p>Albert Villanova del Moral</p></li>
+<li><p>Arno Veenstra +</p></li>
+<li><p>chris-b1</p></li>
+<li><p>Devin Petersohn +</p></li>
+<li><p>EternalLearner42 +</p></li>
+<li><p>Flavien Lambert +</p></li>
+<li><p>gfyoung</p></li>
+<li><p>Gioia Ballin</p></li>
+<li><p>jbrockmendel</p></li>
+<li><p>Jeff Reback</p></li>
+<li><p>Jeremy Schendel</p></li>
+<li><p>Johan von Forstner +</p></li>
+<li><p>Joris Van den Bossche</p></li>
+<li><p>Josh</p></li>
+<li><p>Justin Zheng</p></li>
+<li><p>Kendall Masse</p></li>
+<li><p>Matthew Roeschke</p></li>
+<li><p>Max Bolingbroke +</p></li>
+<li><p>rbenes +</p></li>
+<li><p>Sterling Paramore +</p></li>
+<li><p>Tao He +</p></li>
+<li><p>Thomas A Caswell</p></li>
+<li><p>Tom Augspurger</p></li>
+<li><p>Vibhu Agarwal +</p></li>
+<li><p>William Ayd</p></li>
+<li><p>Zach Angell</p></li>
+</ul>
+</div>
+</div>
+
+
+              </div>
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="v0.25.0.html" title="previous page">What’s new in 0.25.0 (July 18, 2019)</a>
+    <a class='right-next' id="next-link" href="v0.24.1.html" title="next page">Whats new in 0.24.1 (February 3, 2019)</a>
+
+              </div>
+              
+          </main>
+
+      </div>
+    </div><script>
+    // TOC sidebar - add "active" class to parent list
+    //
+    // Bootstrap's scrollspy adds the active class to the <a> link,
+    // but for the automatic collapsing we need this on the parent list item.
+    //
+    // The event is triggered on "window" (and not the nav item as documented),
+    // see https://github.com/twbs/bootstrap/issues/20086
+    $(window).on("activate.bs.scrollspy", function(){
+    var navLinks = document.querySelectorAll('#bd-toc-nav a');
+    for (var i = 0; i < navLinks.length; i++) {
+        var navLink = navLinks[i];
+        navLink.parentElement.classList.remove('active');
+    }
+    var navLinks = document.querySelectorAll('#bd-toc-nav a.active');
+    for (var i = 0; i < navLinks.length; i++) {
+        var navLink = navLinks[i];
+        navLink.parentElement.classList.add('active');
+    }
+    });
+
+    /**
+     * Use left and right arrow keys to navigate forward and backwards.
+    */
+    const LEFT_ARROW_KEYCODE = 37
+    const RIGHT_ARROW_KEYCODE = 39
+
+    const getPrevUrl = () => document.getElementById('prev-link').href
+    const getNextUrl = () => document.getElementById('next-link').href
+    const initPageNav = (event) => {
+        const keycode = event.which
+
+        if (keycode === LEFT_ARROW_KEYCODE) {
+            window.location.href = getPrevUrl();
+        } else if (keycode === RIGHT_ARROW_KEYCODE) {
+            window.location.href = getNextUrl();
+        }
+    };
+
+    var keyboardListener = false;
+    $( document ).ready(() => {
+        if (keyboardListener === false) {
+            document.addEventListener('keydown', initPageNav)
+            keyboardListener = true;
+        }
+    });
+</script>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2008-2020, the pandas development team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.3.0.
+    </div>
+  </body>
+</html>

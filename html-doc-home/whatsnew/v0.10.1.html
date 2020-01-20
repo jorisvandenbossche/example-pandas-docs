@@ -1,0 +1,597 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>v0.10.1 (January 22, 2013) &#8212; pandas 1.0.0rc0+111.ge72cd7c52 documentation</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link rel="stylesheet" href="../_static/sphinx-bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/pandas.css" />
+    <link href="../_static/css/custom.css" rel="stylesheet">
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="v0.10.0 (December 17, 2012)" href="v0.10.0.html" />
+    <link rel="prev" title="v0.11.0 (April 22, 2013)" href="v0.11.0.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main">
+
+<a class="navbar-brand" href="../index.html">
+  <img src="../_static/pandas.svg" class="logo" alt="logo">
+</a>
+
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+</button>
+
+<div id="navbar-menu" class="collapse navbar-collapse">
+  <ul id="navbar-main-elements" class="navbar-nav mr-auto">
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        1.0.0
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown" id="version-menu"></div>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="../index.html">Home</a>
+    </li>
+    
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="v1.1.0.html">What's New in 1.1.0</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../getting_started/index.html">Getting started</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../user_guide/index.html">User Guide</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../reference/index.html">API reference</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../development/index.html">Development</a>
+    </li>
+    
+    <li class="nav-item active">
+        <a class="nav-link" href="index.html">Release Notes</a>
+    </li>
+    
+    
+  </ul>
+  <ul class="navbar-nav ml-auto">
+    
+      <li class="nav-item">
+        <a class="nav-link" href="https://github.com/pandas-dev/pandas" target="_blank" rel="noopener">
+          <span><i class="fab fa-github-square"></i></span>
+        </a>
+      </li>
+    
+    
+      <li class="nav-item">
+        <a class="nav-link" href="https://twitter.com/pandas_dev" target="_blank" rel="noopener">
+          <span><i class="fab fa-twitter-square"></i></span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row flex-xl-nowrap">
+          <div class="col-12 col-md-3 col-xl-2 bd-sidebar">
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+
+  <div class="bd-toc-item active">
+  
+
+  <ul class="nav bd-sidenav">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+        
+      
+      
+    </ul>
+
+</nav>
+          </div>
+
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+              
+<div class="tocsection onthispage"><i class="fas fa-list"></i> On this page</div>
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#api-changes" class="nav-link">API changes</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#new-features" class="nav-link">New features</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#hdfstore" class="nav-link">HDFStore</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#contributors" class="nav-link">Contributors</a>
+        </li>
+    
+    </ul>
+</nav>
+              
+            </div>
+
+          <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
+              <div>
+                
+  <div class="section" id="v0-10-1-january-22-2013">
+<span id="whatsnew-0101"></span><h1>v0.10.1 (January 22, 2013)<a class="headerlink" href="#v0-10-1-january-22-2013" title="Permalink to this headline">¶</a></h1>
+<p>This is a minor release from 0.10.0 and includes new features, enhancements,
+and bug fixes. In particular, there is substantial new HDFStore functionality
+contributed by Jeff Reback.</p>
+<p>An undesired API breakage with functions taking the <code class="docutils literal notranslate"><span class="pre">inplace</span></code> option has been
+reverted and deprecation warnings added.</p>
+<div class="section" id="api-changes">
+<h2>API changes<a class="headerlink" href="#api-changes" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Functions taking an <code class="docutils literal notranslate"><span class="pre">inplace</span></code> option return the calling object as before. A
+deprecation message has been added</p></li>
+<li><p>Groupby aggregations Max/Min no longer exclude non-numeric data (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/2700">GH2700</a>)</p></li>
+<li><p>Resampling an empty DataFrame now returns an empty DataFrame instead of
+raising an exception (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/2640">GH2640</a>)</p></li>
+<li><p>The file reader will now raise an exception when NA values are found in an
+explicitly specified integer column instead of converting the column to float
+(<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/2631">GH2631</a>)</p></li>
+<li><p>DatetimeIndex.unique now returns a DatetimeIndex with the same name and</p></li>
+<li><p>timezone instead of an array (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/2563">GH2563</a>)</p></li>
+</ul>
+</div>
+<div class="section" id="new-features">
+<h2>New features<a class="headerlink" href="#new-features" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>MySQL support for database (contribution from Dan Allan)</p></li>
+</ul>
+</div>
+<div class="section" id="hdfstore">
+<h2>HDFStore<a class="headerlink" href="#hdfstore" title="Permalink to this headline">¶</a></h2>
+<p>You may need to upgrade your existing data files. Please visit the
+<strong>compatibility</strong> section in the main docs.</p>
+<p>You can designate (and index) certain columns that you want to be able to
+perform queries on a table, by passing a list to <code class="docutils literal notranslate"><span class="pre">data_columns</span></code></p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="n">store</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">HDFStore</span><span class="p">(</span><span class="s1">&#39;store.h5&#39;</span><span class="p">)</span>
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ImportError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="mi">54</span><span class="n">ac839dc497</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">store</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">HDFStore</span><span class="p">(</span><span class="s1">&#39;store.h5&#39;</span><span class="p">)</span>
+
+<span class="nn">~/scipy/pandas/pandas/io/pytables.py</span> in <span class="ni">__init__</span><span class="nt">(self, path, mode, complevel, complib, fletcher32, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">516</span>             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;format is not a defined argument for HDFStore&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">517</span> 
+<span class="ne">--&gt; </span><span class="mi">518</span>         <span class="n">tables</span> <span class="o">=</span> <span class="n">import_optional_dependency</span><span class="p">(</span><span class="s2">&quot;tables&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">519</span> 
+<span class="g g-Whitespace">    </span><span class="mi">520</span>         <span class="k">if</span> <span class="n">complib</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">complib</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">tables</span><span class="o">.</span><span class="n">filters</span><span class="o">.</span><span class="n">all_complibs</span><span class="p">:</span>
+
+<span class="nn">~/scipy/pandas/pandas/compat/_optional.py</span> in <span class="ni">import_optional_dependency</span><span class="nt">(name, extra, raise_on_missing, on_version)</span>
+<span class="g g-Whitespace">     </span><span class="mi">89</span>     <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">90</span>         <span class="k">if</span> <span class="n">raise_on_missing</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">91</span>             <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span> <span class="kn">from</span> <span class="bp">None</span>
+<span class="g g-Whitespace">     </span><span class="mi">92</span>         <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">93</span>             <span class="k">return</span> <span class="bp">None</span>
+
+<span class="ne">ImportError</span>: Missing optional dependency &#39;tables&#39;.  Use pip or conda to install tables.
+
+<span class="gp">In [2]: </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
+<span class="gp">   ...: </span>                  <span class="n">index</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s1">&#39;1/1/2000&#39;</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="mi">8</span><span class="p">),</span>
+<span class="gp">   ...: </span>                  <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">])</span>
+<span class="gp">   ...: </span>
+
+<span class="gp">In [3]: </span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;string&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;foo&#39;</span>
+
+<span class="gp">In [4]: </span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">6</span><span class="p">],</span> <span class="s1">&#39;string&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+
+<span class="gp">In [5]: </span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">7</span><span class="p">:</span><span class="mi">9</span><span class="p">],</span> <span class="s1">&#39;string&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;bar&#39;</span>
+
+<span class="gp">In [6]: </span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;string2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;cool&#39;</span>
+
+<span class="gp">In [7]: </span><span class="n">df</span>
+<span class="gh">Out[7]: </span><span class="go"></span>
+<span class="go">                   A         B         C string string2</span>
+<span class="go">2000-01-01  0.469112 -0.282863 -1.509059    foo    cool</span>
+<span class="go">2000-01-02 -1.135632  1.212112 -0.173215    foo    cool</span>
+<span class="go">2000-01-03  0.119209 -1.044236 -0.861849    foo    cool</span>
+<span class="go">2000-01-04 -2.104569 -0.494929  1.071804    foo    cool</span>
+<span class="go">2000-01-05  0.721555 -0.706771 -1.039575    NaN    cool</span>
+<span class="go">2000-01-06  0.271860 -0.424972  0.567020    NaN    cool</span>
+<span class="go">2000-01-07  0.276232 -1.087401 -0.673690    foo    cool</span>
+<span class="go">2000-01-08  0.113648 -1.478427  0.524988    bar    cool</span>
+
+<span class="go"># on-disk operations</span>
+<span class="gp">In [8]: </span><span class="n">store</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;df&#39;</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">data_columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;string&#39;</span><span class="p">,</span> <span class="s1">&#39;string2&#39;</span><span class="p">])</span>
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">8</span><span class="o">-</span><span class="mi">16</span><span class="n">fa170e04de</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">store</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;df&#39;</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">data_columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;string&#39;</span><span class="p">,</span> <span class="s1">&#39;string2&#39;</span><span class="p">])</span>
+
+<span class="ne">NameError</span>: name &#39;store&#39; is not defined
+
+<span class="gp">In [9]: </span><span class="n">store</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;df&#39;</span><span class="p">,</span> <span class="s2">&quot;B&gt;0 and string==&#39;foo&#39;&quot;</span><span class="p">)</span>
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">9</span><span class="o">-</span><span class="mi">724</span><span class="n">b9bb3f8a6</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">store</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;df&#39;</span><span class="p">,</span> <span class="s2">&quot;B&gt;0 and string==&#39;foo&#39;&quot;</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;store&#39; is not defined
+
+<span class="c1"># this is in-memory version of this type of selection</span>
+<span class="gp">In [10]: </span><span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="o">.</span><span class="n">B</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">string</span> <span class="o">==</span> <span class="s1">&#39;foo&#39;</span><span class="p">)]</span>
+<span class="gh">Out[10]: </span><span class="go"></span>
+<span class="go">                   A         B         C string string2</span>
+<span class="go">2000-01-02 -1.135632  1.212112 -0.173215    foo    cool</span>
+</pre></div>
+</div>
+<p>Retrieving unique values in an indexable or data column.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># note that this is deprecated as of 0.14.0</span>
+<span class="c1"># can be replicated by: store.select_column(&#39;df&#39;,&#39;index&#39;).unique()</span>
+<span class="n">store</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="s1">&#39;df&#39;</span><span class="p">,</span> <span class="s1">&#39;index&#39;</span><span class="p">)</span>
+<span class="n">store</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="s1">&#39;df&#39;</span><span class="p">,</span> <span class="s1">&#39;string&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You can now store <code class="docutils literal notranslate"><span class="pre">datetime64</span></code> in data columns</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [11]: </span><span class="n">df_mixed</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="gp">In [12]: </span><span class="n">df_mixed</span><span class="p">[</span><span class="s1">&#39;datetime64&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="s1">&#39;20010102&#39;</span><span class="p">)</span>
+
+<span class="gp">In [13]: </span><span class="n">df_mixed</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_mixed</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+
+<span class="gp">In [14]: </span><span class="n">store</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;df_mixed&#39;</span><span class="p">,</span> <span class="n">df_mixed</span><span class="p">)</span>
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">14</span><span class="o">-</span><span class="mi">939</span><span class="n">aa8aabfde</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">store</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;df_mixed&#39;</span><span class="p">,</span> <span class="n">df_mixed</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;store&#39; is not defined
+
+<span class="gp">In [15]: </span><span class="n">df_mixed1</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;df_mixed&#39;</span><span class="p">)</span>
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">15</span><span class="o">-</span><span class="mi">8540</span><span class="n">a95eefa5</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">df_mixed1</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;df_mixed&#39;</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;store&#39; is not defined
+
+<span class="gp">In [16]: </span><span class="n">df_mixed1</span>
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">16</span><span class="o">-</span><span class="mi">7</span><span class="n">c2d528034e6</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">df_mixed1</span>
+
+<span class="ne">NameError</span>: name &#39;df_mixed1&#39; is not defined
+
+<span class="gp">In [17]: </span><span class="n">df_mixed1</span><span class="o">.</span><span class="n">dtypes</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">17</span><span class="o">-</span><span class="mi">7</span><span class="n">de1c772ff05</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">df_mixed1</span><span class="o">.</span><span class="n">dtypes</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+
+<span class="ne">NameError</span>: name &#39;df_mixed1&#39; is not defined
+</pre></div>
+</div>
+<p>You can pass <code class="docutils literal notranslate"><span class="pre">columns</span></code> keyword to select to filter a list of the return
+columns, this is equivalent to passing a
+<code class="docutils literal notranslate"><span class="pre">Term('columns',list_of_columns_to_filter)</span></code></p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [18]: </span><span class="n">store</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;df&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">])</span>
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">18</span><span class="o">-</span><span class="mi">5</span><span class="n">a114e3901cd</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">store</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;df&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">])</span>
+
+<span class="ne">NameError</span>: name &#39;store&#39; is not defined
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">HDFStore</span></code> now serializes MultiIndex dataframes when appending tables.</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [19]: </span><span class="n">index</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">MultiIndex</span><span class="p">(</span><span class="n">levels</span><span class="o">=</span><span class="p">[[</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="s1">&#39;baz&#39;</span><span class="p">,</span> <span class="s1">&#39;qux&#39;</span><span class="p">],</span>
+<span class="gp">   ....: </span>                              <span class="p">[</span><span class="s1">&#39;one&#39;</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">,</span> <span class="s1">&#39;three&#39;</span><span class="p">]],</span>
+<span class="gp">   ....: </span>                      <span class="n">labels</span><span class="o">=</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+<span class="gp">   ....: </span>                              <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]],</span>
+<span class="gp">   ....: </span>                      <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="s1">&#39;bar&#39;</span><span class="p">])</span>
+<span class="gp">   ....:</span>
+
+<span class="gp">In [20]: </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="p">,</span>
+<span class="gp">   ....: </span>                  <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">])</span>
+<span class="gp">   ....:</span>
+
+<span class="gp">In [21]: </span><span class="n">df</span>
+<span class="gh">Out[21]:</span>
+<span class="go">                  A         B         C</span>
+<span class="go">foo bar</span>
+<span class="go">foo one   -0.116619  0.295575 -1.047704</span>
+<span class="go">    two    1.640556  1.905836  2.772115</span>
+<span class="go">    three  0.088787 -1.144197 -0.633372</span>
+<span class="go">bar one    0.925372 -0.006438 -0.820408</span>
+<span class="go">    two   -0.600874 -1.039266  0.824758</span>
+<span class="go">baz two   -0.824095 -0.337730 -0.927764</span>
+<span class="go">    three -0.840123  0.248505 -0.109250</span>
+<span class="go">qux one    0.431977 -0.460710  0.336505</span>
+<span class="go">    two   -3.207595 -1.535854  0.409769</span>
+<span class="go">    three -0.673145 -0.741113 -0.110891</span>
+
+<span class="gp">In [22]: </span><span class="n">store</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;mi&#39;</span><span class="p">,</span> <span class="n">df</span><span class="p">)</span>
+
+<span class="gp">In [23]: </span><span class="n">store</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;mi&#39;</span><span class="p">)</span>
+<span class="gh">Out[23]:</span>
+<span class="go">                  A         B         C</span>
+<span class="go">foo bar</span>
+<span class="go">foo one   -0.116619  0.295575 -1.047704</span>
+<span class="go">    two    1.640556  1.905836  2.772115</span>
+<span class="go">    three  0.088787 -1.144197 -0.633372</span>
+<span class="go">bar one    0.925372 -0.006438 -0.820408</span>
+<span class="go">    two   -0.600874 -1.039266  0.824758</span>
+<span class="go">baz two   -0.824095 -0.337730 -0.927764</span>
+<span class="go">    three -0.840123  0.248505 -0.109250</span>
+<span class="go">qux one    0.431977 -0.460710  0.336505</span>
+<span class="go">    two   -3.207595 -1.535854  0.409769</span>
+<span class="go">    three -0.673145 -0.741113 -0.110891</span>
+
+<span class="go"># the levels are automatically included as data columns</span>
+<span class="gp">In [24]: </span><span class="n">store</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;mi&#39;</span><span class="p">,</span> <span class="s2">&quot;foo=&#39;bar&#39;&quot;</span><span class="p">)</span>
+<span class="gh">Out[24]:</span>
+<span class="go">                A         B         C</span>
+<span class="go">foo bar</span>
+<span class="go">bar one  0.925372 -0.006438 -0.820408</span>
+<span class="go">    two -0.600874 -1.039266  0.824758</span>
+</pre></div>
+</div>
+<p>Multi-table creation via <code class="docutils literal notranslate"><span class="pre">append_to_multiple</span></code> and selection via
+<code class="docutils literal notranslate"><span class="pre">select_as_multiple</span></code> can create/select from multiple tables and return a
+combined result, by using <code class="docutils literal notranslate"><span class="pre">where</span></code> on a selector table.</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [19]: </span><span class="n">df_mt</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span>
+<span class="gp">   ....: </span>                     <span class="n">index</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s1">&#39;1/1/2000&#39;</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="mi">8</span><span class="p">),</span>
+<span class="gp">   ....: </span>                     <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="s1">&#39;F&#39;</span><span class="p">])</span>
+<span class="gp">   ....: </span>
+
+<span class="gp">In [20]: </span><span class="n">df_mt</span><span class="p">[</span><span class="s1">&#39;foo&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;bar&#39;</span>
+
+<span class="go"># you can also create the tables individually</span>
+<span class="gp">In [21]: </span><span class="n">store</span><span class="o">.</span><span class="n">append_to_multiple</span><span class="p">({</span><span class="s1">&#39;df1_mt&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">],</span> <span class="s1">&#39;df2_mt&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">},</span>
+<span class="gp">   ....: </span>                         <span class="n">df_mt</span><span class="p">,</span> <span class="n">selector</span><span class="o">=</span><span class="s1">&#39;df1_mt&#39;</span><span class="p">)</span>
+<span class="gp">   ....: </span>
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">21</span><span class="o">-</span><span class="mi">0</span><span class="n">f2ea287af29</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">store</span><span class="o">.</span><span class="n">append_to_multiple</span><span class="p">({</span><span class="s1">&#39;df1_mt&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">],</span> <span class="s1">&#39;df2_mt&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">},</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span>                          <span class="n">df_mt</span><span class="p">,</span> <span class="n">selector</span><span class="o">=</span><span class="s1">&#39;df1_mt&#39;</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;store&#39; is not defined
+
+<span class="gp">In [22]: </span><span class="n">store</span>
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">22</span><span class="o">-</span><span class="mi">1</span><span class="n">cc0c364c02d</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">store</span>
+
+<span class="ne">NameError</span>: name &#39;store&#39; is not defined
+
+<span class="c1"># individual tables were created</span>
+<span class="gp">In [23]: </span><span class="n">store</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;df1_mt&#39;</span><span class="p">)</span>
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">23</span><span class="o">-</span><span class="n">cd604a6b0b71</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">store</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;df1_mt&#39;</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;store&#39; is not defined
+
+<span class="gp">In [24]: </span><span class="n">store</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;df2_mt&#39;</span><span class="p">)</span>
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">24</span><span class="o">-</span><span class="n">a3ed0f55544c</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">store</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;df2_mt&#39;</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;store&#39; is not defined
+
+<span class="c1"># as a multiple</span>
+<span class="gp">In [25]: </span><span class="n">store</span><span class="o">.</span><span class="n">select_as_multiple</span><span class="p">([</span><span class="s1">&#39;df1_mt&#39;</span><span class="p">,</span> <span class="s1">&#39;df2_mt&#39;</span><span class="p">],</span> <span class="n">where</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;A&gt;0&#39;</span><span class="p">,</span> <span class="s1">&#39;B&gt;0&#39;</span><span class="p">],</span>
+<span class="gp">   ....: </span>                         <span class="n">selector</span><span class="o">=</span><span class="s1">&#39;df1_mt&#39;</span><span class="p">)</span>
+<span class="gp">   ....: </span>
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">25</span><span class="o">-</span><span class="n">e97f27782b41</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">store</span><span class="o">.</span><span class="n">select_as_multiple</span><span class="p">([</span><span class="s1">&#39;df1_mt&#39;</span><span class="p">,</span> <span class="s1">&#39;df2_mt&#39;</span><span class="p">],</span> <span class="n">where</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;A&gt;0&#39;</span><span class="p">,</span> <span class="s1">&#39;B&gt;0&#39;</span><span class="p">],</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span>                          <span class="n">selector</span><span class="o">=</span><span class="s1">&#39;df1_mt&#39;</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;store&#39; is not defined
+</pre></div>
+</div>
+<p><strong>Enhancements</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">HDFStore</span></code> now can read native PyTables table format tables</p></li>
+<li><p>You can pass <code class="docutils literal notranslate"><span class="pre">nan_rep</span> <span class="pre">=</span> <span class="pre">'my_nan_rep'</span></code> to append, to change the default nan
+representation on disk (which converts to/from <cite>np.nan</cite>), this defaults to
+<cite>nan</cite>.</p></li>
+<li><p>You can pass <code class="docutils literal notranslate"><span class="pre">index</span></code> to <code class="docutils literal notranslate"><span class="pre">append</span></code>. This defaults to <code class="docutils literal notranslate"><span class="pre">True</span></code>. This will
+automagically create indices on the <em>indexables</em> and <em>data columns</em> of the
+table</p></li>
+<li><p>You can pass <code class="docutils literal notranslate"><span class="pre">chunksize=an</span> <span class="pre">integer</span></code> to <code class="docutils literal notranslate"><span class="pre">append</span></code>, to change the writing
+chunksize (default is 50000). This will significantly lower your memory usage
+on writing.</p></li>
+<li><p>You can pass <code class="docutils literal notranslate"><span class="pre">expectedrows=an</span> <span class="pre">integer</span></code> to the first <code class="docutils literal notranslate"><span class="pre">append</span></code>, to set the
+TOTAL number of expected rows that <code class="docutils literal notranslate"><span class="pre">PyTables</span></code> will expected. This will
+optimize read/write performance.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Select</span></code> now supports passing <code class="docutils literal notranslate"><span class="pre">start</span></code> and <code class="docutils literal notranslate"><span class="pre">stop</span></code> to provide selection
+space limiting in selection.</p></li>
+<li><p>Greatly improved ISO8601 (e.g., yyyy-mm-dd) date parsing for file parsers (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/2698">GH2698</a>)</p></li>
+<li><p>Allow <code class="docutils literal notranslate"><span class="pre">DataFrame.merge</span></code> to handle combinatorial sizes too large for 64-bit
+integer (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/2690">GH2690</a>)</p></li>
+<li><p>Series now has unary negation (-series) and inversion (~series) operators (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/2686">GH2686</a>)</p></li>
+<li><p>DataFrame.plot now includes a <code class="docutils literal notranslate"><span class="pre">logx</span></code> parameter to change the x-axis to log scale (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/2327">GH2327</a>)</p></li>
+<li><p>Series arithmetic operators can now handle constant and ndarray input (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/2574">GH2574</a>)</p></li>
+<li><p>ExcelFile now takes a <code class="docutils literal notranslate"><span class="pre">kind</span></code> argument to specify the file type (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/2613">GH2613</a>)</p></li>
+<li><p>A faster implementation for Series.str methods (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/2602">GH2602</a>)</p></li>
+</ul>
+<p><strong>Bug Fixes</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">HDFStore</span></code> tables can now store <code class="docutils literal notranslate"><span class="pre">float32</span></code> types correctly (cannot be
+mixed with <code class="docutils literal notranslate"><span class="pre">float64</span></code> however)</p></li>
+<li><p>Fixed Google Analytics prefix when specifying request segment (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/2713">GH2713</a>).</p></li>
+<li><p>Function to reset Google Analytics token store so users can recover from
+improperly setup client secrets (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/2687">GH2687</a>).</p></li>
+<li><p>Fixed groupby bug resulting in segfault when passing in MultiIndex (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/2706">GH2706</a>)</p></li>
+<li><p>Fixed bug where passing a Series with datetime64 values into <cite>to_datetime</cite>
+results in bogus output values (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/2699">GH2699</a>)</p></li>
+<li><p>Fixed bug in <code class="docutils literal notranslate"><span class="pre">pattern</span> <span class="pre">in</span> <span class="pre">HDFStore</span></code> expressions when pattern is not a valid
+regex (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/2694">GH2694</a>)</p></li>
+<li><p>Fixed performance issues while aggregating boolean data (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/2692">GH2692</a>)</p></li>
+<li><p>When given a boolean mask key and a Series of new values, Series __setitem__
+will now align the incoming values with the original Series (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/2686">GH2686</a>)</p></li>
+<li><p>Fixed MemoryError caused by performing counting sort on sorting MultiIndex
+levels with a very large number of combinatorial values (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/2684">GH2684</a>)</p></li>
+<li><p>Fixed bug that causes plotting to fail when the index is a DatetimeIndex with
+a fixed-offset timezone (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/2683">GH2683</a>)</p></li>
+<li><p>Corrected business day subtraction logic when the offset is more than 5 bdays
+and the starting date is on a weekend (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/2680">GH2680</a>)</p></li>
+<li><p>Fixed C file parser behavior when the file has more columns than data
+(<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/2668">GH2668</a>)</p></li>
+<li><p>Fixed file reader bug that misaligned columns with data in the presence of an
+implicit column and a specified <cite>usecols</cite> value</p></li>
+<li><p>DataFrames with numerical or datetime indices are now sorted prior to
+plotting (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/2609">GH2609</a>)</p></li>
+<li><p>Fixed DataFrame.from_records error when passed columns, index, but empty
+records (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/2633">GH2633</a>)</p></li>
+<li><p>Several bug fixed for Series operations when dtype is datetime64 (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/2689">GH2689</a>,
+<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/2629">GH2629</a>, <a class="reference external" href="https://github.com/pandas-dev/pandas/issues/2626">GH2626</a>)</p></li>
+</ul>
+<p>See the <a class="reference internal" href="index.html#release"><span class="std std-ref">full release notes</span></a> or issue tracker
+on GitHub for a complete list.</p>
+</div>
+<div class="section" id="contributors">
+<span id="whatsnew-0-10-1-contributors"></span><h2>Contributors<a class="headerlink" href="#contributors" title="Permalink to this headline">¶</a></h2>
+<p>A total of 17 people contributed patches to this release.  People with a
+“+” by their names contributed a patch for the first time.
+</p>
+<ul class="simple">
+<li><p>Andy Hayden +</p></li>
+<li><p>Anton I. Sipos +</p></li>
+<li><p>Chang She</p></li>
+<li><p>Christopher Whelan</p></li>
+<li><p>Damien Garaud +</p></li>
+<li><p>Dan Allan +</p></li>
+<li><p>Dieter Vandenbussche</p></li>
+<li><p>Garrett Drapala +</p></li>
+<li><p>Jay Parlar +</p></li>
+<li><p>Thouis (Ray) Jones +</p></li>
+<li><p>Vincent Arel-Bundock +</p></li>
+<li><p>Wes McKinney</p></li>
+<li><p>elpres</p></li>
+<li><p>herrfz +</p></li>
+<li><p>jreback</p></li>
+<li><p>svaksha +</p></li>
+<li><p>y-p</p></li>
+</ul>
+</div>
+</div>
+
+
+              </div>
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="v0.11.0.html" title="previous page">v0.11.0 (April 22, 2013)</a>
+    <a class='right-next' id="next-link" href="v0.10.0.html" title="next page">v0.10.0 (December 17, 2012)</a>
+
+              </div>
+              
+          </main>
+
+      </div>
+    </div><script>
+    // TOC sidebar - add "active" class to parent list
+    //
+    // Bootstrap's scrollspy adds the active class to the <a> link,
+    // but for the automatic collapsing we need this on the parent list item.
+    //
+    // The event is triggered on "window" (and not the nav item as documented),
+    // see https://github.com/twbs/bootstrap/issues/20086
+    $(window).on("activate.bs.scrollspy", function(){
+    var navLinks = document.querySelectorAll('#bd-toc-nav a');
+    for (var i = 0; i < navLinks.length; i++) {
+        var navLink = navLinks[i];
+        navLink.parentElement.classList.remove('active');
+    }
+    var navLinks = document.querySelectorAll('#bd-toc-nav a.active');
+    for (var i = 0; i < navLinks.length; i++) {
+        var navLink = navLinks[i];
+        navLink.parentElement.classList.add('active');
+    }
+    });
+
+    /**
+     * Use left and right arrow keys to navigate forward and backwards.
+    */
+    const LEFT_ARROW_KEYCODE = 37
+    const RIGHT_ARROW_KEYCODE = 39
+
+    const getPrevUrl = () => document.getElementById('prev-link').href
+    const getNextUrl = () => document.getElementById('next-link').href
+    const initPageNav = (event) => {
+        const keycode = event.which
+
+        if (keycode === LEFT_ARROW_KEYCODE) {
+            window.location.href = getPrevUrl();
+        } else if (keycode === RIGHT_ARROW_KEYCODE) {
+            window.location.href = getNextUrl();
+        }
+    };
+
+    var keyboardListener = false;
+    $( document ).ready(() => {
+        if (keyboardListener === false) {
+            document.addEventListener('keydown', initPageNav)
+            keyboardListener = true;
+        }
+    });
+</script>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2008-2020, the pandas development team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.3.0.
+    </div>
+  </body>
+</html>

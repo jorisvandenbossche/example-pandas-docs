@@ -1,0 +1,847 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Scaling to large datasets &#8212; pandas 1.0.0rc0+111.ge72cd7c52 documentation</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link rel="stylesheet" href="../_static/sphinx-bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/pandas.css" />
+    <link href="../_static/css/custom.css" rel="stylesheet">
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Sparse data structures" href="sparse.html" />
+    <link rel="prev" title="Enhancing performance" href="enhancingperf.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main">
+
+<a class="navbar-brand" href="../index.html">
+  <img src="../_static/pandas.svg" class="logo" alt="logo">
+</a>
+
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+</button>
+
+<div id="navbar-menu" class="collapse navbar-collapse">
+  <ul id="navbar-main-elements" class="navbar-nav mr-auto">
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        1.0.0
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown" id="version-menu"></div>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="../index.html">Home</a>
+    </li>
+    
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../whatsnew/v1.1.0.html">What's New in 1.1.0</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../getting_started/index.html">Getting started</a>
+    </li>
+    
+    <li class="nav-item active">
+        <a class="nav-link" href="index.html">User Guide</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../reference/index.html">API reference</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../development/index.html">Development</a>
+    </li>
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="../whatsnew/index.html">Release Notes</a>
+    </li>
+    
+    
+  </ul>
+  <ul class="navbar-nav ml-auto">
+    
+      <li class="nav-item">
+        <a class="nav-link" href="https://github.com/pandas-dev/pandas" target="_blank" rel="noopener">
+          <span><i class="fab fa-github-square"></i></span>
+        </a>
+      </li>
+    
+    
+      <li class="nav-item">
+        <a class="nav-link" href="https://twitter.com/pandas_dev" target="_blank" rel="noopener">
+          <span><i class="fab fa-twitter-square"></i></span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row flex-xl-nowrap">
+          <div class="col-12 col-md-3 col-xl-2 bd-sidebar">
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+
+  <div class="bd-toc-item active">
+  
+
+  <ul class="nav bd-sidenav">
+      
+      
+      
+      
+      
+      
+        
+          
+              <li class="">
+                  <a href="io.html">IO tools (text, CSV, HDF5, …)</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="indexing.html">Indexing and selecting data</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="advanced.html">MultiIndex / advanced indexing</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="merging.html">Merge, join, and concatenate</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="reshaping.html">Reshaping and pivot tables</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="text.html">Working with text data</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="missing_data.html">Working with missing data</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="categorical.html">Categorical data</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="integer_na.html">Nullable integer data type</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="boolean.html">Nullable Boolean Data Type</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="visualization.html">Visualization</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="computation.html">Computational tools</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="groupby.html">Group By: split-apply-combine</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="timeseries.html">Time series / date functionality</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="timedeltas.html">Time deltas</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="style.html">Styling</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="options.html">Options and settings</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="enhancingperf.html">Enhancing performance</a>
+              </li>
+          
+        
+          
+              <li class="active">
+                  <a href="">Scaling to large datasets</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="sparse.html">Sparse data structures</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="gotchas.html">Frequently Asked Questions (FAQ)</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="cookbook.html">Cookbook</a>
+              </li>
+          
+        
+      
+      
+      
+      
+      
+      
+      
+      
+    </ul>
+
+</nav>
+          </div>
+
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+              
+<div class="tocsection onthispage"><i class="fas fa-list"></i> On this page</div>
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#load-less-data" class="nav-link">Load less data</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#use-efficient-datatypes" class="nav-link">Use efficient datatypes</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#use-chunking" class="nav-link">Use chunking</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#use-other-libraries" class="nav-link">Use other libraries</a>
+        </li>
+    
+    </ul>
+</nav>
+              
+            </div>
+
+          <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
+              <div>
+                
+  <div class="section" id="scaling-to-large-datasets">
+<span id="scale"></span><h1>Scaling to large datasets<a class="headerlink" href="#scaling-to-large-datasets" title="Permalink to this headline">¶</a></h1>
+<p>Pandas provides data structures for in-memory analytics, which makes using pandas
+to analyze datasets that are larger than memory datasets somewhat tricky. Even datasets
+that are a sizable fraction of memory become unwieldy, as some pandas operations need
+to make intermediate copies.</p>
+<p>This document provides a few recommendations for scaling your analysis to larger datasets.
+It’s a complement to <a class="reference internal" href="enhancingperf.html#enhancingperf"><span class="std std-ref">Enhancing performance</span></a>, which focuses on speeding up analysis
+for datasets that fit in memory.</p>
+<p>But first, it’s worth considering <em>not using pandas</em>. Pandas isn’t the right
+tool for all situations. If you’re working with very large datasets and a tool
+like PostgreSQL fits your needs, then you should probably be using that.
+Assuming you want or need the expressiveness and power of pandas, let’s carry on.</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+
+<span class="gp">In [2]: </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+<div class="section" id="load-less-data">
+<h2>Load less data<a class="headerlink" href="#load-less-data" title="Permalink to this headline">¶</a></h2>
+<p>Suppose our raw dataset on disk has many columns:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>                     <span class="n">id_0</span>    <span class="n">name_0</span>       <span class="n">x_0</span>       <span class="n">y_0</span>  <span class="n">id_1</span>   <span class="n">name_1</span>       <span class="n">x_1</span>  <span class="o">...</span>  <span class="n">name_8</span>       <span class="n">x_8</span>       <span class="n">y_8</span>  <span class="n">id_9</span>   <span class="n">name_9</span>       <span class="n">x_9</span>       <span class="n">y_9</span>
+<span class="n">timestamp</span>                                                                         <span class="o">...</span>
+<span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>  <span class="mi">1015</span>   <span class="n">Michael</span> <span class="o">-</span><span class="mf">0.399453</span>  <span class="mf">0.095427</span>   <span class="mi">994</span>    <span class="n">Frank</span> <span class="o">-</span><span class="mf">0.176842</span>  <span class="o">...</span>     <span class="n">Dan</span> <span class="o">-</span><span class="mf">0.315310</span>  <span class="mf">0.713892</span>  <span class="mi">1025</span>   <span class="n">Victor</span> <span class="o">-</span><span class="mf">0.135779</span>  <span class="mf">0.346801</span>
+<span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">00</span><span class="p">:</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span>   <span class="mi">969</span>  <span class="n">Patricia</span>  <span class="mf">0.650773</span> <span class="o">-</span><span class="mf">0.874275</span>  <span class="mi">1003</span>    <span class="n">Laura</span>  <span class="mf">0.459153</span>  <span class="o">...</span>  <span class="n">Ursula</span>  <span class="mf">0.913244</span> <span class="o">-</span><span class="mf">0.630308</span>  <span class="mi">1047</span>    <span class="n">Wendy</span> <span class="o">-</span><span class="mf">0.886285</span>  <span class="mf">0.035852</span>
+<span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">00</span><span class="p">:</span><span class="mi">02</span><span class="p">:</span><span class="mi">00</span>  <span class="mi">1016</span>    <span class="n">Victor</span> <span class="o">-</span><span class="mf">0.721465</span> <span class="o">-</span><span class="mf">0.584710</span>  <span class="mi">1046</span>  <span class="n">Michael</span>  <span class="mf">0.524994</span>  <span class="o">...</span>     <span class="n">Ray</span> <span class="o">-</span><span class="mf">0.656593</span>  <span class="mf">0.692568</span>  <span class="mi">1064</span>   <span class="n">Yvonne</span>  <span class="mf">0.070426</span>  <span class="mf">0.432047</span>
+<span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">00</span><span class="p">:</span><span class="mi">03</span><span class="p">:</span><span class="mi">00</span>   <span class="mi">939</span>     <span class="n">Alice</span> <span class="o">-</span><span class="mf">0.746004</span> <span class="o">-</span><span class="mf">0.908008</span>   <span class="mi">996</span>   <span class="n">Ingrid</span> <span class="o">-</span><span class="mf">0.414523</span>  <span class="o">...</span>   <span class="n">Jerry</span> <span class="o">-</span><span class="mf">0.958994</span>  <span class="mf">0.608210</span>   <span class="mi">978</span>    <span class="n">Wendy</span>  <span class="mf">0.855949</span> <span class="o">-</span><span class="mf">0.648988</span>
+<span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">00</span><span class="p">:</span><span class="mi">04</span><span class="p">:</span><span class="mi">00</span>  <span class="mi">1017</span>       <span class="n">Dan</span>  <span class="mf">0.919451</span> <span class="o">-</span><span class="mf">0.803504</span>  <span class="mi">1048</span>    <span class="n">Jerry</span> <span class="o">-</span><span class="mf">0.569235</span>  <span class="o">...</span>   <span class="n">Frank</span> <span class="o">-</span><span class="mf">0.577022</span> <span class="o">-</span><span class="mf">0.409088</span>   <span class="mi">994</span>      <span class="n">Bob</span> <span class="o">-</span><span class="mf">0.270132</span>  <span class="mf">0.335176</span>
+<span class="o">...</span>                   <span class="o">...</span>       <span class="o">...</span>       <span class="o">...</span>       <span class="o">...</span>   <span class="o">...</span>      <span class="o">...</span>       <span class="o">...</span>  <span class="o">...</span>     <span class="o">...</span>       <span class="o">...</span>       <span class="o">...</span>   <span class="o">...</span>      <span class="o">...</span>       <span class="o">...</span>       <span class="o">...</span>
+<span class="mi">2000</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">30</span> <span class="mi">23</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mi">00</span>   <span class="mi">999</span>       <span class="n">Tim</span>  <span class="mf">0.162578</span>  <span class="mf">0.512817</span>   <span class="mi">973</span>    <span class="n">Kevin</span> <span class="o">-</span><span class="mf">0.403352</span>  <span class="o">...</span>     <span class="n">Tim</span> <span class="o">-</span><span class="mf">0.380415</span>  <span class="mf">0.008097</span>  <span class="mi">1041</span>  <span class="n">Charlie</span>  <span class="mf">0.191477</span> <span class="o">-</span><span class="mf">0.599519</span>
+<span class="mi">2000</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">30</span> <span class="mi">23</span><span class="p">:</span><span class="mi">57</span><span class="p">:</span><span class="mi">00</span>   <span class="mi">970</span>     <span class="n">Laura</span> <span class="o">-</span><span class="mf">0.433586</span> <span class="o">-</span><span class="mf">0.600289</span>   <span class="mi">958</span>   <span class="n">Oliver</span> <span class="o">-</span><span class="mf">0.966577</span>  <span class="o">...</span>   <span class="n">Zelda</span>  <span class="mf">0.971274</span>  <span class="mf">0.402032</span>  <span class="mi">1038</span>   <span class="n">Ursula</span>  <span class="mf">0.574016</span> <span class="o">-</span><span class="mf">0.930992</span>
+<span class="mi">2000</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">30</span> <span class="mi">23</span><span class="p">:</span><span class="mi">58</span><span class="p">:</span><span class="mi">00</span>  <span class="mi">1065</span>     <span class="n">Edith</span>  <span class="mf">0.232211</span> <span class="o">-</span><span class="mf">0.454540</span>   <span class="mi">971</span>      <span class="n">Tim</span>  <span class="mf">0.158484</span>  <span class="o">...</span>   <span class="n">Alice</span> <span class="o">-</span><span class="mf">0.222079</span> <span class="o">-</span><span class="mf">0.919274</span>  <span class="mi">1022</span>      <span class="n">Dan</span>  <span class="mf">0.031345</span> <span class="o">-</span><span class="mf">0.657755</span>
+<span class="mi">2000</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">30</span> <span class="mi">23</span><span class="p">:</span><span class="mi">59</span><span class="p">:</span><span class="mi">00</span>  <span class="mi">1019</span>    <span class="n">Ingrid</span>  <span class="mf">0.322208</span> <span class="o">-</span><span class="mf">0.615974</span>   <span class="mi">981</span>   <span class="n">Hannah</span>  <span class="mf">0.607517</span>  <span class="o">...</span>   <span class="n">Sarah</span> <span class="o">-</span><span class="mf">0.424440</span> <span class="o">-</span><span class="mf">0.117274</span>   <span class="mi">990</span>   <span class="n">George</span> <span class="o">-</span><span class="mf">0.375530</span>  <span class="mf">0.563312</span>
+<span class="mi">2000</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">31</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>   <span class="mi">937</span>    <span class="n">Ursula</span> <span class="o">-</span><span class="mf">0.906523</span>  <span class="mf">0.943178</span>  <span class="mi">1018</span>    <span class="n">Alice</span> <span class="o">-</span><span class="mf">0.564513</span>  <span class="o">...</span>   <span class="n">Jerry</span>  <span class="mf">0.236837</span>  <span class="mf">0.807650</span>   <span class="mi">985</span>   <span class="n">Oliver</span>  <span class="mf">0.777642</span>  <span class="mf">0.783392</span>
+
+<span class="p">[</span><span class="mi">525601</span> <span class="n">rows</span> <span class="n">x</span> <span class="mi">40</span> <span class="n">columns</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>To load the columns we want, we have two options.
+Option 1 loads in all the data and then filters to what we need.</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [3]: </span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;id_0&#39;</span><span class="p">,</span> <span class="s1">&#39;name_0&#39;</span><span class="p">,</span> <span class="s1">&#39;x_0&#39;</span><span class="p">,</span> <span class="s1">&#39;y_0&#39;</span><span class="p">]</span>
+
+<span class="gp">In [4]: </span><span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">&quot;timeseries_wide.parquet&quot;</span><span class="p">)[</span><span class="n">columns</span><span class="p">]</span>
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ImportError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">4</span><span class="o">-</span><span class="mi">26</span><span class="n">feb6e0ea5b</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">&quot;timeseries_wide.parquet&quot;</span><span class="p">)[</span><span class="n">columns</span><span class="p">]</span>
+
+<span class="nn">~/scipy/pandas/pandas/io/parquet.py</span> in <span class="ni">read_parquet</span><span class="nt">(path, engine, columns, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">305</span>     <span class="s2">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">306</span><span class="s2"> </span>
+<span class="ne">--&gt; </span><span class="mi">307</span><span class="s2">     impl = get_engine(engine)</span>
+<span class="g g-Whitespace">    </span><span class="mi">308</span><span class="s2">     return impl.read(path, columns=columns, **kwargs)</span>
+
+<span class="nn">~/scipy/pandas/pandas/io/parquet.py</span> in <span class="ni">get_engine</span><span class="nt">(engine)</span>
+<span class="g g-Whitespace">     </span><span class="mi">31</span><span class="s2"> </span>
+<span class="g g-Whitespace">     </span><span class="mi">32</span><span class="s2">         raise ImportError(</span>
+<span class="ne">---&gt; </span><span class="mi">33</span><span class="s2">             &quot;Unable to find a usable engine; &quot;</span>
+<span class="g g-Whitespace">     </span><span class="mi">34</span><span class="s2">             &quot;tried using: &#39;pyarrow&#39;, &#39;fastparquet&#39;.</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="g g-Whitespace">     </span><span class="mi">35</span><span class="s2">             &quot;pyarrow or fastparquet is required for parquet support&quot;</span>
+
+<span class="ne">ImportError</span>: Unable to find a usable engine; tried using: &#39;pyarrow&#39;, &#39;fastparquet&#39;.
+<span class="s2">pyarrow or fastparquet is required for parquet support</span>
+</pre></div>
+</div>
+<p>Option 2 only loads the columns we request.</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [5]: </span><span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">&quot;timeseries_wide.parquet&quot;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">)</span>
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ImportError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">5</span><span class="o">-</span><span class="mi">34</span><span class="n">b8a0b496da</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">&quot;timeseries_wide.parquet&quot;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">)</span>
+
+<span class="nn">~/scipy/pandas/pandas/io/parquet.py</span> in <span class="ni">read_parquet</span><span class="nt">(path, engine, columns, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">305</span>     <span class="s2">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">306</span><span class="s2"> </span>
+<span class="ne">--&gt; </span><span class="mi">307</span><span class="s2">     impl = get_engine(engine)</span>
+<span class="g g-Whitespace">    </span><span class="mi">308</span><span class="s2">     return impl.read(path, columns=columns, **kwargs)</span>
+
+<span class="nn">~/scipy/pandas/pandas/io/parquet.py</span> in <span class="ni">get_engine</span><span class="nt">(engine)</span>
+<span class="g g-Whitespace">     </span><span class="mi">31</span><span class="s2"> </span>
+<span class="g g-Whitespace">     </span><span class="mi">32</span><span class="s2">         raise ImportError(</span>
+<span class="ne">---&gt; </span><span class="mi">33</span><span class="s2">             &quot;Unable to find a usable engine; &quot;</span>
+<span class="g g-Whitespace">     </span><span class="mi">34</span><span class="s2">             &quot;tried using: &#39;pyarrow&#39;, &#39;fastparquet&#39;.</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="g g-Whitespace">     </span><span class="mi">35</span><span class="s2">             &quot;pyarrow or fastparquet is required for parquet support&quot;</span>
+
+<span class="ne">ImportError</span>: Unable to find a usable engine; tried using: &#39;pyarrow&#39;, &#39;fastparquet&#39;.
+<span class="s2">pyarrow or fastparquet is required for parquet support</span>
+</pre></div>
+</div>
+<p>If we were to measure the memory usage of the two calls, we’d see that specifying
+<code class="docutils literal notranslate"><span class="pre">columns</span></code> uses about 1/10th the memory in this case.</p>
+<p>With <code class="xref py py-func docutils literal notranslate"><span class="pre">pandas.read_csv()</span></code>, you can specify <code class="docutils literal notranslate"><span class="pre">usecols</span></code> to limit the columns
+read into memory. Not all file formats that can be read by pandas provide an option
+to read a subset of columns.</p>
+</div>
+<div class="section" id="use-efficient-datatypes">
+<h2>Use efficient datatypes<a class="headerlink" href="#use-efficient-datatypes" title="Permalink to this headline">¶</a></h2>
+<p>The default pandas data types are not the most memory efficient. This is
+especially true for text data columns with relatively few unique values (commonly
+referred to as “low-cardinality” data). By using more efficient data types, you
+can store larger datasets in memory.</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [6]: </span><span class="n">ts</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">&quot;timeseries.parquet&quot;</span><span class="p">)</span>
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ImportError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">6</span><span class="o">-</span><span class="n">cf76bacd9941</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">ts</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">&quot;timeseries.parquet&quot;</span><span class="p">)</span>
+
+<span class="nn">~/scipy/pandas/pandas/io/parquet.py</span> in <span class="ni">read_parquet</span><span class="nt">(path, engine, columns, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">305</span>     <span class="s2">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">306</span><span class="s2"> </span>
+<span class="ne">--&gt; </span><span class="mi">307</span><span class="s2">     impl = get_engine(engine)</span>
+<span class="g g-Whitespace">    </span><span class="mi">308</span><span class="s2">     return impl.read(path, columns=columns, **kwargs)</span>
+
+<span class="nn">~/scipy/pandas/pandas/io/parquet.py</span> in <span class="ni">get_engine</span><span class="nt">(engine)</span>
+<span class="g g-Whitespace">     </span><span class="mi">31</span><span class="s2"> </span>
+<span class="g g-Whitespace">     </span><span class="mi">32</span><span class="s2">         raise ImportError(</span>
+<span class="ne">---&gt; </span><span class="mi">33</span><span class="s2">             &quot;Unable to find a usable engine; &quot;</span>
+<span class="g g-Whitespace">     </span><span class="mi">34</span><span class="s2">             &quot;tried using: &#39;pyarrow&#39;, &#39;fastparquet&#39;.</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="g g-Whitespace">     </span><span class="mi">35</span><span class="s2">             &quot;pyarrow or fastparquet is required for parquet support&quot;</span>
+
+<span class="ne">ImportError</span>: Unable to find a usable engine; tried using: &#39;pyarrow&#39;, &#39;fastparquet&#39;.
+<span class="s2">pyarrow or fastparquet is required for parquet support</span>
+
+<span class="gp">In [7]: </span><span class="n">ts</span>
+<span class="gh">Out[7]: </span><span class="go"></span>
+<span class="go">                       id      name         x         y</span>
+<span class="go">timestamp                                              </span>
+<span class="go">2000-01-01 00:00:00  1029   Michael  0.278837  0.247932</span>
+<span class="go">2000-01-01 00:00:30  1010  Patricia  0.077144  0.490260</span>
+<span class="go">2000-01-01 00:01:00  1001    Victor  0.214525  0.258635</span>
+<span class="go">2000-01-01 00:01:30  1018     Alice -0.646866  0.822104</span>
+<span class="go">2000-01-01 00:02:00   991       Dan  0.902389  0.466665</span>
+<span class="go">...                   ...       ...       ...       ...</span>
+<span class="go">2000-12-30 23:58:00   992     Sarah  0.721155  0.944118</span>
+<span class="go">2000-12-30 23:58:30  1007    Ursula  0.409277  0.133227</span>
+<span class="go">2000-12-30 23:59:00  1009    Hannah -0.452802  0.184318</span>
+<span class="go">2000-12-30 23:59:30   978     Kevin -0.904728 -0.179146</span>
+<span class="go">2000-12-31 00:00:00   973    Ingrid -0.370763 -0.794667</span>
+
+<span class="go">[1051201 rows x 4 columns]</span>
+</pre></div>
+</div>
+<p>Now, let’s inspect the data types and memory usage to see where we should focus our
+attention.</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [8]: </span><span class="n">ts</span><span class="o">.</span><span class="n">dtypes</span>
+<span class="gh">Out[8]: </span><span class="go"></span>
+<span class="go">id        int64</span>
+<span class="go">name     object</span>
+<span class="go">x       float64</span>
+<span class="go">y       float64</span>
+<span class="go">dtype: object</span>
+</pre></div>
+</div>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [9]: </span><span class="n">ts</span><span class="o">.</span><span class="n">memory_usage</span><span class="p">(</span><span class="n">deep</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>  <span class="c1"># memory usage in bytes</span>
+<span class="gh">Out[9]: </span><span class="go"></span>
+<span class="go">Index     8409608</span>
+<span class="go">id        8409608</span>
+<span class="go">name     65537768</span>
+<span class="go">x         8409608</span>
+<span class="go">y         8409608</span>
+<span class="go">dtype: int64</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">name</span></code> column is taking up much more memory than any other. It has just a
+few unique values, so it’s a good candidate for converting to a
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Categorical</span></code>. With a Categorical, we store each unique name once and use
+space-efficient integers to know which specific name is used in each row.</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [10]: </span><span class="n">ts2</span> <span class="o">=</span> <span class="n">ts</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="gp">In [11]: </span><span class="n">ts2</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ts2</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;category&#39;</span><span class="p">)</span>
+
+<span class="gp">In [12]: </span><span class="n">ts2</span><span class="o">.</span><span class="n">memory_usage</span><span class="p">(</span><span class="n">deep</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="gh">Out[12]: </span><span class="go"></span>
+<span class="go">Index    8409608</span>
+<span class="go">id       8409608</span>
+<span class="go">name     1054102</span>
+<span class="go">x        8409608</span>
+<span class="go">y        8409608</span>
+<span class="go">dtype: int64</span>
+</pre></div>
+</div>
+<p>We can go a bit further and downcast the numeric columns to their smallest types
+using <code class="xref py py-func docutils literal notranslate"><span class="pre">pandas.to_numeric()</span></code>.</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [13]: </span><span class="n">ts2</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">ts2</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">],</span> <span class="n">downcast</span><span class="o">=</span><span class="s1">&#39;unsigned&#39;</span><span class="p">)</span>
+
+<span class="gp">In [14]: </span><span class="n">ts2</span><span class="p">[[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">ts2</span><span class="p">[[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">,</span> <span class="n">downcast</span><span class="o">=</span><span class="s1">&#39;float&#39;</span><span class="p">)</span>
+
+<span class="gp">In [15]: </span><span class="n">ts2</span><span class="o">.</span><span class="n">dtypes</span>
+<span class="gh">Out[15]: </span><span class="go"></span>
+<span class="go">id        uint16</span>
+<span class="go">name    category</span>
+<span class="go">x        float32</span>
+<span class="go">y        float32</span>
+<span class="go">dtype: object</span>
+</pre></div>
+</div>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [16]: </span><span class="n">ts2</span><span class="o">.</span><span class="n">memory_usage</span><span class="p">(</span><span class="n">deep</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="gh">Out[16]: </span><span class="go"></span>
+<span class="go">Index    8409608</span>
+<span class="go">id       2102402</span>
+<span class="go">name     1054102</span>
+<span class="go">x        4204804</span>
+<span class="go">y        4204804</span>
+<span class="go">dtype: int64</span>
+</pre></div>
+</div>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [17]: </span><span class="n">reduction</span> <span class="o">=</span> <span class="p">(</span><span class="n">ts2</span><span class="o">.</span><span class="n">memory_usage</span><span class="p">(</span><span class="n">deep</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="gp">   ....: </span>             <span class="o">/</span> <span class="n">ts</span><span class="o">.</span><span class="n">memory_usage</span><span class="p">(</span><span class="n">deep</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+<span class="gp">   ....: </span>
+
+<span class="gp">In [18]: </span><span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;{reduction:0.2f}&quot;</span><span class="p">)</span>
+<span class="go">0.20</span>
+</pre></div>
+</div>
+<p>In all, we’ve reduced the in-memory footprint of this dataset to 1/5 of its
+original size.</p>
+<p>See <a class="reference internal" href="categorical.html#categorical"><span class="std std-ref">Categorical data</span></a> for more on <code class="docutils literal notranslate"><span class="pre">Categorical</span></code> and <a class="reference internal" href="../getting_started/basics.html#basics-dtypes"><span class="std std-ref">dtypes</span></a>
+for an overview of all of pandas’ dtypes.</p>
+</div>
+<div class="section" id="use-chunking">
+<h2>Use chunking<a class="headerlink" href="#use-chunking" title="Permalink to this headline">¶</a></h2>
+<p>Some workloads can be achieved with chunking: splitting a large problem like “convert this
+directory of CSVs to parquet” into a bunch of small problems (“convert this individual CSV
+file into a Parquet file. Now repeat that for each file in this directory.”). As long as each chunk
+fits in memory, you can work with datasets that are much larger than memory.</p>
+<div class="alert alert-info">
+<p class="admonition-title">Note</p>
+<p>Chunking works well when the operation you’re performing requires zero or minimal
+coordination between chunks. For more complicated workflows, you’re better off
+<a class="reference internal" href="#scale-other-libraries"><span class="std std-ref">using another library</span></a>.</p>
+</div>
+<p>Suppose we have an even larger “logical dataset” on disk that’s a directory of parquet
+files. Each file in the directory represents a different year of the entire dataset.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>data
+└── timeseries
+    ├── ts-00.parquet
+    ├── ts-01.parquet
+    ├── ts-02.parquet
+    ├── ts-03.parquet
+    ├── ts-04.parquet
+    ├── ts-05.parquet
+    ├── ts-06.parquet
+    ├── ts-07.parquet
+    ├── ts-08.parquet
+    ├── ts-09.parquet
+    ├── ts-10.parquet
+    └── ts-11.parquet
+</pre></div>
+</div>
+<p>Now we’ll implement an out-of-core <code class="docutils literal notranslate"><span class="pre">value_counts</span></code>. The peak memory usage of this
+workflow is the single largest chunk, plus a small series storing the unique value
+counts up to this point. As long as each individual file fits in memory, this will
+work for arbitrary-sized datasets.</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [19]: </span><span class="o">%%time</span>
+<span class="gp">   ....: </span><span class="n">files</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;data/timeseries/&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;ts*.parquet&quot;</span><span class="p">)</span>
+<span class="gp">   ....: </span><span class="n">counts</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+<span class="gp">   ....: </span><span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+<span class="gp">   ....: </span>    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+<span class="gp">   ....: </span>    <span class="n">counts</span> <span class="o">=</span> <span class="n">counts</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(),</span> <span class="n">fill_value</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">   ....: </span><span class="n">counts</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="gp">   ....: </span>
+<span class="go">CPU times: user 1.02 ms, sys: 185 us, total: 1.2 ms</span>
+<span class="go">Wall time: 1.21 ms</span>
+<span class="gh">Out[19]: </span><span class="go">Series([], dtype: int64)</span>
+</pre></div>
+</div>
+<p>Some readers, like <code class="xref py py-meth docutils literal notranslate"><span class="pre">pandas.read_csv()</span></code>, offer parameters to control the
+<code class="docutils literal notranslate"><span class="pre">chunksize</span></code> when reading a single file.</p>
+<p>Manually chunking is an OK option for workflows that don’t
+require too sophisticated of operations. Some operations, like <code class="docutils literal notranslate"><span class="pre">groupby</span></code>, are
+much harder to do chunkwise. In these cases, you may be better switching to a
+different library that implements these out-of-core algorithms for you.</p>
+</div>
+<div class="section" id="use-other-libraries">
+<span id="scale-other-libraries"></span><h2>Use other libraries<a class="headerlink" href="#use-other-libraries" title="Permalink to this headline">¶</a></h2>
+<p>Pandas is just one library offering a DataFrame API. Because of its popularity,
+pandas’ API has become something of a standard that other libraries implement.
+The pandas documentation maintains a list of libraries implementing a DataFrame API
+in <a class="reference internal" href="../ecosystem.html#ecosystem-out-of-core"><span class="std std-ref">our ecosystem page</span></a>.</p>
+<p>For example, <a class="reference external" href="https://dask.org">Dask</a>, a parallel computing library, has <a class="reference external" href="https://docs.dask.org/en/latest/dataframe.html">dask.dataframe</a>, a
+pandas-like API for working with larger than memory datasets in parallel. Dask
+can use multiple threads or processes on a single machine, or a cluster of
+machines to process data in parallel.</p>
+<p>We’ll import <code class="docutils literal notranslate"><span class="pre">dask.dataframe</span></code> and notice that the API feels similar to pandas.
+We can use Dask’s <code class="docutils literal notranslate"><span class="pre">read_parquet</span></code> function, but provide a globstring of files to read in.</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [20]: </span><span class="kn">import</span> <span class="nn">dask.dataframe</span> <span class="kn">as</span> <span class="nn">dd</span>
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">20</span><span class="o">-</span><span class="mi">420</span><span class="n">aeb5f905d</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">dask.dataframe</span> <span class="kn">as</span> <span class="nn">dd</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;dask&#39;
+
+<span class="gp">In [21]: </span><span class="n">ddf</span> <span class="o">=</span> <span class="n">dd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">&quot;data/timeseries/ts*.parquet&quot;</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s2">&quot;pyarrow&quot;</span><span class="p">)</span>
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">21</span><span class="o">-</span><span class="mi">7</span><span class="n">abd3a958364</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">ddf</span> <span class="o">=</span> <span class="n">dd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">&quot;data/timeseries/ts*.parquet&quot;</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s2">&quot;pyarrow&quot;</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;dd&#39; is not defined
+
+<span class="gp">In [22]: </span><span class="n">ddf</span>
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">22</span><span class="o">-</span><span class="n">c646fef31c61</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">ddf</span>
+
+<span class="ne">NameError</span>: name &#39;ddf&#39; is not defined
+</pre></div>
+</div>
+<p>Inspecting the <code class="docutils literal notranslate"><span class="pre">ddf</span></code> object, we see a few things</p>
+<ul class="simple">
+<li><p>There are familiar attributes like <code class="docutils literal notranslate"><span class="pre">.columns</span></code> and <code class="docutils literal notranslate"><span class="pre">.dtypes</span></code></p></li>
+<li><p>There are familiar methods like <code class="docutils literal notranslate"><span class="pre">.groupby</span></code>, <code class="docutils literal notranslate"><span class="pre">.sum</span></code>, etc.</p></li>
+<li><p>There are new attributes like <code class="docutils literal notranslate"><span class="pre">.npartitions</span></code> and <code class="docutils literal notranslate"><span class="pre">.divisions</span></code></p></li>
+</ul>
+<p>The partitions and divisions are how Dask parallizes computation. A <strong>Dask</strong>
+DataFrame is made up of many <strong>Pandas</strong> DataFrames. A single method call on a
+Dask DataFrame ends up making many pandas method calls, and Dask knows how to
+coordinate everything to get the result.</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [23]: </span><span class="n">ddf</span><span class="o">.</span><span class="n">columns</span>
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">23</span><span class="o">-</span><span class="mi">1</span><span class="n">b7058aaa991</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">ddf</span><span class="o">.</span><span class="n">columns</span>
+
+<span class="ne">NameError</span>: name &#39;ddf&#39; is not defined
+
+<span class="gp">In [24]: </span><span class="n">ddf</span><span class="o">.</span><span class="n">dtypes</span>
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">24</span><span class="o">-</span><span class="mi">26542737802</span><span class="n">d</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">ddf</span><span class="o">.</span><span class="n">dtypes</span>
+
+<span class="ne">NameError</span>: name &#39;ddf&#39; is not defined
+
+<span class="gp">In [25]: </span><span class="n">ddf</span><span class="o">.</span><span class="n">npartitions</span>
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">25</span><span class="o">-</span><span class="n">f435133e3b37</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">ddf</span><span class="o">.</span><span class="n">npartitions</span>
+
+<span class="ne">NameError</span>: name &#39;ddf&#39; is not defined
+</pre></div>
+</div>
+<p>One major difference: the <code class="docutils literal notranslate"><span class="pre">dask.dataframe</span></code> API is <em>lazy</em>. If you look at the
+repr above, you’ll notice that the values aren’t actually printed out; just the
+column names and dtypes. That’s because Dask hasn’t actually read the data yet.
+Rather than executing immediately, doing operations build up a <strong>task graph</strong>.</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [26]: </span><span class="n">ddf</span>
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">26</span><span class="o">-</span><span class="n">c646fef31c61</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">ddf</span>
+
+<span class="ne">NameError</span>: name &#39;ddf&#39; is not defined
+
+<span class="gp">In [27]: </span><span class="n">ddf</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">27</span><span class="o">-</span><span class="mi">925</span><span class="n">c04498caa</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">ddf</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
+
+<span class="ne">NameError</span>: name &#39;ddf&#39; is not defined
+
+<span class="gp">In [28]: </span><span class="n">ddf</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">28</span><span class="o">-</span><span class="mi">3</span><span class="n">bbc61c371c6</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">ddf</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+
+<span class="ne">NameError</span>: name &#39;ddf&#39; is not defined
+</pre></div>
+</div>
+<p>Each of these calls is instant because the result isn’t being computed yet.
+We’re just building up a list of computation to do when someone needs the
+result. Dask knows that the return type of a <code class="docutils literal notranslate"><span class="pre">pandas.Series.value_counts</span></code>
+is a pandas Series with a certain dtype and a certain name. So the Dask version
+returns a Dask Series with the same dtype and the same name.</p>
+<p>To get the actual result you can call <code class="docutils literal notranslate"><span class="pre">.compute()</span></code>.</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [29]: </span><span class="o">%</span><span class="k">time</span> ddf[&#39;name&#39;].value_counts().compute()
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">timed</span> <span class="nb">eval</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+
+<span class="ne">NameError</span>: name &#39;ddf&#39; is not defined
+</pre></div>
+</div>
+<p>At that point, you get back the same thing you’d get with pandas, in this case
+a concrete pandas Series with the count of each <code class="docutils literal notranslate"><span class="pre">name</span></code>.</p>
+<p>Calling <code class="docutils literal notranslate"><span class="pre">.compute</span></code> causes the full task graph to be executed. This includes
+reading the data, selecting the columns, and doing the <code class="docutils literal notranslate"><span class="pre">value_counts</span></code>. The
+execution is done <em>in parallel</em> where possible, and Dask tries to keep the
+overall memory footprint small. You can work with datasets that are much larger
+than memory, as long as each partition (a regular pandas DataFrame) fits in memory.</p>
+<p>By default, <code class="docutils literal notranslate"><span class="pre">dask.dataframe</span></code> operations use a threadpool to do operations in
+parallel. We can also connect to a cluster to distribute the work on many
+machines. In this case we’ll connect to a local “cluster” made up of several
+processes on this single machine.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">dask.distributed</span> <span class="kn">import</span> <span class="n">Client</span><span class="p">,</span> <span class="n">LocalCluster</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cluster</span> <span class="o">=</span> <span class="n">LocalCluster</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">cluster</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">client</span>
+<span class="go">&lt;Client: &#39;tcp://127.0.0.1:53349&#39; processes=4 threads=8, memory=17.18 GB&gt;</span>
+</pre></div>
+</div>
+<p>Once this <code class="docutils literal notranslate"><span class="pre">client</span></code> is created, all of Dask’s computation will take place on
+the cluster (which is just processes in this case).</p>
+<p>Dask implements the most used parts of the pandas API. For example, we can do
+a familiar groupby aggregation.</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [30]: </span><span class="o">%</span><span class="k">time</span> ddf.groupby(&#39;name&#39;)[[&#39;x&#39;, &#39;y&#39;]].mean().compute().head()
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">timed</span> <span class="nb">eval</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+
+<span class="ne">NameError</span>: name &#39;ddf&#39; is not defined
+</pre></div>
+</div>
+<p>The grouping and aggregation is done out-of-core and in parallel.</p>
+<p>When Dask knows the <code class="docutils literal notranslate"><span class="pre">divisions</span></code> of a dataset, certain optimizations are
+possible. When reading parquet datasets written by dask, the divisions will be
+known automatically. In this case, since we created the parquet files manually,
+we need to supply the divisions manually.</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [31]: </span><span class="n">N</span> <span class="o">=</span> <span class="mi">12</span>
+
+<span class="gp">In [32]: </span><span class="n">starts</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span><span class="s1">&#39;20{i:&gt;02d}-01-01&#39;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">)]</span>
+
+<span class="gp">In [33]: </span><span class="n">ends</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span><span class="s1">&#39;20{i:&gt;02d}-12-13&#39;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">)]</span>
+
+<span class="gp">In [34]: </span><span class="n">divisions</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">starts</span><span class="p">))</span> <span class="o">+</span> <span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="n">ends</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]),)</span>
+
+<span class="gp">In [35]: </span><span class="n">ddf</span><span class="o">.</span><span class="n">divisions</span> <span class="o">=</span> <span class="n">divisions</span>
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">35</span><span class="o">-</span><span class="n">ef536ac0720f</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">ddf</span><span class="o">.</span><span class="n">divisions</span> <span class="o">=</span> <span class="n">divisions</span>
+
+<span class="ne">NameError</span>: name &#39;ddf&#39; is not defined
+
+<span class="gp">In [36]: </span><span class="n">ddf</span>
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">36</span><span class="o">-</span><span class="n">c646fef31c61</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">ddf</span>
+
+<span class="ne">NameError</span>: name &#39;ddf&#39; is not defined
+</pre></div>
+</div>
+<p>Now we can do things like fast random access with <code class="docutils literal notranslate"><span class="pre">.loc</span></code>.</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [37]: </span><span class="n">ddf</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;2002-01-01 12:01&#39;</span><span class="p">:</span><span class="s1">&#39;2002-01-01 12:05&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">37</span><span class="o">-</span><span class="n">b49fdb567646</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">ddf</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;2002-01-01 12:01&#39;</span><span class="p">:</span><span class="s1">&#39;2002-01-01 12:05&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
+
+<span class="ne">NameError</span>: name &#39;ddf&#39; is not defined
+</pre></div>
+</div>
+<p>Dask knows to just look in the 3rd partition for selecting values in <cite>2002</cite>. It
+doesn’t need to look at any other data.</p>
+<p>Many workflows involve a large amount of data and processing it in a way that
+reduces the size to something that fits in memory. In this case, we’ll resample
+to daily frequency and take the mean. Once we’ve taken the mean, we know the
+results will fit in memory, so we can safely call <code class="docutils literal notranslate"><span class="pre">compute</span></code> without running
+out of memory. At that point it’s just a regular pandas object.</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [38]: </span><span class="n">ddf</span><span class="p">[[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s2">&quot;1D&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">38</span><span class="o">-</span><span class="mf">7e18823</span><span class="n">bc200</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">ddf</span><span class="p">[[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s2">&quot;1D&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+
+<span class="ne">NameError</span>: name &#39;ddf&#39; is not defined
+</pre></div>
+</div>
+<img alt="../_images/dask_resample.png" src="../_images/dask_resample.png" />
+<p>These Dask examples have all be done using multiple processes on a single
+machine. Dask can be <a class="reference external" href="https://docs.dask.org/en/latest/setup.html">deployed on a cluster</a> to scale up to even larger
+datasets.</p>
+<p>You see more dask examples at <a class="reference external" href="https://examples.dask.org">https://examples.dask.org</a>.</p>
+</div>
+</div>
+
+
+              </div>
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="enhancingperf.html" title="previous page">Enhancing performance</a>
+    <a class='right-next' id="next-link" href="sparse.html" title="next page">Sparse data structures</a>
+
+              </div>
+              
+          </main>
+
+      </div>
+    </div><script>
+    // TOC sidebar - add "active" class to parent list
+    //
+    // Bootstrap's scrollspy adds the active class to the <a> link,
+    // but for the automatic collapsing we need this on the parent list item.
+    //
+    // The event is triggered on "window" (and not the nav item as documented),
+    // see https://github.com/twbs/bootstrap/issues/20086
+    $(window).on("activate.bs.scrollspy", function(){
+    var navLinks = document.querySelectorAll('#bd-toc-nav a');
+    for (var i = 0; i < navLinks.length; i++) {
+        var navLink = navLinks[i];
+        navLink.parentElement.classList.remove('active');
+    }
+    var navLinks = document.querySelectorAll('#bd-toc-nav a.active');
+    for (var i = 0; i < navLinks.length; i++) {
+        var navLink = navLinks[i];
+        navLink.parentElement.classList.add('active');
+    }
+    });
+
+    /**
+     * Use left and right arrow keys to navigate forward and backwards.
+    */
+    const LEFT_ARROW_KEYCODE = 37
+    const RIGHT_ARROW_KEYCODE = 39
+
+    const getPrevUrl = () => document.getElementById('prev-link').href
+    const getNextUrl = () => document.getElementById('next-link').href
+    const initPageNav = (event) => {
+        const keycode = event.which
+
+        if (keycode === LEFT_ARROW_KEYCODE) {
+            window.location.href = getPrevUrl();
+        } else if (keycode === RIGHT_ARROW_KEYCODE) {
+            window.location.href = getNextUrl();
+        }
+    };
+
+    var keyboardListener = false;
+    $( document ).ready(() => {
+        if (keyboardListener === false) {
+            document.addEventListener('keydown', initPageNav)
+            keyboardListener = true;
+        }
+    });
+</script>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2008-2020, the pandas development team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.3.0.
+    </div>
+  </body>
+</html>
