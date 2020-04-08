@@ -1,0 +1,614 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Reference Guide &#8212; contextily 1.0.0 documentation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/custom.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Tests for warping functionality" href="warping_guide.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+
+    <div class="container-xl">
+      <div class="row">
+          
+          <div class="col-12 col-md-3 bd-sidebar">
+
+<a class="navbar-brand-text" href="index.html">
+CONTEXTILY!
+</a>
+
+
+
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+    <i class="icon fas fa-search"></i>
+    <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+  </form>
+  
+  <nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  
+    <div class="bd-toc-item active">
+    
+  
+
+
+    <ul class="nav bd-sidenav">
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="contextily_guide.html">contextily</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="warping_guide.html">Tests for warping functionality</a>
+        </li>
+        
+        <li class="nav-item active">
+            <a class="nav-link" href="">Reference Guide</a>
+        </li>
+        
+    </ul>
+  
+  </nav>
+          </div>
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+              
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#plotting-basemaps" class="nav-link">Plotting basemaps</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#working-with-tiles" class="nav-link">Working with tiles</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#geocoding-and-plotting-places" class="nav-link">Geocoding and plotting places</a>
+        </li>
+    
+    </ul>
+</nav>
+
+
+              
+          </div>
+          
+
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <div class="section" id="reference-guide">
+<span id="reference"></span><h1>Reference Guide<a class="headerlink" href="#reference-guide" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="plotting-basemaps">
+<h2>Plotting basemaps<a class="headerlink" href="#plotting-basemaps" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="contextily.add_basemap">
+<code class="sig-prename descclassname">contextily.</code><code class="sig-name descname">add_basemap</code><span class="sig-paren">(</span><em class="sig-param">ax</em>, <em class="sig-param">zoom='auto'</em>, <em class="sig-param">url=None</em>, <em class="sig-param">interpolation='bilinear'</em>, <em class="sig-param">attribution=None</em>, <em class="sig-param">attribution_size=8</em>, <em class="sig-param">reset_extent=True</em>, <em class="sig-param">crs=None</em>, <em class="sig-param">resampling=&lt;Resampling.bilinear: 1&gt;</em>, <em class="sig-param">\*\*extra_imshow_args</em><span class="sig-paren">)</span><a class="headerlink" href="#contextily.add_basemap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a (web/local) basemap to <cite>ax</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>ax</strong><span class="classifier">AxesSubplot</span></dt><dd><p>Matplotlib axis with <cite>x_lim</cite> and <cite>y_lim</cite> set in Web
+Mercator (EPSG=3857)</p>
+</dd>
+<dt><strong>zoom</strong><span class="classifier">int/’auto’</span></dt><dd><p>[Optional. Default=’auto’] Level of detail for the
+basemap. If ‘auto’, if calculates it automatically.
+Ignored if <cite>url</cite> is a local file.</p>
+</dd>
+<dt><strong>url</strong><span class="classifier">str</span></dt><dd><p>[Optional. Default: ‘<a class="reference external" href="http://tile.stamen.com/terrain/tileZ/tileX/tileY.png">http://tile.stamen.com/terrain/tileZ/tileX/tileY.png</a>’]
+Source url for web tiles, or path to local file. If
+local, the file is read with <cite>rasterio</cite> and all
+bands are loaded into the basemap.</p>
+</dd>
+<dt><strong>interpolation</strong><span class="classifier">str</span></dt><dd><p>[Optional. Default=’bilinear’] Interpolation
+algorithm to be passed to <cite>imshow</cite>. See
+<cite>matplotlib.pyplot.imshow</cite> for further details.</p>
+</dd>
+<dt><strong>attribution</strong><span class="classifier">str</span></dt><dd><p>[Optional. Defaults to attribution specified by the url]
+Text to be added at the bottom of the axis. This
+defaults to the attribution of the provider specified
+in <cite>url</cite> if available. Specify False to not
+automatically add an attribution, or a string to pass
+a custom attribution.</p>
+</dd>
+<dt><strong>attribution_size</strong><span class="classifier">int</span></dt><dd><p>[Optional. Defaults to <cite>ATTRIBUTION_SIZE</cite>].
+Font size to render attribution text with.</p>
+</dd>
+<dt><strong>reset_extent</strong><span class="classifier">Boolean</span></dt><dd><p>[Optional. Default=True] If True, the extent of the
+basemap added is reset to the original extent (xlim,
+ylim) of <cite>ax</cite></p>
+</dd>
+<dt><strong>crs</strong><span class="classifier">None/str/CRS</span></dt><dd><p>[Optional. Default=None] CRS,
+expressed in any format permitted by rasterio, to
+use for the resulting basemap. If
+None (default), no warping is performed and the
+original Web Mercator (<cite>EPSG:3857</cite>, 
+{‘init’ :’epsg:3857’}) is used.</p>
+</dd>
+<dt><strong>resampling</strong><span class="classifier">&lt;enum ‘Resampling’&gt;</span></dt><dd><p>[Optional. Default=Resampling.bilinear] Resampling 
+method for executing warping, expressed as a 
+<cite>rasterio.enums.Resampling</cite> method</p>
+</dd>
+<dt><strong>**extra_imshow_args :</strong></dt><dd><p>Other parameters to be passed to <cite>imshow</cite>.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">db</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="n">ps</span><span class="o">.</span><span class="n">examples</span><span class="o">.</span><span class="n">get_path</span><span class="p">(</span><span class="s1">&#39;virginia.shp&#39;</span><span class="p">))</span>                <span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="n">epsg</span><span class="o">=</span><span class="mi">3857</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Add a web basemap:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ctx</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Or download a basemap to a local file and then plot it:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;virginia.tiff&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">_</span> <span class="o">=</span> <span class="n">ctx</span><span class="o">.</span><span class="n">bounds2raster</span><span class="p">(</span><span class="o">*</span><span class="n">db</span><span class="o">.</span><span class="n">total_bounds</span><span class="p">,</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="n">url</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ctx</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="contextily.add_attribution">
+<code class="sig-prename descclassname">contextily.</code><code class="sig-name descname">add_attribution</code><span class="sig-paren">(</span><em class="sig-param">ax</em>, <em class="sig-param">text</em>, <em class="sig-param">font_size=8</em>, <em class="sig-param">\*\*kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#contextily.add_attribution" title="Permalink to this definition">¶</a></dt>
+<dd><p>Utility to add attribution text.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>ax</strong><span class="classifier">AxesSubplot</span></dt><dd><p>Matplotlib axis with <cite>x_lim</cite> and <cite>y_lim</cite> set in Web
+Mercator (EPSG=3857)</p>
+</dd>
+<dt><strong>text</strong><span class="classifier">str</span></dt><dd><p>Text to be added at the bottom of the axis.</p>
+</dd>
+<dt><strong>font_size</strong><span class="classifier">int</span></dt><dd><p>[Optional. Defaults to 8] Font size in which to render
+the attribution text.</p>
+</dd>
+<dt><strong>**kwargs</strong><span class="classifier">Additional keywords to pass to the matplotlib <cite>text</cite></span></dt><dd><p>method.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>matplotlib.text.Text</dt><dd><p>Matplotlib Text object added to the plot.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="working-with-tiles">
+<h2>Working with tiles<a class="headerlink" href="#working-with-tiles" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="contextily.bounds2raster">
+<code class="sig-prename descclassname">contextily.</code><code class="sig-name descname">bounds2raster</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">w</span></em>, <em class="sig-param"><span class="n">s</span></em>, <em class="sig-param"><span class="n">e</span></em>, <em class="sig-param"><span class="n">n</span></em>, <em class="sig-param"><span class="n">path</span></em>, <em class="sig-param"><span class="n">zoom</span><span class="o">=</span><span class="default_value">'auto'</span></em>, <em class="sig-param"><span class="n">source</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">ll</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">wait</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">max_retries</span><span class="o">=</span><span class="default_value">2</span></em>, <em class="sig-param"><span class="n">url</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#contextily.bounds2raster" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Take bounding box and zoom, and write tiles into a raster file in
+the Spherical Mercator CRS (EPSG:3857)</p>
+</div></blockquote>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>w</strong><span class="classifier">float</span></dt><dd><blockquote>
+<div><p>West edge</p>
+</div></blockquote>
+<dl class="simple">
+<dt>s<span class="classifier">float</span></dt><dd><p>South edge</p>
+</dd>
+<dt>e<span class="classifier">float</span></dt><dd><p>East edge</p>
+</dd>
+<dt>n<span class="classifier">float</span></dt><dd><p>North edge</p>
+</dd>
+<dt>zoom<span class="classifier">int</span></dt><dd><p>Level of detail</p>
+</dd>
+<dt>path<span class="classifier">str</span></dt><dd><p>Path to raster file to be written</p>
+</dd>
+</dl>
+</dd>
+<dt><strong>source</strong><span class="classifier">contextily.tile or str</span></dt><dd><blockquote>
+<div><p>[Optional. Default: ‘<a class="reference external" href="http://tile.stamen.com/terrain/tileZ/tileX/tileY.png">http://tile.stamen.com/terrain/tileZ/tileX/tileY.png</a>’]
+URL for tile provider. The placeholders for the XYZ need to be
+<cite>tileX</cite>, <cite>tileY</cite>, <cite>tileZ</cite>, respectively. IMPORTANT: tiles are
+assumed to be in the Spherical Mercator projection (EPSG:3857).</p>
+</div></blockquote>
+<dl class="simple">
+<dt>ll<span class="classifier">Boolean</span></dt><dd><p>[Optional. Default: False] If True, <cite>w</cite>, <cite>s</cite>, <cite>e</cite>, <cite>n</cite> are
+assumed to be lon/lat as opposed to Spherical Mercator.</p>
+</dd>
+<dt>wait<span class="classifier">int</span></dt><dd><p>[Optional. Default: 0]
+if the tile API is rate-limited, the number of seconds to wait
+between a failed request and the next try</p>
+</dd>
+<dt>max_retries: int</dt><dd><p>[Optional. Default: 2]
+total number of rejected requests allowed before contextily
+will stop trying to fetch more tiles from a rate-limited API.</p>
+</dd>
+<dt>url<span class="classifier">str [DEPRECATED]</span></dt><dd><p>[Optional. Default:
+‘<a class="reference external" href="http://tile.stamen.com/terrain/tileZ/tileX/tileY.png">http://tile.stamen.com/terrain/tileZ/tileX/tileY.png</a>’] URL for
+tile provider. The placeholders for the XYZ need to be <cite>tileX</cite>,
+<cite>tileY</cite>, <cite>tileZ</cite>, respectively. See <cite>cx.sources</cite>.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl>
+<dt><strong>img</strong><span class="classifier">ndarray</span></dt><dd><blockquote>
+<div><p>Image as a 3D array of RGB values</p>
+</div></blockquote>
+<dl class="simple">
+<dt>extent<span class="classifier">tuple</span></dt><dd><p>Bounding box [minX, maxX, minY, maxY] of the returned image</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="contextily.bounds2img">
+<code class="sig-prename descclassname">contextily.</code><code class="sig-name descname">bounds2img</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">w</span></em>, <em class="sig-param"><span class="n">s</span></em>, <em class="sig-param"><span class="n">e</span></em>, <em class="sig-param"><span class="n">n</span></em>, <em class="sig-param"><span class="n">zoom</span><span class="o">=</span><span class="default_value">'auto'</span></em>, <em class="sig-param"><span class="n">source</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">ll</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">wait</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">max_retries</span><span class="o">=</span><span class="default_value">2</span></em>, <em class="sig-param"><span class="n">url</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#contextily.bounds2img" title="Permalink to this definition">¶</a></dt>
+<dd><p>Take bounding box and zoom and return an image with all the tiles
+that compose the map and its Spherical Mercator extent.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>w</strong><span class="classifier">float</span></dt><dd><p>West edge</p>
+</dd>
+<dt><strong>s</strong><span class="classifier">float</span></dt><dd><p>South edge</p>
+</dd>
+<dt><strong>e</strong><span class="classifier">float</span></dt><dd><p>East edge</p>
+</dd>
+<dt><strong>n</strong><span class="classifier">float</span></dt><dd><p>North edge</p>
+</dd>
+<dt><strong>zoom</strong><span class="classifier">int</span></dt><dd><p>Level of detail</p>
+</dd>
+<dt><strong>source</strong><span class="classifier">contextily.tile or str</span></dt><dd><p>[Optional. Default: ‘<a class="reference external" href="http://tile.stamen.com/terrain/tileZ/tileX/tileY.png">http://tile.stamen.com/terrain/tileZ/tileX/tileY.png</a>’]
+URL for tile provider. The placeholders for the XYZ need to be
+<cite>tileX</cite>, <cite>tileY</cite>, <cite>tileZ</cite>, respectively. IMPORTANT: tiles are
+assumed to be in the Spherical Mercator projection (EPSG:3857).</p>
+</dd>
+<dt><strong>ll</strong><span class="classifier">Boolean</span></dt><dd><p>[Optional. Default: False] If True, <cite>w</cite>, <cite>s</cite>, <cite>e</cite>, <cite>n</cite> are
+assumed to be lon/lat as opposed to Spherical Mercator.</p>
+</dd>
+<dt><strong>wait</strong><span class="classifier">int</span></dt><dd><p>[Optional. Default: 0]
+if the tile API is rate-limited, the number of seconds to wait
+between a failed request and the next try</p>
+</dd>
+<dt><strong>max_retries: int</strong></dt><dd><p>[Optional. Default: 2]
+total number of rejected requests allowed before contextily
+will stop trying to fetch more tiles from a rate-limited API.</p>
+</dd>
+<dt><strong>url</strong><span class="classifier">str [DEPRECATED]</span></dt><dd><p>[Optional. Default: ‘<a class="reference external" href="http://tile.stamen.com/terrain/tileZ/tileX/tileY.png">http://tile.stamen.com/terrain/tileZ/tileX/tileY.png</a>’]
+URL for tile provider. The placeholders for the XYZ need to be
+<cite>tileX</cite>, <cite>tileY</cite>, <cite>tileZ</cite>, respectively. IMPORTANT: tiles are
+assumed to be in the Spherical Mercator projection (EPSG:3857).</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>img</strong><span class="classifier">ndarray</span></dt><dd><p>Image as a 3D array of RGB values</p>
+</dd>
+<dt><strong>extent</strong><span class="classifier">tuple</span></dt><dd><p>Bounding box [minX, maxX, minY, maxY] of the returned image</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="contextily.warp_tiles">
+<code class="sig-prename descclassname">contextily.</code><code class="sig-name descname">warp_tiles</code><span class="sig-paren">(</span><em class="sig-param">img</em>, <em class="sig-param">extent</em>, <em class="sig-param">t_crs='EPSG:4326'</em>, <em class="sig-param">resampling=&lt;Resampling.bilinear: 1&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#contextily.warp_tiles" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reproject (warp) a Web Mercator basemap into any CRS on-the-fly</p>
+<dl class="simple">
+<dt>NOTE: this method works well with contextily’s <cite>bounds2img</cite> approach to</dt><dd><p>raster dimensions (h, w, b)</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>img</strong><span class="classifier">ndarray</span></dt><dd><p>Image as a 3D array (h, w, b) of RGB values (e.g. as
+returned from <cite>contextily.bounds2img</cite>)</p>
+</dd>
+<dt><strong>extent</strong><span class="classifier">tuple</span></dt><dd><p>Bounding box [minX, maxX, minY, maxY] of the returned image,
+expressed in Web Mercator (<cite>EPSG:3857</cite>)</p>
+</dd>
+<dt><strong>t_crs</strong><span class="classifier">str/CRS</span></dt><dd><p>[Optional. Default=’EPSG:4326’] Target CRS, expressed in any
+format permitted by rasterio. Defaults to WGS84 (lon/lat)</p>
+</dd>
+<dt><strong>resampling</strong><span class="classifier">&lt;enum ‘Resampling’&gt;</span></dt><dd><p>[Optional. Default=Resampling.bilinear] Resampling method for
+executing warping, expressed as a <cite>rasterio.enums.Resampling</cite>
+method</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>img</strong><span class="classifier">ndarray</span></dt><dd><p>Image as a 3D array (h, w, b) of RGB values (e.g. as
+returned from <cite>contextily.bounds2img</cite>)</p>
+</dd>
+<dt><strong>ext</strong><span class="classifier">tuple</span></dt><dd><p>Bounding box [minX, maxX, minY, maxY] of the returned (warped)
+image</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="contextily.warp_img_transform">
+<code class="sig-prename descclassname">contextily.</code><code class="sig-name descname">warp_img_transform</code><span class="sig-paren">(</span><em class="sig-param">img</em>, <em class="sig-param">transform</em>, <em class="sig-param">s_crs</em>, <em class="sig-param">t_crs</em>, <em class="sig-param">resampling=&lt;Resampling.bilinear: 1&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#contextily.warp_img_transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reproject (warp) an <cite>img</cite> with a given <cite>transform</cite> and <cite>s_crs</cite> into a
+different <cite>t_crs</cite></p>
+<p>NOTE: this method works well with rasterio’s <cite>.read()</cite> approach to
+raster’s dimensions (b, h, w)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>img</strong><span class="classifier">ndarray</span></dt><dd><p>Image as a 3D array (b, h, w) of RGB values (e.g. as
+returned from rasterio’s <cite>.read()</cite> method)</p>
+</dd>
+<dt><strong>transform</strong><span class="classifier">affine.Affine</span></dt><dd><p>Transform of the input image as expressed by <cite>rasterio</cite> and
+the <cite>affine</cite> package</p>
+</dd>
+<dt><strong>s_crs</strong><span class="classifier">str/CRS</span></dt><dd><p>Source CRS in which <cite>img</cite> is passed, expressed in any format
+permitted by rasterio.</p>
+</dd>
+<dt><strong>t_crs</strong><span class="classifier">str/CRS</span></dt><dd><p>Target CRS, expressed in any format permitted by rasterio.</p>
+</dd>
+<dt><strong>resampling</strong><span class="classifier">&lt;enum ‘Resampling’&gt;</span></dt><dd><p>[Optional. Default=Resampling.bilinear] Resampling method for
+executing warping, expressed as a <cite>rasterio.enums.Resampling</cite>
+method</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>w_img</strong><span class="classifier">ndarray</span></dt><dd><p>Warped image as a 3D array (b, h, w) of RGB values (e.g. as
+returned from rasterio’s <cite>.read()</cite> method)</p>
+</dd>
+<dt><strong>w_transform</strong><span class="classifier">affine.Affine</span></dt><dd><p>Transform of the input image as expressed by <cite>rasterio</cite> and
+the <cite>affine</cite> package</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="contextily.howmany">
+<code class="sig-prename descclassname">contextily.</code><code class="sig-name descname">howmany</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">w</span></em>, <em class="sig-param"><span class="n">s</span></em>, <em class="sig-param"><span class="n">e</span></em>, <em class="sig-param"><span class="n">n</span></em>, <em class="sig-param"><span class="n">zoom</span></em>, <em class="sig-param"><span class="n">verbose</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">ll</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#contextily.howmany" title="Permalink to this definition">¶</a></dt>
+<dd><p>Number of tiles required for a given bounding box and a zoom level</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>w</strong><span class="classifier">float</span></dt><dd><p>West edge</p>
+</dd>
+<dt><strong>s</strong><span class="classifier">float</span></dt><dd><p>South edge</p>
+</dd>
+<dt><strong>e</strong><span class="classifier">float</span></dt><dd><p>East edge</p>
+</dd>
+<dt><strong>n</strong><span class="classifier">float</span></dt><dd><p>North edge</p>
+</dd>
+<dt><strong>zoom</strong><span class="classifier">int</span></dt><dd><p>Level of detail</p>
+</dd>
+<dt><strong>verbose</strong><span class="classifier">Boolean</span></dt><dd><p>[Optional. Default=True] If True, print short message with
+number of tiles and zoom.</p>
+</dd>
+<dt><strong>ll</strong><span class="classifier">Boolean</span></dt><dd><p>[Optional. Default: False] If True, <cite>w</cite>, <cite>s</cite>, <cite>e</cite>, <cite>n</cite> are
+assumed to be lon/lat as opposed to Spherical Mercator.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="geocoding-and-plotting-places">
+<h2>Geocoding and plotting places<a class="headerlink" href="#geocoding-and-plotting-places" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="contextily.Place">
+<em class="property">class </em><code class="sig-prename descclassname">contextily.</code><code class="sig-name descname">Place</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">search</span></em>, <em class="sig-param"><span class="n">zoom</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">path</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">zoom_adjust</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">url</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#contextily.Place" title="Permalink to this definition">¶</a></dt>
+<dd><p>Geocode a place by name and get its map.</p>
+<p>This allows you to search for a name (e.g., city, street, country) and
+grab map and location data from the internet.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>search</strong><span class="classifier">string</span></dt><dd><p>The location to be searched.</p>
+</dd>
+<dt><strong>zoom</strong><span class="classifier">int | None</span></dt><dd><p>The level of detail to include in the map. Higher levels mean more
+tiles and thus longer download time. If None, the zoom level will be
+automatically determined.</p>
+</dd>
+<dt><strong>path</strong><span class="classifier">string | None</span></dt><dd><p>Path to a raster file that will be created after getting the place map.
+If None, no raster file will be downloaded.</p>
+</dd>
+<dt><strong>zoom_adjust</strong><span class="classifier">int | None</span></dt><dd><p>The amount to adjust a chosen zoom level if it is chosen automatically.</p>
+</dd>
+<dt><strong>url</strong><span class="classifier">string</span></dt><dd><p>The URL to use for downloading map tiles. See the <code class="docutils literal notranslate"><span class="pre">cx.tile_providers</span></code> module
+for some options, as well as <code class="docutils literal notranslate"><span class="pre">cx.bounds2image</span></code> for guidance.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Attributes</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>geocode</strong><span class="classifier">geopy object</span></dt><dd><p>The result of calling <code class="docutils literal notranslate"><span class="pre">geopy.geocoders.Nominatim</span></code> with <code class="docutils literal notranslate"><span class="pre">search</span></code> as input.</p>
+</dd>
+<dt><strong>s</strong><span class="classifier">float</span></dt><dd><p>The southern bbox edge.</p>
+</dd>
+<dt><strong>n</strong><span class="classifier">float</span></dt><dd><p>The northern bbox edge.</p>
+</dd>
+<dt><strong>e</strong><span class="classifier">float</span></dt><dd><p>The eastern bbox edge.</p>
+</dd>
+<dt><strong>w</strong><span class="classifier">float</span></dt><dd><p>The western bbox edge.</p>
+</dd>
+<dt><strong>im</strong><span class="classifier">ndarray</span></dt><dd><p>The image corresponding to the map of <code class="docutils literal notranslate"><span class="pre">search</span></code>.</p>
+</dd>
+<dt><strong>bbox</strong><span class="classifier">list</span></dt><dd><p>The bounding box of the returned image, expressed in lon/lat, with the
+following order: [minX, minY, maxX, maxY]</p>
+</dd>
+<dt><strong>bbox_map</strong><span class="classifier">tuple</span></dt><dd><p>The bounding box of the returned image, expressed in Web Mercator, with the
+following order: [minX, minY, maxX, maxY]</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<table class="longtable table">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#contextily.Place.plot" title="contextily.Place.plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot</span></code></a>(self[, ax, zoom, interpolation, …])</p></td>
+<td><p>Plot a <cite>Place</cite> object</p></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="py method">
+<dt id="contextily.Place.plot">
+<code class="sig-prename descclassname">Place.</code><code class="sig-name descname">plot</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">ax</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">zoom</span><span class="o">=</span><span class="default_value">'auto'</span></em>, <em class="sig-param"><span class="n">interpolation</span><span class="o">=</span><span class="default_value">'bilinear'</span></em>, <em class="sig-param"><span class="n">attribution</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#contextily.Place.plot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot a <cite>Place</cite> object
+…</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>ax</strong><span class="classifier">AxesSubplot</span></dt><dd><p>Matplotlib axis with <cite>x_lim</cite> and <cite>y_lim</cite> set in Web
+Mercator (EPSG=3857). If not provided, a new
+12x12 figure will be set and the name of the place
+will be added as title</p>
+</dd>
+<dt><strong>zoom</strong><span class="classifier">int/’auto’</span></dt><dd><p>[Optional. Default=’auto’] Level of detail for the
+basemap. If ‘auto’, if calculates it automatically.
+Ignored if <cite>url</cite> is a local file.</p>
+</dd>
+<dt><strong>interpolation</strong><span class="classifier">str</span></dt><dd><p>[Optional. Default=’bilinear’] Interpolation
+algorithm to be passed to <cite>imshow</cite>. See
+<cite>matplotlib.pyplot.imshow</cite> for further details.</p>
+</dd>
+<dt><strong>attribution</strong><span class="classifier">str</span></dt><dd><p>[Optional. Defaults to attribution specified by the url]
+Text to be added at the bottom of the axis. This
+defaults to the attribution of the provider specified
+in <cite>url</cite> if available. Specify False to not
+automatically add an attribution, or a string to pass
+a custom attribution.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>ax</strong><span class="classifier">AxesSubplot</span></dt><dd><p>Matplotlib axis with <cite>x_lim</cite> and <cite>y_lim</cite> set in Web
+Mercator (EPSG=3857) containing the basemap</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">lvl</span> <span class="o">=</span> <span class="n">ctx</span><span class="o">.</span><span class="n">Place</span><span class="p">(</span><span class="s1">&#39;Liverpool&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lvl</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="contextily.plot_map">
+<code class="sig-prename descclassname">contextily.</code><code class="sig-name descname">plot_map</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">place</span></em>, <em class="sig-param"><span class="n">bbox</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">title</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">ax</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">axis_off</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">latlon</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">attribution</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#contextily.plot_map" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot a map of the given place.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>place</strong><span class="classifier">instance of Place | ndarray</span></dt><dd><p>The map to plot. If an ndarray, this must be an image corresponding
+to a map. If an instance of <code class="docutils literal notranslate"><span class="pre">Place</span></code>, the extent of the image and name
+will be inferred from the bounding box.</p>
+</dd>
+<dt><strong>ax</strong><span class="classifier">instance of matplotlib Axes object | None</span></dt><dd><p>The axis on which to plot. If None, one will be created.</p>
+</dd>
+<dt><strong>axis_off</strong><span class="classifier">bool</span></dt><dd><p>Whether to turn off the axis border and ticks before plotting.</p>
+</dd>
+<dt><strong>attribution</strong><span class="classifier">str</span></dt><dd><p>[Optional. Default to standard <cite>ATTRIBUTION</cite>] Text to be added at the
+bottom of the axis.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>ax</strong><span class="classifier">instance of matplotlib Axes object | None</span></dt><dd><p>The axis on the map is plotted.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+
+
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="warping_guide.html" title="previous page">Tests for warping functionality</a>
+
+              </div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+
+    <script src="_static/js/index.js"></script>
+    <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    <p>
+          &copy; Copyright 2020, Dani Arribas-Bel &amp; Contexily Contributors.<br/>
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.0.0.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

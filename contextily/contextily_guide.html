@@ -1,0 +1,789 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>contextily &#8212; contextily 1.0.0 documentation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/custom.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Tests for warping functionality" href="warping_guide.html" />
+    <link rel="prev" title="contextily: context geo tiles in Python" href="index.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+
+    <div class="container-xl">
+      <div class="row">
+          
+          <div class="col-12 col-md-3 bd-sidebar">
+
+<a class="navbar-brand-text" href="index.html">
+CONTEXTILY!
+</a>
+
+
+
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+    <i class="icon fas fa-search"></i>
+    <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+  </form>
+  
+  <nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  
+    <div class="bd-toc-item active">
+    
+  
+
+
+    <ul class="nav bd-sidenav">
+        
+        <li class="nav-item active">
+            <a class="nav-link" href="">contextily</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="warping_guide.html">Tests for warping functionality</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="reference.html">Reference Guide</a>
+        </li>
+        
+    </ul>
+  
+  </nav>
+          </div>
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+              
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#Simplified-plotting" class="nav-link">Simplified plotting</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#Download-tiles" class="nav-link">Download tiles</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#Save-tiles-into-raster-files" class="nav-link">Save tiles into raster files</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#Search-for-tiles-with-text" class="nav-link">Search for tiles with text</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#Read-raster-tiles-and-combine-with-vector-data" class="nav-link">Read raster tiles and combine with vector data</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#Combine-layers" class="nav-link">Combine layers</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#Different-backgrounds" class="nav-link">Different backgrounds</a>
+        </li>
+    
+    </ul>
+</nav>
+
+
+              
+          </div>
+          
+
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container,
+div.nbinput.container div.prompt,
+div.nbinput.container div.input_area,
+div.nbinput.container div[class*=highlight],
+div.nbinput.container div[class*=highlight] pre,
+div.nboutput.container,
+div.nboutput.container div.prompt,
+div.nboutput.container div.output_area,
+div.nboutput.container div[class*=highlight],
+div.nboutput.container div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    min-width: 7ex;
+    padding-top: 0.3rem;
+    padding-right: 0.3rem;
+    text-align: right;
+    flex: 0;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    background: #f5f5f5;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 0.3rem;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+</style>
+<div class="section" id="contextily">
+<h1><code class="docutils literal notranslate"><span class="pre">contextily</span></code><a class="headerlink" href="#contextily" title="Permalink to this headline">¶</a></h1>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+
+<span class="kn">import</span> <span class="nn">contextily</span> <span class="k">as</span> <span class="nn">ctx</span>
+<span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
+<span class="kn">import</span> <span class="nn">rasterio</span> <span class="k">as</span> <span class="nn">rio</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Data</span>
+<span class="kn">from</span> <span class="nn">pysal.lib.examples</span> <span class="kn">import</span> <span class="n">get_path</span>
+</pre></div>
+</div>
+</div>
+<p>In this notebook, we will show the basic functionality available in <code class="docutils literal notranslate"><span class="pre">contextily</span></code>, a package to work with web-tiles for background maps. To do that, we will use additional data to illustrate <code class="docutils literal notranslate"><span class="pre">contextily</span></code> can be integrated with other libraries such as <code class="docutils literal notranslate"><span class="pre">geopandas</span></code> and <code class="docutils literal notranslate"><span class="pre">rasterio</span></code>. However, it is important to note that some of those are <strong>NOT</strong> required by <code class="docutils literal notranslate"><span class="pre">contextily</span></code>.</p>
+<p>Let us first load up from <code class="docutils literal notranslate"><span class="pre">PySAL</span></code> the polygons of the 48 contiguous states using <code class="docutils literal notranslate"><span class="pre">geopandas</span></code>. We’ll pick out Texas and, since our data is not projected by default, set its <a class="reference external" href="http://spatialreference.org/ref/epsg/4326/">default coordinate reference system</a>.</p>
+<p>To do this:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">tx</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="n">get_path</span><span class="p">(</span><span class="s1">&#39;us48.shp&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;STATE_ABBR&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="s1">&#39;TX&#39;</span><span class="p">],</span> <span class="s1">&#39;geometry&#39;</span><span class="p">]</span>
+<span class="n">tx</span><span class="o">.</span><span class="n">crs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;init&#39;</span><span class="p">:</span> <span class="s1">&#39;epsg:4326&#39;</span><span class="p">}</span>
+<span class="n">tx</span><span class="p">[</span><span class="s1">&#39;TX&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<img alt="_images/contextily_guide_3_0.svg" src="_images/contextily_guide_3_0.svg" /></div>
+</div>
+<p>We can get the bounding box from the polygon itself:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">w</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="n">tx</span><span class="p">[</span><span class="s1">&#39;TX&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">bounds</span>
+<span class="n">w</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="n">n</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(-106.6495132446289, 25.845197677612305, -93.50721740722656, 36.49387741088867)
+</pre></div></div>
+</div>
+<p>Or, if we had a geodataframe with many elements, we could also get the total bounding box for all elements in the frame:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">w</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="n">tx</span><span class="o">.</span><span class="n">total_bounds</span>
+<span class="n">w</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="n">n</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(-106.6495132446289, 25.845197677612305, -93.50721740722656, 36.49387741088867)
+</pre></div></div>
+</div>
+<div class="section" id="Simplified-plotting">
+<h2>Simplified plotting<a class="headerlink" href="#Simplified-plotting" title="Permalink to this headline">¶</a></h2>
+<p>The simplest way to access <code class="docutils literal notranslate"><span class="pre">contextily</span></code> and get a background map to go with your geographic data is to use the <code class="docutils literal notranslate"><span class="pre">add_basemap</span></code> method. Assuming you have a <code class="docutils literal notranslate"><span class="pre">GeoDataFrame</span></code> (such as <code class="docutils literal notranslate"><span class="pre">tx</span></code>) and is projected to Web Mercator (<code class="docutils literal notranslate"><span class="pre">EPSG</span></code>= 3857), you can simply:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">tx</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="n">epsg</span><span class="o">=</span><span class="mi">3857</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
+<span class="n">ctx</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="n">ax</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/contextily_guide_9_0.png" src="_images/contextily_guide_9_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="Download-tiles">
+<h2>Download tiles<a class="headerlink" href="#Download-tiles" title="Permalink to this headline">¶</a></h2>
+<p>At this point, we can use those bounds to download the tiles for that part of the world. Before that, however, it is convenient to make sure the download will not be too heavy (i.e. not too many tiles). This is easily checked by using the <code class="docutils literal notranslate"><span class="pre">howmany</span></code> utility:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">_</span> <span class="o">=</span> <span class="n">ctx</span><span class="o">.</span><span class="n">howmany</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="n">ll</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Using zoom level 6, this will download 9 tiles
+</pre></div></div>
+</div>
+<p>At the zoom level 6, we need to download 9 tiles, which is not too onerous. Let us then go ahead and download them:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">%</span><span class="k">time</span> img, ext = ctx.bounds2img(w, s, e, n, 6, ll=True)
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+CPU times: user 10 ms, sys: 0 ns, total: 10 ms
+Wall time: 16.8 ms
+</pre></div></div>
+</div>
+<p>That’s it! Just under three seconds and we have a map under our fingertips! Note how <code class="docutils literal notranslate"><span class="pre">bounds2img</span></code> also returns the extent that the tile covers. This will come in handy later on when we want to align it with more data.</p>
+<p><strong>IMPORTANT</strong>: the tile extent is always returned in Spherical Mercator (EPSG:3857). This means that the data you want to map (like ours in <code class="docutils literal notranslate"><span class="pre">tx</span></code>) may have a different projection than that returned from <code class="docutils literal notranslate"><span class="pre">bounds2img</span></code>.</p>
+<p>Let us quickly visualize it with <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="n">ext</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/contextily_guide_15_0.png" src="_images/contextily_guide_15_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="Save-tiles-into-raster-files">
+<h2>Save tiles into raster files<a class="headerlink" href="#Save-tiles-into-raster-files" title="Permalink to this headline">¶</a></h2>
+<p>Sometimes, we know we will be working with an area for a while and it is more convenient to download the tiles only once and then load them up on-demand. To do that, we can use the function <code class="docutils literal notranslate"><span class="pre">bounds2raster</span></code>, which writes the image into a GeoTIFF raster file:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">%</span><span class="k">time</span> _ = ctx.bounds2raster(w, s, e, n, &#39;tx.tif&#39;, ll=True)
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+CPU times: user 460 ms, sys: 230 ms, total: 690 ms
+Wall time: 3.56 s
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="Search-for-tiles-with-text">
+<h2>Search for tiles with text<a class="headerlink" href="#Search-for-tiles-with-text" title="Permalink to this headline">¶</a></h2>
+<p>You can also directly search for tiles using the <code class="docutils literal notranslate"><span class="pre">Place</span></code> class. This allows you to search with text. It will grab the tiles associated with that search (using GeoPy geocoding) so that you can plot them.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">zoom</span><span class="o">=</span><span class="mi">7</span>
+<span class="n">loc</span> <span class="o">=</span> <span class="n">ctx</span><span class="o">.</span><span class="n">Place</span><span class="p">(</span><span class="s2">&quot;texas&quot;</span><span class="p">,</span> <span class="n">zoom</span><span class="o">=</span><span class="n">zoom</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+
+<span class="c1"># Grab the image associated with this search and plot it</span>
+<span class="n">ctx</span><span class="o">.</span><span class="n">plot_map</span><span class="p">(</span><span class="n">loc</span><span class="o">.</span><span class="n">im</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Using Place&#39;</span><span class="p">)</span>
+
+<span class="c1"># Manually find this tile using the Place&#39;s bounds</span>
+<span class="n">zoom</span> <span class="o">=</span> <span class="n">ctx</span><span class="o">.</span><span class="n">tile</span><span class="o">.</span><span class="n">_calculate_zoom</span><span class="p">(</span><span class="n">loc</span><span class="o">.</span><span class="n">w</span><span class="p">,</span> <span class="n">loc</span><span class="o">.</span><span class="n">s</span><span class="p">,</span> <span class="n">loc</span><span class="o">.</span><span class="n">e</span><span class="p">,</span> <span class="n">loc</span><span class="o">.</span><span class="n">n</span><span class="p">)</span>
+<span class="n">im2</span><span class="p">,</span> <span class="n">bbox</span> <span class="o">=</span> <span class="n">ctx</span><span class="o">.</span><span class="n">bounds2img</span><span class="p">(</span><span class="n">loc</span><span class="o">.</span><span class="n">w</span><span class="p">,</span> <span class="n">loc</span><span class="o">.</span><span class="n">s</span><span class="p">,</span> <span class="n">loc</span><span class="o">.</span><span class="n">e</span><span class="p">,</span> <span class="n">loc</span><span class="o">.</span><span class="n">n</span><span class="p">,</span> <span class="n">zoom</span><span class="o">=</span><span class="n">zoom</span><span class="p">,</span> <span class="n">ll</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ctx</span><span class="o">.</span><span class="n">plot_map</span><span class="p">(</span><span class="n">im2</span><span class="p">,</span> <span class="n">bbox</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Using bounds2img&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/contextily_guide_20_0.png" src="_images/contextily_guide_20_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="Read-raster-tiles-and-combine-with-vector-data">
+<h2>Read raster tiles and combine with vector data<a class="headerlink" href="#Read-raster-tiles-and-combine-with-vector-data" title="Permalink to this headline">¶</a></h2>
+<p>At this point, using the tile map is exactly the same as using any other raster file. For this, we will use the fantastic library <code class="docutils literal notranslate"><span class="pre">rasterio</span></code>.</p>
+<p>Let us see how we can load it back up and plot it (all of this is standard <code class="docutils literal notranslate"><span class="pre">rasterio</span></code> operations, check out its <a class="reference external" href="https://mapbox.github.io/rasterio/">documentation</a> for more detail if interested).</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">rtr</span> <span class="o">=</span> <span class="n">rio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;tx.tif&#39;</span><span class="p">)</span>
+
+<span class="c1"># NOTE the transpose of the image data</span>
+<span class="n">img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span> <span class="n">band</span> <span class="k">for</span> <span class="n">band</span> <span class="ow">in</span> <span class="n">rtr</span><span class="o">.</span><span class="n">read</span><span class="p">()</span> <span class="p">])</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="c1"># Plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="n">rtr</span><span class="o">.</span><span class="n">bounds</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/contextily_guide_22_0.png" src="_images/contextily_guide_22_0.png" />
+</div>
+</div>
+<p>Sometimes, raster files can be (very) large and we are not particularly interested in loading the entire file. For those cases, <code class="docutils literal notranslate"><span class="pre">rasterio</span></code> includes functionality to load up a specific part -window- of the raster. The function <code class="docutils literal notranslate"><span class="pre">bb2wdw</span></code> in <code class="docutils literal notranslate"><span class="pre">contextily</span></code> makes it easy to create that window from Mercator coordinates:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Mercator coordinates for Houston area</span>
+<span class="n">hou</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mf">10676650.69219051</span><span class="p">,</span> <span class="mf">3441477.046670125</span><span class="p">,</span> <span class="o">-</span><span class="mf">10576977.7804825</span><span class="p">,</span> <span class="mf">3523606.146650609</span><span class="p">)</span>
+
+<span class="c1"># Window</span>
+<span class="n">wdw</span> <span class="o">=</span> <span class="n">ctx</span><span class="o">.</span><span class="n">tile</span><span class="o">.</span><span class="n">bb2wdw</span><span class="p">(</span><span class="n">hou</span><span class="p">,</span> <span class="n">rtr</span><span class="p">)</span>
+<span class="c1"># Raster subset</span>
+<span class="n">sub</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span> <span class="n">rtr</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">band</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="n">wdw</span><span class="p">)</span> \
+      <span class="k">for</span> <span class="n">band</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">rtr</span><span class="o">.</span><span class="n">count</span><span class="o">+</span><span class="mi">1</span><span class="p">)])</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="c1"># Plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">sub</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="n">hou</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">hou</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">hou</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">hou</span><span class="p">[</span><span class="mi">3</span><span class="p">]));</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/contextily_guide_24_0.png" src="_images/contextily_guide_24_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="Combine-layers">
+<h2>Combine layers<a class="headerlink" href="#Combine-layers" title="Permalink to this headline">¶</a></h2>
+<p>One of the most interesting applications of using these tiles is to employ them as basemaps to overlay additional data on top of them. This can be easily done with <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>, provided all the data are in the same CRS at the time of plotting.</p>
+<p>Let us see how one would go about plotting the polygon for the state of Texas on top of the raster file:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Shortify the bound box named tuple</span>
+<span class="n">bb</span> <span class="o">=</span> <span class="n">rtr</span><span class="o">.</span><span class="n">bounds</span>
+<span class="c1"># Set up the figure</span>
+<span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
+<span class="c1"># Load the tile raster (note the re-arrangement of the bounds)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="n">bb</span><span class="o">.</span><span class="n">left</span><span class="p">,</span> <span class="n">bb</span><span class="o">.</span><span class="n">right</span><span class="p">,</span> <span class="n">bb</span><span class="o">.</span><span class="n">bottom</span><span class="p">,</span> <span class="n">bb</span><span class="o">.</span><span class="n">top</span><span class="p">))</span>
+<span class="c1"># Overlay the polygon on top (note we reproject it to the raster&#39;s CRS)</span>
+<span class="n">tx</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="n">rtr</span><span class="o">.</span><span class="n">crs</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+<span class="c1"># Remove axis for aesthetics</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span>
+<span class="c1"># Show</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/contextily_guide_26_0.png" src="_images/contextily_guide_26_0.png" />
+</div>
+</div>
+<p>If we remember that our tiles are served in Spherical Mercator projection, we can also plot without saving our tiles to a file:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1">#fetch image using the bounding box:</span>
+<span class="n">image</span><span class="p">,</span> <span class="n">extent</span> <span class="o">=</span> <span class="n">ctx</span><span class="o">.</span><span class="n">bounds2img</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="n">ll</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="c1"># Set up the figure</span>
+<span class="n">f</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span><span class="mi">9</span><span class="p">))</span>
+<span class="c1"># Load the tile raster</span>
+<span class="c1"># (note that the extent returned by bounds2img</span>
+<span class="c1"># corresponds directly to matplotlib bounds)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="n">extent</span><span class="p">)</span>
+<span class="c1"># Overlay the polygon on top</span>
+<span class="c1"># Note we reproject the vector to webmercator, which has an epsg code of 3857</span>
+<span class="n">tx</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="n">epsg</span><span class="o">=</span><span class="mi">3857</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+<span class="c1"># Remove axis for aesthetics</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span>
+<span class="c1"># Show</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/contextily_guide_28_0.png" src="_images/contextily_guide_28_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="Different-backgrounds">
+<h2>Different backgrounds<a class="headerlink" href="#Different-backgrounds" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">contextily</span></code> gives access to several tile maps, all from the awesome people at <a class="reference external" href="http://stamen.com">Stamen</a>. The full list is:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">sources</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="n">ctx</span><span class="o">.</span><span class="n">tile_providers</span><span class="p">)</span> <span class="k">if</span> <span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">!=</span><span class="s1">&#39;_&#39;</span><span class="p">]</span>
+<span class="n">sources</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&#39;OSM_A&#39;,
+ &#39;OSM_B&#39;,
+ &#39;OSM_C&#39;,
+ &#39;ST_TERRAIN&#39;,
+ &#39;ST_TERRAIN_BACKGROUND&#39;,
+ &#39;ST_TERRAIN_LABELS&#39;,
+ &#39;ST_TERRAIN_LINES&#39;,
+ &#39;ST_TONER&#39;,
+ &#39;ST_TONER_BACKGROUND&#39;,
+ &#39;ST_TONER_HYBRID&#39;,
+ &#39;ST_TONER_LABELS&#39;,
+ &#39;ST_TONER_LINES&#39;,
+ &#39;ST_TONER_LITE&#39;,
+ &#39;ST_WATERCOLOR&#39;]
+</pre></div></div>
+</div>
+<p>You can set them on <code class="docutils literal notranslate"><span class="pre">bounds2img</span></code> and <code class="docutils literal notranslate"><span class="pre">bounds2raster</span></code> using the argument <code class="docutils literal notranslate"><span class="pre">url</span></code>. Checkout the documentation for more details.</p>
+<p>Just because we can, let us get a feel for what they look like:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">f</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">axs</span> <span class="o">=</span> <span class="n">axs</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">src</span><span class="p">,</span> <span class="n">ax</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">sources</span><span class="p">,</span> <span class="n">axs</span><span class="p">):</span>
+    <span class="n">img</span><span class="p">,</span> <span class="n">ext</span> <span class="o">=</span> <span class="n">ctx</span><span class="o">.</span><span class="n">bounds2img</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="nb">getattr</span><span class="p">(</span><span class="n">ctx</span><span class="o">.</span><span class="n">sources</span><span class="p">,</span> <span class="n">src</span><span class="p">),</span> <span class="n">ll</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="n">ext</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">src</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/contextily_guide_32_0.png" src="_images/contextily_guide_32_0.png" />
+</div>
+</div>
+<p><strong>NOTE</strong> Please always remember to give proper attribution to the map provider. See <a class="reference external" href="http://maps.stamen.com/#watercolor/12/37.7706/-122.3782">here</a> for the proper way to do it, but essentially it is:</p>
+<ul class="simple">
+<li><p>Toner and Terrain:</p></li>
+</ul>
+<blockquote>
+<div><p>Map tiles by Stamen Design, under CC BY 3.0. Data by OpenStreetMap, under ODbL.</p>
+</div></blockquote>
+<ul class="simple">
+<li><p>Watercolor:</p></li>
+</ul>
+<blockquote>
+<div><p>Map tiles by Stamen Design, under CC BY 3.0. Data by OpenStreetMap, under CC BY SA.</p>
+</div></blockquote>
+</div>
+</div>
+
+
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="index.html" title="previous page"><code class="docutils literal notranslate"><span class="pre">contextily</span></code>: context geo tiles in Python</a>
+    <a class='right-next' id="next-link" href="warping_guide.html" title="next page">Tests for warping functionality</a>
+
+              </div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+
+    <script src="_static/js/index.js"></script>
+    <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    <p>
+          &copy; Copyright 2020, Dani Arribas-Bel &amp; Contexily Contributors.<br/>
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.0.0.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

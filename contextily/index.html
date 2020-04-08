@@ -1,0 +1,219 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>contextily: context geo tiles in Python &#8212; contextily 1.0.0 documentation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/custom.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="contextily" href="contextily_guide.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+
+    <div class="container-xl">
+      <div class="row">
+          
+          <div class="col-12 col-md-3 bd-sidebar">
+
+<a class="navbar-brand-text" href="#">
+CONTEXTILY!
+</a>
+
+
+
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+    <i class="icon fas fa-search"></i>
+    <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+  </form>
+  
+  <nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  
+    <div class="bd-toc-item active">
+    
+  
+
+
+    <ul class="nav bd-sidenav">
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="contextily_guide.html">contextily</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="warping_guide.html">Tests for warping functionality</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="reference.html">Reference Guide</a>
+        </li>
+        
+    </ul>
+  
+  </nav>
+          </div>
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+              
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+    </ul>
+</nav>
+
+
+              
+          </div>
+          
+
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <div class="section" id="contextily-context-geo-tiles-in-python">
+<h1><code class="docutils literal notranslate"><span class="pre">contextily</span></code>: context geo tiles in Python<a class="headerlink" href="#contextily-context-geo-tiles-in-python" title="Permalink to this headline">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">contextily</span></code> is a small Python 3 package to retrieve and write to disk
+tile maps from the internet into geospatial raster files. Bounding boxes
+can be passed in both WGS84 (<code class="docutils literal notranslate"><span class="pre">EPSG:4326</span></code>) and Spheric Mercator
+(<code class="docutils literal notranslate"><span class="pre">EPSG:3857</span></code>). See the notebook <code class="docutils literal notranslate"><span class="pre">contextily_guide.ipynb</span></code> for usage.</p>
+<p><a class="reference external" href="https://travis-ci.org/darribas/contextily"><img alt="Build Status" src="https://travis-ci.org/darribas/contextily.svg?branch=master" /></a> <a class="reference external" href="https://coveralls.io/github/darribas/contextily?branch=master"><img alt="Coverage Status" src="https://coveralls.io/repos/github/darribas/contextily/badge.svg?branch=master" /></a></p>
+<div class="figure align-default" id="id1">
+<img alt="Tiles" src="_images/tiles.png" />
+<p class="caption"><span class="caption-text">Tiles</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
+<ul class="simple">
+<li><p>Toner and Terrain map tiles by Stamen Design, under CC BY 3.0. Data
+by OpenStreetMap, under ODbL.</p></li>
+<li><p>Watercolor map tiles by Stamen Design, under CC BY 3.0. Data by
+OpenStreetMap, under CC BY SA.</p></li>
+</ul>
+</div>
+<div class="section" id="dependencies">
+<h1>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">mercantile</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">numpy</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">matplotlib</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pillow</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rasterio</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">requests</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">geopy</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">joblib</span></code></p></li>
+</ul>
+</div>
+<div class="section" id="installation">
+<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
+<p><strong>Python 3 only</strong></p>
+<p><a class="reference external" href="https://github.com/darribas/contextily/releases/tag/v0.99.0">Latest released
+version</a>:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pip3 install contextily <span class="c1"># installs the latest released version (v0.99.0)</span>
+</pre></div>
+</div>
+<p>Latest <a class="reference external" href="https://github.com/darribas/contextily/releases/tag/v1.0rc2">release
+candidate</a>
+(includes functionality such as <code class="docutils literal notranslate"><span class="pre">add_basemap</span></code> coming in version 1.0:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pip3 install <span class="nv">contextily</span><span class="o">==</span><span class="m">1</span>.0rc2 <span class="c1"># installs the latest release candidate (v1.0rc2)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="contributors">
+<h1>Contributors<a class="headerlink" href="#contributors" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p><a class="reference external" href="http://darribas.org/">Dani Arribas-Bel</a>
+(<code class="docutils literal notranslate"><span class="pre">`&#64;darribas</span></code> &lt;<a class="reference external" href="http://twitter.com/darribas">http://twitter.com/darribas</a>&gt;`__)</p></li>
+<li><p><a class="reference external" href="https://jorisvandenbossche.github.io/">Joris Van den Bossche</a>
+<code class="docutils literal notranslate"><span class="pre">`&#64;jorisvandenbossche</span></code> &lt;<a class="reference external" href="https://twitter.com/jorisvdbossche">https://twitter.com/jorisvdbossche</a>&gt;`__)</p></li>
+<li><p><a class="reference external" href="http://ljwolf.org/">Levi Wolf</a>
+(<code class="docutils literal notranslate"><span class="pre">`&#64;levijohnwolf</span></code> &lt;<a class="reference external" href="https://twitter.com/levijohnwolf">https://twitter.com/levijohnwolf</a>&gt;`__)</p></li>
+<li><p><a class="reference external" href="http://chrisholdgraf.com/">Chris Holdgraf</a>
+(<code class="docutils literal notranslate"><span class="pre">`&#64;choldgraf</span></code> &lt;<a class="reference external" href="http://twitter.com/choldgraf">http://twitter.com/choldgraf</a>&gt;`__)</p></li>
+<li><p><a class="reference external" href="https://ocefpaf.github.io/python4oceanographers/">Filipe
+Fernandes</a>
+([&#64;ocefpaf](<a class="reference external" href="http://twitter.com/ocefpaf">http://twitter.com/ocefpaf</a>))</p></li>
+</ul>
+</div>
+<div class="section" id="license">
+<h1>License<a class="headerlink" href="#license" title="Permalink to this headline">¶</a></h1>
+<p>BSD compatible. See <code class="docutils literal notranslate"><span class="pre">LICENSE.txt</span></code></p>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="contextily_guide.html"><code class="docutils literal notranslate"><span class="pre">contextily</span></code></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="contextily_guide.html#Simplified-plotting">Simplified plotting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contextily_guide.html#Download-tiles">Download tiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contextily_guide.html#Save-tiles-into-raster-files">Save tiles into raster files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contextily_guide.html#Search-for-tiles-with-text">Search for tiles with text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contextily_guide.html#Read-raster-tiles-and-combine-with-vector-data">Read raster tiles and combine with vector data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contextily_guide.html#Combine-layers">Combine layers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contextily_guide.html#Different-backgrounds">Different backgrounds</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="warping_guide.html">Tests for warping functionality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">Reference Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference.html#plotting-basemaps">Plotting basemaps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference.html#working-with-tiles">Working with tiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference.html#geocoding-and-plotting-places">Geocoding and plotting places</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="indices-and-tables">
+<h2>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</div>
+</div>
+
+
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='right-next' id="next-link" href="contextily_guide.html" title="next page"><code class="docutils literal notranslate"><span class="pre">contextily</span></code></a>
+
+              </div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+
+    <script src="_static/js/index.js"></script>
+    <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    <p>
+          &copy; Copyright 2020, Dani Arribas-Bel &amp; Contexily Contributors.<br/>
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.0.0.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>
